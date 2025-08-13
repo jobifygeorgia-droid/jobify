@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  /* Font */
+  --font-noto-sans-georgian: "Noto Sans Georgian", sans-serif;
+  --background: #ffffff;
+  --foreground: #30353b;
+  /* Colors */
+  --color-blue-light: #e7f0f9;
+  --color-blue-light--hover: #dbe8f6;
+  --color-blue-light--active: #b4cfec;
+  --color-blue: #0d65c2;
+  --color-blue--hover: #0c5baf;
+  --color-blue--active: #0a519b;
+  --color-blue-dark: #0a4c92;
+  --color-blue-dark--hover: #083d74;
+  --color-blue-dark--active: #062d57;
+  --color-blue-darker: #052344;
+
+  --color-green-light: #ecf8f0;
+  --color-green-light--hover: #e3f5e9;
+  --color-green-light--active: #c4ead1;
+  --color-green: #42ba6a;
+  --color-green--hover: #3ba75f;
+  --color-green--active: #359555;
+  --color-green-dark: #328c50;
+  --color-green-dark--hover: #287040;
+  --color-green-dark--active: #1e5430;
+  --color-green-darker: #174125;
+
+  --color-red-light: #faebea;
+  --color-red-light--hover: #f8e2e0;
+  --color-red-light--active: #f0c2bf;
+  --color-red: #ce3b30;
+  --color-red--hover: #b9352b;
+  --color-red--active: #a52f26;
+  --color-red-dark: #9b2c24;
+  --color-red-dark--hover: #7c231d;
+  --color-red-dark--active: #5d1b16;
+  --color-red-darker: #481511;
+
+  --color-orange-light: #fff3e9;
+  --color-orange-light--hover: #ffedde;
+  --color-orange-light--active: #ffd9bb;
+  --color-orange: #ff8623;
+  --color-orange--hover: #e67920;
+  --color-orange--active: #cc6b1c;
+  --color-orange-dark: #bf651a;
+  --color-orange-dark--hover: #995015;
+  --color-orange-dark--active: #733c10;
+  --color-orange-darker: #592f0c;
+
+  --color-dark-grey-light: #eceded;
+  --color-dark-grey-light--hover: #e2e3e5;
+  --color-dark-grey-light--active: #c4c6c8;
+  --color-dark-grey: #40464f;
+  --color-dark-grey--hover: #3a3f47;
+  --color-dark-grey--active: #33383f;
+  --color-dark-grey-dark: #30353b;
+  --color-dark-grey-dark--hover: #262a2f;
+  --color-dark-grey-dark--active: #1d1f24;
+  --color-dark-grey-darker: #16191c;
+
+  --color-light-grey-light: #fdfdfd;
+  --color-light-grey-light--hover: #fcfcfc;
+  --color-light-grey-light--active: #f9f9f9;
+  --color-light-grey: #ebebed;
+  --color-light-grey--hover: #d4d4d5;
+  --color-light-grey--active: #bcbcbe;
+  --color-light-grey-dark: #b0b0b2;
+  --color-light-grey-dark--hover: #8d8d8e;
+  --color-light-grey-dark--active: #6a6a6b;
+  --color-light-grey-darker: #525253;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-noto-sans-georgian);
+}
