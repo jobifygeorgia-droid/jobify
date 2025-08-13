@@ -73,6 +73,74 @@
   --color-light-grey-darker: #525253;
 }
 
+@theme {
+  --color-blue-light: var(--color-blue-light);
+  --color-blue-light--hover: var(--color-blue-light--hover);
+  --color-blue-light--active: var(--color-blue-light--active);
+  --color-blue: var(--color-blue);
+  --color-blue--hover: var(--color-blue--hover);
+  --color-blue--active: var(--color-blue--active);
+  --color-blue-dark: var(--color-blue-dark);
+  --color-blue-dark--hover: var(--color-blue-dark--hover);
+  --color-blue-dark--active: var(--color-blue-dark--active);
+  --color-blue-darker: var(--color-blue-darker);
+
+  --color-green-light: var(--color-green-light);
+  --color-green-light--hover: var(--color-green-light--hover);
+  --color-green-light--active: var(--color-green-light--active);
+  --color-green: var(--color-green);
+  --color-green--hover: var(--color-green--hover);
+  --color-green--active: var(--color-green--active);
+  --color-green-dark: var(--color-green-dark);
+  --color-green-dark--hover: var(--color-green-dark--hover);
+  --color-green-dark--active: var(--color-green-dark--active);
+  --color-green-darker: var(--color-green-darker);
+
+  --color-red-light: var(--color-red-light);
+  --color-red-light--hover: var(--color-red-light--hover);
+  --color-red-light--active: var(--color-red-light--active);
+  --color-red: var(--color-red);
+  --color-red--hover: var(--color-red--hover);
+  --color-red--active: var(--color-red--active);
+  --color-red-dark: var(--color-red-dark);
+  --color-red-dark--hover: var(--color-red-dark--hover);
+  --color-red-dark--active: var(--color-red-dark--active);
+  --color-red-darker: var(--color-red-darker);
+
+  --color-orange-light: var(--color-orange-light);
+  --color-orange-light--hover: var(--color-orange-light--hover);
+  --color-orange-light--active: var(--color-orange-light--active);
+  --color-orange: var(--color-orange);
+  --color-orange--hover: var(--color-orange--hover);
+  --color-orange--active: var(--color-orange--active);
+  --color-orange-dark: var(--color-orange-dark);
+  --color-orange-dark--hover: var(--color-orange-dark--hover);
+  --color-orange-dark--active: var(--color-orange-dark--active);
+  --color-orange-darker: var(--color-orange-darker);
+
+  --color-dark-grey-light: var(--color-dark-grey-light);
+  --color-dark-grey-light--hover: var(--color-dark-grey-light--hover);
+  --color-dark-grey-light--active: var(--color-dark-grey-light--active);
+  --color-dark-grey: var(--color-dark-grey);
+  --color-dark-grey--hover: var(--color-dark-grey--hover);
+  --color-dark-grey--active: var(--color-dark-grey--active);
+  --color-dark-grey-dark: var(--color-dark-grey-dark);
+  --color-dark-grey-dark--hover: var(--color-dark-grey-dark--hover);
+  --color-dark-grey-dark--active: var(--color-dark-grey-dark--active);
+  --color-dark-grey-darker: var(--color-dark-grey-darker);
+
+  --color-light-grey-light: var(--color-light-grey-light);
+  --color-light-grey-light--hover: var(--color-light-grey-light--hover);
+  --color-light-grey-light--active: var(--color-light-grey-light--active);
+  --color-light-grey: var(--color-light-grey);
+  --color-light-grey--hover: var(--color-light-grey--hover);
+  --color-light-grey--active: var(--color-light-grey--active);
+  --color-light-grey-dark: var(--color-light-grey-dark);
+  --color-light-grey-dark--hover: var(--color-light-grey-dark--hover);
+  --color-light-grey-dark--active: var(--color-light-grey-dark--active);
+  --color-light-grey-darker: var(--color-light-grey-darker);
+}
+
 body {
   color: var(--foreground);
   background-color: var(--background);
