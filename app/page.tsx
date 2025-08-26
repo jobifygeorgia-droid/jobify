@@ -1,7 +1,12 @@
+import { FilterBar } from "@/components/layouts";
+import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
+
 export default function Home() {
   return (
-    <div className="w-screen h-screen flex items-center justify-center text-6xl">
-      ყოველ ადამიანს, სადაც არ უნდა იმყოფებოდეს იგი
+    <div className="py-5">
+      <FilterProvider>
+        <FilterBar />
+      </FilterProvider>
     </div>
   );
 }

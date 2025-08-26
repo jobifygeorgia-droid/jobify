@@ -1,0 +1,31 @@
+.swiper {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+}
+
+.swiper-pagination {
+  position: unset;
+  padding-top: 40px;
+}
+
+span.swiper-pagination-bullet {
+  /* background-color: var(--color-orange-light-active); */
+  background-color: rgba(255, 134, 35, 1);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--color-orange);
+  width: 25px;
+  border-radius: 32px;
+}

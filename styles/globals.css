@@ -1,148 +1,329 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   /* Font */
   --font-noto-sans-georgian: "Noto Sans Georgian", sans-serif;
+
+  /* Colors */
+
   --background: #ffffff;
   --foreground: #30353b;
-  /* Colors */
+
+  --color-bc: var(--color-light-grey); /* Border color */
+  --color-blue-footer: #f5faff;
+
   --color-blue-light: #e7f0f9;
-  --color-blue-light--hover: #dbe8f6;
-  --color-blue-light--active: #b4cfec;
+  --color-blue-light-hover: #dbe8f6;
+  --color-blue-light-active: #b4cfec;
   --color-blue: #0d65c2;
-  --color-blue--hover: #0c5baf;
-  --color-blue--active: #0a519b;
+  --color-blue-hover: #0c5baf;
+  --color-blue-active: #0a519b;
   --color-blue-dark: #0a4c92;
-  --color-blue-dark--hover: #083d74;
-  --color-blue-dark--active: #062d57;
+  --color-blue-dark-hover: #083d74;
+  --color-blue-dark-active: #062d57;
   --color-blue-darker: #052344;
 
   --color-green-light: #ecf8f0;
-  --color-green-light--hover: #e3f5e9;
-  --color-green-light--active: #c4ead1;
+  --color-green-light-hover: #e3f5e9;
+  --color-green-light-active: #c4ead1;
   --color-green: #42ba6a;
-  --color-green--hover: #3ba75f;
-  --color-green--active: #359555;
+  --color-green-hover: #3ba75f;
+  --color-green-active: #359555;
   --color-green-dark: #328c50;
-  --color-green-dark--hover: #287040;
-  --color-green-dark--active: #1e5430;
+  --color-green-dark-hover: #287040;
+  --color-green-dark-active: #1e5430;
   --color-green-darker: #174125;
 
   --color-red-light: #faebea;
-  --color-red-light--hover: #f8e2e0;
-  --color-red-light--active: #f0c2bf;
+  --color-red-light-hover: #f8e2e0;
+  --color-red-light-active: #f0c2bf;
   --color-red: #ce3b30;
-  --color-red--hover: #b9352b;
-  --color-red--active: #a52f26;
+  --color-red-hover: #b9352b;
+  --color-red-active: #a52f26;
   --color-red-dark: #9b2c24;
-  --color-red-dark--hover: #7c231d;
-  --color-red-dark--active: #5d1b16;
+  --color-red-dark-hover: #7c231d;
+  --color-red-dark-active: #5d1b16;
   --color-red-darker: #481511;
 
   --color-orange-light: #fff3e9;
-  --color-orange-light--hover: #ffedde;
-  --color-orange-light--active: #ffd9bb;
+  --color-orange-light-hover: #ffedde;
+  --color-orange-light-active: #ffd9bb;
   --color-orange: #ff8623;
-  --color-orange--hover: #e67920;
-  --color-orange--active: #cc6b1c;
+  --color-orange-hover: #e67920;
+  --color-orange-active: #cc6b1c;
   --color-orange-dark: #bf651a;
-  --color-orange-dark--hover: #995015;
-  --color-orange-dark--active: #733c10;
+  --color-orange-dark-hover: #995015;
+  --color-orange-dark-active: #733c10;
   --color-orange-darker: #592f0c;
 
   --color-dark-grey-light: #eceded;
-  --color-dark-grey-light--hover: #e2e3e5;
-  --color-dark-grey-light--active: #c4c6c8;
+  --color-dark-grey-light-hover: #e2e3e5;
+  --color-dark-grey-light-active: #c4c6c8;
   --color-dark-grey: #40464f;
-  --color-dark-grey--hover: #3a3f47;
-  --color-dark-grey--active: #33383f;
+  --color-dark-grey-hover: #3a3f47;
+  --color-dark-grey-active: #33383f;
   --color-dark-grey-dark: #30353b;
-  --color-dark-grey-dark--hover: #262a2f;
-  --color-dark-grey-dark--active: #1d1f24;
+  --color-dark-grey-dark-hover: #262a2f;
+  --color-dark-grey-dark-active: #1d1f24;
   --color-dark-grey-darker: #16191c;
 
   --color-light-grey-light: #fdfdfd;
-  --color-light-grey-light--hover: #fcfcfc;
-  --color-light-grey-light--active: #f9f9f9;
+  --color-light-grey-light-hover: #fcfcfc;
+  --color-light-grey-light-active: #f9f9f9;
   --color-light-grey: #ebebed;
-  --color-light-grey--hover: #d4d4d5;
-  --color-light-grey--active: #bcbcbe;
+  --color-light-grey-hover: #d4d4d5;
+  --color-light-grey-active: #bcbcbe;
   --color-light-grey-dark: #b0b0b2;
-  --color-light-grey-dark--hover: #8d8d8e;
-  --color-light-grey-dark--active: #6a6a6b;
+  --color-light-grey-dark-hover: #8d8d8e;
+  --color-light-grey-dark-active: #6a6a6b;
   --color-light-grey-darker: #525253;
+
+  --text-xs: 10px;
+  --text-xs-tight: 11px;
+  --text-sm: 12px;
+  --text-base-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 22px;
+  --text-2xl: 25px;
+  --text-3xl: 28px;
+  --text-4xl: 32px;
+  --text-5xl: 36px;
 }
 
-@theme {
-  --color-blue-light: var(--color-blue-light);
-  --color-blue-light--hover: var(--color-blue-light--hover);
-  --color-blue-light--active: var(--color-blue-light--active);
-  --color-blue: var(--color-blue);
-  --color-blue--hover: var(--color-blue--hover);
-  --color-blue--active: var(--color-blue--active);
-  --color-blue-dark: var(--color-blue-dark);
-  --color-blue-dark--hover: var(--color-blue-dark--hover);
-  --color-blue-dark--active: var(--color-blue-dark--active);
-  --color-blue-darker: var(--color-blue-darker);
+/* ---------------------------------------------  */
+/* ---------------- TipTap ---------------------- */
+/* ---------------------------------------------  */
 
-  --color-green-light: var(--color-green-light);
-  --color-green-light--hover: var(--color-green-light--hover);
-  --color-green-light--active: var(--color-green-light--active);
-  --color-green: var(--color-green);
-  --color-green--hover: var(--color-green--hover);
-  --color-green--active: var(--color-green--active);
-  --color-green-dark: var(--color-green-dark);
-  --color-green-dark--hover: var(--color-green-dark--hover);
-  --color-green-dark--active: var(--color-green-dark--active);
-  --color-green-darker: var(--color-green-darker);
-
-  --color-red-light: var(--color-red-light);
-  --color-red-light--hover: var(--color-red-light--hover);
-  --color-red-light--active: var(--color-red-light--active);
-  --color-red: var(--color-red);
-  --color-red--hover: var(--color-red--hover);
-  --color-red--active: var(--color-red--active);
-  --color-red-dark: var(--color-red-dark);
-  --color-red-dark--hover: var(--color-red-dark--hover);
-  --color-red-dark--active: var(--color-red-dark--active);
-  --color-red-darker: var(--color-red-darker);
-
-  --color-orange-light: var(--color-orange-light);
-  --color-orange-light--hover: var(--color-orange-light--hover);
-  --color-orange-light--active: var(--color-orange-light--active);
-  --color-orange: var(--color-orange);
-  --color-orange--hover: var(--color-orange--hover);
-  --color-orange--active: var(--color-orange--active);
-  --color-orange-dark: var(--color-orange-dark);
-  --color-orange-dark--hover: var(--color-orange-dark--hover);
-  --color-orange-dark--active: var(--color-orange-dark--active);
-  --color-orange-darker: var(--color-orange-darker);
-
-  --color-dark-grey-light: var(--color-dark-grey-light);
-  --color-dark-grey-light--hover: var(--color-dark-grey-light--hover);
-  --color-dark-grey-light--active: var(--color-dark-grey-light--active);
-  --color-dark-grey: var(--color-dark-grey);
-  --color-dark-grey--hover: var(--color-dark-grey--hover);
-  --color-dark-grey--active: var(--color-dark-grey--active);
-  --color-dark-grey-dark: var(--color-dark-grey-dark);
-  --color-dark-grey-dark--hover: var(--color-dark-grey-dark--hover);
-  --color-dark-grey-dark--active: var(--color-dark-grey-dark--active);
-  --color-dark-grey-darker: var(--color-dark-grey-darker);
-
-  --color-light-grey-light: var(--color-light-grey-light);
-  --color-light-grey-light--hover: var(--color-light-grey-light--hover);
-  --color-light-grey-light--active: var(--color-light-grey-light--active);
-  --color-light-grey: var(--color-light-grey);
-  --color-light-grey--hover: var(--color-light-grey--hover);
-  --color-light-grey--active: var(--color-light-grey--active);
-  --color-light-grey-dark: var(--color-light-grey-dark);
-  --color-light-grey-dark--hover: var(--color-light-grey-dark--hover);
-  --color-light-grey-dark--active: var(--color-light-grey-dark--active);
-  --color-light-grey-darker: var(--color-light-grey-darker);
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+  caret-color: black;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
   font-family: var(--font-noto-sans-georgian);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar-track {
+  background-color: blue;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: red;
+}
+
+.custom-select__control {
+  z-index: auto !important;
+}
+
+/* ---------------------------------------------  */
+/* ---------------- TipTap ---------------------- */
+/* ---------------------------------------------  */
+
+.tiptap {
+  height: 100%;
+  outline: none;
+  border-radius: inherit;
+}
+
+.italic {
+  @apply bg-red-400;
+}
+
+.tiptap a {
+  color: purple;
+  cursor: pointer;
+
+  /* &:hover {
+    color: var(--purple-contrast);
+  } */
+}
+
+.tiptap ul {
+  list-style: disc;
+}
+
+.tiptap ul ul {
+  list-style: circle;
+}
+
+.tiptap ul ul ul {
+  list-style: square;
+}
+
+.tiptap ol {
+  list-style: decimal;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+}
+
+.tiptap ul li p,
+.tiptap ol li p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #999;
+  font-size: 36px;
+  font-style: italic;
+  content: attr(data-placeholder);
+  float: left;
+  line-height: 15px;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap blockquote {
+  border-left: 3px solid #000;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 2rem 0;
+}
+
+.tiptap code {
+  background-color: #555;
+  border-radius: 0.4rem;
+  color: #000;
+  font-size: 0.85rem;
+  padding: 0.25em 0.3em;
+}
+
+.tiptap pre {
+  background: #222;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.1;
+  margin-top: 2.5rem;
+  text-wrap: pretty;
+}
+
+.tiptap h1,
+.tiptap h2 {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tiptap h1 {
+  font-size: 1.4rem;
+}
+
+.tiptap h2 {
+  font-size: 1.2rem;
+}
+
+.tiptap h3 {
+  font-size: 1.1rem;
+}
+
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  font-size: 1rem;
+}
+
+.tiptap table {
+  border-collapse: collapse;
+  margin: 0;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tiptap table td,
+.tiptap table th {
+  border: 1px solid #a1a4a6;
+  box-sizing: border-box;
+  min-width: 1em;
+  padding: 6px 8px;
+  position: relative;
+  vertical-align: top;
+}
+
+.tiptap table td > *,
+.tiptap table th > * {
+  margin-bottom: 0;
+}
+
+.tiptap table th {
+  background-color: #d9d9d9;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tiptap table .selectedCell:after {
+  background: rgba(191, 191, 191, 0.5);
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.tiptap table .column-resize-handle {
+  background-color: #525559;
+  bottom: -2px;
+  pointer-events: none;
+  position: absolute;
+  right: -2px;
+  top: 0;
+  width: 4px;
+}
+
+.tiptap table .tableWrapper {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.tiptap table.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize;
+}
+
+.tiptap img {
+  display: block;
+  height: auto;
+  max-height: 500px;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 1.5rem auto;
+  border-radius: 5px;
+}
+
+.tiptap img.ProseMirror-selectednode {
+  outline: 3px solid red;
 }

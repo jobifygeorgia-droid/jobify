@@ -1,0 +1,45 @@
+import { Container, Logo } from "@/components/ui";
+import FooterNavigation from "./ui/FooterNavigation";
+
+const Footer: React.FC = () => {
+  return (
+    <div className="bg-blue-footer mt-auto">
+      <footer className="px-12 py-14">
+        <Container className="flex flex-col gap-24">
+          <div className="flex items-start justify-between">
+            <Logo />
+            <FooterNavigation />
+          </div>
+
+          <div className="flex items-end gap-28">
+            <div className="flex flex-col gap-4">
+              <span className="text-base-sm text-dark-grey-dark-hover">
+                დაგვიკავშირდით
+              </span>
+              <span className="font-medium text-lg">
+                <span>Tel:</span>
+                &nbsp;
+                <span>+995 5992 00 32 32</span>
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <span className="text-base-sm text-dark-grey-dark-hover">
+                მოგვწერეთ
+              </span>
+              <span className="font-medium text-lg">jobify@gmail.com</span>
+            </div>
+
+            <div className="ml-auto flex flex-col gap-6 text-md">
+              <span>ხშირად დასმული კითხვები</span>
+              <span>წესები და პირობები</span>
+              <span>&copy; power 2025 - All Rights Reserved</span>
+            </div>
+          </div>
+        </Container>
+      </footer>
+    </div>
+  );
+};
+
+export default Footer;
