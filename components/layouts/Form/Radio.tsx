@@ -8,11 +8,23 @@ import FormErrorMessage from "./FormErrorMessage";
 import { RadioPropsT } from "./types/form-fields.types";
 
 const Radio: React.FC<RadioPropsT> = (props) => {
-  const { data, size, name, message, direction = "row" } = props;
-  const [selectedValue, setSelectedValue] = useState<string | number>();
+  const {
+    data,
+    size,
+    name,
+    message,
+    direction = "row",
+    value,
+    onChange,
+  } = props;
+  const [selectedValue, setSelectedValue] = useState<string | number>(
+    () => value?.toString() || ""
+  );
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSelectedValue(value);
+    onChange?.(value);
   };
 
   return (

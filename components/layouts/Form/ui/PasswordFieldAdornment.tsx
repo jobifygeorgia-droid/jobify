@@ -18,9 +18,9 @@ const PasswordFieldAdornment: React.FC<PasswordFieldAdornmentT> = ({
       }
     >
       {inputType === "password" ? (
-        <Eye className="fill-dark-grey-active" />
+        <Eye className="fill-light-grey-dark" />
       ) : (
-        <EyeOff className="fill-dark-grey-active" />
+        <EyeOff className="fill-light-grey-dark" />
       )}
     </button>
   );

@@ -3,7 +3,7 @@ import MuiCheckbox from "@mui/material/Checkbox";
 type CheckboxT = {
   id?: string;
   name?: string;
-  isChecked: boolean;
+  isChecked?: boolean;
   children?: React.ReactNode;
   size?: "small" | "medium" | "large";
 };

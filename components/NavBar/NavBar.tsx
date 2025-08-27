@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import NavLink from "./NavLink";
-import { Logo, Button } from "@/components/ui";
+import { Logo } from "@/components/ui";
+import User from "./User";
 
 const NavBar: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const NavBar: React.FC = () => {
       <div className="flex items-center ml-auto gap-8">
         <Link href="/">ვაკანსიის დამატება</Link>
 
-        <Button paddingSize="base-wider">შესვლა</Button>
+        <User />
       </div>
     </nav>
   );

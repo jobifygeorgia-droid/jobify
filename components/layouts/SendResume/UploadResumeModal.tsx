@@ -4,9 +4,7 @@ import { Button, Modal } from "@/components/ui";
 import { useSendResumeContext } from "./SendResume";
 import { TextEditor, DropzoneFileInput } from "@/components/layouts/Form";
 
-type UploadResumeModalT = {};
-
-const UploadResumeModal: React.FC<UploadResumeModalT> = () => {
+const UploadResumeModal: React.FC = () => {
   const { modalIsOpen, onCloseModal } = useSendResumeContext();
 
   if (!modalIsOpen) return null;

@@ -4,9 +4,7 @@ import ExpandedFilterSectionTitle from "./ExpandedFilterSectionTitle";
 import { Arrow } from "@/components/ui/icons";
 import { useFilterContext } from "../FilterProvider";
 
-type FilterByCategoryT = {};
-
-const FilterByCategory: React.FC<FilterByCategoryT> = () => {
+const FilterByCategory: React.FC = () => {
   const {
     workCategoryOptions,
     categoriesRef,
