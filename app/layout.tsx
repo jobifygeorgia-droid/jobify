@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import "@/styles/globals.css";
 
 import ThemeRegistry from "@/services/mui/ThemeRegistry";
-import AuthProvider from "@/components/Auth/AuthProvider";
+import { AuthProvider, PopupsProvider } from "@/providers";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["georgian"],
@@ -23,10 +23,12 @@ const RootLayout: React.FC<RootLayoutT> = ({ children, AuthPopup }) => {
       <body className={`${notoSansGeorgian.className}`}>
         <ThemeRegistry>
           <Suspense fallback={null}>
-            <AuthProvider>
-              {children}
-              {AuthPopup}
-            </AuthProvider>
+            <PopupsProvider>
+              <AuthProvider>
+                {children}
+                {AuthPopup}
+              </AuthProvider>
+            </PopupsProvider>
           </Suspense>
         </ThemeRegistry>
 

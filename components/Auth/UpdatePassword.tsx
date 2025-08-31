@@ -1,19 +1,53 @@
+"use client";
+
+import { Controller } from "react-hook-form";
+
 import { AnchorButton } from "@/components/ui";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { PasswordField } from "@/components/layouts/Form";
+import { useUpdatePasswordForm } from "@/hooks/forms";
 
 const UpdatePassword: React.FC = () => {
+  const { control, handleSubmit } = useUpdatePasswordForm();
+
+  const onUpdate = handleSubmit((values) => {
+    console.log(values);
+  });
+
   return (
     <div>
       <AuthPopupTitle title="პაროლის აღდგენა" />
 
-      <form>
+      <form onSubmit={onUpdate}>
         <div className="mt-11 flex flex-col gap-3 justify-center">
-          <PasswordField
-            inputProps={{ label: "პაროლი", labelPosition: "out" }}
+          <Controller
+            control={control}
+            name="password"
+            render={({ field, fieldState: { error } }) => (
+              <PasswordField
+                inputProps={{
+                  ...field,
+                  label: "პაროლი",
+                  labelPosition: "out",
+                  message: error?.message,
+                }}
+              />
+            )}
           />
-          <PasswordField
-            inputProps={{ label: "გაიმეორე პაროლი", labelPosition: "out" }}
+
+          <Controller
+            control={control}
+            name="confirmPassword"
+            render={({ field, fieldState: { error } }) => (
+              <PasswordField
+                inputProps={{
+                  ...field,
+                  label: "გაიმეორე პაროლი",
+                  labelPosition: "out",
+                  message: error?.message,
+                }}
+              />
+            )}
           />
         </div>
 

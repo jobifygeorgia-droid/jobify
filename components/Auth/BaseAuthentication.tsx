@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { Controller } from "react-hook-form";
 
 import Divider from "./ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
@@ -6,16 +9,49 @@ import AuthPopupTitle from "./ui/AuthPopupTitle";
 
 import { Button } from "@/components/ui";
 import { PasswordField, TextField, Checkbox } from "@/components/layouts/Form";
+import { useSigninForm } from "@/hooks/forms";
+import { useSigninQuery } from "@/hooks/api/auth";
 
 const BaseAuthentication: React.FC = () => {
+  const { signInQuery, status } = useSigninQuery();
+  const { control, handleSubmit } = useSigninForm(status?.messages);
+
+  const onSignin = handleSubmit(async (values) => {
+    await signInQuery(values);
+  });
+
   return (
     <div className="flex flex-col gap-6">
       <AuthPopupTitle title="ავტორიზაცია" />
 
-      <form className="flex flex-col gap-3">
-        <TextField labelPosition="out" label="მობილური ნომერი" />
+      <form onSubmit={onSignin} className="flex flex-col gap-3">
+        <Controller
+          control={control}
+          name="email"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              labelPosition="out"
+              label="მობილური ნომერი"
+              message={error?.message}
+            />
+          )}
+        />
 
-        <PasswordField inputProps={{ labelPosition: "out", label: "პაროლი" }} />
+        <Controller
+          control={control}
+          name="password"
+          render={({ field, fieldState: { error } }) => (
+            <PasswordField
+              inputProps={{
+                ...field,
+                labelPosition: "out",
+                label: "პაროლი",
+                message: error?.message,
+              }}
+            />
+          )}
+        />
 
         <div className="flex items-center justify-between">
           <Checkbox id="remember-me">დამახსოვრება</Checkbox>

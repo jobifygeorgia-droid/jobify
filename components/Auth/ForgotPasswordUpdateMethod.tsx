@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { Controller } from "react-hook-form";
 
 import { Radio, TextField } from "@/components/layouts/Form";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { AnchorButton, Button } from "@/components/ui";
-import { useAuthContext } from "./AuthProvider";
+import { useAuthContext } from "../../providers/AuthProvider";
+import { useRequestPasswordUpdateForm } from "@/hooks/forms";
 
 const options = [
   { label: "ელ.ფოსტით აღდგენა", value: "email", id: "update-by-email" },
@@ -17,12 +19,21 @@ const options = [
 ];
 
 const ForgotPasswordUpdateMethod: React.FC = () => {
+  const { control, onReset, handleSubmit } = useRequestPasswordUpdateForm();
+
   const [updateMethod, setUpdateMethod] = useState<string>("email");
 
   const { onChoosePasswordUpdateMethod } = useAuthContext();
 
-  const onChangeMethod = (value: string | number) =>
+  const onChangeMethod = (value: string | number) => {
+    onReset();
     setUpdateMethod(value as string);
+  };
+
+  const onRequest = handleSubmit((values) => {
+    onChoosePasswordUpdateMethod();
+    console.log(values);
+  });
 
   return (
     <div>
@@ -32,7 +43,7 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
         აირჩიე პაროლის აღდგენის მეთოდი
       </span>
 
-      <form>
+      <form onSubmit={onRequest}>
         <div className="mt-11">
           <Radio
             value={updateMethod}
@@ -44,25 +55,40 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
 
           <div className="mt-6">
             {updateMethod === "email" && (
-              <TextField label="ელ.ფოსტა" labelPosition="out" />
+              <Controller
+                control={control}
+                name="email"
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    {...field}
+                    label="ელ.ფოსტა"
+                    labelPosition="out"
+                    message={error?.message}
+                  />
+                )}
+              />
             )}
 
             {updateMethod === "phone_number" && (
-              <TextField
-                label="ტელეფონის ნომერი"
-                labelPosition="out"
-                inputType="number"
+              <Controller
+                control={control}
+                name="phone_number"
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    {...field}
+                    labelPosition="out"
+                    label="ტელეფონის ნომერი"
+                    inputType="number"
+                    message={error?.message}
+                  />
+                )}
               />
             )}
           </div>
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <Button
-            fullWidth
-            rounded="base"
-            onClick={onChoosePasswordUpdateMethod}
-          >
+          <Button fullWidth rounded="base">
             გაგრძელება
           </Button>
 

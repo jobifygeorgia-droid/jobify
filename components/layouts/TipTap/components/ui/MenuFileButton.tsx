@@ -2,7 +2,7 @@
 
 import Tooltip from "./Tooltip";
 import { ImageIcon } from "@/components/ui/icons";
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 
 const MenuFileButton: React.FC = () => {
   const { addImage } = useTipTap();

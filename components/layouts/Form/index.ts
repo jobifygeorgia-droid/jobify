@@ -9,3 +9,4 @@ export { default as RangeField } from "./RangeField";
 export { default as DropzoneFileInput } from "./DropzoneFileInput";
 export { default as DatePicker } from "./DatePicker";
 export { default as Switch } from "./Switch";
+export { default as ErrorMessage } from "./FormErrorMessage";

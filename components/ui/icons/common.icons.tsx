@@ -55,6 +55,29 @@ export const Close: React.FC<IconPropsT> = (props) => {
   );
 };
 
+export const Warning: React.FC<IconPropsT> = (props) => {
+  const { width, height, className } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.375 8.375L8.40957 8.35771C8.88717 8.11891 9.42493 8.55029 9.29542 9.06831L8.70458 11.4317C8.57507 11.9497 9.11283 12.3811 9.59043 12.1423L9.625 12.125M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9ZM9 5.875H9.00625V5.88125H9V5.875Z"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+};
+
 export const Heart: React.FC<IconPropsT> = (props) => {
   const { width, height, className } = props;
 

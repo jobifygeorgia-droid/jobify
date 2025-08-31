@@ -3,7 +3,7 @@
 import { createContext, useContext } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
-import { AuthModeT } from "./auth.types";
+import { AuthModeT } from "@/components/Auth/auth.types";
 
 type AuthProviderT = {
   children: React.ReactNode;
@@ -13,10 +13,8 @@ type AuthContextT = {
   method: string | null;
   authMode: AuthModeT | null;
   onCloseAuthPopup: () => void;
-  onChoosePasswordUpdateMethod: (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => void;
-  onVerifyUserIdentity: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onChoosePasswordUpdateMethod: () => void;
+  onVerifyUserIdentity: () => void;
 };
 
 const AuthContext = createContext<AuthContextT | undefined>(undefined);
@@ -36,17 +34,13 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
     router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
   };
 
-  const onChoosePasswordUpdateMethod = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
+  const onChoosePasswordUpdateMethod = () => {
     searchParams.set("auth", "verify-user");
     searchParams.set("method", "email");
     router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
   };
 
-  const onVerifyUserIdentity = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const onVerifyUserIdentity = () => {
     searchParams.delete("method");
     searchParams.set("auth", "update-password");
     router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });

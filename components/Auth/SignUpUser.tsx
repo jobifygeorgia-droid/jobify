@@ -1,39 +1,136 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { useState } from "react";
+import { Controller } from "react-hook-form";
+
+import { useSignupUserForm } from "@/hooks/forms";
+import { useSignupUserQuery } from "@/hooks/api/auth";
+
+import { usePopupsContext } from "@/providers/PopupsProvider";
+
+import {
+  Checkbox,
+  TextField,
+  PasswordField,
+  ErrorMessage,
+} from "@/components/layouts/Form";
 import Divider from "./ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
-import SignupContainer from "./ui/SignupContainer";
-import { Button } from "@/components/ui";
-import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
+import { Button, Spinner } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
+  const { addAlert } = usePopupsContext();
+
+  const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
+
+  const { registerUserQuery, status } = useSignupUserQuery();
+  const { control, handleSubmit } = useSignupUserForm(status.messages);
+
+  const onRegistration = handleSubmit(async (values) => {
+    if (!acceptsPrivacyAndPolicy)
+      return addAlert({
+        type: "warning",
+        title: "წესები და პირობები",
+        text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
+      });
+
+    await registerUserQuery(values);
+  });
+
   return (
-    <SignupContainer>
-      <form action="" className="w-full max-w-[375px] mt-6 flex flex-col gap-3">
-        <TextField label="სახელი" labelPosition="out" />
-        <TextField label="ელ.ფოსტა" labelPosition="out" />
-        <TextField label="ტელეფონი" labelPosition="out" inputType="number" />
-        <PasswordField inputProps={{ label: "პაროლი", labelPosition: "out" }} />
+    <form
+      onSubmit={onRegistration}
+      className="w-full max-w-[375px] mt-6 flex flex-col gap-3 relative"
+    >
+      {status.loading && <Spinner type="inline" />}
 
-        <div className="flex items-center mt-1">
-          <Checkbox id="remember-me">ვეთანხმები</Checkbox>
-          &nbsp;&nbsp;
-          <Link href="/" className="underline">
-            წესებს და პირობებს
-          </Link>
-        </div>
+      <Controller
+        name="username"
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <TextField
+            {...field}
+            label="სრული სახელი"
+            labelPosition="out"
+            message={error?.message}
+          />
+        )}
+      />
 
-        <Button rounded="base" className="mt-3">
-          რეგისტრაცია
-        </Button>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field, fieldState: { error } }) => (
+          <TextField
+            {...field}
+            label="ელ.ფოსტა"
+            labelPosition="out"
+            message={error?.message}
+          />
+        )}
+      />
 
-        <div className="my-3">
-          <Divider />
-        </div>
+      <Controller
+        control={control}
+        name="phone_number"
+        render={({ field, fieldState: { error } }) => (
+          <TextField
+            {...field}
+            label="ტელეფონი"
+            labelPosition="out"
+            inputType="number"
+            message={error?.message}
+          />
+        )}
+      />
 
-        <GoogleButton />
-      </form>
-    </SignupContainer>
+      <Controller
+        control={control}
+        name="password"
+        render={({ field, fieldState: { error } }) => (
+          <PasswordField
+            inputProps={{
+              ...field,
+              label: "პაროლი",
+              labelPosition: "out",
+              message: error?.message,
+            }}
+          />
+        )}
+      />
+
+      <div className="flex items-center mt-1">
+        <Checkbox
+          id="remember-me"
+          name="privacy_policy"
+          isChecked={acceptsPrivacyAndPolicy}
+          onChange={(checked) => setAcceptsPrivacyAndPolicy(checked)}
+        >
+          ვეთანხმები
+        </Checkbox>
+        &nbsp;&nbsp;
+        <Link href="/" className="underline">
+          წესებს და პირობებს
+        </Link>
+      </div>
+
+      {status.error && <ErrorMessage message={status.message} />}
+
+      <Button
+        rounded="base"
+        className="mt-3"
+        disabled={!acceptsPrivacyAndPolicy}
+      >
+        რეგისტრაცია
+      </Button>
+
+      <div className="my-3">
+        <Divider />
+      </div>
+
+      <GoogleButton />
+    </form>
   );
 };
 

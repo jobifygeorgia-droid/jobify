@@ -14,6 +14,7 @@ import FormErrorMessage from "./FormErrorMessage";
 const TextField: React.FC<TextFieldPropsT> = (props) => {
   const {
     id,
+    name,
     label,
     adornment,
     placeholder,
@@ -35,6 +36,7 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
       >
         <input
           id={id}
+          name={name}
           value={rest.value}
           onChange={rest.onChange}
           type={rest.inputType || "text"}

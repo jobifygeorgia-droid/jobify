@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import MuiCheckbox from "@mui/material/Checkbox";
 
 type CheckboxT = {
@@ -6,10 +9,18 @@ type CheckboxT = {
   isChecked?: boolean;
   children?: React.ReactNode;
   size?: "small" | "medium" | "large";
+  onChange?: (checked: boolean) => void;
 };
 
 const Checkbox: React.FC<CheckboxT> = (props) => {
-  const { children, isChecked, id, name, size = "medium" } = props;
+  const { children, isChecked, id, name, size = "medium", onChange } = props;
+
+  const [checked, setChecked] = useState(isChecked);
+
+  const onCheck = () => {
+    setChecked((prev) => !prev);
+    onChange?.(!checked);
+  };
 
   return (
     <div className="flex items-start gap-2 cursor-pointer">
@@ -17,7 +28,8 @@ const Checkbox: React.FC<CheckboxT> = (props) => {
         id={id}
         name={name}
         size={size}
-        defaultChecked={isChecked}
+        value={checked}
+        onChange={onCheck}
         sx={{
           "&.MuiButtonBase-root.MuiCheckbox-root": {
             color: "var(--color-bc)",

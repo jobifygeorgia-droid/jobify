@@ -1,7 +1,7 @@
 "use client";
 
 import { Modal } from "@/components/ui";
-import { useAuthContext } from "../AuthProvider";
+import { useAuthContext } from "../../../providers/AuthProvider";
 import { AuthModes } from "@/components/Auth/auth.types";
 
 type AuthModalT = {

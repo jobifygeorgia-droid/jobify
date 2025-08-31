@@ -2,7 +2,7 @@
 
 import classnames from "classnames";
 
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 import { textColors } from "@/components/layouts/TipTap/utils/colors";
 import { MenuDropdownButton } from "@/components/layouts/TipTap/components/ui";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 import { Blockquote as Icon } from "@/components/ui/icons";
 import { MenuButton } from "@/components/layouts/TipTap/components/ui";
 

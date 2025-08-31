@@ -1,6 +1,6 @@
 "use client";
 
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 import { Youtube as Icon } from "@/components/ui/icons";
 import { MenuInteractiveButton } from "@/components/layouts/TipTap/components/ui";
 

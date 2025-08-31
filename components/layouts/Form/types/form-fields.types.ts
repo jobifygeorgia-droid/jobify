@@ -20,6 +20,7 @@ type TextFieldBaseProps = {
   onClick?: () => void;
   value?: string;
   id?: string;
+  name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fieldWrapperClassName?: React.ComponentProps<"div">["className"];
 };

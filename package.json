@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.2.1",
     "@mui/material": "^7.3.1",
     "@mui/x-date-pickers": "^8.10.2",
     "@tiptap/extension-color": "^3.2.0",
@@ -37,9 +38,11 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-dropzone": "^14.3.8",
+    "react-hook-form": "^7.62.0",
     "react-otp-input": "^3.1.1",
     "react-select": "^5.10.2",
-    "swiper": "^11.2.10"
+    "swiper": "^11.2.10",
+    "zod": "^4.1.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
