@@ -4,7 +4,7 @@ type SectionTitleT = {
 
 const SectionTitle: React.FC<SectionTitleT> = ({ title }) => {
   return (
-    <h4 className="text-4xl font-bold text-dark-grey-dark-hover">{title}</h4>
+    <h4 className="text-lg font-bold text-dark-grey-dark-hover">{title}</h4>
   );
 };
 

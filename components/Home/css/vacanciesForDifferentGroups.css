@@ -1,0 +1,19 @@
+.segment-card {
+  transition: all 0.3s ease;
+  background: url("/segment-bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.segment-card--content {
+  transition: all 0.3s ease;
+}
+
+.segment-card:hover {
+  height: 100%;
+}
+
+.segment-card:hover .segment-card--content {
+  top: 36px;
+  height: 40%;
+}

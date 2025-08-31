@@ -6,7 +6,7 @@ import User from "./User";
 
 const NavBar: React.FC = () => {
   return (
-    <nav className="flex items-center w-full gap-8 text-base font-medium text-dark-grey-dark-hover">
+    <nav className="sticky top-0 bg-white z-[99] py-2 flex items-center w-full gap-8 text-base font-medium text-dark-grey-dark-hover">
       <Logo />
 
       <ul className="flex items-center gap-10 pl-16">

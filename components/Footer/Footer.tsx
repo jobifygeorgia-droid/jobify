@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
               <span className="text-base-sm text-dark-grey-dark-hover">
                 დაგვიკავშირდით
               </span>
-              <span className="font-medium text-lg">
+              <span className="font-medium text-base">
                 <span>Tel:</span>
                 &nbsp;
                 <span>+995 5992 00 32 32</span>
@@ -27,10 +27,10 @@ const Footer: React.FC = () => {
               <span className="text-base-sm text-dark-grey-dark-hover">
                 მოგვწერეთ
               </span>
-              <span className="font-medium text-lg">jobify@gmail.com</span>
+              <span className="font-medium text-base">jobify@gmail.com</span>
             </div>
 
-            <div className="ml-auto flex flex-col gap-6 text-md">
+            <div className="ml-auto flex flex-col gap-6 text-base">
               <span>ხშირად დასმული კითხვები</span>
               <span>წესები და პირობები</span>
               <span>&copy; power 2025 - All Rights Reserved</span>

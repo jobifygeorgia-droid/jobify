@@ -1,0 +1,27 @@
+import { vacanciesForDifferentGroupsData } from "@/components/Home/data/data";
+
+import "@/components/Home/css/vacanciesForDifferentGroups.css";
+
+import SectionContainer from "@/components/Home/ui/SectionContainer";
+import VacanciesForDifferentGroupsCard from "@/components/Home/ui/VacanciesForDifferentGroupsCard";
+
+type VacanciesForDifferentGroupsT = {};
+
+const VacanciesForDifferentGroups: React.FC<
+  VacanciesForDifferentGroupsT
+> = () => {
+  return (
+    <SectionContainer title="ვაკანსიები სხვადასხვა ჯგუფებისთვის">
+      <div className="flex items-center gap-3 h-[400px]">
+        {vacanciesForDifferentGroupsData.map((segment) => (
+          <VacanciesForDifferentGroupsCard
+            key={segment.id}
+            title={segment.title}
+          />
+        ))}
+      </div>
+    </SectionContainer>
+  );
+};
+
+export default VacanciesForDifferentGroups;

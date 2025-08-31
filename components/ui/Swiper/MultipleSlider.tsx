@@ -9,15 +9,16 @@ import "./swiper.css";
 
 type MultipleSliderT = {
   slides: React.ReactNode[];
+  slidesPerView?: number;
 };
 
 const MultipleSlider: React.FC<MultipleSliderT> = (props) => {
-  const { slides } = props;
+  const { slides, slidesPerView = 4 } = props;
 
   return (
     <Swiper
-      slidesPerView={4}
-      slidesPerGroup={4}
+      slidesPerView={slidesPerView}
+      slidesPerGroup={slidesPerView}
       spaceBetween={30}
       autoplay={{ delay: 4000 }}
       pagination={{

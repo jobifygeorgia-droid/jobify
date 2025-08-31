@@ -28,7 +28,7 @@ const VacancyCard: React.FC = () => {
 
       <div className="ml-auto flex items-center gap-5">
         <IconButton color="orange" isFilled={false}>
-          <Heart className="stroke-orange" />
+          <Heart className="stroke-orange fill-orange" />
         </IconButton>
 
         <SendResumeButton paddingSize="base-wide" />

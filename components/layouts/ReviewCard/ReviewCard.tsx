@@ -3,7 +3,19 @@ import Image from "next/image";
 import { Rating } from "@/components/ui";
 import UserAvatar from "@/public/user-avatar.png";
 
+<<<<<<< HEAD
 const ReviewCard: React.FC = () => {
+=======
+type ReviewCardT = {
+  id: number;
+  username: string;
+  createdAt: string;
+  rating: number;
+  text: string;
+};
+
+const ReviewCard: React.FC<ReviewCardT> = (review) => {
+>>>>>>> cb12249 (build landing page markup)
   return (
     <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5">
       <div className="flex items-start gap-5">
@@ -19,9 +31,11 @@ const ReviewCard: React.FC = () => {
         <div className="flex flex-col gap-2">
           <div className="flex flex-col">
             <span className="text-base font-medium text-dark-grey-dark">
-              უცნობი მომხმარებელი
+              {review.username}
             </span>
-            <span className="text-sm text-light-grey-dark">12 დღის წინ</span>
+            <span className="text-sm text-light-grey-dark">
+              {review.createdAt}
+            </span>
           </div>
 
           <div>
@@ -31,8 +45,7 @@ const ReviewCard: React.FC = () => {
       </div>
 
       <p className="text-base text-dark-grey-dark line-clamp-3">
-        ძალიან კარგი პლატფორმაა, უმარტივესია გამოსაყენებლად და ნამდვილად
-        უკონკურენტოა ქართულ ბაზარზე
+        {review.text}
       </p>
     </div>
   );
