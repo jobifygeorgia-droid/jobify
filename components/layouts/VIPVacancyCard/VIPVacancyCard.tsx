@@ -3,9 +3,6 @@ import { SendResumeButton } from "@/components/layouts";
 import { Location, StarFilled } from "@/components/ui/icons";
 import TimeAgo from "./TimeAgo";
 
-<<<<<<< HEAD
-const VIPVacancyCard: React.FC = () => {
-=======
 type VIPVacancyCardT = {
   id: number;
   companyName: string;
@@ -17,7 +14,6 @@ type VIPVacancyCardT = {
 };
 
 const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
->>>>>>> cb12249 (build landing page markup)
   return (
     <div className="bg-white max-w-[360px] w-full aspect-[35/25] border border-bc px-[30px] py-6 rounded-2xl flex flex-col gap-3">
       <div className="flex flex-col gap-3">

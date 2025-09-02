@@ -3,9 +3,6 @@ import Image from "next/image";
 import { Rating } from "@/components/ui";
 import UserAvatar from "@/public/user-avatar.png";
 
-<<<<<<< HEAD
-const ReviewCard: React.FC = () => {
-=======
 type ReviewCardT = {
   id: number;
   username: string;
@@ -15,7 +12,6 @@ type ReviewCardT = {
 };
 
 const ReviewCard: React.FC<ReviewCardT> = (review) => {
->>>>>>> cb12249 (build landing page markup)
   return (
     <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5">
       <div className="flex items-start gap-5">
