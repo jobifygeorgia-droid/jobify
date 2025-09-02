@@ -4,9 +4,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { IOSSwitch } from "./ui/customSwitch";
 import Label from "./ui/Label";
 
-type SwitchT = {};
-
-const Switch: React.FC<SwitchT> = () => {
+const Switch: React.FC = () => {
   return (
     <div>
       <FormControlLabel

@@ -6,7 +6,7 @@ import {
   MenuButton,
   MenuDropdownButton,
 } from "@/components/layouts/TipTap/components/ui";
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 import { HighLight as Icon } from "@/components/ui/icons";
 import { textColors } from "@/components/layouts/TipTap/utils/colors";
 

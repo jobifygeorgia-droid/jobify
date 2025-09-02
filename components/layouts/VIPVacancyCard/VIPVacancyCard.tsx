@@ -2,9 +2,7 @@ import { Chip, IconChip } from "@/components/ui";
 import { Location, Star } from "@/components/ui/icons";
 import { SendResumeButton } from "@/components/layouts";
 
-type VIPVacancyCardT = {};
-
-const VIPVacancyCard: React.FC<VIPVacancyCardT> = () => {
+const VIPVacancyCard: React.FC = () => {
   return (
     <div className="bg-white max-w-[360px] w-full aspect-[35/25] border border-bc px-[30px] py-6 rounded-2xl flex flex-col gap-3">
       <div className="flex flex-col gap-3">

@@ -1,17 +1,19 @@
 "use client";
 
+import classnames from "classnames";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
-
 import { Close } from "./icons";
 
 type ModalT = {
   onClose: () => void;
+  backdrop?: boolean;
+  rounded?: "base" | "lg";
   children: React.ReactNode;
 };
 
 const Modal: React.FC<ModalT> = (props) => {
-  const { onClose, children } = props;
+  const { onClose, children, rounded = "base", backdrop } = props;
 
   const [portalRoot, setPortalRoot] = useState<HTMLDivElement | null>(null);
 
@@ -28,10 +30,21 @@ const Modal: React.FC<ModalT> = (props) => {
   if (!portalRoot) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999]" onClick={closeModal}>
+    <div
+      className={classnames("fixed inset-0 z-[9999]", {
+        "bg-[rgba(0,0,0,0.3)]": backdrop,
+      })}
+      onClick={closeModal}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="shadow-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-bc rounded-lg bg-white overflow-hidden"
+        className={classnames(
+          "shadow-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-bc bg-white overflow-hidden",
+          {
+            "rounded-lg": rounded === "base",
+            "rounded-[25px]": rounded === "lg",
+          }
+        )}
       >
         <button
           onClick={closeModal}

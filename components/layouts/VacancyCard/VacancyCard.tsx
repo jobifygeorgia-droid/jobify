@@ -2,9 +2,7 @@ import { SendResumeButton } from "@/components/layouts";
 import { Chip, IconButton, IconChip } from "@/components/ui";
 import { Calendar, Currency, Heart, Location } from "@/components/ui/icons";
 
-type VacancyCardT = {};
-
-const VacancyCard: React.FC<VacancyCardT> = () => {
+const VacancyCard: React.FC = () => {
   return (
     <div className="max-w-full w-full p-6 rounded-2xl bg-white border border-bc flex items-center gap-5">
       <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>

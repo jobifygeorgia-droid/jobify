@@ -3,9 +3,7 @@ import Image from "next/image";
 import { Rating } from "@/components/ui";
 import UserAvatar from "@/public/user-avatar.png";
 
-type ReviewCardT = {};
-
-const ReviewCard: React.FC<ReviewCardT> = () => {
+const ReviewCard: React.FC = () => {
   return (
     <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5">
       <div className="flex items-start gap-5">

@@ -14,12 +14,13 @@ type TextFieldWithPlaceholderPropsT = {
 
 type TextFieldBaseProps = {
   message?: string;
-  inputType?: "text" | "password";
+  inputType?: "text" | "password" | "number";
   variant?: "fill" | "outlined";
   adornment?: React.ReactNode;
   onClick?: () => void;
   value?: string;
   id?: string;
+  name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fieldWrapperClassName?: React.ComponentProps<"div">["className"];
 };
@@ -27,12 +28,20 @@ type TextFieldBaseProps = {
 export type TextFieldPropsT = TextFieldBaseProps &
   (TextFieldWithLabelPropsT | TextFieldWithPlaceholderPropsT);
 
+export type RadioOptionT = {
+  value: string | number;
+  label: string;
+  id?: string;
+};
+
 export type RadioPropsT = {
   name: string;
   message?: string;
+  value?: string | number;
   size?: "small" | "medium";
   direction?: "column" | "row";
-  data: Array<{ value: string | number; label: string; id?: string }>;
+  data: Array<RadioOptionT>;
+  onChange?: (value: RadioOptionT["value"]) => void;
 };
 
 export type SelectedOptionT<T> = SingleValue<T> | MultiValue<T> | null;

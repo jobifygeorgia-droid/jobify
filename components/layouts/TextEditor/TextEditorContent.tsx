@@ -3,7 +3,7 @@
 import classnames from "classnames";
 import { EditorContent } from "@tiptap/react";
 
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 
 type TextEditorContentT = {
   panelPosition?: "aside" | "top";

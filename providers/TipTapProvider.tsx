@@ -23,7 +23,7 @@ import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import Underline from "@tiptap/extension-underline";
 
-import TipTapMenu from "./TipTapMenu";
+import TipTapMenu from "@/components/layouts/TipTap/TipTapMenu";
 
 export type ColorT = {
   title: string;
@@ -31,7 +31,7 @@ export type ColorT = {
   textColor: string;
 };
 
-type TipTapT = React.FC<{ children: React.ReactNode }> & {
+type TipTapProviderT = React.FC<{ children: React.ReactNode }> & {
   Menu: typeof TipTapMenu;
 };
 
@@ -53,7 +53,7 @@ const TipTapContext = createContext<TipTapContextT>({
   setLink: () => {},
 });
 
-const TipTap: TipTapT = ({ children }) => {
+const TipTapProvider: TipTapProviderT = ({ children }) => {
   const instance = useEditor({
     extensions: [
       StarterKit.configure({
@@ -222,8 +222,8 @@ const TipTap: TipTapT = ({ children }) => {
   );
 };
 
-TipTap.Menu = TipTapMenu;
+TipTapProvider.Menu = TipTapMenu;
 
-export default TipTap;
+export default TipTapProvider;
 
 export const useTipTap = () => useContext(TipTapContext);

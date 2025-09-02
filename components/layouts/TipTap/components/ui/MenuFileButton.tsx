@@ -2,11 +2,9 @@
 
 import Tooltip from "./Tooltip";
 import { ImageIcon } from "@/components/ui/icons";
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 
-type MenuFileButtonT = {};
-
-const MenuFileButton: React.FC<MenuFileButtonT> = () => {
+const MenuFileButton: React.FC = () => {
   const { addImage } = useTipTap();
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

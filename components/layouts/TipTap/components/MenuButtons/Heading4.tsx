@@ -1,7 +1,7 @@
 "use client";
 
 import { Heading4 as Icon } from "@/components/ui/icons";
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 import { MenuButton } from "@/components/layouts/TipTap/components/ui";
 
 const Heading4: React.FC = () => {

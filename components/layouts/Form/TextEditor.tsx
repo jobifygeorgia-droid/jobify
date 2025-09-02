@@ -2,7 +2,7 @@
 
 import { EditorContent } from "@tiptap/react";
 
-import { useTipTap } from "@/components/layouts/TipTap/TipTap";
+import { useTipTap } from "@/providers/TipTapProvider";
 
 import {
   Bold,

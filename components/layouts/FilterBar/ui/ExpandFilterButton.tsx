@@ -10,8 +10,6 @@ const ExpandFilterButton: React.FC = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  console.log({ pathname });
-
   const onExpandFilter = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("filter", "1");
