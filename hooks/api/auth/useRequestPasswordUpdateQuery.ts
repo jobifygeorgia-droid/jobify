@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { getStatus } from "@/lib/utils/status";
+import { getStatus, StatusT } from "@/lib/utils/status";
 import { requestPasswordUpdate } from "@/lib/actions/auth.actions";
 
 export default function useRequestPasswordUpdateQuery() {
-  const [status, setStatus] = useState(() => getStatus.idle());
+  const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
   async function requestPasswordUpdateQuery() {
     try {
@@ -14,7 +14,9 @@ export default function useRequestPasswordUpdateQuery() {
 
       setStatus(() => getStatus.success());
     } catch (error) {
-      setStatus(() => getStatus.failed(error));
+      setStatus(() =>
+        getStatus.failed(error, "დაფიქსირდა შეცდომა ოპერაციის დროს")
+      );
     }
   }
 

@@ -14,7 +14,7 @@ export default function useSigninQuery() {
       await signIn(data);
 
       setStatus(() => getStatus.success());
-    } catch (error: any) {
+    } catch (error) {
       setStatus(() =>
         getStatus.failed(error, "დაფიქსირდა შეცდომა ავტორიზაციის დროს")
       );

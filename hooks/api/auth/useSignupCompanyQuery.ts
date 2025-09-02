@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { getStatus } from "@/lib/utils/status";
+import { getStatus, StatusT } from "@/lib/utils/status";
 import { signupCompany } from "@/lib/actions/auth.actions";
 
 export default function useSignupCompanyQuery() {
-  const [status, setStatus] = useState(() => getStatus.idle());
+  const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
   async function registerCompanyQuery() {
     try {
@@ -14,7 +14,12 @@ export default function useSignupCompanyQuery() {
 
       setStatus(() => getStatus.success());
     } catch (error) {
-      setStatus(() => getStatus.failed(error));
+      setStatus(() =>
+        getStatus.failed(
+          error,
+          "დაფიქსირდა შეცდომა იურიდიული პირის რეგისტრაციის დროს"
+        )
+      );
     }
   }
 

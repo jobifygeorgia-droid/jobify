@@ -16,7 +16,10 @@ export default function useSignupUserQuery() {
       setStatus(() => getStatus.success());
     } catch (error: any) {
       setStatus(() =>
-        getStatus.failed(error, "დაფიქსირდა შეცდომა რეგისტრაციის დროს")
+        getStatus.failed(
+          error,
+          "დაფიქსირდა შეცდომა მომხმარებლის რეგისტრაციის დროს"
+        )
       );
     }
   }
