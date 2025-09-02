@@ -9,11 +9,12 @@ type IconChipT = {
    */
   size?: "sm" | "base";
   text: string;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon?: React.ComponentType<IconPropsT>;
+  children?: React.ReactNode;
 };
 
 const IconChip: React.FC<IconChipT> = (props) => {
-  const { Icon, text, size = "base" } = props;
+  const { Icon, text, size = "base", children } = props;
 
   return (
     <div
@@ -22,11 +23,15 @@ const IconChip: React.FC<IconChipT> = (props) => {
         "text-base-sm gap-2": size === "base",
       })}
     >
-      <Icon
-        width={size === "base" ? 22 : 18}
-        height={size === "base" ? 22 : 18}
-        className="fill-none stroke-light-grey-active"
-      />
+      {children ? (
+        children
+      ) : Icon ? (
+        <Icon
+          width={size === "base" ? 22 : 18}
+          height={size === "base" ? 22 : 18}
+          className="fill-none stroke-light-grey-active"
+        />
+      ) : null}
       <span className="text-light-grey-dark-active">{text}</span>
     </div>
   );

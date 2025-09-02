@@ -1,12 +1,16 @@
 import { FilterBar } from "@/components/layouts";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
-import Home from "@/components/Home/Home";
+import VIPVacancies from "@/components/VIPVacancies/VIPVacancies";
 
-export default function Page() {
+type PageT = {};
+
+const Page: React.FC<PageT> = () => {
   return (
     <FilterProvider>
       <FilterBar />
-      <Home />
+      <VIPVacancies />
     </FilterProvider>
   );
-}
+};
+
+export default Page;

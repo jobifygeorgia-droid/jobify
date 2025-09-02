@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { section2Data } from "@/components/Home/data/data";
+import { section2Data } from "@/data/data";
 
 import { MultipleSlider } from "@/components/ui";
 import BannerSliderCard from "@/components/Home/ui/BannerSliderCard";

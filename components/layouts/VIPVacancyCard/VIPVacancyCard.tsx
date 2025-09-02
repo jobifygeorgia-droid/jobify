@@ -1,6 +1,7 @@
 import { Chip, IconChip } from "@/components/ui";
-import { Location, Star } from "@/components/ui/icons";
 import { SendResumeButton } from "@/components/layouts";
+import { Location, StarFilled } from "@/components/ui/icons";
+import TimeAgo from "./TimeAgo";
 
 <<<<<<< HEAD
 const VIPVacancyCard: React.FC = () => {
@@ -29,25 +30,23 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
               <span className="capitalize text-base-sm">
                 {vacancy.companyName}
               </span>
-              <span className="text-sm text text-light-grey-dark">
-                1 კვრისი წინ
-              </span>
+              <TimeAgo createdAt={vacancy.createdAt} />
             </div>
 
             <div className="flex items-center gap-2">
               <span className="font-bold text-base">VIP</span>
-              <Star className="fill-orange" />
+              <StarFilled className="fill-orange" width={26} height={26} />
             </div>
           </div>
         </div>
 
         {/* Body */}
         <div className="flex flex-col gap-1">
-          <span className="text-blue font-bold text-base">
+          <span className="text-blue font-bold text-base-sm">
             {vacancy.position}
           </span>
 
-          <span className="font-semibold">
+          <span className="font-semibold text-sm">
             <span>ანაზღაურება:</span>
             &nbsp;
             <span>{vacancy.salary}</span>
@@ -57,11 +56,19 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
 
       {/* Footer */}
       <div className="flex items-center justify-between">
-        <IconChip size="sm" Icon={Location} text={vacancy.location} />
-        <Chip>{vacancy.jobFormat}</Chip>
+        <IconChip size="sm" text={vacancy.location}>
+          <Location className="fill-light-grey-dark" />
+        </IconChip>
+
+        <Chip className="text-sm! px-3! py-0!">{vacancy.jobFormat}</Chip>
       </div>
 
-      <SendResumeButton paddingSize="base-wide" />
+      <SendResumeButton
+        buttonProps={{
+          paddingSize: "base-wide",
+          className: "text-base-sm! font-semibold!",
+        }}
+      />
     </div>
   );
 };

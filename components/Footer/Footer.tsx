@@ -12,10 +12,8 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-end gap-28">
-            <div className="flex flex-col gap-4">
-              <span className="text-base-sm text-dark-grey-dark-hover">
-                დაგვიკავშირდით
-              </span>
+            <div className="flex flex-col gap-4 text-light-grey-dark-active">
+              <span className="text-base-sm">დაგვიკავშირდით</span>
               <span className="font-medium text-base">
                 <span>Tel:</span>
                 &nbsp;
@@ -23,17 +21,17 @@ const Footer: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <span className="text-base-sm text-dark-grey-dark-hover">
-                მოგვწერეთ
-              </span>
+            <div className="flex flex-col gap-4 text-light-grey-dark-active">
+              <span className="text-base-sm">მოგვწერეთ</span>
               <span className="font-medium text-base">jobify@gmail.com</span>
             </div>
 
             <div className="ml-auto flex flex-col gap-6 text-base">
               <span>ხშირად დასმული კითხვები</span>
               <span>წესები და პირობები</span>
-              <span>&copy; power 2025 - All Rights Reserved</span>
+              <span className="font-semibold">
+                &copy; power 2025 - All Rights Reserved
+              </span>
             </div>
           </div>
         </Container>

@@ -1,6 +1,11 @@
 import { SendResumeButton } from "@/components/layouts";
 import { Chip, IconButton, IconChip } from "@/components/ui";
-import { Calendar, Currency, Heart, Location } from "@/components/ui/icons";
+import {
+  CalendarFilled,
+  Heart,
+  Location,
+  WalletFilled,
+} from "@/components/ui/icons";
 
 const VacancyCard: React.FC = () => {
   return (
@@ -17,21 +22,31 @@ const VacancyCard: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-6">
-          <IconChip Icon={Location} text="თბილისი" />
-          <IconChip Icon={Currency} text="$50k-80k" />
-          <IconChip
-            Icon={Calendar}
-            text={`${new Date().toLocaleDateString()}-მდე`}
-          />
+          <IconChip text="თბილისი">
+            <Location className="fill-light-grey-dark" />
+          </IconChip>
+
+          <IconChip text="$50k-80k">
+            <WalletFilled className="fill-light-grey-dark" />
+          </IconChip>
+
+          <IconChip text={`${new Date().toLocaleDateString()}-მდე`}>
+            <CalendarFilled className="fill-light-grey-dark" />
+          </IconChip>
         </div>
       </div>
 
       <div className="ml-auto flex items-center gap-5">
+        <SendResumeButton
+          buttonProps={{
+            paddingSize: "base-wide",
+            className: "text-base-sm! py-3! px-8! font-semibold!",
+          }}
+        />
+
         <IconButton color="orange" isFilled={false}>
           <Heart className="stroke-orange fill-orange" />
         </IconButton>
-
-        <SendResumeButton paddingSize="base-wide" />
       </div>
     </div>
   );

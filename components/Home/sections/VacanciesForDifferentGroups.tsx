@@ -1,4 +1,4 @@
-import { vacanciesForDifferentGroupsData } from "@/components/Home/data/data";
+import { vacanciesForDifferentGroupsData } from "@/data/data";
 
 import "@/components/Home/css/vacanciesForDifferentGroups.css";
 

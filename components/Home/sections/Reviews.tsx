@@ -1,4 +1,4 @@
-import { reviewsData } from "@/components/Home/data/data";
+import { reviewsData } from "@/data/data";
 
 import { Button, MultipleSlider } from "@/components/ui";
 import { ReviewCard } from "@/components/layouts";

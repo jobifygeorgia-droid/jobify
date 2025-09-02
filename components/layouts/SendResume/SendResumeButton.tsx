@@ -4,12 +4,23 @@ import { Button } from "@/components/ui";
 import { ButtonT } from "@/components/ui/Button/button.types";
 import { useSendResumeContext } from "./SendResume";
 
-const SendResumeButton: React.FC<Omit<ButtonT, "onClick">> = (props) => {
+type SendResumeButtonT = {
+  title?: "short" | "long";
+  buttonProps?: Omit<ButtonT, "onClick" | "buttonType" | "rounded">;
+};
+
+const SendResumeButton: React.FC<SendResumeButtonT> = (props) => {
+  const { title, buttonProps } = props;
   const { onOpenModal } = useSendResumeContext();
 
   return (
-    <Button {...props} onClick={onOpenModal}>
-      გაგზავნა
+    <Button
+      {...buttonProps}
+      buttonType="secondary"
+      rounded="base"
+      onClick={onOpenModal}
+    >
+      {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
     </Button>
   );
 };

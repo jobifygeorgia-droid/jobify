@@ -38,7 +38,24 @@ export const Filter: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Star: React.FC<IconPropsT> = (props) => {
+export const StarFilled: React.FC<IconPropsT> = (props) => {
+  const { width, height, className } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M480-269 314-169q-11 7-23 6t-21-8q-9-7-14-17.5t-2-23.5l44-189-147-127q-10-9-12.5-20.5T140-571q4-11 12-18t22-9l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q14 2 22 9t12 18q4 11 1.5 22.5T809-528L662-401l44 189q3 13-2 23.5T690-171q-9 7-21 8t-23-6L480-269Z" />
+      </svg>
+    </span>
+  );
+};
+
+export const StarOutlined: React.FC<IconPropsT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -214,27 +231,18 @@ export const Stopwatch: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Wallet: React.FC<IconPropsT> = (props) => {
+export const WalletFilled: React.FC<IconPropsT> = (props) => {
   const { width, height, className } = props;
 
   return (
     <span className={className || ""}>
       <svg
-        width={width || 32}
-        height={height || 32}
-        viewBox="0 0 32 32"
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M5 8V24C5 24.5304 5.21071 25.0391 5.58579 25.4142C5.96086 25.7893 6.46957 26 7 26H27C27.2652 26 27.5196 25.8946 27.7071 25.7071C27.8946 25.5196 28 25.2652 28 25V11C28 10.7348 27.8946 10.4804 27.7071 10.2929C27.5196 10.1054 27.2652 10 27 10H7C6.46957 10 5.96086 9.78929 5.58579 9.41421C5.21071 9.03914 5 8.53043 5 8ZM5 8C5 7.46957 5.21071 6.96086 5.58579 6.58579C5.96086 6.21071 6.46957 6 7 6H24"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M22.5 17.5C22.7761 17.5 23 17.7239 23 18C23 18.2761 22.7761 18.5 22.5 18.5C22.2239 18.5 22 18.2761 22 18C22 17.7239 22.2239 17.5 22.5 17.5Z"
-          strokeWidth="2"
-        />
+        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760H520q-71 0-115.5 44.5T360-600v240q0 71 44.5 115.5T520-200h320q0 33-23.5 56.5T760-120H200Zm320-160q-33 0-56.5-23.5T440-360v-240q0-33 23.5-56.5T520-680h280q33 0 56.5 23.5T880-600v240q0 33-23.5 56.5T800-280H520Zm120-140q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Z" />
       </svg>
     </span>
   );

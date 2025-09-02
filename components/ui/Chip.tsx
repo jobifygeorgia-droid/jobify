@@ -11,11 +11,12 @@ type StaticChipT = {
 };
 
 type ChipT = {
+  className?: string;
   children: React.ReactNode;
 } & (ClickableChipT | StaticChipT);
 
 const Chip: React.FC<ChipT> = (props) => {
-  const { children, isActive } = props;
+  const { children, isActive, className } = props;
 
   const isStaticChip = isActive === undefined;
 
@@ -23,6 +24,7 @@ const Chip: React.FC<ChipT> = (props) => {
     <span
       className={classnames(
         "rounded-full text-base-sm text-center",
+        className || "",
         {
           "bg-orange-light text-orange font-medium leading-5 py-[3px] px-3":
             isStaticChip,

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import "@/styles/globals.css";
 
 import ThemeRegistry from "@/services/mui/ThemeRegistry";
+import RouteTracker from "@/components/RouteTracker";
 import { AuthProvider, PopupsProvider } from "@/providers";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
@@ -22,14 +23,16 @@ const RootLayout: React.FC<RootLayoutT> = ({ children, AuthPopup }) => {
     <html lang="en">
       <body className={`${notoSansGeorgian.className}`}>
         <ThemeRegistry>
-          <Suspense fallback={null}>
-            <PopupsProvider>
-              <AuthProvider>
-                {children}
-                {AuthPopup}
-              </AuthProvider>
-            </PopupsProvider>
-          </Suspense>
+          <RouteTracker>
+            <Suspense fallback={null}>
+              <PopupsProvider>
+                <AuthProvider>
+                  {children}
+                  {AuthPopup}
+                </AuthProvider>
+              </PopupsProvider>
+            </Suspense>
+          </RouteTracker>
         </ThemeRegistry>
 
         <div id="portal" />

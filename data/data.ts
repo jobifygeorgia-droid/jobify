@@ -1,5 +1,94 @@
 export const vipVacancies = [
   {
+    id: 1000,
+    companyName: "ტექნო ინოვატორები",
+    createdAt: new Date(Date.now() - 15 * 1000).toISOString(),
+    position: "ვებ დეველოპერი",
+    salary: "10,000 - 15,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+  }, // 15 წამი წინ
+  {
+    id: 2000,
+    companyName: "კრეატივი სოლუშენსი",
+    createdAt: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+    position: "პროდუქტის მენეჯერი",
+    salary: "12,000 - 18,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "ჰიბრიდული",
+  }, // 10 წუთის წინ
+  {
+    id: 3000,
+    companyName: "გლობალ ენტერპრაიზი",
+    createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+    position: "მარკეტინგის სპეციალისტი",
+    salary: "8,000 - 12,000 ₾",
+    location: "ქუთაისი",
+    jobFormat: "ნახევარი განაკვეთი",
+  }, // 3 საათის წინ
+  {
+    id: 4000,
+    companyName: "ინოვაციური დიზაინი",
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    position: "გრაფიკული დიზაინერი",
+    salary: "6,000 - 9,000 ₾",
+    location: "ზუგდიდი",
+    jobFormat: "სტაჟირება",
+  }, // 2 დღის წინ
+  {
+    id: 5000,
+    companyName: "დიგიტალ ჰაბი",
+    createdAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+    position: "SEO სპეციალისტი",
+    salary: "9,000 - 14,000 ₾",
+    location: "გორი",
+    jobFormat: "მოქნილი გრაფიკი",
+  }, // 15 დღის წინ
+  {
+    id: 6000,
+    companyName: "კრეატივი მაინდსი",
+    createdAt: new Date(
+      Date.now() - 2 * 30 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "კონტენტის მწერალი",
+    salary: "5,000 - 7,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "კონტრაქტი",
+  }, // 2 თვის წინ
+  {
+    id: 7000,
+    companyName: "ტექნოლაბი",
+    createdAt: new Date(
+      Date.now() - 8 * 30 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "ფრონტ-ენდ დეველოპერი",
+    salary: "11,000 - 16,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+  }, // 8 თვის წინ
+  {
+    id: 8000,
+    companyName: "მედია ჰაუსი",
+    createdAt: new Date(
+      Date.now() - 1 * 365 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "ვიდეომონტაჟის სპეციალისტი",
+    salary: "7,000 - 10,000 ₾",
+    location: "რუსთავი",
+    jobFormat: "ცვლებში მუშაობა",
+  }, // 1 წლის წინ
+  {
+    id: 9000,
+    companyName: "ქლაუდ სერვისები",
+    createdAt: new Date(
+      Date.now() - 3 * 365 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "DevOps ინჟინერი",
+    salary: "13,000 - 19,000 ₾",
+    location: "თბილისი",
+    jobFormat: "ჰიბრიდული",
+  }, // 3 წლის წინ
+  {
     id: 1,
     companyName: "ტექნო ინოვატორები",
     createdAt: "2025-05-12",

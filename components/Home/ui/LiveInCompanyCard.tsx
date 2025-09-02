@@ -17,7 +17,7 @@ const LiveInCompanyCard: React.FC<LiveInCompanyCardT> = (props) => {
           buttonType="text"
           className="w-max! p-0! rounded-none text-base-sm font-normal text-blue!"
         >
-          <span>ყველას ნახვა</span>
+          <span>დათვალიერება</span>
           <span>&rarr;</span>
         </Button>
       </div>
