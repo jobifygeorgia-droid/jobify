@@ -1,5 +1,5 @@
 import { IconButton } from "@/components/ui";
-import { Bag, Loop, Location } from "@/components/ui/icons";
+import { Bag, Loop, LocationOutlined } from "@/components/ui/icons";
 import { TextField, Select } from "@/components/layouts/Form";
 
 import ExpandedFilter from "./ExpandedFilter";
@@ -42,7 +42,7 @@ const FilterBar: React.FC = () => {
               options={workTypes}
               variant="outlined"
               placeholder="მდებარეობა"
-              adornment={<Location className="fill-none stroke-blue" />}
+              adornment={<LocationOutlined className="stroke-blue" />}
             />
           </FilterBarInputContainer>
         </div>

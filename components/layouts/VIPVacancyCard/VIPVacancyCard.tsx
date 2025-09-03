@@ -1,7 +1,9 @@
+import Link from "next/link";
+
+import TimeAgo from "./TimeAgo";
 import { Chip, IconChip } from "@/components/ui";
 import { SendResumeButton } from "@/components/layouts";
-import { Location, StarFilled } from "@/components/ui/icons";
-import TimeAgo from "./TimeAgo";
+import { LocationFilled, StarFilled } from "@/components/ui/icons";
 
 type VIPVacancyCardT = {
   id: number;
@@ -38,9 +40,12 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
 
         {/* Body */}
         <div className="flex flex-col gap-1">
-          <span className="text-blue font-bold text-base-sm">
+          <Link
+            href="/vacancies/123"
+            className="text-blue font-bold text-base-sm"
+          >
             {vacancy.position}
-          </span>
+          </Link>
 
           <span className="font-semibold text-sm">
             <span>ანაზღაურება:</span>
@@ -53,7 +58,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
       {/* Footer */}
       <div className="flex items-center justify-between">
         <IconChip size="sm" text={vacancy.location}>
-          <Location className="fill-light-grey-dark" />
+          <LocationFilled className="fill-light-grey-dark" />
         </IconChip>
 
         <Chip className="text-sm! px-3! py-0!">{vacancy.jobFormat}</Chip>

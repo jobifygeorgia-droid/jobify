@@ -9,7 +9,8 @@ type TextEditorContentT = {
   panelPosition?: "aside" | "top";
 };
 
-const TextEditorContent: React.FC<TextEditorContentT> = ({ panelPosition }) => {
+const TextEditorContent: React.FC<TextEditorContentT> = (props) => {
+  const { panelPosition } = props;
   const { editor } = useTipTap();
 
   return (

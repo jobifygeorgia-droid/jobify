@@ -1,10 +1,20 @@
+import classnames from "classnames";
+
 type SectionTitleT = {
   title: string;
+  size?: "base" | "lg";
 };
 
-const SectionTitle: React.FC<SectionTitleT> = ({ title }) => {
+const SectionTitle: React.FC<SectionTitleT> = ({ title, size = "lg" }) => {
   return (
-    <h4 className="text-lg font-bold text-dark-grey-dark-hover">{title}</h4>
+    <h5
+      className={classnames("font-bold text-dark-grey-dark-hover", {
+        "text-lg": size === "lg",
+        "text-base": size === "base",
+      })}
+    >
+      {title}
+    </h5>
   );
 };
 

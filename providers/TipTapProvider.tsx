@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import StarterKit from "@tiptap/starter-kit";
-import { useEditor, Editor } from "@tiptap/react";
+import { useEditor, Editor, Content } from "@tiptap/react";
 
 import Typography from "@tiptap/extension-typography";
 import ListKeymap from "@tiptap/extension-list-keymap";
@@ -31,7 +31,11 @@ export type ColorT = {
   textColor: string;
 };
 
-type TipTapProviderT = React.FC<{ children: React.ReactNode }> & {
+type TipTapProviderT = React.FC<{
+  children: React.ReactNode;
+  readonly?: boolean;
+  content?: Content;
+}> & {
   Menu: typeof TipTapMenu;
 };
 
@@ -53,7 +57,9 @@ const TipTapContext = createContext<TipTapContextT>({
   setLink: () => {},
 });
 
-const TipTapProvider: TipTapProviderT = ({ children }) => {
+const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
+  const { readonly = true, content = "" } = props;
+
   const instance = useEditor({
     extensions: [
       StarterKit.configure({
@@ -146,7 +152,8 @@ const TipTapProvider: TipTapProviderT = ({ children }) => {
       Underline,
     ],
     immediatelyRender: false,
-    content: "",
+    content,
+    editable: !readonly,
     editorProps: { attributes: { spellcheck: "true" } },
   });
 

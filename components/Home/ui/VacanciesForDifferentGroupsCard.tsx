@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui";
+import { Arrow } from "@/components/ui/icons";
 
 type VacanciesForDifferentGroupsCardT = {
   title: string;
@@ -22,10 +23,10 @@ const VacanciesForDifferentGroupsCard: React.FC<
         <Button
           fullWidth
           buttonType="text"
-          className="justify-between! px-0! text-white"
+          className="justify-between! px-0! text-white hover:text-white!"
         >
           <span>სრულად ნახვა</span>
-          <span>&rarr;</span>
+          <Arrow className="stroke-current" width={41} height={22} />
         </Button>
       </div>
     </div>

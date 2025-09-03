@@ -1,5 +1,6 @@
 export { default as Button } from "./Button/Button";
 export { default as AnchorButton } from "./Button/AnchorButton";
+export { default as ViewAllButton } from "./Button/ViewAllButton";
 export { default as IconButton } from "./IconButton";
 export { default as Chip } from "./Chip";
 export { default as IconChip } from "./IconChip";

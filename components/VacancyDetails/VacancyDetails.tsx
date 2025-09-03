@@ -1,0 +1,51 @@
+import { tipTapValue, vipVacancies } from "@/data/data";
+import { TipTapProvider } from "@/providers";
+
+import Header from "./ui/Header";
+import Aside from "./ui/Aside";
+import { Pagination, SectionTitle, ViewAllButton } from "@/components/ui";
+import {
+  SendResume,
+  TextEditorContent,
+  VacancyCard,
+} from "@/components/layouts";
+
+type VacancyDetailsT = {};
+
+const VacancyDetails: React.FC<VacancyDetailsT> = () => {
+  return (
+    <SendResume>
+      <Header />
+
+      <TipTapProvider content={tipTapValue}>
+        <div className="flex items-start gap-20 py-5">
+          <div className="flex-2">
+            <TextEditorContent />
+          </div>
+
+          <Aside />
+        </div>
+      </TipTapProvider>
+
+      <div className="py-12">
+        <SectionTitle size="base" title="შენთვის საინტერესო ვაკანსიები" />
+
+        <div className="flex flex-col gap-4 mt-5">
+          {vipVacancies.slice(0, 4).map((vacancy) => (
+            <VacancyCard key={vacancy.id} {...vacancy} />
+          ))}
+        </div>
+
+        <div className="flex items-center mt-10">
+          <div className="w-full flex justify-center">
+            <Pagination />
+          </div>
+
+          <ViewAllButton href="/vacancies" />
+        </div>
+      </div>
+    </SendResume>
+  );
+};
+
+export default VacancyDetails;

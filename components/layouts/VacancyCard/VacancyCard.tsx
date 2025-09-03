@@ -1,32 +1,46 @@
-import { SendResumeButton } from "@/components/layouts";
-import { Chip, IconButton, IconChip } from "@/components/ui";
 import {
-  CalendarFilled,
   Heart,
-  Location,
+  LocationFilled,
   WalletFilled,
+  CalendarFilled,
 } from "@/components/ui/icons";
+import { Chip, IconButton, IconChip } from "@/components/ui";
+import { SendResumeButton } from "@/components/layouts";
+import Link from "next/link";
 
-const VacancyCard: React.FC = () => {
+type VacancyCardT = {
+  id: number;
+  companyName: string;
+  createdAt: string;
+  position: string;
+  salary: string;
+  location: string;
+  jobFormat: string;
+};
+
+const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
   return (
     <div className="max-w-full w-full p-6 rounded-2xl bg-white border border-bc flex items-center gap-5">
       <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-7">
-          <span className="leading-4 text-md font-semibold">
-            UI UX Designer
-          </span>
+          <Link
+            href="/vacancies/123"
+            className="leading-4 text-md font-semibold"
+          >
+            {vacancy.position}
+          </Link>
 
-          <Chip>სრული განაკვეთი</Chip>
+          <Chip>{vacancy.jobFormat}</Chip>
         </div>
 
         <div className="flex items-center gap-6">
-          <IconChip text="თბილისი">
-            <Location className="fill-light-grey-dark" />
+          <IconChip text={vacancy.location}>
+            <LocationFilled className="fill-light-grey-dark" />
           </IconChip>
 
-          <IconChip text="$50k-80k">
+          <IconChip text={vacancy.salary}>
             <WalletFilled className="fill-light-grey-dark" />
           </IconChip>
 
@@ -38,6 +52,7 @@ const VacancyCard: React.FC = () => {
 
       <div className="ml-auto flex items-center gap-5">
         <SendResumeButton
+          title="short"
           buttonProps={{
             paddingSize: "base-wide",
             className: "text-base-sm! py-3! px-8! font-semibold!",

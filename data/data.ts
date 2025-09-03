@@ -487,3 +487,146 @@ export const liveInCompanyData = [
   { id: 73, title: "TikTok" },
   { id: 74, title: "Shopify" },
 ];
+
+export const tipTapValue = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "სამუშოს აღწერა" },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად 1500-იან ნორმებში ჩნდება, რომელიც საბოლოო მომხმარებელმა უნდა დაამატოს შემდეგში. ძირითადი ემპირიული ტექსტია, რომელიც უზრუნველყოფს დოკუმენტის სტრუქტურულ შევსებას. არაფორმალური ან ნეიტრალური სტილი, რომელიც არ შეიცავს მნიშვნელოვნად დამუშავებულ თემატიკას, არამედ მხოლოდ მაგალითის სახით გამოიყენება.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "მოვალეობები" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფა",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "მოთხოვნები" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "რას გთავაზობთ" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

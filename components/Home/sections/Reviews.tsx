@@ -1,6 +1,6 @@
 import { reviewsData } from "@/data/data";
 
-import { Button, MultipleSlider } from "@/components/ui";
+import { MultipleSlider, ViewAllButton } from "@/components/ui";
 import { ReviewCard } from "@/components/layouts";
 import SectionContainer from "@/components/Home/ui/SectionContainer";
 
@@ -16,10 +16,7 @@ const Reviews: React.FC<ReviewsT> = () => {
         ))}
       />
 
-      <Button buttonType="text" className="w-max! absolute right-0 bottom-0">
-        <span>ყველას ნახვა</span>
-        <span>&rarr;</span>
-      </Button>
+      <ViewAllButton href="" className="absolute z-[9] right-0 bottom-0" />
     </SectionContainer>
   );
 };

@@ -4,8 +4,7 @@ import { Suspense } from "react";
 import "@/styles/globals.css";
 
 import ThemeRegistry from "@/services/mui/ThemeRegistry";
-import RouteTracker from "@/components/RouteTracker";
-import { AuthProvider, PopupsProvider } from "@/providers";
+import { AuthProvider, PopupsProvider, RouteTracker } from "@/providers";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["georgian"],

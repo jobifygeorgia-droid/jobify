@@ -1,23 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
-import { Button, MultipleSlider } from "@/components/ui";
-import { VIPVacancyCard } from "@/components/layouts";
 import { vipVacancies } from "@/data/data";
+
+import { VIPVacancyCard } from "@/components/layouts";
+import { MultipleSlider, ViewAllButton } from "@/components/ui";
 import SectionContainer from "@/components/Home/ui/SectionContainer";
 
 type VIPVacanciesT = {};
 
 const VIPVacancies: React.FC<VIPVacanciesT> = () => {
-  const router = useRouter();
-
-  const onViewAll = () => router.push("/vip-vacancies");
-
   return (
     <SectionContainer title="VIP ვაკანსიები" className="relative">
       <MultipleSlider
-        slides={vipVacancies.map((slide) => (
+        slides={vipVacancies.slice(0, 20).map((slide) => (
           <VIPVacancyCard key={slide.id} {...slide} />
         ))}
       />
@@ -26,14 +21,10 @@ const VIPVacancies: React.FC<VIPVacanciesT> = () => {
             <VIPVacancyCard key={slide.id} {...slide} />
           ))}
         </div> */}
-      <Button
-        buttonType="text"
-        className="w-max! absolute z-[9] right-0 bottom-0 cursor-pointer"
-        onClick={onViewAll}
-      >
-        <span>ყველას ნახვა</span>
-        <span>&rarr;</span>
-      </Button>
+      <ViewAllButton
+        href="/vip-vacancies"
+        className="absolute z-[9] right-0 bottom-0"
+      />
     </SectionContainer>
   );
 };

@@ -1,13 +1,14 @@
-import { Button, MultipleSlider } from "@/components/ui";
+import { liveInCompanyData } from "@/data/data";
+
 import SectionContainer from "../ui/SectionContainer";
-import { liveInCompanyData } from "../../../data/data";
 import LiveInCompanyCard from "../ui/LiveInCompanyCard";
+import { MultipleSlider, ViewAllButton } from "@/components/ui";
 
 type LiveInCompanyT = {};
 
 const LiveInCompany: React.FC<LiveInCompanyT> = () => {
   return (
-    <SectionContainer className="relative">
+    <SectionContainer className="relative" title="ცხოვრება კომპანიაში">
       <MultipleSlider
         slidesPerView={5}
         slides={liveInCompanyData.map((company) => (
@@ -15,10 +16,7 @@ const LiveInCompany: React.FC<LiveInCompanyT> = () => {
         ))}
       />
 
-      <Button buttonType="text" className="w-max! absolute right-0 bottom-0">
-        <span>ყველას ნახვა</span>
-        <span>&rarr;</span>
-      </Button>
+      <ViewAllButton href="" className="absolute z-[9] right-0 bottom-0" />
     </SectionContainer>
   );
 };
