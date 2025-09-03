@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Container } from "@/components/ui";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import { SendResumeProvider } from "@/providers";
 
 type layoutT = {
   children: React.ReactNode;
@@ -18,14 +19,16 @@ export const metadata: Metadata = {
 
 const Layout: React.FC<layoutT> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Container>
-        <NavBar />
-        {children}
-      </Container>
+    <SendResumeProvider>
+      <div className="flex flex-col min-h-screen">
+        <Container>
+          <NavBar />
+          {children}
+        </Container>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </SendResumeProvider>
   );
 };
 

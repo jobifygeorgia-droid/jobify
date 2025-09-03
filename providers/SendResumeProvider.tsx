@@ -3,8 +3,8 @@
 import { createContext, useContext } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
-import SendResumeButton from "./SendResumeButton";
-import UploadResumeModal from "./UploadResumeModal";
+import SendResumeButton from "@/components/layouts/SendResume/SendResumeButton";
+import UploadResumeModal from "@/components/layouts/SendResume/UploadResumeModal";
 
 type SendResumeProviderT = React.FC<{ children: React.ReactNode }> & {
   Button: typeof SendResumeButton;

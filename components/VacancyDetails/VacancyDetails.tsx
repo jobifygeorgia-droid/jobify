@@ -4,17 +4,13 @@ import { TipTapProvider } from "@/providers";
 import Header from "./ui/Header";
 import Aside from "./ui/Aside";
 import { Pagination, SectionTitle, ViewAllButton } from "@/components/ui";
-import {
-  SendResume,
-  TextEditorContent,
-  VacancyCard,
-} from "@/components/layouts";
+import { TextEditorContent, VacancyCard } from "@/components/layouts";
 
 type VacancyDetailsT = {};
 
 const VacancyDetails: React.FC<VacancyDetailsT> = () => {
   return (
-    <SendResume>
+    <>
       <Header />
 
       <TipTapProvider content={tipTapValue}>
@@ -44,7 +40,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
           <ViewAllButton href="/vacancies" />
         </div>
       </div>
-    </SendResume>
+    </>
   );
 };
 

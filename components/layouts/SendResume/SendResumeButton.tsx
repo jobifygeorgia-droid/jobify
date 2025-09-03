@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui";
 import { ButtonT } from "@/components/ui/Button/button.types";
-import { useSendResumeContext } from "./SendResume";
+import { useSendResumeContext } from "../../../providers/SendResumeProvider";
 
 type SendResumeButtonT = {
   title?: "short" | "long";

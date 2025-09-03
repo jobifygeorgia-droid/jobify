@@ -5,3 +5,8 @@ export enum UserTypes {
 }
 
 export type APIErrorMessages = Record<string, Array<string>>;
+
+export type PageParamsT = {
+  searchParams: Promise<Record<string, string | undefined>>;
+  params: Promise<Record<string, string | undefined>>;
+};

@@ -1,4 +1,3 @@
-import { SendResume } from "@/components/layouts";
 import VIPVacancies from "./sections/VIPVacancies";
 import BannersSlider from "./sections/BannersSlider";
 import Vacancies from "./sections/Vacancies";
@@ -14,20 +13,18 @@ type HomeT = {};
 
 const Home: React.FC<HomeT> = () => {
   return (
-    <SendResume>
-      <div className="py-5">
-        <VIPVacancies />
-        <BannersSlider />
-        <Vacancies />
-        <VacanciesForDifferentGroups />
-        <InterestingForYou />
-        <LiveInCompany />
-        <CreateResume />
-        <Subscribe />
-        <Reviews />
-        <TopCompanies />
-      </div>
-    </SendResume>
+    <div className="py-5">
+      <VIPVacancies />
+      <BannersSlider />
+      <Vacancies />
+      <VacanciesForDifferentGroups />
+      <InterestingForYou />
+      <LiveInCompany />
+      <CreateResume />
+      <Subscribe />
+      <Reviews />
+      <TopCompanies />
+    </div>
   );
 };
 

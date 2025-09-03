@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Modal } from "@/components/ui";
-import { useSendResumeContext } from "./SendResume";
+import { useSendResumeContext } from "../../../providers/SendResumeProvider";
 import { TextEditor, DropzoneFileInput } from "@/components/layouts/Form";
 
 const UploadResumeModal: React.FC = () => {

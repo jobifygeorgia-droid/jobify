@@ -1,14 +1,15 @@
-import { Button } from "@/components/ui";
+import { AnchorButton } from "@/components/ui";
 import { Arrow } from "@/components/ui/icons";
 
 type VacanciesForDifferentGroupsCardT = {
   title: string;
+  group: string;
 };
 
 const VacanciesForDifferentGroupsCard: React.FC<
   VacanciesForDifferentGroupsCardT
 > = (props) => {
-  const { title } = props;
+  const { title, group } = props;
 
   return (
     <div className="segment-card flex-1 flex flex-col h-[290px] rounded-4xl p-4 text-white relative">
@@ -20,14 +21,15 @@ const VacanciesForDifferentGroupsCard: React.FC<
       </div>
 
       <div className="absolute top-[80%] left-4 right-4">
-        <Button
+        <AnchorButton
           fullWidth
+          href={`/vacancies/groups?group=${group}`}
           buttonType="text"
           className="justify-between! px-0! text-white hover:text-white!"
         >
           <span>სრულად ნახვა</span>
           <Arrow className="stroke-current" width={41} height={22} />
-        </Button>
+        </AnchorButton>
       </div>
     </div>
   );

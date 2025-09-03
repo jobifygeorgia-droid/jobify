@@ -16,6 +16,7 @@ const VacanciesForDifferentGroups: React.FC<
         {vacanciesForDifferentGroupsData.map((segment) => (
           <VacanciesForDifferentGroupsCard
             key={segment.id}
+            group={segment.group}
             title={segment.title}
           />
         ))}

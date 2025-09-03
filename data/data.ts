@@ -302,18 +302,22 @@ export const vacanciesForDifferentGroupsData = [
   {
     id: 26,
     title: "ტუტორებისთვის",
+    group: "tutors",
   },
   {
     id: 27,
     title: "უკრაინელი ხალხისთვის",
+    group: "ukrainian",
   },
   {
     id: 28,
     title: "სტუდენტებისთვის",
+    group: "students",
   },
   {
     id: 29,
     title: "ემიგრანტებისთვის",
+    group: "immigrants",
   },
 ];
 
