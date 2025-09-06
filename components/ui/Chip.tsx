@@ -16,12 +16,13 @@ type ChipT = {
 } & (ClickableChipT | StaticChipT);
 
 const Chip: React.FC<ChipT> = (props) => {
-  const { children, isActive, className } = props;
+  const { children, isActive, className, onClick } = props;
 
   const isStaticChip = isActive === undefined;
 
   return (
     <span
+      onClick={onClick}
       className={classnames(
         "rounded-full text-base-sm text-center",
         className || "",

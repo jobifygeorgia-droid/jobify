@@ -110,7 +110,7 @@ const SignUpCompany: React.FC = () => {
         </Link>
       </div>
 
-      <Button rounded="base" className="mt-3">
+      <Button rounded="base" className="mt-3" buttonType="primary">
         რეგისტრაცია
       </Button>
 

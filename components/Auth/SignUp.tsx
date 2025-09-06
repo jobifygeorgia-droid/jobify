@@ -44,8 +44,9 @@ const SignUp: React.FC = () => {
 
         <Button
           type="submit"
-          className="w-full max-w-[375px] mt-12"
           rounded="base"
+          buttonType="primary"
+          className="w-full max-w-[375px] mt-12"
         >
           გაგრძელება
         </Button>

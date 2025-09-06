@@ -30,7 +30,11 @@ const CreateResume: React.FC<CreateResumeT> = () => {
             პერსონალიზებული შეთავაზებები და მართო დასაქმების პროცესი მარტივად
           </p>
 
-          <Button className="mt-12 px-32 w-max" rounded="base">
+          <Button
+            className="mt-12 px-32 w-max"
+            rounded="base"
+            buttonType="primary"
+          >
             ავტორიზაცია
           </Button>
         </div>

@@ -4,10 +4,10 @@ import { ButtonBaseT } from "./button.types";
 
 export const buttonStyles = (params: ButtonBaseT) => {
   const {
-    buttonType = "primary",
+    buttonType,
     textSize = "base",
     paddingSize = "base",
-    rounded = "full",
+    rounded = "base",
     fullWidth = false,
     justify = "center",
     className,

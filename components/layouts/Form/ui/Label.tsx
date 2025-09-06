@@ -6,10 +6,11 @@ type TextFieldLabelT = {
   id?: TextFieldPropsT["id"];
   label: TextFieldPropsT["label"];
   labelPosition: TextFieldPropsT["labelPosition"];
+  keepOrder?: boolean;
 };
 
 const TextFieldLabel: React.FC<TextFieldLabelT> = (props) => {
-  const { labelPosition, id, label } = props;
+  const { labelPosition, id, label, keepOrder = false } = props;
 
   return (
     <label
@@ -17,7 +18,7 @@ const TextFieldLabel: React.FC<TextFieldLabelT> = (props) => {
       className={classnames("text-base-sm font-medium", {
         "absolute ml-1 px-1 -top-1/4 peer-focus:-top-1/4 peer-focus:text-base-sm peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-base transition-all duration-150 bg-white":
           labelPosition === "in",
-        "order-1": labelPosition === "out",
+        "order-1": labelPosition === "out" && !keepOrder,
       })}
     >
       {label}

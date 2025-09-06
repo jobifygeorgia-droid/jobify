@@ -1,11 +1,11 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 import { groups, GroupT } from "./groups";
 import { vipVacancies } from "@/data/data";
 
 import { VacancyCard, VIPVacancyCard } from "@/components/layouts";
 import { MultipleSlider, Pagination, SectionTitle } from "@/components/ui";
-import { notFound } from "next/navigation";
 
 type VacanciesByGroupsT = {
   group?: string;

@@ -46,7 +46,7 @@ const VerifyUserIdentity: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <Button fullWidth rounded="base">
+          <Button fullWidth rounded="base" buttonType="primary">
             დადასტურება
           </Button>
 

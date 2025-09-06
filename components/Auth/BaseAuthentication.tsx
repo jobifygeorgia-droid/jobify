@@ -64,7 +64,7 @@ const BaseAuthentication: React.FC = () => {
           </Link>
         </div>
 
-        <Button fullWidth rounded="base" className="mt-1">
+        <Button fullWidth rounded="base" className="mt-1" buttonType="primary">
           შესვლა
         </Button>
       </form>

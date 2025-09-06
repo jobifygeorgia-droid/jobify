@@ -11,7 +11,11 @@ const FilterForm: React.FC = () => {
         labelPosition="out"
         adornment={<LocationOutlined className="fill-blue!" />}
       />
-      <DatePicker disablePortal={true} placement="top-start" />
+      <DatePicker
+        disablePortal={true}
+        placement="top-start"
+        label="გამოქვეყნების თარიღი"
+      />
     </div>
   );
 };

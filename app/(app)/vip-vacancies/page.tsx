@@ -1,6 +1,6 @@
 import { FilterBar } from "@/components/layouts";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
-import VIPVacancies from "@/components/VIPVacancies/VIPVacancies";
+import VIPVacancies from "@/components/Vacancies/VIPVacancies/VIPVacancies";
 
 type PageT = {};
 

@@ -120,6 +120,7 @@ const SignUpUser: React.FC = () => {
       <Button
         rounded="base"
         className="mt-3"
+        buttonType="primary"
         disabled={!acceptsPrivacyAndPolicy}
       >
         რეგისტრაცია

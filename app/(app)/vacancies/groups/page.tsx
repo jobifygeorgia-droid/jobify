@@ -1,5 +1,5 @@
 import { PageParamsT } from "@/interface/global.types";
-import VacanciesByGroups from "@/components/VacanciesByGroups/VacanciesByGroups";
+import VacanciesByGroups from "@/components/Vacancies/VacanciesByGroups/VacanciesByGroups";
 
 const Page: React.FC<PageParamsT> = async ({ searchParams }) => {
   const params = await searchParams;

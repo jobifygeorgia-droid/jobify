@@ -23,8 +23,10 @@ const UploadResumeModal: React.FC = () => {
         </div>
 
         <div className="h-max flex-1 flex items-center justify-end gap-3 bg-white py-4 border-t border-t-bc sticky">
-          <Button buttonType="text">გასუფთავება</Button>
-          <Button>შედეგის ნახვა</Button>
+          <Button buttonType="text">გაუქმება</Button>
+          <Button buttonType="primary" rounded="base">
+            გაგზავნა
+          </Button>
         </div>
       </div>
     </Modal>

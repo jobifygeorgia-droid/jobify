@@ -1,4 +1,4 @@
-import Vacancies from "@/components/Vacancies/Vacancies";
+import Vacancies from "@/components/Vacancies/Vacancies/Vacancies";
 import { FilterBar } from "@/components/layouts";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
 
