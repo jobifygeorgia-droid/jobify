@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Controller } from "react-hook-form";
 
-import Divider from "./ui/Divider";
+import Divider from "../ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
 
@@ -64,7 +64,7 @@ const BaseAuthentication: React.FC = () => {
           </Link>
         </div>
 
-        <Button fullWidth rounded="base" className="mt-1" buttonType="primary">
+        <Button fullWidth className="mt-1" buttonType="primary">
           შესვლა
         </Button>
       </form>

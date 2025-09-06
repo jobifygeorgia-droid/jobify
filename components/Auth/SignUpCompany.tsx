@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Controller } from "react-hook-form";
 
-import Divider from "./ui/Divider";
+import Divider from "../ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
 import { Button } from "@/components/ui";
 import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
@@ -110,7 +110,7 @@ const SignUpCompany: React.FC = () => {
         </Link>
       </div>
 
-      <Button rounded="base" className="mt-3" buttonType="primary">
+      <Button className="mt-3" buttonType="primary">
         რეგისტრაცია
       </Button>
 

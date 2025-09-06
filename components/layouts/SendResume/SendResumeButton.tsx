@@ -14,12 +14,7 @@ const SendResumeButton: React.FC<SendResumeButtonT> = (props) => {
   const { onOpenModal } = useSendResumeContext();
 
   return (
-    <Button
-      {...buttonProps}
-      buttonType="secondary"
-      rounded="base"
-      onClick={onOpenModal}
-    >
+    <Button {...buttonProps} buttonType="secondary" onClick={onOpenModal}>
       {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
     </Button>
   );

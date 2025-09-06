@@ -44,7 +44,6 @@ const SignUp: React.FC = () => {
 
         <Button
           type="submit"
-          rounded="base"
           buttonType="primary"
           className="w-full max-w-[375px] mt-12"
         >

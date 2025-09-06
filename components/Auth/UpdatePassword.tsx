@@ -55,18 +55,12 @@ const UpdatePassword: React.FC = () => {
           <AnchorButton
             href="?auth=update-success"
             fullWidth
-            rounded="base"
             buttonType="primary"
           >
             დადასტურება
           </AnchorButton>
 
-          <AnchorButton
-            href="?auth=base"
-            fullWidth
-            buttonType="text"
-            rounded="base"
-          >
+          <AnchorButton href="?auth=base" fullWidth buttonType="text">
             უკან დაბრუნება
           </AnchorButton>
         </div>

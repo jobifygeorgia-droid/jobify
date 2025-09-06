@@ -34,7 +34,6 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
     if (!editor) return;
 
     editor.on("update", ({ editor }) => {
-      console.log(editor.getHTML());
       onChange?.(editor.getHTML());
     });
 
@@ -46,14 +45,14 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
   return (
     <div
       className={classnames("flex flex-col gap-[6px]", props.className || "")}
-      style={{ width, minHeight: height }}
+      style={{ width, minHeight: height, maxHeight: height }}
     >
       {props.label && (
         <Label label={props.label} labelPosition="out" keepOrder={true} />
       )}
 
-      <div className="border border-bc rounded-xl p-3 h-full w-full">
-        <div className="flex items-center gap-4 pb-3 mb-3 border-b border-b-bc">
+      <div className="border border-bc rounded-xl p-3 h-full w-full flex flex-col gap-3">
+        <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
           <Bold />
           <Italic />
           <Underline />
@@ -63,7 +62,7 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
 
         <EditorContent
           editor={editor}
-          className="w-full h-full overflow-y-auto"
+          className="w-full min-h-[calc(100%-50px)] pt-2 overflow-y-auto"
         />
       </div>
 

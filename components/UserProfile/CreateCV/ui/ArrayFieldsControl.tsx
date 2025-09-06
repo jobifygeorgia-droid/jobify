@@ -10,12 +10,7 @@ const ArrayFieldsControl: React.FC<ArrayFieldsControlT> = (props) => {
   return (
     <div className="flex items-center justify-end">
       <Button>გაუქმება</Button>
-      <Button
-        buttonType="secondary"
-        type="button"
-        onClick={onAppend}
-        rounded="base"
-      >
+      <Button buttonType="secondary" type="button" onClick={onAppend}>
         დამატება
       </Button>
     </div>

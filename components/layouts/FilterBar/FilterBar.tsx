@@ -42,7 +42,7 @@ const FilterBar: React.FC = () => {
               options={workTypes}
               variant="outlined"
               placeholder="მდებარეობა"
-              adornment={<LocationOutlined className="stroke-blue" />}
+              adornment={<LocationOutlined className="fill-blue" />}
             />
           </FilterBarInputContainer>
         </div>

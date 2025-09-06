@@ -24,7 +24,6 @@ const Profile: React.FC<ProfileT> = () => {
         <div className="ml-auto">
           <AnchorButton
             href="/user/profile/123/cv"
-            rounded="base"
             className="bg-orange-light-hover text-orange font-semibold hover:text-orange hover:bg-orange-light-hover"
           >
             შექმენი CV
@@ -39,12 +38,7 @@ const Profile: React.FC<ProfileT> = () => {
           &nbsp; შენი CV-ის გასაუმჯობესებლად და კარიერული შანსების გასაზრდელად
         </p>
 
-        <AnchorButton
-          href=""
-          rounded="base"
-          className="font-semibold"
-          buttonType="primary"
-        >
+        <AnchorButton href="" className="font-semibold" buttonType="primary">
           მოითხოვე რეკომენდაცია
         </AnchorButton>
       </div>

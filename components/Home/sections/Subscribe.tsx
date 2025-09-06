@@ -20,7 +20,9 @@ const Subscribe: React.FC<SubscribeT> = () => {
               className="w-full outline-none text-lg"
             />
             <div className="border-l-4 border-light-grey-hover pl-8">
-              <Button buttonType="primary">გამოწერა</Button>
+              <Button buttonType="primary" rounded="full">
+                გამოწერა
+              </Button>
             </div>
           </div>
         </div>

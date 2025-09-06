@@ -140,6 +140,12 @@ body {
   border-radius: inherit;
 }
 
+.tiptap p.is-editor-empty.is-empty:first-child::before {
+  font-size: 20px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
 .italic {
   @apply bg-red-400;
 }

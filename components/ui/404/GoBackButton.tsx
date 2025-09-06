@@ -30,7 +30,6 @@ const GoBackButton: React.FC = () => {
           "pointer-events-auto! opacity-100 scale-[100%]": candidateURL !== "",
         }
       )}
-      rounded="base"
       onClick={onGoBack}
     >
       უკან დაბრუნება

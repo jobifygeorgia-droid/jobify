@@ -88,16 +88,11 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <Button fullWidth rounded="base" buttonType="primary">
+          <Button fullWidth buttonType="primary">
             გაგრძელება
           </Button>
 
-          <AnchorButton
-            href="?auth=base"
-            fullWidth
-            buttonType="text"
-            rounded="base"
-          >
+          <AnchorButton href="?auth=base" fullWidth buttonType="text">
             გაუქმება
           </AnchorButton>
         </div>

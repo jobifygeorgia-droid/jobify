@@ -15,7 +15,7 @@ import {
   PasswordField,
   ErrorMessage,
 } from "@/components/layouts/Form";
-import Divider from "./ui/Divider";
+import Divider from "../ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
 import { Button, Spinner } from "@/components/ui";
 
@@ -118,7 +118,6 @@ const SignUpUser: React.FC = () => {
       {status.error && <ErrorMessage message={status.message} />}
 
       <Button
-        rounded="base"
         className="mt-3"
         buttonType="primary"
         disabled={!acceptsPrivacyAndPolicy}

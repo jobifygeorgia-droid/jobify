@@ -46,16 +46,11 @@ const VerifyUserIdentity: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <Button fullWidth rounded="base" buttonType="primary">
+          <Button fullWidth buttonType="primary">
             დადასტურება
           </Button>
 
-          <AnchorButton
-            href="?auth=base"
-            fullWidth
-            buttonType="text"
-            rounded="base"
-          >
+          <AnchorButton href="?auth=base" fullWidth buttonType="text">
             უკან დაბრუნება
           </AnchorButton>
         </div>
