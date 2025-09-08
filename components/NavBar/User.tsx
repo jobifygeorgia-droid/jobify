@@ -4,6 +4,7 @@ import Link from "next/link";
 const User: React.FC = () => {
   return (
     <div className="flex items-center gap-5">
+      <Link href="/legal-entity/profile/123">კომპანიის პროფილი</Link>
       <Link href="/user/profile/123">პროფილი</Link>
       <AnchorButton
         scroll={false}

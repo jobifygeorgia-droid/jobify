@@ -21,11 +21,8 @@ const Layout: React.FC<layoutT> = ({ children }) => {
   return (
     <SendResumeProvider>
       <div className="flex flex-col min-h-screen">
-        <Container>
-          <NavBar />
-          {children}
-        </Container>
-
+        <NavBar />
+        <Container>{children}</Container>
         <Footer />
       </div>
     </SendResumeProvider>

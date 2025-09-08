@@ -24,6 +24,7 @@ const GoBackButton: React.FC = () => {
 
   return (
     <Button
+      buttonType="primary"
       className={classnames(
         "pointer-events-none opacity-0 scale-[90%] transition-opacity transition-transform duration-100 ease-out",
         {

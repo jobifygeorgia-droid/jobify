@@ -5,3 +5,4 @@ export { default as TextEditor } from "./TextEditor/TextEditor";
 export { default as TextEditorContent } from "./TextEditor/TextEditorContent";
 export { default as SendResumeButton } from "./SendResume/SendResumeButton";
 export { default as ReviewCard } from "./ReviewCard/ReviewCard";
+export { default as AddToFavoriteButton } from "./AddToFavoriteButton/AddToFavoriteButton";

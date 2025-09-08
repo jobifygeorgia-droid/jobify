@@ -2,7 +2,7 @@
 
 import OtpInput from "react-otp-input";
 
-import Label from "./ui/Label";
+import Label from "./Label";
 
 type OTPT = {
   label?: string;

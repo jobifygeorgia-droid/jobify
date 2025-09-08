@@ -36,16 +36,13 @@ const Pagination: React.FC<PaginationT> = () => {
       />
 
       <div className="flex items-center gap-3 text-base-sm">
-        <label htmlFor="manual-page-pagination">page</label>
+        <label htmlFor="manual-page-pagination">გვერდი</label>
         <input
           defaultValue={1}
           type="number"
           className="border border-bc w-14 h-10 rounded-lg text-center outline-none"
         />
-        <span>
-          of&nbsp;
-          <span>20</span>
-        </span>
+        <span>20&nbsp;-დან</span>
       </div>
     </Stack>
   );

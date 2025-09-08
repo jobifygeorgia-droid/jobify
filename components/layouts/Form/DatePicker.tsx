@@ -5,7 +5,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 
-import Label from "./ui/Label";
+import Label from "./Label";
 import { MuiDatePicker, PopperStyles, RootStyles } from "./ui/datePicker";
 
 type DatePickerT = {

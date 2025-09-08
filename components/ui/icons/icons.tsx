@@ -21,6 +21,23 @@ export const Bag: React.FC<IconPropsT> = (props) => {
   );
 };
 
+export const Dots: React.FC<IconPropsT> = (props) => {
+  const { width, height, className } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z" />
+      </svg>
+    </span>
+  );
+};
+
 export const Filter: React.FC<IconPropsT> = (props) => {
   const { width, height, className } = props;
 
@@ -556,6 +573,57 @@ export const Success: React.FC<IconPropsT> = (props) => {
           d="M71.2019 46.2385L71.4036 47.0675C72.6844 52.3307 73.3247 54.9623 74.6941 57.0867C75.9049 58.9652 77.5202 60.5494 79.4219 61.7235C81.5725 63.0512 84.2161 63.6403 89.5032 64.8184L90.8533 65.1193L89.5032 65.4201C84.2161 66.5982 81.5725 67.1873 79.4219 68.515C77.5202 69.6891 75.9049 71.2733 74.6941 73.1518C73.3247 75.2762 72.6844 77.9078 71.4036 83.1711L71.2019 84L71.0002 83.1711C69.7195 77.9078 69.0791 75.2762 67.7098 73.1518C66.4989 71.2733 64.8836 69.6891 62.9819 68.515C60.8313 67.1873 58.1878 66.5982 52.9006 65.4201L51.5505 65.1193L52.9006 64.8184C58.1878 63.6403 60.8313 63.0512 62.9819 61.7235C64.8836 60.5494 66.4989 58.9652 67.7098 57.0867C69.0791 54.9623 69.7195 52.3307 71.0002 47.0675L71.2019 46.2385Z"
           fill="#42BA6A"
         />
+      </svg>
+    </span>
+  );
+};
+
+export const GridView: React.FC<IconPropsT> = (props) => {
+  const { className, width, height } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M120-520v-320h320v320H120Zm0 400v-320h320v320H120Zm400-400v-320h320v320H520Zm0 400v-320h320v320H520Z" />
+      </svg>
+    </span>
+  );
+};
+
+export const ListView: React.FC<IconPropsT> = (props) => {
+  const { className, width, height } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M120-200v-240h720v240H120Zm0-320v-240h720v240H120Z" />
+      </svg>
+    </span>
+  );
+};
+
+export const Mail: React.FC<IconPropsT> = (props) => {
+  const { className, width, height } = props;
+
+  return (
+    <span className={className || ""}>
+      <svg
+        width={width || 24}
+        height={height || 24}
+        viewBox="0 -960 960 960"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
       </svg>
     </span>
   );

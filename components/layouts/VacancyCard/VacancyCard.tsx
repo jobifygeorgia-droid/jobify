@@ -1,12 +1,12 @@
+import Link from "next/link";
+
 import {
-  Heart,
   LocationFilled,
   WalletFilled,
   CalendarFilled,
 } from "@/components/ui/icons";
-import { Chip, IconButton, IconChip } from "@/components/ui";
-import { SendResumeButton } from "@/components/layouts";
-import Link from "next/link";
+import { Chip, IconChip } from "@/components/ui";
+import { AddToFavoriteButton, SendResumeButton } from "@/components/layouts";
 
 type VacancyCardT = {
   id: number;
@@ -59,9 +59,7 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
           }}
         />
 
-        <IconButton color="orange" isFilled={false}>
-          <Heart className="stroke-orange fill-orange" />
-        </IconButton>
+        <AddToFavoriteButton />
       </div>
     </div>
   );

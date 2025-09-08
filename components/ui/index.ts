@@ -16,3 +16,4 @@ export { default as Spinner } from "./Spinner/Spinner";
 export { default as SectionTitle } from "./SectionTitle";
 export { default as NotFound } from "./404/NotFound";
 export { default as Divider } from "./Divider";
+export { default as Menu } from "./Menu/Menu";

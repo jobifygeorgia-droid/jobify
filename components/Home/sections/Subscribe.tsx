@@ -16,7 +16,7 @@ const Subscribe: React.FC<SubscribeT> = () => {
           <div className="bg-white w-full rounded-full px-6 py-3 flex items-center">
             <input
               type="text"
-              placeholder="Enter your email address here..."
+              placeholder="შეიყვანეთ თქვენი ელ.ფოსტა..."
               className="w-full outline-none text-lg"
             />
             <div className="border-l-4 border-light-grey-hover pl-8">

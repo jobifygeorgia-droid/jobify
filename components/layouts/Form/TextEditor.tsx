@@ -13,7 +13,7 @@ import {
   AddBulletList,
   AddOrderedList,
 } from "@/components/layouts/TipTap/components/MenuButtons";
-import Label from "./ui/Label";
+import Label from "./Label";
 import FormErrorMessage from "./FormErrorMessage";
 
 type TextEditorT = {

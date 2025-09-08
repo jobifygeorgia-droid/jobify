@@ -5,7 +5,7 @@ import classnames from "classnames";
 import { TextFieldPropsT } from "./types/form-fields.types";
 import { filledContainerStyles } from "./ui/TextFieldContentContainer";
 
-import Label from "./ui/Label";
+import Label from "./Label";
 import AdornmentWrapper from "./ui/AdornmentWrapper";
 import TextFieldContainer from "./ui/TextFieldContainer";
 import TextFieldContentContainer from "./ui/TextFieldContentContainer";

@@ -2,7 +2,7 @@
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { IOSSwitch } from "./ui/customSwitch";
-import Label from "./ui/Label";
+import Label from "./Label";
 
 type SwitchT = {
   label?: string;

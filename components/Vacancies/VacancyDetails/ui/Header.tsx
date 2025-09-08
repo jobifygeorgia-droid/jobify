@@ -1,7 +1,7 @@
-import { SendResumeButton } from "@/components/layouts";
-import { Chip, IconButton } from "@/components/ui";
+import { Chip } from "@/components/ui";
 import CompanyDetailChip from "./CompanyDetailChip";
-import { MailOutline, Link, Phone, Heart } from "@/components/ui/icons";
+import { MailOutline, Link, Phone } from "@/components/ui/icons";
+import { AddToFavoriteButton, SendResumeButton } from "@/components/layouts";
 
 type HeaderT = {};
 
@@ -32,9 +32,8 @@ const Header: React.FC<HeaderT> = () => {
 
       <div className="ml-auto flex flex-col items-end gap-3">
         <div className="flex items-center gap-5">
-          <IconButton>
-            <Heart className="fill-orange!" />
-          </IconButton>
+          <AddToFavoriteButton />
+
           <SendResumeButton
             title="short"
             buttonProps={{ className: "bg-blue! text-white!" }}
