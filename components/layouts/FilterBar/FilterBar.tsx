@@ -1,10 +1,10 @@
 import { IconButton } from "@/components/ui";
-import { Bag, Loop, LocationOutlined } from "@/components/ui/icons";
 import { TextField, Select } from "@/components/layouts/Form";
 
 import ExpandedFilter from "./ExpandedFilter";
 import ExpandFilterButton from "./ui/ExpandFilterButton";
 import FilterBarInputContainer from "./ui/FilterBarInputContainer";
+import { Search, Bag, Location } from "@/components/ui/icons";
 
 const workTypes = [
   { value: "remote", label: "დისტანციური" },
@@ -18,7 +18,7 @@ const FilterBar: React.FC = () => {
       <div className="w-full max-w-[880px] mx-auto flex items-center border-3 border-blue rounded-full px-4 py-3 gap-4 mt-4">
         <div className="w-full flex items-center">
           <FilterBarInputContainer>
-            <Loop className="fill-blue" />
+            <Search className="text-blue" />
             <TextField
               label="ძებნა"
               variant="outlined"
@@ -32,7 +32,7 @@ const FilterBar: React.FC = () => {
               options={workTypes}
               variant="outlined"
               placeholder="სამუშაოს ტიპი"
-              adornment={<Bag className="fill-blue" />}
+              adornment={<Bag className="text-blue" />}
             />
           </FilterBarInputContainer>
 
@@ -42,7 +42,7 @@ const FilterBar: React.FC = () => {
               options={workTypes}
               variant="outlined"
               placeholder="მდებარეობა"
-              adornment={<LocationOutlined className="fill-blue" />}
+              adornment={<Location className="text-blue" />}
             />
           </FilterBarInputContainer>
         </div>
@@ -51,7 +51,7 @@ const FilterBar: React.FC = () => {
           <ExpandFilterButton />
 
           <IconButton className="bg-blue!">
-            <Loop className="fill-white" />
+            <Search className="text-white" />
           </IconButton>
         </div>
       </div>

@@ -1,12 +1,8 @@
 import Link from "next/link";
 
-import {
-  LocationFilled,
-  WalletFilled,
-  CalendarFilled,
-} from "@/components/ui/icons";
 import { Chip, IconChip } from "@/components/ui";
 import { AddToFavoriteButton, SendResumeButton } from "@/components/layouts";
+import { Calendar, Wallet, Location } from "@/components/ui/icons";
 
 type VacancyCardT = {
   id: number;
@@ -37,15 +33,15 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
 
         <div className="flex items-center gap-6">
           <IconChip text={vacancy.location}>
-            <LocationFilled className="fill-light-grey-dark" />
+            <Location className="text-light-grey-dark" filled size={20} />
           </IconChip>
 
           <IconChip text={vacancy.salary}>
-            <WalletFilled className="fill-light-grey-dark" />
+            <Wallet className="text-light-grey-dark" filled size={20} />
           </IconChip>
 
           <IconChip text={`${new Date().toLocaleDateString()}-მდე`}>
-            <CalendarFilled className="fill-light-grey-dark" />
+            <Calendar className="text-light-grey-dark" filled size={20} />
           </IconChip>
         </div>
       </div>

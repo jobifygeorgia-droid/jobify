@@ -4,10 +4,10 @@ import { CVSchemaT } from "@/lib/schemas/CVSchema";
 import { formatDate } from "@/lib/utils/formatDate";
 
 import {
-  Education,
+  EducationHat,
   University,
-  CalendarOutlined,
-  EducationSecondary,
+  Calendar,
+  EducationPen,
 } from "@/components/ui/icons";
 import ReviewItem from "./ReviewItem";
 import ReviewContainer from "./ReviewContainer";
@@ -34,17 +34,14 @@ const EducationReview: React.FC<EducationReviewT> = ({ watch, index }) => {
       )}
 
       {startAndEndDate.length > 0 && (
-        <ReviewItem
-          Icon={CalendarOutlined}
-          value={startAndEndDate.join(" - ")}
-        />
+        <ReviewItem Icon={Calendar} value={startAndEndDate.join(" - ")} />
       )}
 
       {field.faculty && (
-        <ReviewItem Icon={EducationSecondary} value={field.faculty} />
+        <ReviewItem Icon={EducationPen} value={field.faculty} />
       )}
 
-      {field.degree && <ReviewItem Icon={Education} value={field.degree} />}
+      {field.degree && <ReviewItem Icon={EducationHat} value={field.degree} />}
     </ReviewContainer>
   );
 };

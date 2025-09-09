@@ -1,14 +1,14 @@
 import classnames from "classnames";
 
 import Tooltip from "./Tooltip";
-import { IconPropsT } from "@/components/ui/icons";
+import { IconT } from "@/components/ui/icons";
 
 type MenuButtonT = {
   isActive?: boolean;
   disabled?: boolean;
   title?: string;
   onClick?: () => void;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon: React.ComponentType<IconT>;
 };
 
 const MenuButton: React.FC<MenuButtonT> = (props) => {
@@ -27,11 +27,7 @@ const MenuButton: React.FC<MenuButtonT> = (props) => {
     >
       {title && <Tooltip>{title}</Tooltip>}
 
-      <Icon
-        width={18}
-        height={18}
-        className={classnames({ "text-white": isActive })}
-      />
+      <Icon size={18} className={classnames({ "text-white": isActive })} />
     </button>
   );
 };

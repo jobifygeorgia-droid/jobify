@@ -1,10 +1,5 @@
-import {
-  CalendarOutlined,
-  WalletOutlined,
-  Bag,
-  LocationOutlined,
-} from "@/components/ui/icons";
 import VacancyDetailChip from "./VacancyDetailChip";
+import { Calendar, Wallet, Bag, Location } from "@/components/ui/icons";
 
 type AsideT = {};
 
@@ -16,19 +11,19 @@ const Aside: React.FC<AsideT> = () => {
 
         <div className="grid grid-cols-2 gap-6">
           <VacancyDetailChip
-            Icon={CalendarOutlined}
+            Icon={Calendar}
             title="გამოქვეყნების თარიღი"
             value="14 ივნისი, 2021"
           />
 
           <VacancyDetailChip
-            Icon={CalendarOutlined}
+            Icon={Calendar}
             title="დასრულების თარიღი"
             value="14 ივლისი, 2021"
           />
 
           <VacancyDetailChip
-            Icon={WalletOutlined}
+            Icon={Wallet}
             title="ხელფასი"
             value="3000 - 3500 GEL"
           />
@@ -38,7 +33,7 @@ const Aside: React.FC<AsideT> = () => {
           <VacancyDetailChip Icon={Bag} title="განათლება" value="მაგისტრი" />
 
           <VacancyDetailChip
-            Icon={LocationOutlined}
+            Icon={Location}
             title="ლოკაცია"
             value="ა. ბელიაშვილის 52"
           />

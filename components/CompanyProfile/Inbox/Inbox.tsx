@@ -6,7 +6,7 @@ import { companyInbox } from "@/data/data";
 import CubicCard from "./ui/CubicCard";
 import SwitchViewMode from "./ui/SwitchViewMode";
 import HorizontalCard from "./ui/HorizontalCard";
-import { Loop } from "@/components/ui/icons";
+import { Search } from "@/components/ui/icons";
 
 type InboxT = {
   viewMode: string;
@@ -21,7 +21,7 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
         <Filter />
 
         <div className="border border-bc rounded-md py-2 px-4 flex items-center gap-3 w-[300px]">
-          <Loop className="fill-dark-grey-hover" width={20} height={20} />
+          <Search className="text-dark-grey-hover" size={20} />
           <input placeholder="ძებნა" className="outline-none w-full" />
         </div>
 

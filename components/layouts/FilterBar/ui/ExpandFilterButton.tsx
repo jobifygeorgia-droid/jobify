@@ -19,7 +19,7 @@ const ExpandFilterButton: React.FC = () => {
 
   return (
     <IconButton onClick={onExpandFilter}>
-      <Filter className="fill-orange" />
+      <Filter className="text-orange" />
     </IconButton>
   );
 };

@@ -35,11 +35,11 @@ const CubicCard: React.FC<CubicCardT> = (props) => {
 
       <div className="text-blue flex items-center justify-between pt-4">
         <span className="flex items-center gap-2">
-          <Download className="fill-blue" />
+          <Download className="text-blue" />
           <span>CV-ის გადმოწერა</span>
         </span>
 
-        <Mail className="fill-orange" />
+        <Mail className="text-orange" />
       </div>
     </div>
   );

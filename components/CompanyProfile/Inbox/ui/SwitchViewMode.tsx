@@ -14,20 +14,20 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
     <div className="flex items-center gap-4">
       <AnchorButton href="?view=list" className="p-0!">
         <ListView
-          width={30}
-          height={30}
-          className={classnames("fill-light-grey-darker", {
-            "fill-blue!": viewMode === "list",
+          size={34}
+          filled
+          className={classnames("text-light-grey-darker", {
+            "text-blue!": viewMode === "list",
           })}
         />
       </AnchorButton>
 
       <AnchorButton href="?view=grid" className="p-0!">
         <GridView
-          width={30}
-          height={30}
-          className={classnames("fill-light-grey-darker", {
-            "fill-blue!": viewMode === "grid",
+          size={34}
+          filled
+          className={classnames("text-light-grey-darker", {
+            "text-blue!": viewMode === "grid",
           })}
         />
       </AnchorButton>

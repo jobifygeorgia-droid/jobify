@@ -6,7 +6,7 @@ type AddToFavoriteButtonT = {};
 const AddToFavoriteButton: React.FC<AddToFavoriteButtonT> = () => {
   return (
     <IconButton color="orange" isFilled={false}>
-      <Heart className="stroke-orange fill-orange" />
+      <Heart className="text-orange" />
     </IconButton>
   );
 };

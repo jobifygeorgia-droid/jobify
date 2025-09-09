@@ -1,6 +1,6 @@
 import { AddToFavoriteButton } from "@/components/layouts";
 import { Button, Chip } from "@/components/ui";
-import { CalendarOutlined, Download } from "@/components/ui/icons";
+import { Calendar, Download } from "@/components/ui/icons";
 import { formatDate } from "@/lib/utils/formatDate";
 
 type HorizontalCardT = {
@@ -28,11 +28,7 @@ const HorizontalCard: React.FC<HorizontalCardT> = (props) => {
         <div className="flex items-center gap-6 text-base-sm">
           <span className="text-light-grey-dark">{props.position}</span>
           <span className="text-light-grey-dark flex items-center gap-2">
-            <CalendarOutlined
-              width={17}
-              height={17}
-              className="fill-light-grey-dark"
-            />
+            <Calendar size={17} className="text-light-grey-dark" />
             {formatDate(new Date())}
           </span>
         </div>
@@ -40,7 +36,7 @@ const HorizontalCard: React.FC<HorizontalCardT> = (props) => {
 
       <div className="ml-auto text-base-sm flex items-center gap-4">
         <span className="flex items-center gap-2">
-          <Download className="fill-blue" />
+          <Download className="text-blue" />
           <span className="text-blue">CV-ის გადმოწერა</span>
         </span>
 

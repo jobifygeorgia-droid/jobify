@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import classnames from "classnames";
 
 import { AnchorButton } from "@/components/ui";
-import { Arrow, Close, Warning } from "./icons";
+import { ArrowRight, Close, Warning } from "./icons";
 
 type AlertPropsT = AlertT & {
   onRemove: (id: string) => void;
@@ -38,7 +38,7 @@ const Alert: React.FC<AlertPropsT> = (props) => {
     >
       <div className="flex items-center gap-4">
         <span className="flex items-center justify-center leading-1">
-          <Warning width={18} height={18} className="stroke-current" />
+          <Warning size={28} className="text-current" />
         </span>
 
         {title && (
@@ -46,7 +46,7 @@ const Alert: React.FC<AlertPropsT> = (props) => {
         )}
 
         <button className="ml-auto" onClick={() => onRemove(id || "")}>
-          <Close width={15} height={15} className="stroke-current" />
+          <Close size={25} className="text-current" />
         </button>
       </div>
 
@@ -69,7 +69,7 @@ const Alert: React.FC<AlertPropsT> = (props) => {
         className="p-0! ml-8 mt-6 text-[inherit]! w-max"
       >
         <span className="font-semibold text-base-sm">გაიგე მეტი</span>
-        <Arrow className="stroke-current!" width={14} />
+        <ArrowRight className="text-current!" size={20} />
       </AnchorButton>
     </div>
   );

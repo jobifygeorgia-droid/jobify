@@ -1,5 +1,5 @@
 import { AnchorButton } from "@/components/ui";
-import { Arrow } from "@/components/ui/icons";
+import { ArrowRight } from "@/components/ui/icons";
 
 type VacanciesForDifferentGroupsCardT = {
   title: string;
@@ -20,7 +20,7 @@ const VacanciesForDifferentGroupsCard: React.FC<
         </div>
       </div>
 
-      <div className="absolute top-[80%] left-4 right-4">
+      <div className="absolute top-[75%] left-4 right-4">
         <AnchorButton
           fullWidth
           href={`/vacancies/groups?group=${group}`}
@@ -28,7 +28,7 @@ const VacanciesForDifferentGroupsCard: React.FC<
           className="justify-between! px-0! text-white hover:text-white!"
         >
           <span>სრულად ნახვა</span>
-          <Arrow className="stroke-current" width={41} height={22} />
+          <ArrowRight className="text-current" size={41} />
         </AnchorButton>
       </div>
     </div>

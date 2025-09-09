@@ -1,15 +1,11 @@
 import { UseFormWatch } from "react-hook-form";
 
+import { formatDate } from "@/lib/utils/formatDate";
+import { CVSchemaT } from "@/lib/schemas/CVSchema";
+
 import ReviewItem from "./ReviewItem";
 import ReviewContainer from "./ReviewContainer";
-
-import {
-  University,
-  CalendarOutlined,
-  EducationSecondary,
-} from "@/components/ui/icons";
-import { CVSchemaT } from "@/lib/schemas/CVSchema";
-import { formatDate } from "@/lib/utils/formatDate";
+import { University, Calendar, EducationHat } from "@/components/ui/icons";
 
 type CertificatesReviewT = {
   index: number;
@@ -26,19 +22,14 @@ const CertificatesReview: React.FC<CertificatesReviewT> = (props) => {
   return (
     <div>
       <ReviewContainer>
-        {field.name && (
-          <ReviewItem Icon={EducationSecondary} value={field.name} />
-        )}
+        {field.name && <ReviewItem Icon={EducationHat} value={field.name} />}
 
         {field.organization && (
           <ReviewItem Icon={University} value={field.organization} />
         )}
 
         {field.end_date && (
-          <ReviewItem
-            Icon={CalendarOutlined}
-            value={formatDate(field.end_date)}
-          />
+          <ReviewItem Icon={Calendar} value={formatDate(field.end_date)} />
         )}
       </ReviewContainer>
     </div>

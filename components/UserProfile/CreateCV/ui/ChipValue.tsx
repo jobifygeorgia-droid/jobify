@@ -14,10 +14,10 @@ const ChipValue: React.FC<ChipValueT> = (props) => {
 
       <button
         type="button"
-        className="translate-y-[2px] cursor-pointer"
         onClick={onRemove}
+        className="translate-y-[1px] cursor-pointer flex items-center"
       >
-        <Close width={14} height={14} className="fill-blue" />
+        <Close size={18} className="text-blue" />
       </button>
     </li>
   );

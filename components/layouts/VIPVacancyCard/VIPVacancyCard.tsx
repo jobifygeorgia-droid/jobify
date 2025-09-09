@@ -3,7 +3,7 @@ import Link from "next/link";
 import TimeAgo from "./TimeAgo";
 import { Chip, IconChip } from "@/components/ui";
 import { SendResumeButton } from "@/components/layouts";
-import { LocationFilled, StarFilled } from "@/components/ui/icons";
+import { Location, Star } from "@/components/ui/icons";
 
 type VIPVacancyCardT = {
   id: number;
@@ -33,7 +33,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
 
             <div className="flex items-center gap-2">
               <span className="font-bold text-base">VIP</span>
-              <StarFilled className="fill-orange" width={26} height={26} />
+              <Star className="text-orange" filled={true} size={26} />
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
       {/* Footer */}
       <div className="flex items-center justify-between">
         <IconChip size="sm" text={vacancy.location}>
-          <LocationFilled className="fill-light-grey-dark" />
+          <Location filled className="text-light-grey-dark" size={20} />
         </IconChip>
 
         <Chip className="text-sm! px-3! py-0!">{vacancy.jobFormat}</Chip>

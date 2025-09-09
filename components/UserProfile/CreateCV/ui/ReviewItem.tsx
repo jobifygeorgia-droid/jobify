@@ -1,8 +1,8 @@
-import { IconPropsT } from "@/components/ui/icons";
+import { IconT } from "@/components/ui/icons";
 
 type ReviewItemT = {
   value: string;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon: React.ComponentType<IconT>;
 };
 
 const ReviewItem: React.FC<ReviewItemT> = (props) => {
@@ -10,8 +10,8 @@ const ReviewItem: React.FC<ReviewItemT> = (props) => {
 
   return (
     <div className="flex items-center gap-4">
-      <span>
-        <Icon className="fill-blue" />
+      <span className="flex items-center">
+        <Icon className="text-blue" size={22} />
       </span>
 
       <span className="text-sm">{value}</span>

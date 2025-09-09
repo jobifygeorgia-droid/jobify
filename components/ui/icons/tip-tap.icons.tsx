@@ -1,6 +1,6 @@
-import { IconPropsT } from "@/components/ui/icons/icon.types";
+import { StaticIconT } from "@/components/ui/icons/static-icons";
 
-export const Bold: React.FC<IconPropsT> = (props) => {
+export const Bold: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -22,7 +22,7 @@ export const Bold: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Italic: React.FC<IconPropsT> = (props) => {
+export const Italic: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -46,7 +46,7 @@ export const Italic: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const OrderedList: React.FC<IconPropsT> = (props) => {
+export const OrderedList: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -73,7 +73,7 @@ export const OrderedList: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const UnorderedList: React.FC<IconPropsT> = (props) => {
+export const UnorderedList: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -100,7 +100,7 @@ export const UnorderedList: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const SplitList: React.FC<IconPropsT> = (props) => {
+export const SplitList: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -126,7 +126,7 @@ export const SplitList: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const SinkList: React.FC<IconPropsT> = (props) => {
+export const SinkList: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -152,7 +152,7 @@ export const SinkList: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const LiftList: React.FC<IconPropsT> = (props) => {
+export const LiftList: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -178,7 +178,7 @@ export const LiftList: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Underline: React.FC<IconPropsT> = (props) => {
+export const Underline: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -201,7 +201,7 @@ export const Underline: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading1: React.FC<IconPropsT> = (props) => {
+export const Heading1: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -226,7 +226,7 @@ export const Heading1: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading2: React.FC<IconPropsT> = (props) => {
+export const Heading2: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -251,7 +251,7 @@ export const Heading2: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading3: React.FC<IconPropsT> = (props) => {
+export const Heading3: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -277,7 +277,7 @@ export const Heading3: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading4: React.FC<IconPropsT> = (props) => {
+export const Heading4: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -303,7 +303,7 @@ export const Heading4: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading5: React.FC<IconPropsT> = (props) => {
+export const Heading5: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -329,7 +329,7 @@ export const Heading5: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Heading6: React.FC<IconPropsT> = (props) => {
+export const Heading6: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -355,7 +355,7 @@ export const Heading6: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AlignCenter: React.FC<IconPropsT> = (props) => {
+export const AlignCenter: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -379,7 +379,7 @@ export const AlignCenter: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AlignLeft: React.FC<IconPropsT> = (props) => {
+export const AlignLeft: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -403,7 +403,7 @@ export const AlignLeft: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AlignRight: React.FC<IconPropsT> = (props) => {
+export const AlignRight: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -427,7 +427,7 @@ export const AlignRight: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Justify: React.FC<IconPropsT> = (props) => {
+export const Justify: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -451,7 +451,7 @@ export const Justify: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const HighLight: React.FC<IconPropsT> = (props) => {
+export const HighLight: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -474,7 +474,7 @@ export const HighLight: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Subscript: React.FC<IconPropsT> = (props) => {
+export const Subscript: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -498,7 +498,7 @@ export const Subscript: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Superscript: React.FC<IconPropsT> = (props) => {
+export const Superscript: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -522,7 +522,7 @@ export const Superscript: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Strike: React.FC<IconPropsT> = (props) => {
+export const Strike: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -546,7 +546,7 @@ export const Strike: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Blockquote: React.FC<IconPropsT> = (props) => {
+export const Blockquote: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -567,7 +567,7 @@ export const Blockquote: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Code: React.FC<IconPropsT> = (props) => {
+export const Code: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -590,7 +590,7 @@ export const Code: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Line: React.FC<IconPropsT> = (props) => {
+export const Line: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -612,7 +612,7 @@ export const Line: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const LinkIcon: React.FC<IconPropsT> = (props) => {
+export const LinkIcon: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -636,7 +636,7 @@ export const LinkIcon: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const RemoveLink: React.FC<IconPropsT> = (props) => {
+export const RemoveLink: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -661,7 +661,7 @@ export const RemoveLink: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Youtube: React.FC<IconPropsT> = (props) => {
+export const Youtube: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -684,7 +684,7 @@ export const Youtube: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const LineBreak: React.FC<IconPropsT> = (props) => {
+export const LineBreak: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -704,7 +704,7 @@ export const LineBreak: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const FontIcon: React.FC<IconPropsT> = (props) => {
+export const FontIcon: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -724,7 +724,7 @@ export const FontIcon: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Undo: React.FC<IconPropsT> = (props) => {
+export const Undo: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -747,7 +747,7 @@ export const Undo: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const Redo: React.FC<IconPropsT> = (props) => {
+export const Redo: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -770,7 +770,7 @@ export const Redo: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AddTable: React.FC<IconPropsT> = (props) => {
+export const AddTable: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -796,7 +796,7 @@ export const AddTable: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const RemoveTable: React.FC<IconPropsT> = (props) => {
+export const RemoveTable: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -821,7 +821,7 @@ export const RemoveTable: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AddColumnBefore: React.FC<IconPropsT> = (props) => {
+export const AddColumnBefore: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -845,7 +845,7 @@ export const AddColumnBefore: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AddColumnAfter: React.FC<IconPropsT> = (props) => {
+export const AddColumnAfter: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -869,7 +869,7 @@ export const AddColumnAfter: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const DeleteColumn: React.FC<IconPropsT> = (props) => {
+export const DeleteColumn: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -893,7 +893,7 @@ export const DeleteColumn: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AddRowAfter: React.FC<IconPropsT> = (props) => {
+export const AddRowAfter: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -917,7 +917,7 @@ export const AddRowAfter: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const AddRowBefore: React.FC<IconPropsT> = (props) => {
+export const AddRowBefore: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -941,7 +941,7 @@ export const AddRowBefore: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const DeleteRow: React.FC<IconPropsT> = (props) => {
+export const DeleteRow: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -965,7 +965,7 @@ export const DeleteRow: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const MergeCells: React.FC<IconPropsT> = (props) => {
+export const MergeCells: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -986,7 +986,7 @@ export const MergeCells: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const SplitCell: React.FC<IconPropsT> = (props) => {
+export const SplitCell: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1007,7 +1007,7 @@ export const SplitCell: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const ToggleHeaderColumn: React.FC<IconPropsT> = (props) => {
+export const ToggleHeaderColumn: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1035,7 +1035,7 @@ export const ToggleHeaderColumn: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const ToggleHeaderRow: React.FC<IconPropsT> = (props) => {
+export const ToggleHeaderRow: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1063,7 +1063,7 @@ export const ToggleHeaderRow: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const ToggleHeaderCell: React.FC<IconPropsT> = (props) => {
+export const ToggleHeaderCell: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1088,7 +1088,7 @@ export const ToggleHeaderCell: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const MergeOrSplit: React.FC<IconPropsT> = (props) => {
+export const MergeOrSplit: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1108,7 +1108,7 @@ export const MergeOrSplit: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const FixTables: React.FC<IconPropsT> = (props) => {
+export const FixTables: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1139,7 +1139,7 @@ export const FixTables: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const NextCell: React.FC<IconPropsT> = (props) => {
+export const NextCell: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (
@@ -1163,7 +1163,7 @@ export const NextCell: React.FC<IconPropsT> = (props) => {
   );
 };
 
-export const PreviousCell: React.FC<IconPropsT> = (props) => {
+export const PreviousCell: React.FC<StaticIconT> = (props) => {
   const { width, height, className } = props;
 
   return (

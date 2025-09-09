@@ -5,10 +5,10 @@ import { useState } from "react";
 import MuiPagination, {
   PaginationRenderItemParams,
 } from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import classnames from "classnames";
+import Stack from "@mui/material/Stack";
 
-import { PaginationMultipleArrow, PaginationArrow } from "./icons";
+import { DoubleArrowRight, KeyboardArrowRight } from "./icons";
 
 type PaginationT = {
   x?: string;
@@ -172,7 +172,7 @@ function PaginationArrowButton(props: {
         { "rotate-180": isPrevious }
       )}
     >
-      {isMultiple ? <PaginationMultipleArrow /> : <PaginationArrow />}
+      {isMultiple ? <DoubleArrowRight /> : <KeyboardArrowRight />}
     </button>
   );
 }

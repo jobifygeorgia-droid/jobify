@@ -1,4 +1,4 @@
-import { LocationOutlined } from "@/components/ui/icons";
+import { Location } from "@/components/ui/icons";
 import { DatePicker, TextField } from "@/components/layouts/Form";
 
 const FilterForm: React.FC = () => {
@@ -9,7 +9,7 @@ const FilterForm: React.FC = () => {
       <TextField
         label="მდებარეობა"
         labelPosition="out"
-        adornment={<LocationOutlined className="fill-blue!" />}
+        adornment={<Location className="text-light-grey-dark" />}
       />
       <DatePicker
         disablePortal={true}

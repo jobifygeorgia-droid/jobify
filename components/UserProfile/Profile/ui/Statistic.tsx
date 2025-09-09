@@ -1,11 +1,11 @@
 import classnames from "classnames";
 
-import { IconPropsT } from "@/components/ui/icons";
+import { IconT } from "@/components/ui/icons";
 
 type StatisticT = {
   title: string;
   value: string;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon: React.ComponentType<IconT>;
   highlighted?: boolean;
 };
 
@@ -32,7 +32,7 @@ const Statistic: React.FC<StatisticT> = (props) => {
             }
           )}
         >
-          {<Icon className="fill-orange" />}
+          {<Icon className="text-orange" />}
         </span>
 
         <span className="flex flex-col">

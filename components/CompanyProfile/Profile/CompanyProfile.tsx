@@ -42,9 +42,9 @@ const CompanyProfile: React.FC<CompanyProfileT> = () => {
 
           <AnchorButton
             href="/legal-entity/create-vacancy"
-            className="gap-3 font-semibold w-max"
+            className="gap-3 font-semibold w-max p-0!"
           >
-            <Plus width={18} height={18} />
+            <Plus size={26} className="translate-y-[2px]" />
             ვაკანსიის დამატება
           </AnchorButton>
         </div>

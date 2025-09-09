@@ -1,6 +1,6 @@
 import { Chip } from "@/components/ui";
 import CompanyDetailChip from "./CompanyDetailChip";
-import { MailOutline, Link, Phone } from "@/components/ui/icons";
+import { Link, Phone, Mail } from "@/components/ui/icons";
 import { AddToFavoriteButton, SendResumeButton } from "@/components/layouts";
 
 type HeaderT = {};
@@ -23,10 +23,7 @@ const Header: React.FC<HeaderT> = () => {
             text="https://github.com/some-project-name-here/project/tree/main"
           />
           <CompanyDetailChip Icon={Phone} text="+995 555 896 878" />
-          <CompanyDetailChip
-            Icon={MailOutline}
-            text="rusieshvili.joni@gmail.com"
-          />
+          <CompanyDetailChip Icon={Mail} text="rusieshvili.joni@gmail.com" />
         </div>
       </div>
 

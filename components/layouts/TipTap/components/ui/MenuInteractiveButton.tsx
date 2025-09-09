@@ -4,13 +4,13 @@ import { useState } from "react";
 
 import MenuButton from "./MenuButton";
 import { Button } from "@/components/ui";
-import { Close, IconPropsT } from "@/components/ui/icons";
+import { Close, IconT } from "@/components/ui/icons";
 
 type MenuInteractiveButtonT = {
   title: string;
   message: string;
   placeholder: string;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon: React.ComponentType<IconT>;
   onConfirm: (url: string) => void;
 };
 
@@ -54,7 +54,7 @@ const MenuInteractiveButton: React.FC<MenuInteractiveButtonT> = (props) => {
                 onClick={() => setOpenPopup(false)}
                 className="ml-auto mb-2 cursor-pointer"
               >
-                <Close width={15} height={15} />
+                <Close size={15} />
               </button>
 
               <span className="font-semibold text-md text-center capitalize">

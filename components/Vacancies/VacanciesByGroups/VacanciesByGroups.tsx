@@ -12,7 +12,7 @@ type VacanciesByGroupsT = {
 };
 
 const VacanciesByGroups: React.FC<VacanciesByGroupsT> = ({ group }) => {
-  const dataToShow: GroupT = groups[group as keyof typeof group];
+  const dataToShow: GroupT = groups[group as keyof typeof groups];
 
   if (!dataToShow) notFound();
 

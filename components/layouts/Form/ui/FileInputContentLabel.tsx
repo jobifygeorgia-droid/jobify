@@ -1,5 +1,5 @@
-import { IconPropsT, Doc, ImageIcon, VideoIcon } from "@/components/ui/icons";
 import { FileType } from "../types/form-fields.types";
+import { IconT, Doc, Video, Image } from "@/components/ui/icons";
 
 type FileInputContentLabelT = {
   inputType: FileType;
@@ -8,7 +8,7 @@ type FileInputContentLabelT = {
 const contentLabelConfigByType: Record<
   FileType,
   {
-    Icon: React.FC<IconPropsT>;
+    Icon: React.FC<IconT>;
     messageText: string;
     buttonText: string;
   }
@@ -19,12 +19,12 @@ const contentLabelConfigByType: Record<
     buttonText: "აირჩიე ფაილი",
   },
   image: {
-    Icon: ImageIcon,
+    Icon: Image,
     messageText: "გთხოვთ აირჩიოთ ფოტო ან ჩააგდეთ აქ",
     buttonText: "აირჩიე ფაილი",
   },
   video: {
-    Icon: VideoIcon,
+    Icon: Video,
     messageText: "გთხოვთ აირჩიოთ Video ფაილი ან ჩააგდეთ აქ",
     buttonText: "აირჩიე ფაილი",
   },
@@ -37,11 +37,7 @@ const FileInputContentLabel: React.FC<FileInputContentLabelT> = (props) => {
 
   return (
     <>
-      <configToShow.Icon
-        className="fill-blue stroke-blue"
-        width={35}
-        height={35}
-      />
+      <configToShow.Icon className="text-blue" size={45} />
 
       <span className="text-sm">{configToShow.messageText}</span>
 

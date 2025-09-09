@@ -33,9 +33,9 @@ const FormGroupContainer: React.FC<FormGroupContainerT> = (props) => {
         <div className="flex items-center gap-5 col-start-2">
           <span className="size-10 aspect-square flex items-center justify-center bg-blue-light rounded-full">
             {isExpanded ? (
-              <Minus className="fill-blue" />
+              <Minus className="text-blue" size={30} />
             ) : (
-              <Plus className="fill-blue" />
+              <Plus className="text-blue" size={30} />
             )}
           </span>
 

@@ -13,7 +13,11 @@ const SelectInputContainer = <T,>({
   return (
     <components.ValueContainer {...rest}>
       <div className="flex items-center w-full gap-2">
-        {adornment && <span className="flex-none">{adornment}</span>}
+        {adornment && (
+          <span className="flex-none flex items-center justify-center">
+            {adornment}
+          </span>
+        )}
 
         <div className="flex-1 relative flex items-center justify-start">
           {children}

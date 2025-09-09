@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui";
-import { Checkbox } from "../../Form";
-import ExpandedFilterSectionTitle from "./ExpandedFilterSectionTitle";
-import { Arrow } from "@/components/ui/icons";
 import { useFilterContext } from "../FilterProvider";
+
+import { Button } from "@/components/ui";
+import { ArrowRight } from "@/components/ui/icons";
+import { Checkbox } from "@/components/layouts/Form";
+import ExpandedFilterSectionTitle from "./ExpandedFilterSectionTitle";
 
 const FilterByCategory: React.FC = () => {
   const {
@@ -36,8 +37,8 @@ const FilterByCategory: React.FC = () => {
         onClick={toggleCategories}
       >
         <span>{expandCategories ? "დაკეცვა" : "ყველას ნახვა"}</span>
-        <span>
-          <Arrow className="stroke-blue" height={16} />
+        <span className="flex items-center">
+          <ArrowRight className="text-blue" size={20} />
         </span>
       </Button>
     </div>

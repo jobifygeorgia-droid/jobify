@@ -1,12 +1,12 @@
 import classnames from "classnames";
 
 import { Menu } from "@/components/ui";
-import { IconPropsT } from "@/components/ui/icons";
+import { IconT } from "@/components/ui/icons";
 
 type OptionItemT = {
-  Icon: React.ComponentType<IconPropsT>;
   text: string;
   isDanger?: boolean;
+  Icon: React.ComponentType<IconT>;
 };
 
 const OptionItem: React.FC<OptionItemT> = (props) => {
@@ -20,7 +20,7 @@ const OptionItem: React.FC<OptionItemT> = (props) => {
       })}
     >
       <span className="size-5 flex items-center justify-center">
-        <Icon width={22} height={22} className="fill-current" />
+        <Icon size={22} className="text-current" />
       </span>
       <span className="text-base-sm">{text}</span>
     </Menu.MenuItem>
