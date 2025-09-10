@@ -16,7 +16,7 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
         <ListView
           size={34}
           filled
-          className={classnames("text-light-grey-darker", {
+          className={classnames("text-light-grey-active", {
             "text-blue!": viewMode === "list",
           })}
         />
@@ -26,7 +26,7 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
         <GridView
           size={34}
           filled
-          className={classnames("text-light-grey-darker", {
+          className={classnames("text-light-grey-active", {
             "text-blue!": viewMode === "grid",
           })}
         />

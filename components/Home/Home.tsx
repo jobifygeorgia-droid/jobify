@@ -2,12 +2,12 @@ import VIPVacancies from "./sections/VIPVacancies";
 import BannersSlider from "./sections/BannersSlider";
 import Vacancies from "./sections/Vacancies";
 import VacanciesForDifferentGroups from "./sections/VacanciesForDifferentGroups";
-// import InterestingForYou from "./sections/InterestingForYou";
+import InterestingForYou from "./sections/InterestingForYou";
 import CreateResume from "./sections/CreateResume";
 import Subscribe from "./sections/Subscribe";
-// import Reviews from "./sections/Reviews";
-// import LiveInCompany from "./sections/LiveInCompany";
-// import TopCompanies from "./sections/TopCompanies";
+import Reviews from "./sections/Reviews";
+import LiveInCompany from "./sections/LiveInCompany";
+import TopCompanies from "./sections/TopCompanies";
 
 type HomeT = {};
 
@@ -18,12 +18,12 @@ const Home: React.FC<HomeT> = () => {
       <BannersSlider />
       <Vacancies />
       <VacanciesForDifferentGroups />
-      {/* <InterestingForYou /> */}
-      {/* <LiveInCompany /> */}
+      <InterestingForYou />
+      <LiveInCompany />
       <CreateResume />
       <Subscribe />
-      {/* <Reviews /> */}
-      {/* <TopCompanies /> */}
+      <Reviews />
+      <TopCompanies />
     </div>
   );
 };

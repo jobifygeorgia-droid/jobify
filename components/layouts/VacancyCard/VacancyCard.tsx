@@ -16,7 +16,7 @@ type VacancyCardT = {
 
 const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
   return (
-    <div className="max-w-full w-full p-6 rounded-2xl bg-white border border-bc flex items-center gap-5">
+    <div className="max-w-full w-full px-4 py-3  rounded-2xl bg-white border border-bc flex items-center gap-5">
       <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
 
       <div className="flex flex-col gap-3">

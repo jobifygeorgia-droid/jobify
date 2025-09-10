@@ -12,6 +12,7 @@ const VIPVacancies: React.FC<VIPVacanciesT> = () => {
   return (
     <SectionContainer title="VIP ვაკანსიები" className="relative">
       <MultipleSlider
+        slidesPerView={4}
         slides={vipVacancies.slice(0, 20).map((slide) => (
           <VIPVacancyCard key={slide.id} {...slide} />
         ))}

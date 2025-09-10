@@ -10,7 +10,7 @@ const LiveInCompany: React.FC<LiveInCompanyT> = () => {
   return (
     <SectionContainer className="relative" title="ცხოვრება კომპანიაში">
       <MultipleSlider
-        slidesPerView={5}
+        slidesPerView={4.8}
         slides={liveInCompanyData.map((company) => (
           <LiveInCompanyCard key={company.id} {...company} />
         ))}

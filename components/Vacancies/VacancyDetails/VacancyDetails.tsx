@@ -23,7 +23,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
         </div>
       </TipTapProvider>
 
-      <div className="py-12">
+      <div className="pb-12 pt-6">
         <SectionTitle size="base" title="შენთვის საინტერესო ვაკანსიები" />
 
         <div className="flex flex-col gap-4 mt-5">

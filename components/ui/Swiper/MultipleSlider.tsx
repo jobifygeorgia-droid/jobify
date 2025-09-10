@@ -19,7 +19,7 @@ const MultipleSlider: React.FC<MultipleSliderT> = (props) => {
     <Swiper
       slidesPerView={slidesPerView}
       slidesPerGroup={slidesPerView}
-      spaceBetween={30}
+      spaceBetween={20}
       autoplay={{ delay: 4000 }}
       pagination={{
         clickable: true,

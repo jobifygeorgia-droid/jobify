@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { IconPropsT } from "./icons";
+import { IconT } from "./icons";
 
 type IconChipT = {
   /**
@@ -9,7 +9,7 @@ type IconChipT = {
    */
   size?: "sm" | "base";
   text: string;
-  Icon?: React.ComponentType<IconPropsT>;
+  Icon?: React.ComponentType<IconT>;
   children?: React.ReactNode;
 };
 
@@ -27,8 +27,7 @@ const IconChip: React.FC<IconChipT> = (props) => {
         children
       ) : Icon ? (
         <Icon
-          width={size === "base" ? 22 : 18}
-          height={size === "base" ? 22 : 18}
+          size={size === "base" ? 22 : 18}
           className="fill-none stroke-light-grey-active"
         />
       ) : null}

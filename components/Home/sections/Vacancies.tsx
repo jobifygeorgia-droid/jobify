@@ -11,8 +11,8 @@ const Vacancies: React.FC<VacanciesT> = () => {
 
   return (
     <SectionContainer>
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-3">
           {vipVacancies.slice(0, limit).map((vacancy) => (
             <VacancyCard key={vacancy.id} {...vacancy} />
           ))}

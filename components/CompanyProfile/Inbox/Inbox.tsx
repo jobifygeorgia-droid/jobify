@@ -17,10 +17,10 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
     <div className="py-10 flex flex-col gap-8">
       <SectionTitle title="შემოსული რეზიუმეები" size="base" />
 
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center gap-4">
         <Filter />
 
-        <div className="border border-bc rounded-md py-2 px-4 flex items-center gap-3 w-[300px]">
+        <div className="border border-bc rounded-md py-2 px-4 flex items-center gap-3 w-[300px] ml-auto">
           <Search className="text-dark-grey-hover" size={20} />
           <input placeholder="ძებნა" className="outline-none w-full" />
         </div>

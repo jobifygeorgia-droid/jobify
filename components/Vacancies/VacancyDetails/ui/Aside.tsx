@@ -6,7 +6,7 @@ type AsideT = {};
 const Aside: React.FC<AsideT> = () => {
   return (
     <aside className="flex-1">
-      <div className="rounded-lg border border-blue-light-hover p-8 flex flex-col gap-6">
+      <div className="rounded-xl border border-blue-light-hover p-8 flex flex-col gap-6">
         <span className="font-semibold">ვაკანსიის დეტალები</span>
 
         <div className="grid grid-cols-2 gap-6">
