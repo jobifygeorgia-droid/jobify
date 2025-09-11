@@ -1,8 +1,9 @@
-import { AnchorButton, Pagination } from "@/components/ui";
-import Statistic from "./ui/Statistic";
-import { Heart, CV, Eye } from "@/components/ui/icons";
 import { vipVacancies } from "@/data/data";
+
+import Statistic from "./ui/Statistic";
 import { VacancyCard } from "@/components/layouts";
+import { Heart, CV, Eye } from "@/components/ui/icons";
+import { AnchorButton, Pagination } from "@/components/ui";
 
 type ProfileT = {};
 
@@ -22,16 +23,13 @@ const Profile: React.FC<ProfileT> = () => {
         </div>
 
         <div className="ml-auto">
-          <AnchorButton
-            href="/user/profile/123/cv"
-            className="bg-orange-light-hover text-orange font-semibold hover:text-orange hover:bg-orange-light-hover"
-          >
+          <AnchorButton href="/user/profile/123/cv" buttonType="secondary">
             შექმენი CV
           </AnchorButton>
         </div>
       </div>
 
-      <div className="my-5 py-6 px-9 flex items-center justify-between gap-5 border border-bc rounded-2xl">
+      <div className="my-5 py-6 px-9 flex items-center justify-between gap-5 border border-bc rounded-2xl bg-white">
         <p className="text-md">
           მოითხოვე &nbsp;
           <span className="font-semibold text-blue">პროფესიონალის რჩევა</span>
@@ -56,7 +54,7 @@ const Profile: React.FC<ProfileT> = () => {
         <Statistic title="პროფილის ნახვები" value="70" Icon={Eye} />
       </div>
 
-      <div className="my-12">kind of filter here</div>
+      <div className="my-12 flex items-center gap-10">filter here</div>
 
       <div className="flex flex-col gap-4">
         {vipVacancies.slice(0, 5).map((vacancy) => (

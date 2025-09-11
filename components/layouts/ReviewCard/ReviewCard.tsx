@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Rating } from "@/components/ui";
+import { LineClamp, Rating } from "@/components/ui";
 import UserAvatar from "@/public/user-avatar.png";
 
 type ReviewCardT = {
@@ -13,7 +13,7 @@ type ReviewCardT = {
 
 const ReviewCard: React.FC<ReviewCardT> = (review) => {
   return (
-    <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5">
+    <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5 bg-white">
       <div className="flex items-start gap-5">
         <figure className="relative bg-light-grey-dark rounded-full size-14 border-dark-grey-dark overflow-hidden">
           <Image
@@ -40,9 +40,9 @@ const ReviewCard: React.FC<ReviewCardT> = (review) => {
         </div>
       </div>
 
-      <p className="text-base text-dark-grey-dark line-clamp-3">
+      <LineClamp className="text-base text-dark-grey-dark h-[72px]" clamp={3}>
         {review.text}
-      </p>
+      </LineClamp>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const workTypes = [
 const FilterBar: React.FC = () => {
   return (
     <>
-      <div className="w-full max-w-[880px] mx-auto flex items-center border-3 border-blue rounded-full px-4 py-3 gap-4 mt-4">
+      <div className="w-full max-w-[880px] mx-auto flex items-center border-3 border-blue rounded-full px-4 py-3 gap-4 mt-4 bg-white">
         <div className="w-full flex items-center">
           <FilterBarInputContainer>
             <Search className="text-blue" />

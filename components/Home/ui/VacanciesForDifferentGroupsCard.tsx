@@ -25,7 +25,7 @@ const VacanciesForDifferentGroupsCard: React.FC<
           fullWidth
           href={`/vacancies/groups?group=${group}`}
           buttonType="text"
-          className="justify-between! px-0! text-white hover:text-white!"
+          className="justify-between! px-0! text-white hover:text-white! decoration-transparent"
         >
           <span>სრულად ნახვა</span>
           <ArrowRight className="text-current" size={41} />

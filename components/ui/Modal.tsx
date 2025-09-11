@@ -32,10 +32,10 @@ const Modal: React.FC<ModalT> = (props) => {
 
   return createPortal(
     <div
-      className={classnames("fixed inset-0 z-[9999]", {
+      onClick={closeModal}
+      className={classnames("fixed inset-0 z-[9999] scroll-block", {
         "bg-[rgba(0,0,0,0.3)]": backdrop,
       })}
-      onClick={closeModal}
     >
       <div
         onClick={(e) => e.stopPropagation()}

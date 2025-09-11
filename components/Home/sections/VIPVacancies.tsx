@@ -1,5 +1,3 @@
-"use client";
-
 import { vipVacancies } from "@/data/data";
 
 import { VIPVacancyCard } from "@/components/layouts";
@@ -17,11 +15,7 @@ const VIPVacancies: React.FC<VIPVacanciesT> = () => {
           <VIPVacancyCard key={slide.id} {...slide} />
         ))}
       />
-      {/* <div className="flex flex-wrap items-start gap-4">
-          {vipVacancies.map((slide) => (
-            <VIPVacancyCard key={slide.id} {...slide} />
-          ))}
-        </div> */}
+
       <ViewAllButton
         href="/vip-vacancies"
         className="absolute z-[9] right-0 bottom-0"

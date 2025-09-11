@@ -11,7 +11,7 @@ const Filter: React.FC<FilterT> = () => {
         აქტიური
       </Chip>
       <Chip isActive={false} onClick={() => {}}>
-        სამუშაო ვერსია
+        დრაფტი
       </Chip>
       <Chip isActive={false} onClick={() => {}}>
         არქივი

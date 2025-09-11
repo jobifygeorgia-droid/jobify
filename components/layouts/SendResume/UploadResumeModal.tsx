@@ -1,9 +1,10 @@
 "use client";
 
-import { Button, Modal, Divider } from "@/components/ui";
-import { useSendResumeContext } from "@/providers/SendResumeProvider";
-import { TextEditor, DropzoneFileInput } from "@/components/layouts/Form";
 import { TipTapProvider } from "@/providers";
+import { useSendResumeContext } from "@/providers/SendResumeProvider";
+
+import { Button, Modal, Divider } from "@/components/ui";
+import { TextEditor, DropzoneFileInput } from "@/components/layouts/Form";
 
 const UploadResumeModal: React.FC = () => {
   const { modalIsOpen, onCloseModal } = useSendResumeContext();

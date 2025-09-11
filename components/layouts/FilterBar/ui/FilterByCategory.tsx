@@ -33,13 +33,15 @@ const FilterByCategory: React.FC = () => {
 
       <Button
         buttonType="text"
-        className="ml-auto text-blue!"
+        className="ml-auto text-blue! decoration-transparent"
         onClick={toggleCategories}
       >
         <span>{expandCategories ? "დაკეცვა" : "ყველას ნახვა"}</span>
-        <span className="flex items-center">
-          <ArrowRight className="text-blue" size={20} />
-        </span>
+        {!expandCategories && (
+          <span className="flex items-center">
+            <ArrowRight className="text-blue" size={20} />
+          </span>
+        )}
       </Button>
     </div>
   );

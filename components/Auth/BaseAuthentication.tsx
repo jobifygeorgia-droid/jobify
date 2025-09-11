@@ -57,6 +57,7 @@ const BaseAuthentication: React.FC = () => {
           <Checkbox id="remember-me">დამახსოვრება</Checkbox>
 
           <Link
+            scroll={false}
             href="?auth=password-update-method"
             className="text-base-sm text-light-grey-dark-active hover:underline"
           >

@@ -74,9 +74,23 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             </div>
           </div>
 
+          <div className="flex flex-col gap-4">
+            <Label label="განცხადების ტიპი" labelPosition="out" />
+
+            <div className="flex gap-5 w-full order-1">
+              <Chip isActive={true} onClick={() => {}}>
+                პრემიუმი
+              </Chip>
+
+              <Chip isActive={false} onClick={() => {}}>
+                სტანდარტული
+              </Chip>
+            </div>
+          </div>
+
           <TextField label="მდებარეობა" labelPosition="out" />
 
-          <Button buttonType="secondary">გამოქვეყნება</Button>
+          <Button buttonType="primary">გამოქვეყნება</Button>
         </form>
       </div>
     </div>

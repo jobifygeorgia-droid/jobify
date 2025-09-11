@@ -15,7 +15,7 @@ const TextFieldLabel: React.FC<TextFieldLabelT> = (props) => {
   return (
     <label
       htmlFor={id}
-      className={classnames("text-base-sm font-medium", {
+      className={classnames("text-base-sm font-medium text-dark-grey", {
         "absolute ml-1 px-1 -top-1/4 peer-focus:-top-1/4 peer-focus:text-base-sm peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-base transition-all duration-150 bg-white":
           labelPosition === "in",
         "order-1": labelPosition === "out" && !keepOrder,

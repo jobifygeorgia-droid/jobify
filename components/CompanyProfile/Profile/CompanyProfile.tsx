@@ -15,7 +15,7 @@ type CompanyProfileT = {};
 
 const CompanyProfile: React.FC<CompanyProfileT> = () => {
   return (
-    <div className="my-6 bg-white rounded-3xl px-10 py-5">
+    <div className="my-6 rounded-3xl px-10 py-8 bg-white">
       <header className="flex flex-col gap-5">
         <div className="grid grid-cols-3 gap-4">
           <Statistic

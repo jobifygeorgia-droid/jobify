@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export type ButtonBaseT = {
   fullWidth?: boolean;
-  buttonType?: "primary" | "secondary" | "text" | "outlined";
+  buttonType?: "primary" | "secondary" | "tertiary" | "text" | "outlined";
   /**
    * children alignment presets
    * - default - start

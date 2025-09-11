@@ -6,8 +6,11 @@
 
   /* Colors */
 
-  --background: #fdfdfd;
-  --foreground: #30353b;
+  --color-background: #ffffff;
+  --color-background-secondary: #f9f9f9;
+  --color-primary: var(--color-dark-grey-dark-hover);
+  --color-secondary: var(--color-light-grey-darker);
+  --color-light: var(--color-light-grey-active);
 
   --color-bc: var(--color-light-grey); /* Border color */
   --color-blue-footer: #f5faff;
@@ -111,10 +114,14 @@ input:-webkit-autofill:active {
 }
 
 body {
-  color: var(--foreground);
-  background-color: var(--background);
+  color: var(--color-secondary);
+  background-color: var(--color-background);
   font-family: var(--font-noto-sans-georgian);
   overflow-x: hidden;
+}
+
+body:has(.scroll-block) {
+  overflow: hidden !important;
 }
 
 ::-webkit-scrollbar-track {

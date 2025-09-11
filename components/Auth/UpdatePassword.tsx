@@ -53,6 +53,7 @@ const UpdatePassword: React.FC = () => {
 
         <div className="mt-16 flex flex-col gap-2">
           <AnchorButton
+            scroll={false}
             href="?auth=update-success"
             fullWidth
             buttonType="primary"

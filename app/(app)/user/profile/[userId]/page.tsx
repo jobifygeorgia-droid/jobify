@@ -1,8 +1,14 @@
-import UserProfile from "@/components/UserProfile/Profile/Profile";
 import { PageParamsT } from "@/interface/global.types";
 
+import { Container } from "@/components/ui";
+import UserProfile from "@/components/UserProfile/Profile/Profile";
+
 const Page: React.FC<PageParamsT> = () => {
-  return <UserProfile />;
+  return (
+    <Container>
+      <UserProfile />
+    </Container>
+  );
 };
 
 export default Page;

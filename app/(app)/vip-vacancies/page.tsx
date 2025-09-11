@@ -1,5 +1,7 @@
-import { FilterBar } from "@/components/layouts";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
+
+import { Container } from "@/components/ui";
+import { FilterBar } from "@/components/layouts";
 import VIPVacancies from "@/components/Vacancies/VIPVacancies/VIPVacancies";
 
 type PageT = {};
@@ -7,8 +9,10 @@ type PageT = {};
 const Page: React.FC<PageT> = () => {
   return (
     <FilterProvider>
-      <FilterBar />
-      <VIPVacancies />
+      <Container>
+        <FilterBar />
+        <VIPVacancies />
+      </Container>
     </FilterProvider>
   );
 };
