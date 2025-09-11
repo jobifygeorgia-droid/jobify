@@ -23,9 +23,9 @@ const VacanciesByGroups: React.FC<VacanciesByGroupsT> = ({ group }) => {
           <Image src={dataToShow.bgURL} alt="ukrainian" fill />
         </figure>
 
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-white h-[80px] py-5 px-14 flex items-center justify-center">
+        {/* <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-white h-[80px] py-5 px-14 flex items-center justify-center">
           Google
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-4 w-full max-w-[800px] mx-auto flex flex-col gap-3 justify-center items-center text-center">

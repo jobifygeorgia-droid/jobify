@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import NavLink from "./NavLink";
-import { Container, Logo } from "@/components/ui";
 import User from "./User";
+import NavLink from "./ui/NavLink";
+import { Container, Logo } from "@/components/ui";
 
 const NavBar: React.FC = () => {
   return (

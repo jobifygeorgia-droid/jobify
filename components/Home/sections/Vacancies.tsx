@@ -1,5 +1,7 @@
 import { vipVacancies } from "@/data/data";
 
+import { PATHS } from "@/lib/config";
+
 import { VacancyCard } from "@/components/layouts";
 import { Pagination, ViewAllButton } from "@/components/ui";
 import SectionContainer from "@/components/Home/ui/SectionContainer";
@@ -23,7 +25,7 @@ const Vacancies: React.FC<VacanciesT> = () => {
             <Pagination />
           </div>
 
-          <ViewAllButton href="/vacancies" />
+          <ViewAllButton href={PATHS.vacancies} />
         </div>
       </div>
     </SectionContainer>

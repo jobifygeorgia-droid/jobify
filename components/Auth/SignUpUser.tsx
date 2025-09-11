@@ -6,7 +6,6 @@ import { Controller } from "react-hook-form";
 
 import { useSignupUserForm } from "@/hooks/forms";
 import { useSignupUserQuery } from "@/hooks/api/auth";
-
 import { usePopupsContext } from "@/providers/PopupsProvider";
 
 import {
@@ -15,9 +14,8 @@ import {
   PasswordField,
   ErrorMessage,
 } from "@/components/layouts/Form";
-import Divider from "../ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
-import { Button, Spinner } from "@/components/ui";
+import { Button, Spinner, Divider } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
   const { addAlert } = usePopupsContext();

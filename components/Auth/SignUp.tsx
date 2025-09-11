@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
+import { PATHS } from "@/lib/config";
+
 import { Button } from "@/components/ui";
 import { Radio } from "@/components/layouts/Form";
-
 import SignupContainer from "./ui/SignupContainer";
 
 const options = [
@@ -26,9 +27,10 @@ const SignUp: React.FC = () => {
 
     const data = formData.get("user-type");
 
-    const candidateEndpoint = data === "natural_person" ? "user" : "company";
+    const candidateEndpoint =
+      data === "natural_person" ? PATHS.sign_up_user : PATHS.sign_up_company;
 
-    redirect(`/auth/signup/${candidateEndpoint}`);
+    redirect(candidateEndpoint);
   }
 
   return (

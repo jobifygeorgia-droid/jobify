@@ -1,3 +1,4 @@
+import { PATHS } from "@/lib/config";
 import { vipVacancies } from "@/data/data";
 
 import Statistic from "./ui/Statistic";
@@ -23,7 +24,7 @@ const Profile: React.FC<ProfileT> = () => {
         </div>
 
         <div className="ml-auto">
-          <AnchorButton href="/user/profile/123/cv" buttonType="secondary">
+          <AnchorButton href={PATHS.user_create_cv} buttonType="secondary">
             შექმენი CV
           </AnchorButton>
         </div>
@@ -36,7 +37,7 @@ const Profile: React.FC<ProfileT> = () => {
           &nbsp; შენი CV-ის გასაუმჯობესებლად და კარიერული შანსების გასაზრდელად
         </p>
 
-        <AnchorButton href="" className="font-semibold" buttonType="primary">
+        <AnchorButton href="/" className="font-semibold" buttonType="primary">
           მოითხოვე რეკომენდაცია
         </AnchorButton>
       </div>

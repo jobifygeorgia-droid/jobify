@@ -2,15 +2,19 @@
 
 import { Controller } from "react-hook-form";
 
-import { AnchorButton } from "@/components/ui";
+import { useUpdatePasswordForm } from "@/hooks/forms";
+import { useAuthContext } from "@/providers/AuthProvider";
+
+import { Button } from "@/components/ui";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { PasswordField } from "@/components/layouts/Form";
-import { useUpdatePasswordForm } from "@/hooks/forms";
 
 const UpdatePassword: React.FC = () => {
+  const { onUpdatePassword, onCancel } = useAuthContext();
   const { control, handleSubmit } = useUpdatePasswordForm();
 
   const onUpdate = handleSubmit((values) => {
+    onUpdatePassword();
     console.log(values);
   });
 
@@ -52,18 +56,13 @@ const UpdatePassword: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <AnchorButton
-            scroll={false}
-            href="?auth=update-success"
-            fullWidth
-            buttonType="primary"
-          >
+          <Button type="submit" buttonType="primary">
             დადასტურება
-          </AnchorButton>
+          </Button>
 
-          <AnchorButton href="?auth=base" fullWidth buttonType="text">
+          <Button onClick={onCancel} fullWidth buttonType="text" type="button">
             უკან დაბრუნება
-          </AnchorButton>
+          </Button>
         </div>
       </form>
     </div>

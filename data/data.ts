@@ -1,3 +1,5 @@
+import { VACANCY_GROUPS } from "@/interface/global.types";
+
 export const vipVacancies = [
   {
     id: 1000,
@@ -302,22 +304,22 @@ export const vacanciesForDifferentGroupsData = [
   {
     id: 26,
     title: "ტუტორებისთვის",
-    group: "tutors",
+    group: VACANCY_GROUPS.GROUP_1,
   },
   {
     id: 27,
     title: "უკრაინელი ხალხისთვის",
-    group: "ukrainian",
+    group: VACANCY_GROUPS.GROUP_2,
   },
   {
     id: 28,
     title: "სტუდენტებისთვის",
-    group: "students",
+    group: VACANCY_GROUPS.GROUP_3,
   },
   {
     id: 29,
     title: "ემიგრანტებისთვის",
-    group: "immigrants",
+    group: VACANCY_GROUPS.GROUP_4,
   },
 ];
 

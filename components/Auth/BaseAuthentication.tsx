@@ -3,16 +3,19 @@
 import Link from "next/link";
 import { Controller } from "react-hook-form";
 
-import Divider from "../ui/Divider";
-import GoogleButton from "./ui/GoogleButton";
-import AuthPopupTitle from "./ui/AuthPopupTitle";
-
-import { Button } from "@/components/ui";
-import { PasswordField, TextField, Checkbox } from "@/components/layouts/Form";
+import { PATHS } from "@/lib/config";
 import { useSigninForm } from "@/hooks/forms";
 import { useSigninQuery } from "@/hooks/api/auth";
+import { useAuthContext } from "@/providers/AuthProvider";
+
+import GoogleButton from "./ui/GoogleButton";
+import AuthPopupTitle from "./ui/AuthPopupTitle";
+import { Button, Divider } from "@/components/ui";
+import { PasswordField, TextField, Checkbox } from "@/components/layouts/Form";
 
 const BaseAuthentication: React.FC = () => {
+  const { onForgotPassword } = useAuthContext();
+
   const { signInQuery, status } = useSigninQuery();
   const { control, handleSubmit } = useSigninForm(status?.messages);
 
@@ -56,16 +59,16 @@ const BaseAuthentication: React.FC = () => {
         <div className="flex items-center justify-between">
           <Checkbox id="remember-me">დამახსოვრება</Checkbox>
 
-          <Link
-            scroll={false}
-            href="?auth=password-update-method"
-            className="text-base-sm text-light-grey-dark-active hover:underline"
+          <button
+            type="button"
+            onClick={onForgotPassword}
+            className="text-base-sm text-light-grey-dark-active hover:underline cursor-pointer"
           >
             დაგავიწყდა პაროლი ?
-          </Link>
+          </button>
         </div>
 
-        <Button fullWidth className="mt-1" buttonType="primary">
+        <Button fullWidth className="mt-1" buttonType="primary" type="submit">
           შესვლა
         </Button>
       </form>
@@ -82,7 +85,7 @@ const BaseAuthentication: React.FC = () => {
         <span className="text-light-grey-dark-active">არ გაქვს ანგარიში ?</span>
         &nbsp;
         <Link
-          href="/auth/signup"
+          href={PATHS.sign_up}
           className="font-semibold text-blue hover:underline"
         >
           დარეგისტრირდი

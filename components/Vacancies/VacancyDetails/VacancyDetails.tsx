@@ -1,10 +1,11 @@
-import { tipTapValue, vipVacancies } from "@/data/data";
+import { PATHS } from "@/lib/config";
 import { TipTapProvider } from "@/providers";
+import { tipTapValue, vipVacancies } from "@/data/data";
 
-import Header from "./ui/Header";
 import Aside from "./ui/Aside";
-import { Pagination, SectionTitle, ViewAllButton } from "@/components/ui";
+import Header from "./ui/Header";
 import { TextEditorContent, VacancyCard } from "@/components/layouts";
+import { Pagination, SectionTitle, ViewAllButton } from "@/components/ui";
 
 type VacancyDetailsT = {};
 
@@ -37,7 +38,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
             <Pagination />
           </div>
 
-          <ViewAllButton href="/vacancies" />
+          <ViewAllButton href={PATHS.vacancies} />
         </div>
       </div>
     </>

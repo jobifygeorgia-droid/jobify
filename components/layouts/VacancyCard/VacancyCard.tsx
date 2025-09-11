@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Chip, IconChip } from "@/components/ui";
 import { AddToFavoriteButton } from "@/components/layouts";
 import { Calendar, Wallet, Location } from "@/components/ui/icons";
+import { DYNAMIC_ROUTES } from "@/lib/config";
 
 type VacancyCardT = {
   id: number;
@@ -17,7 +18,10 @@ type VacancyCardT = {
 const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
   return (
     <div className="max-w-full w-full px-4 py-3 rounded-2xl bg-white border border-bc flex items-center gap-5">
-      <Link href="/vacancies/123" className="w-full flex items-center gap-5">
+      <Link
+        href={DYNAMIC_ROUTES.vacancy_details("123")}
+        className="w-full flex items-center gap-5"
+      >
         <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
 
         <div className="flex flex-col gap-3">

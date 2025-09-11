@@ -1,9 +1,12 @@
+import { DYNAMIC_ROUTES } from "@/lib/config";
+import { VACANCY_GROUPS } from "@/interface/global.types";
+
 import { AnchorButton } from "@/components/ui";
 import { ArrowRight } from "@/components/ui/icons";
 
 type VacanciesForDifferentGroupsCardT = {
   title: string;
-  group: string;
+  group: VACANCY_GROUPS;
 };
 
 const VacanciesForDifferentGroupsCard: React.FC<
@@ -23,7 +26,7 @@ const VacanciesForDifferentGroupsCard: React.FC<
       <div className="absolute top-[75%] left-4 right-4">
         <AnchorButton
           fullWidth
-          href={`/vacancies/groups?group=${group}`}
+          href={DYNAMIC_ROUTES.vacancies_groups(group)}
           buttonType="text"
           className="justify-between! px-0! text-white hover:text-white! decoration-transparent"
         >

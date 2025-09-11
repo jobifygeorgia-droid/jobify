@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Menu } from "@/components/ui";
 import OptionItem from "./OptionItem";
 import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
@@ -7,6 +9,16 @@ import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
 type OptionsT = {};
 
 const Options: React.FC<OptionsT> = () => {
+  const router = useRouter();
+
+  const onViewDetails = () => {
+    router.push("");
+  };
+
+  const onEdit = () => {};
+
+  const onDelete = () => {};
+
   return (
     <div>
       <Menu>
@@ -15,9 +27,13 @@ const Options: React.FC<OptionsT> = () => {
         </Menu.MenuButton>
 
         <Menu.MenuList>
-          <OptionItem Icon={Eye} text="დეტალურად ნახვა" />
-          <OptionItem Icon={Edit} text="რედაქტირება" />
-          <OptionItem Icon={Delete} text="წაშლა" isDanger />
+          <OptionItem
+            onClick={onViewDetails}
+            Icon={Eye}
+            text="დეტალურად ნახვა"
+          />
+          <OptionItem onClick={onEdit} Icon={Edit} text="რედაქტირება" />
+          <OptionItem onClick={onDelete} Icon={Delete} text="წაშლა" isDanger />
         </Menu.MenuList>
       </Menu>
     </div>

@@ -2,14 +2,16 @@
 
 import { Controller } from "react-hook-form";
 
-import AuthPopupTitle from "./ui/AuthPopupTitle";
-import { useAuthContext } from "../../providers/AuthProvider";
-import { OTP } from "@/components/layouts/Form";
-import { AnchorButton, Button } from "@/components/ui";
 import { useVerifyIdentityForm } from "@/hooks/forms";
+import { useAuthContext } from "@/providers/AuthProvider";
+
+import { Button } from "@/components/ui";
+import { OTP } from "@/components/layouts/Form";
+import AuthPopupTitle from "./ui/AuthPopupTitle";
 
 const VerifyUserIdentity: React.FC = () => {
-  const { method, onCloseAuthPopup, onVerifyUserIdentity } = useAuthContext();
+  const { method, onCloseAuthPopup, onVerifyUserIdentity, onCancel } =
+    useAuthContext();
 
   const { control, handleSubmit } = useVerifyIdentityForm();
 
@@ -22,8 +24,6 @@ const VerifyUserIdentity: React.FC = () => {
   });
 
   if (!method) onCloseAuthPopup();
-
-  // FIX: show error message in otp input
 
   return (
     <div>
@@ -46,13 +46,13 @@ const VerifyUserIdentity: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col gap-2">
-          <Button fullWidth buttonType="primary">
+          <Button fullWidth buttonType="primary" type="submit">
             დადასტურება
           </Button>
 
-          <AnchorButton href="?auth=base" fullWidth buttonType="text">
+          <Button onClick={onCancel} fullWidth buttonType="text" type="button">
             უკან დაბრუნება
-          </AnchorButton>
+          </Button>
         </div>
       </form>
     </div>

@@ -6,6 +6,7 @@ import {
   SectionTitle,
   ViewAllButton,
 } from "@/components/ui";
+import { PATHS } from "@/lib/config";
 
 type VacanciesT = {};
 
@@ -22,7 +23,7 @@ const Vacancies: React.FC<VacanciesT> = () => {
         />
 
         <ViewAllButton
-          href="/vip-vacancies"
+          href={PATHS.vip_vacancies}
           className="absolute z-[9] right-0 bottom-0"
         />
       </div>

@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { Controller } from "react-hook-form";
 
-import Divider from "../ui/Divider";
-import GoogleButton from "./ui/GoogleButton";
-import { Button } from "@/components/ui";
-import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
 import { useSignupCompanyForm } from "@/hooks/forms";
+
+import GoogleButton from "./ui/GoogleButton";
+import { Button, Divider } from "@/components/ui";
+import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
 
 const SignUpCompany: React.FC = () => {
   const { control, handleSubmit } = useSignupCompanyForm();

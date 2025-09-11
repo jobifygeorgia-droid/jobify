@@ -3,6 +3,7 @@ import Link from "next/link";
 import TimeAgo from "./TimeAgo";
 import { Chip, IconChip, LineClamp } from "@/components/ui";
 import { Location, Star } from "@/components/ui/icons";
+import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
 
 type VIPVacancyCardT = {
   id: number;
@@ -20,7 +21,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
       <div className="flex flex-col gap-3">
         {/* Header */}
         <Link
-          href="/vacancies?company=123"
+          href={`${PATHS.vacancies}?company=${123}`}
           className="w-full flex items-start gap-5"
         >
           <figure className="relative w-[54px] aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
@@ -42,7 +43,10 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
         </div>
 
         {/* Body */}
-        <Link href="/vacancies/123" className="flex flex-col gap-1">
+        <Link
+          href={DYNAMIC_ROUTES.vacancy_details("123")}
+          className="flex flex-col gap-1"
+        >
           <LineClamp
             title={vacancy.position}
             className="text-blue font-bold text-base-sm"

@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PATHS } from "@/lib/config";
 import LogoImage from "@/public/logo.png";
 
-type LogoT = {
-  href?: string;
-};
-
-const Logo: React.FC<LogoT> = ({ href = "/" }) => {
+const Logo: React.FC = () => {
   return (
     <figure>
-      <Link href={href}>
+      <Link href={PATHS.home}>
         <Image src={LogoImage} alt="Jobify Logo" />
       </Link>
     </figure>

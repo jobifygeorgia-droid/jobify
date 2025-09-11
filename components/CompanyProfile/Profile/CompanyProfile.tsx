@@ -1,15 +1,16 @@
 import { Fragment } from "react";
 
+import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
 import { companyProfileData } from "@/data/data";
+import { formatDate } from "@/lib/utils/formatDate";
 
 import Filter from "./ui/Filter";
+import Status from "./ui/Status";
+import Options from "./ui/Options";
 import TableItem from "./ui/TableItem";
 import Statistic from "./ui/Statistic";
 import { Notification, Plus } from "@/components/ui/icons";
 import { AnchorButton, Pagination, SectionTitle } from "@/components/ui";
-import Status from "./ui/Status";
-import Options from "./ui/Options";
-import { formatDate } from "@/lib/utils/formatDate";
 
 type CompanyProfileT = {};
 
@@ -36,12 +37,15 @@ const CompanyProfile: React.FC<CompanyProfileT> = () => {
         </div>
 
         <div className="flex items-center justify-end">
-          <AnchorButton href="/legal-entity/inbox/123" className="underline">
+          <AnchorButton
+            href={DYNAMIC_ROUTES.company_inbox("123")}
+            className="underline"
+          >
             შემოსული რეზიუმეები
           </AnchorButton>
 
           <AnchorButton
-            href="/legal-entity/create-vacancy"
+            href={PATHS.company_create_vacancy}
             className="gap-3 font-semibold w-max p-0!"
           >
             <Plus size={26} className="translate-y-[2px]" />

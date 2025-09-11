@@ -16,7 +16,7 @@ const Reviews: React.FC<ReviewsT> = () => {
         ))}
       />
 
-      <ViewAllButton href="" className="absolute z-[9] right-0 bottom-0" />
+      <ViewAllButton href="/" className="absolute z-[9] right-0 bottom-0" />
     </SectionContainer>
   );
 };
