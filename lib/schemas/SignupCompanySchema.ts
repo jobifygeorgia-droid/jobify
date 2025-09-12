@@ -10,8 +10,8 @@ export const SignupCompanySchema = z.object({
       validators.isOnlyGeorgianLetters.validator,
       validators.isOnlyLatinLetters.message
     ),
-  company_id: z.email("გთხოვთ მიუთითოთ საიდენტიფიკაციო კოდი"),
-  contact_person: z.email("გთხოვთ მიუთითოთ საკონტაქტო პირი"),
+  company_id: z.string("გთხოვთ მიუთითოთ საიდენტიფიკაციო კოდი"),
+  contact_person: z.email("გთხოვთ მიუთითოთ საკონტაქტო პირის ელ.ფოსტა"),
   email: z.email("გთხოვთ მიუთითოთ ვალიდური იმაილი"),
   phone_number: z
     .string()
@@ -33,7 +33,7 @@ export const SignupCompanySchema = z.object({
 export const signupCompanyInitialState: SignupCompanySchemaT = {
   company_name: "კომპანიის სახელი",
   company_id: "12AC34BV",
-  contact_person: "საკონტაქტო პირი",
+  contact_person: "contact@io.com",
   email: "company@io.com",
   phone_number: "555444333",
   password: "password",

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Menu } from "@/components/ui";
 import OptionItem from "./OptionItem";
 import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
+import { DYNAMIC_ROUTES } from "@/lib/config";
 
 type OptionsT = {};
 
@@ -12,7 +13,7 @@ const Options: React.FC<OptionsT> = () => {
   const router = useRouter();
 
   const onViewDetails = () => {
-    router.push("");
+    router.push(DYNAMIC_ROUTES.company_vacancy_details("123", "456"));
   };
 
   const onEdit = () => {};

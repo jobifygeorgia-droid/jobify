@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { LineClamp, Rating } from "@/components/ui";
-import UserAvatar from "@/public/user-avatar.png";
 
 type ReviewCardT = {
   id: number;
@@ -17,8 +16,8 @@ const ReviewCard: React.FC<ReviewCardT> = (review) => {
       <div className="flex items-start gap-5">
         <figure className="relative bg-light-grey-dark rounded-full size-14 border-dark-grey-dark overflow-hidden">
           <Image
-            src={UserAvatar}
             fill
+            src="/user-avatar.png"
             alt="user default avatar"
             className="object-cover"
           />

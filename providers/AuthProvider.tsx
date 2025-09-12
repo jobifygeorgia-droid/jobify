@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 import { PATHS } from "@/lib/config";
+import { useSearchParamUtils } from "@/hooks/utils";
 import { AuthModeT } from "@/components/Auth/auth.types";
 
 type AuthProviderT = {
@@ -25,67 +25,46 @@ type AuthContextT = {
 const AuthContext = createContext<AuthContextT | undefined>(undefined);
 
 const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const nextParams = useSearchParams();
-
-  const searchParams = new URLSearchParams(nextParams);
+  const {
+    mergeParams,
+    mergeAndNavigate,
+    deleteParams,
+    navigate,
+    searchParams,
+    deleteMergeAndNavigate,
+  } = useSearchParamUtils();
 
   const authMode = searchParams.get("auth") as AuthModeT | null;
   const method = searchParams.get("method") as string | null;
 
-  const mergeParams = (targetPath: string) => {
-    const targetParams = new URLSearchParams(targetPath);
-
-    for (const [key, value] of targetParams.entries()) {
-      searchParams.set(key, value);
-    }
-  };
-
   const onCloseAuthPopup = () => {
-    if (authMode === "update-success") {
-      mergeParams(PATHS.sign_in);
-    } else {
-      searchParams.delete("auth");
-      searchParams.delete("method");
-    }
+    if (authMode === "update-success") mergeParams(PATHS.sign_in);
+    else deleteParams(["auth", "method"]);
 
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
+    navigate();
   };
 
-  const onCancel = () => {
-    mergeParams(PATHS.sign_in);
-    searchParams.delete("method");
-    router.push(`${pathname}?${searchParams.toString()}`, {
-      scroll: false,
+  const onCancel = () =>
+    deleteMergeAndNavigate({
+      delete: ["method"],
+      merge: PATHS.sign_in,
     });
-  };
 
-  const onSignIn = () => {
-    mergeParams(PATHS.sign_in);
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onSignIn = () => mergeAndNavigate(PATHS.sign_in);
 
-  const onForgotPassword = () => {
-    mergeParams(PATHS.forgot_password);
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onForgotPassword = () => mergeAndNavigate(PATHS.forgot_password);
 
-  const onChoosePasswordUpdateMethod = () => {
-    mergeParams(PATHS.forgot_password_verify_by_email);
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onChoosePasswordUpdateMethod = () =>
+    mergeAndNavigate(PATHS.forgot_password_verify_by_email);
 
-  const onVerifyUserIdentity = () => {
-    searchParams.delete("method");
-    mergeParams(PATHS.forgot_password_update);
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onVerifyUserIdentity = () =>
+    deleteMergeAndNavigate({
+      delete: ["method"],
+      merge: PATHS.forgot_password_update,
+    });
 
-  const onUpdatePassword = () => {
-    mergeParams(PATHS.forgot_password_update_success);
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onUpdatePassword = () =>
+    mergeAndNavigate(PATHS.forgot_password_update_success);
 
   return (
     <AuthContext.Provider

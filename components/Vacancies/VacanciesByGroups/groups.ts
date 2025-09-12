@@ -2,25 +2,25 @@ export type GroupT = { bgURL: string; title: string; subTitle: string };
 
 export const groups = {
   ukrainian: {
-    bgURL: "/ukrainian.png",
+    bgURL: "/ukrainian.jpg",
     title: "დასაქმების შესაძლებლობა უკრაინის მოქალაქეებისთვის",
     subTitle:
       "გაეცანი ვაკანსიებს, რომლებიც მიზნად ისახავს უკრაინელი ხალხის მხარდაჭერასა და კარიერულ განვითარებას",
   },
   students: {
-    bgURL: "/students.png",
+    bgURL: "/students.jpg",
     title: "დასაქმების შესაძლებლობა სტუდენტებისთვის",
     subTitle:
       "გაეცანი სტუდენტურ ვაკანსიებს, რომლებიც გთავაზობენ პირველ სამუშაო გამოცდილებას და მოქნილ სამუშაო გრაფიკს",
   },
   immigrants: {
-    bgURL: "/immigrants.png",
+    bgURL: "/immigrants.jpg",
     title: "დასაქმების შესაძლებლობა ემიგრანტებისთვის",
     subTitle:
       "გაეცანი ვაკანსიებს, რომლებიც ქართველ ემიგრანტებს სამშობლოში დაბრუნებისას პროფესიულ განვითარებას სთავაზობენ",
   },
   tutors: {
-    bgURL: "/immigrants.png",
+    bgURL: "/tutors.jpg",
     title: "დასაქმების შესაძლებლობა ტუტორებისთვის",
     subTitle:
       "გაეცანი ვაკანსიებს, რომლებიც ქართველ ემიგრანტებს სამშობლოში დაბრუნებისას პროფესიულ განვითარებას სთავაზობენ",

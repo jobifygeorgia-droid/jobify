@@ -27,7 +27,7 @@ const SignupContainer: React.FC<SignupContainerT> = ({ children }) => {
           </figure>
         </aside>
 
-        <div className="flex-1 py-11 flex flex-col items-center">
+        <div className="flex-1 py-7 flex flex-col items-center">
           <AuthPopupTitle title="რეგისტრაცია" />
 
           {children}

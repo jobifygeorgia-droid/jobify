@@ -20,7 +20,12 @@ const VacanciesByGroups: React.FC<VacanciesByGroupsT> = ({ group }) => {
     <div className="py-7">
       <div className="h-[180px] relative">
         <figure className="relative w-full h-full overflow-hidden">
-          <Image src={dataToShow.bgURL} alt="ukrainian" fill />
+          <Image
+            src={dataToShow.bgURL}
+            alt="ukrainian"
+            fill
+            className="object-cover object-center"
+          />
         </figure>
 
         {/* <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-white h-[80px] py-5 px-14 flex items-center justify-center">

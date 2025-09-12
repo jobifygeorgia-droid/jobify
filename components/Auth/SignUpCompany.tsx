@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 
 import { useSignupCompanyForm } from "@/hooks/forms";
@@ -8,11 +9,22 @@ import { useSignupCompanyForm } from "@/hooks/forms";
 import GoogleButton from "./ui/GoogleButton";
 import { Button, Divider } from "@/components/ui";
 import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
+import { usePopupsContext } from "@/providers/PopupsProvider";
 
 const SignUpCompany: React.FC = () => {
+  const { addAlert } = usePopupsContext();
   const { control, handleSubmit } = useSignupCompanyForm();
 
+  const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
+
   const onRegistration = handleSubmit((values) => {
+    if (!acceptsPrivacyAndPolicy)
+      return addAlert({
+        type: "warning",
+        title: "წესები და პირობები",
+        text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
+      });
+
     console.log(values);
   });
 
@@ -103,14 +115,25 @@ const SignUpCompany: React.FC = () => {
       />
 
       <div className="flex items-center mt-1">
-        <Checkbox id="remember-me">ვეთანხმები</Checkbox>
+        <Checkbox
+          id="remember-me"
+          name="privacy_policy"
+          isChecked={acceptsPrivacyAndPolicy}
+          onChange={(checked) => setAcceptsPrivacyAndPolicy(checked)}
+        >
+          ვეთანხმები
+        </Checkbox>
         &nbsp;&nbsp;
         <Link href="/" className="underline">
           წესებს და პირობებს
         </Link>
       </div>
 
-      <Button className="mt-3" buttonType="primary">
+      <Button
+        className="mt-3"
+        buttonType="primary"
+        disabled={!acceptsPrivacyAndPolicy}
+      >
         რეგისტრაცია
       </Button>
 

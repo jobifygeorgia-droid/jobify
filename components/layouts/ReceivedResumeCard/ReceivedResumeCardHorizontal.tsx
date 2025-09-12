@@ -1,9 +1,10 @@
-import { AddToFavoriteButton } from "@/components/layouts";
-import { Button, Chip } from "@/components/ui";
-import { Calendar, Download } from "@/components/ui/icons";
 import { formatDate } from "@/lib/utils/formatDate";
 
-type HorizontalCardT = {
+import { Button, Chip } from "@/components/ui";
+import { Calendar, Download } from "@/components/ui/icons";
+import { AddToFavoriteButton } from "@/components/layouts";
+
+type ReceivedResumeCardHorizontalT = {
   id: number;
   fullname: string;
   position: string;
@@ -11,7 +12,9 @@ type HorizontalCardT = {
   education: string;
 };
 
-const HorizontalCard: React.FC<HorizontalCardT> = (props) => {
+const ReceivedResumeCardHorizontal: React.FC<ReceivedResumeCardHorizontalT> = (
+  props
+) => {
   return (
     <div className="flex items-center gap-3 py-4 px-6 border border-bc rounded-2xl shadow-[0px_3px_16px_rgba(0,0,0,0.04)]">
       <figure className="relative size-12 aspect-square min-w-12 rounded-full overflow-hidden bg-light-grey"></figure>
@@ -54,4 +57,4 @@ const HorizontalCard: React.FC<HorizontalCardT> = (props) => {
   );
 };
 
-export default HorizontalCard;
+export default ReceivedResumeCardHorizontal;

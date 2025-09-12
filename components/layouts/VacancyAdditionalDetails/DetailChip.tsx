@@ -1,12 +1,12 @@
 import { IconT } from "@/components/ui/icons";
 
-type VacancyDetailChipT = {
+type DetailChipT = {
   title: string;
   value: string;
   Icon: React.ComponentType<IconT>;
 };
 
-const VacancyDetailChip: React.FC<VacancyDetailChipT> = (props) => {
+const DetailChip: React.FC<DetailChipT> = (props) => {
   const { Icon, title, value } = props;
 
   return (
@@ -20,4 +20,4 @@ const VacancyDetailChip: React.FC<VacancyDetailChipT> = (props) => {
   );
 };
 
-export default VacancyDetailChip;
+export default DetailChip;

@@ -26,13 +26,11 @@ const Alert: React.FC<AlertPropsT> = (props) => {
   return (
     <div
       className={classnames("p-4 rounded-lg w-full max-w-[860px]", {
-        "text-dark-grey-hover bg-white shadow-[0px_2px_5px_rgba(103,110,118,0.3),0px_0px_0px_1px_rgba(103,110,118,0.16),0px_1px_1px_0px_rgba(103,110,118,0.12)]":
-          type === "normal",
-        "text-red bg-red-100 shadow-[0px_2px_5px_rgba(243,65,65,0.3),0px_0px_0px_1px_rgba(243,65,65,0.16),0px_1px_1px_0px_rgba(243,65,65,0.12)]":
+        "text-red bg-red-light shadow-[0px_1px_1px_0px_rgba(0,0,0,0.12),0px_0px_0px_1px_rgba(243,65,65,0.16),0px_0px_0px_1px_rgba(103,110,118,0.08),0px_2px_0px_4px_rgba(243,65,65,0.16)]":
           type === "danger",
-        "text-orange-400 bg-orange-100 shadow-[0px_2px_5px_rgba(233,162,59,0.3),0px_0px_0px_1px_rgba(233,162,59,0.16),0px_1px_1px_0px_rgba(233,162,59,0.12)]":
+        "text-orange bg-orange-light shadow-[0px_1px_1px_0px_rgba(0,0,0,0.12),0px_0px_0px_1px_rgba(233,162,59,0.12),0px_2px_5px_0px_rgba(103,110,118,0.08),0px_0px_0px_4px_rgba(233,162,59,0.16)]":
           type === "warning",
-        "text-green bg-green-100 shadow-[0px_2px_5px_rgba(83,180,131,0.3),0px_0px_0px_1px_rgba(83,180,131,0.16),0px_1px_1px_0px_rgba(83,180,131,0.12)]":
+        "text-green-dark-hover bg-green-light shadow-[0px_1px_1px_0px_rgba(0,0,0,0.12),0px_0px_0px_1px_rgba(83,180,131,0.16),0px_2px_5px_0px_rgba(103,110,118,0.08),0px_0px_0px_4px_rgba(83,180,131,0.16)]":
           type === "success",
       })}
     >
@@ -52,11 +50,10 @@ const Alert: React.FC<AlertPropsT> = (props) => {
 
       {text && (
         <p
-          className={classnames("font-bold text-base-sm mt-2 ml-8", {
-            "text-light-grey-dark-active": type === "normal",
-            "text-red-400": type === "danger",
-            "text-orange-300": type === "warning",
-            "text-green-400": type === "success",
+          className={classnames("text-base-sm mt-2 ml-8 font-normal", {
+            "text-red": type === "danger",
+            "text-orange-active": type === "warning",
+            "text-green-active": type === "success",
           })}
         >
           {text}

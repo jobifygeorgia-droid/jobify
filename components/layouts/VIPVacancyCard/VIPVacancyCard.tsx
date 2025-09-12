@@ -68,7 +68,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
           <Location filled className="text-light-grey-dark" size={20} />
         </IconChip>
 
-        <Chip className="text-sm! px-3! py-0!">{vacancy.jobFormat}</Chip>
+        <Chip type="tertiary">{vacancy.jobFormat}</Chip>
       </div>
     </div>
   );

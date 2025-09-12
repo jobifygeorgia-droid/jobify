@@ -15,7 +15,12 @@ const ChipsFilter: React.FC<ChipsFilterT> = (props) => {
 
       <div className="flex items-center gap-5">
         {options.map((option, index) => (
-          <Chip key={option.value} isActive={index === 1} onClick={() => {}}>
+          <Chip
+            key={option.value}
+            isActive={index === 1}
+            onClick={() => {}}
+            type="secondary"
+          >
             {option.label}
           </Chip>
         ))}

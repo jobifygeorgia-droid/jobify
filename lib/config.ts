@@ -19,7 +19,7 @@ export const PATHS = {
   // Legal-Entity //
   company_create_vacancy: "/legal-entity/create-vacancy",
   company_profile: "/legal-entity/:entityId/profile",
-  company_inbox: "/legal-entity/:entityId/inbox",
+  company_inbox: "/legal-entity/:entityId/inbox?vacancy=:vacancyId",
   company_vacancy_details: "/legal-entity/:entityId/vacancies/:vacancyId",
 
   // Natural-Person //
@@ -38,8 +38,10 @@ export const PATHS = {
 export const DYNAMIC_ROUTES = {
   company_profile: (entityId: string) =>
     PATHS.company_profile.replace(":entityId", entityId),
-  company_inbox: (entityId: string) =>
-    PATHS.company_inbox.replace(":entityId", entityId),
+  company_inbox: (entityId: string, vacancyId: string) =>
+    PATHS.company_inbox
+      .replace(":entityId", entityId)
+      .replace(":vacancyId", vacancyId),
   company_vacancy_details: (entityId: string, vacancyId: string) =>
     PATHS.company_vacancy_details
       .replace(":entityId", entityId)

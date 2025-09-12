@@ -6,20 +6,25 @@ import { ArrowRight } from "@/components/ui/icons";
 
 type VacanciesForDifferentGroupsCardT = {
   title: string;
+  subtitle?: string;
   group: VACANCY_GROUPS;
 };
 
 const VacanciesForDifferentGroupsCard: React.FC<
   VacanciesForDifferentGroupsCardT
 > = (props) => {
-  const { title, group } = props;
+  const { title, subtitle, group } = props;
 
   return (
     <div className="segment-card flex-1 flex flex-col h-[290px] rounded-4xl p-4 text-white relative">
       <div className="segment-card--content absolute top-[80px]">
         <div className="text-white h-full w-full flex flex-col justify-between">
           <span className="font-semibold text-md">დასაქმების შესაძლებლობა</span>
-          <span className="text-3xl">{title}</span>
+
+          <div className="flex flex-col gap-4">
+            <span className="text-3xl">{title}</span>
+            {subtitle && <span className="text-base-sm">{subtitle}</span>}
+          </div>
         </div>
       </div>
 

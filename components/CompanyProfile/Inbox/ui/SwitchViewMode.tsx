@@ -2,7 +2,9 @@
 
 import classnames from "classnames";
 
-import { AnchorButton } from "@/components/ui";
+import { useSearchParamUtils } from "@/hooks/utils";
+
+import { Button } from "@/components/ui";
 import { GridView, ListView } from "@/components/ui/icons";
 
 type SwitchViewModeT = {
@@ -10,9 +12,13 @@ type SwitchViewModeT = {
 };
 
 const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
+  const { mergeAndNavigate } = useSearchParamUtils();
+
+  const onSwitch = (mode: string) => mergeAndNavigate(mode);
+
   return (
     <div className="flex items-center gap-4">
-      <AnchorButton href="?view=list" className="p-0!">
+      <Button onClick={() => onSwitch("view=list")} className="p-0!">
         <ListView
           size={34}
           filled
@@ -20,9 +26,9 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
             "text-blue!": viewMode === "list",
           })}
         />
-      </AnchorButton>
+      </Button>
 
-      <AnchorButton href="?view=grid" className="p-0!">
+      <Button onClick={() => onSwitch("view=grid")} className="p-0!">
         <GridView
           size={34}
           filled
@@ -30,7 +36,7 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
             "text-blue!": viewMode === "grid",
           })}
         />
-      </AnchorButton>
+      </Button>
     </div>
   );
 };

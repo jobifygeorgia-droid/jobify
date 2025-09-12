@@ -30,7 +30,7 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
               {vacancy.position}
             </span>
 
-            <Chip>{vacancy.jobFormat}</Chip>
+            <Chip type="tertiary">{vacancy.jobFormat}</Chip>
           </div>
 
           <div className="flex items-center gap-6">

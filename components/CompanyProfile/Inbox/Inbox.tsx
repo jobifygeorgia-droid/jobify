@@ -1,12 +1,15 @@
 import classnames from "classnames";
 
-import { Pagination, SectionTitle } from "@/components/ui";
-import Filter from "./ui/Filter";
 import { companyInbox } from "@/data/data";
-import CubicCard from "./ui/CubicCard";
-import SwitchViewMode from "./ui/SwitchViewMode";
-import HorizontalCard from "./ui/HorizontalCard";
+
+import {
+  ReceivedResumeCardCubic,
+  ReceivedResumeCardHorizontal,
+} from "@/components/layouts";
+import Filter from "./ui/Filter";
 import { Search } from "@/components/ui/icons";
+import SwitchViewMode from "./ui/SwitchViewMode";
+import { Pagination, SectionTitle } from "@/components/ui";
 
 type InboxT = {
   viewMode: string;
@@ -36,9 +39,9 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
       >
         {companyInbox.map((resume) =>
           viewMode === "grid" ? (
-            <CubicCard key={resume.id} {...resume} />
+            <ReceivedResumeCardCubic key={resume.id} {...resume} />
           ) : (
-            <HorizontalCard key={resume.id} {...resume} />
+            <ReceivedResumeCardHorizontal key={resume.id} {...resume} />
           )
         )}
       </ul>

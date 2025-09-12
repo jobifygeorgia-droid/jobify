@@ -12,7 +12,7 @@ export const chipStyles = (params: Params) =>
     {
       "bg-blue-light text-dark-grey-dark-active leading-[18px] py-3 px-7 cursor-pointer":
         params.type === "primary" || params.type === "secondary",
-      "bg-orange-light text-orange font-medium leading-5 py-[3px] px-3":
+      "bg-orange-light text-orange font-medium text-sm leading-5 py-[1px] px-3":
         params.type === "tertiary",
     },
     {

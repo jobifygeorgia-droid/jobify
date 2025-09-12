@@ -14,7 +14,9 @@ const Header: React.FC<HeaderT> = () => {
         <div className="flex items-center gap-x-4">
           <h4 className="font-semibold text-md">Senior UX Designer</h4>
 
-          <Chip className="col-span-2 justify-self-start">სრული განაკვეთი</Chip>
+          <Chip type="tertiary" className="col-span-2 justify-self-start">
+            სრული განაკვეთი
+          </Chip>
         </div>
 
         <div className="flex items-center gap-x-4">
@@ -31,10 +33,7 @@ const Header: React.FC<HeaderT> = () => {
         <div className="flex items-center gap-5">
           <AddToFavoriteButton />
 
-          <SendResumeButton
-            title="short"
-            buttonProps={{ className: "bg-blue! text-white!" }}
-          />
+          <SendResumeButton title="short" />
         </div>
 
         <div className="flex items-center gap-2">

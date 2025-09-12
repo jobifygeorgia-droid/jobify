@@ -6,3 +6,6 @@ export { default as TextEditorContent } from "./TextEditor/TextEditorContent";
 export { default as SendResumeButton } from "./SendResume/SendResumeButton";
 export { default as ReviewCard } from "./ReviewCard/ReviewCard";
 export { default as AddToFavoriteButton } from "./AddToFavoriteButton/AddToFavoriteButton";
+export { default as VacancyAdditionalDetails } from "./VacancyAdditionalDetails/VacancyAdditionalDetails";
+export { default as ReceivedResumeCardCubic } from "./ReceivedResumeCard/ReceivedResumeCardCubic";
+export { default as ReceivedResumeCardHorizontal } from "./ReceivedResumeCard/ReceivedResumeCardHorizontal";

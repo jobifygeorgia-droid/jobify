@@ -302,23 +302,27 @@ export const section2Data = [
 
 export const vacanciesForDifferentGroupsData = [
   {
-    id: 26,
-    title: "ტუტორებისთვის",
-    group: VACANCY_GROUPS.GROUP_1,
+    id: 28,
+    title: "სტუდენტებისთვის",
+    subtitle: "სწავლა-სამსახურის შეთავაზება",
+    group: VACANCY_GROUPS.GROUP_3,
   },
   {
     id: 27,
     title: "უკრაინელი ხალხისთვის",
+    subtitle: "ჩვენ თქვენს გვერდით ვარ",
     group: VACANCY_GROUPS.GROUP_2,
   },
   {
-    id: 28,
-    title: "სტუდენტებისთვის",
-    group: VACANCY_GROUPS.GROUP_3,
+    id: 26,
+    title: "ტუტორებისთვის",
+    subtitle: "აბიტურიენტებისთვის",
+    group: VACANCY_GROUPS.GROUP_1,
   },
   {
     id: 29,
     title: "ემიგრანტებისთვის",
+    subtitle: "",
     group: VACANCY_GROUPS.GROUP_4,
   },
 ];

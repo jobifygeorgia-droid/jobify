@@ -60,15 +60,15 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             <Label label="ვაკანსიის ტიპი" labelPosition="out" />
 
             <div className="flex gap-5 w-full order-1">
-              <Chip isActive={true} onClick={() => {}}>
+              <Chip type="secondary" isActive={true} onClick={() => {}}>
                 ახალი
               </Chip>
 
-              <Chip isActive={false} onClick={() => {}}>
+              <Chip type="secondary" isActive={false} onClick={() => {}}>
                 განხილული
               </Chip>
 
-              <Chip isActive={false} onClick={() => {}}>
+              <Chip type="secondary" isActive={false} onClick={() => {}}>
                 ინტერვიუს ეტაპზე
               </Chip>
             </div>
@@ -78,11 +78,11 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             <Label label="განცხადების ტიპი" labelPosition="out" />
 
             <div className="flex gap-5 w-full order-1">
-              <Chip isActive={true} onClick={() => {}}>
+              <Chip type="secondary" isActive={true} onClick={() => {}}>
                 პრემიუმი
               </Chip>
 
-              <Chip isActive={false} onClick={() => {}}>
+              <Chip type="secondary" isActive={false} onClick={() => {}}>
                 სტანდარტული
               </Chip>
             </div>

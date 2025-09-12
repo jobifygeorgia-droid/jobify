@@ -3,12 +3,9 @@
 import { createContext, useContext } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
-import SendResumeButton from "@/components/layouts/SendResume/SendResumeButton";
 import UploadResumeModal from "@/components/layouts/SendResume/UploadResumeModal";
 
-type SendResumeProviderT = React.FC<{ children: React.ReactNode }> & {
-  Button: typeof SendResumeButton;
-};
+type SendResumeProviderT = React.FC<{ children: React.ReactNode }> & {};
 
 type SendResumeContextT = {
   modalIsOpen: boolean;
@@ -51,8 +48,6 @@ const SendResumeProvider: SendResumeProviderT = ({ children }) => {
     </SendResumeContext.Provider>
   );
 };
-
-SendResumeProvider.Button = SendResumeButton;
 
 export default SendResumeProvider;
 
