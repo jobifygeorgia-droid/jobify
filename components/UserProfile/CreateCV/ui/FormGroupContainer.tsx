@@ -1,21 +1,28 @@
-import { useState } from "react";
 import classnames from "classnames";
 
-import { Plus, Minus } from "@/components/ui/icons";
+import { useCV } from "@/components/UserProfile/CreateCV/CVProvider";
+import { Plus, Minus, Check, Exclamation } from "@/components/ui/icons";
+import { CVSchemaT } from "@/lib/schemas/CVSchema";
 
 type FormGroupContainerT = {
   title: string;
+  name: keyof CVSchemaT;
   children: React.ReactNode;
+  hasError: boolean;
+  isSucceed: boolean;
+  onExpand: () => Promise<void>;
 };
 
 const FormGroupContainer: React.FC<FormGroupContainerT> = (props) => {
-  const { children, title } = props;
+  const { children, title, name, hasError, isSucceed, onExpand } = props;
 
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { isExpanded } = useCV();
+
+  const isExpandedCurrentTab = isExpanded === name;
 
   return (
     <div className="border border-bc rounded-2xl p-5 relative">
-      {isExpanded && (
+      {isExpandedCurrentTab && (
         <div className="flex flex-col gap-5">
           <span className="font-bold text-md">{title}</span>
           {children}
@@ -24,22 +31,36 @@ const FormGroupContainer: React.FC<FormGroupContainerT> = (props) => {
 
       <button
         type="button"
-        onClick={() => setIsExpanded((prev) => !prev)}
+        onClick={onExpand}
         className={classnames("grid grid-cols-3 cursor-pointer", {
-          "w-max absolute top-3 -right-5": isExpanded,
-          "w-full": !isExpanded,
+          "w-max absolute top-3 -right-5": isExpandedCurrentTab,
+          "w-full": !isExpandedCurrentTab,
         })}
       >
         <div className="flex items-center gap-5 col-start-2">
-          <span className="size-10 aspect-square flex items-center justify-center bg-blue-light rounded-full">
-            {isExpanded ? (
+          <span
+            className={classnames(
+              "size-10 aspect-square flex items-center justify-center bg-blue-light rounded-full",
+              {
+                "bg-red-light text-red": !isExpandedCurrentTab && hasError,
+                "bg-green-light text-green": !isExpandedCurrentTab && isSucceed,
+              }
+            )}
+          >
+            {!isExpandedCurrentTab && isSucceed ? (
+              <Check />
+            ) : !isExpandedCurrentTab && hasError ? (
+              <Exclamation />
+            ) : isExpandedCurrentTab ? (
               <Minus className="text-blue" size={30} />
             ) : (
               <Plus className="text-blue" size={30} />
             )}
           </span>
 
-          {!isExpanded && <span className="font-bold min-w-max">{title}</span>}
+          {!isExpandedCurrentTab && (
+            <span className="font-bold min-w-max">{title}</span>
+          )}
         </div>
       </button>
     </div>

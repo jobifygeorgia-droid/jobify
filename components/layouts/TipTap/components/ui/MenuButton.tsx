@@ -1,24 +1,26 @@
 import classnames from "classnames";
 
 import Tooltip from "./Tooltip";
-import { IconT } from "@/components/ui/icons";
+import { StaticIconT } from "@/components/ui/icons";
+import { useTipTap } from "@/providers/TipTapProvider";
 
 type MenuButtonT = {
   isActive?: boolean;
   disabled?: boolean;
   title?: string;
   onClick?: () => void;
-  Icon: React.ComponentType<IconT>;
+  Icon: React.ComponentType<StaticIconT>;
 };
 
 const MenuButton: React.FC<MenuButtonT> = (props) => {
+  const { menuButtonSize: size } = useTipTap();
   const { Icon, onClick, isActive, disabled, title } = props;
 
   return (
     <button
       onClick={onClick}
       className={classnames(
-        "group relative text-2xl flex items-center justify-center capitalize cursor-pointer size-8 rounded-full",
+        "group/tiptap relative text-2xl flex items-center justify-center capitalize cursor-pointer size-8 rounded-full",
         {
           "bg-blue": isActive,
           "opacity-50": disabled,
@@ -27,7 +29,11 @@ const MenuButton: React.FC<MenuButtonT> = (props) => {
     >
       {title && <Tooltip>{title}</Tooltip>}
 
-      <Icon size={18} className={classnames({ "text-white": isActive })} />
+      <Icon
+        width={size}
+        height={size}
+        className={classnames({ "text-white": isActive })}
+      />
     </button>
   );
 };

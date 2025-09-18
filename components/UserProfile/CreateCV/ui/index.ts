@@ -6,5 +6,5 @@ export { default as FormHeader } from "./FormHeader";
 export { default as EducationReview } from "./EducationReview";
 export { default as CertificatesReview } from "./CertificatesReview";
 export { default as DegreesChips } from "./DegreesChips";
-export { default as SkillsField } from "./SkillsField";
-export { default as ForeignLanguagesField } from "./ForeignLanguagesField";
+export { default as WorkingExperienceReview } from "./WorkingExperienceReview";
+export { default as ChipValue } from "./ChipValue";

@@ -3,4 +3,5 @@ type AlertT = {
   text: string;
   title?: string;
   type?: "danger" | "warning" | "success";
+  delay?: number;
 };

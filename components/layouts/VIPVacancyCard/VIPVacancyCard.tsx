@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import TimeAgo from "./TimeAgo";
 import { Chip, IconChip, LineClamp } from "@/components/ui";
@@ -13,6 +14,7 @@ type VIPVacancyCardT = {
   salary: string;
   location: string;
   jobFormat: string;
+  image: string;
 };
 
 const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
@@ -24,7 +26,14 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (vacancy) => {
           href={`${PATHS.vacancies}?company=${123}`}
           className="w-full flex items-start gap-5"
         >
-          <figure className="relative w-[54px] aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
+          <figure className="relative w-[54px] aspect-square rounded-md overflow-hidden bg-dark-grey-light">
+            <Image
+              src={vacancy.image}
+              alt={vacancy.companyName}
+              fill
+              className="object-cover object-center"
+            />
+          </figure>
 
           <div className="flex flex-col gap-2 font-semibold">
             <LineClamp

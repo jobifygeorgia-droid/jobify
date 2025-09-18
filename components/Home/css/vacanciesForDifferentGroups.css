@@ -1,6 +1,6 @@
 .segment-card {
   transition: all 0.3s ease;
-  background: url("/segment-bg.png");
+  background: url("/segment-bg.webp");
   background-position: center;
   background-size: cover;
 }

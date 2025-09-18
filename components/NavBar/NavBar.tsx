@@ -1,26 +1,22 @@
-import Link from "next/link";
-
 import User from "./User";
-import NavLink from "./ui/NavLink";
+import NavList from "./ui/NavList";
 import { Container, Logo } from "@/components/ui";
 
 const NavBar: React.FC = () => {
+  const roles = ["job_seeker", "employer"];
+
+  const isAuthenticated = 1;
+  const role = isNaN(isAuthenticated) ? "" : roles[isAuthenticated];
+
   return (
     <div className="sticky top-0 bg-white z-[99]">
       <Container className="p-0!">
         <nav className="py-4 flex items-center w-full gap-8 text-base font-medium text-dark-grey-dark-hover">
           <Logo />
 
-          <ul className="flex items-center gap-10 pl-16">
-            <NavLink href="/">მთავარი</NavLink>
-            <NavLink href="/">შეფასებები</NavLink>
-          </ul>
+          <NavList role={role} />
 
-          <div className="flex items-center ml-auto gap-8">
-            <Link href="/">ვაკანსიის დამატება</Link>
-
-            <User />
-          </div>
+          <User role={role} />
         </nav>
       </Container>
     </div>

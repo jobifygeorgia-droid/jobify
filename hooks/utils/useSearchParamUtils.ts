@@ -26,6 +26,11 @@ export default function useSearchParamUtils() {
     params.forEach((param) => searchParams.delete(param));
   };
 
+  const deleteAndNavigate = (params: Array<string>) => {
+    deleteParams(params);
+    navigate();
+  };
+
   const deleteMergeAndNavigate = (params: {
     delete: Array<string>;
     merge: string;
@@ -40,6 +45,7 @@ export default function useSearchParamUtils() {
     mergeParams,
     mergeAndNavigate,
     deleteParams,
+    deleteAndNavigate,
     navigate,
     searchParams,
     deleteMergeAndNavigate,

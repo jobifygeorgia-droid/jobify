@@ -4,7 +4,7 @@ import Home from "@/components/Home/Home";
 import { Container } from "@/components/ui";
 import { FilterBar } from "@/components/layouts";
 
-export default function Page() {
+export default async function Page() {
   return (
     <FilterProvider>
       <Container>

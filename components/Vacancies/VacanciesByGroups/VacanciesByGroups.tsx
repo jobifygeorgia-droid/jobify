@@ -18,7 +18,7 @@ const VacanciesByGroups: React.FC<VacanciesByGroupsT> = ({ group }) => {
 
   return (
     <div className="py-7">
-      <div className="h-[180px] relative">
+      <div className="h-[180px] relative rounded-2xl overflow-hidden">
         <figure className="relative w-full h-full overflow-hidden">
           <Image
             src={dataToShow.bgURL}

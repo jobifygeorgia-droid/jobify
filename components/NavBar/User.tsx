@@ -1,17 +1,28 @@
-import Link from "next/link";
-
-import { DYNAMIC_ROUTES } from "@/lib/config";
-
 import LoginButton from "./ui/LoginButton";
+import CompanyActions from "./ui/CompanyActions";
+import UserActions from "./ui/UserActions";
+import AvatarMenu from "./ui/AvatarMenu";
 
-const User: React.FC = () => {
+type UserT = {
+  role: string;
+};
+
+const User: React.FC<UserT> = (props) => {
+  const { role } = props;
+
   return (
-    <div className="flex items-center gap-5">
-      <Link href={DYNAMIC_ROUTES.company_profile("123")}>
-        კომპანიის პროფილი
-      </Link>
-      <Link href={DYNAMIC_ROUTES.user_profile("123")}>პროფილი</Link>
-      <LoginButton />
+    <div className="ml-auto flex items-center gap-5">
+      {!role ? (
+        <LoginButton />
+      ) : role === "employer" ? (
+        <CompanyActions>
+          <AvatarMenu isUser={false} />
+        </CompanyActions>
+      ) : role === "job_seeker" ? (
+        <UserActions>
+          <AvatarMenu />
+        </UserActions>
+      ) : null}
     </div>
   );
 };

@@ -20,7 +20,7 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
     <div className="py-10 flex flex-col gap-8">
       <SectionTitle title="შემოსული რეზიუმეები" size="base" />
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 bg-white py-2 sticky top-[80px] z-20">
         <Filter />
 
         <div className="border border-bc rounded-md py-2 px-4 flex items-center gap-3 w-[300px] ml-auto">
@@ -32,7 +32,7 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
       </div>
 
       <ul
-        className={classnames("gap-2", {
+        className={classnames("gap-2 px-2", {
           "grid grid-cols-5": viewMode === "grid",
           "flex flex-col": viewMode === "list",
         })}

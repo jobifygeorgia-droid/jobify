@@ -13,7 +13,7 @@ const Inbox: React.FC<InboxT> = () => {
 
   return (
     <div className="rounded-xl border border-blue-light-hover p-8 flex flex-col gap-6">
-      <span className="text-lg font-medium">შემოსული რეზიუმეები</span>
+      <span className="font-semibold">შემოსული რეზიუმეები</span>
 
       <div className="flex items-center gap-2">
         <Chip className="text-sm!" isActive={true} onClick={onFilter}>

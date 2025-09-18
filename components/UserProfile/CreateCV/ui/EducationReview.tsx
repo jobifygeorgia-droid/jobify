@@ -15,9 +15,13 @@ import ReviewContainer from "./ReviewContainer";
 type EducationReviewT = {
   index: number;
   watch: UseFormWatch<CVSchemaT>;
+  onEdit: () => void;
+  onDelete: () => void;
 };
 
-const EducationReview: React.FC<EducationReviewT> = ({ watch, index }) => {
+const EducationReview: React.FC<EducationReviewT> = (props) => {
+  const { watch, index, onEdit, onDelete } = props;
+
   const field = watch(`education.${index}`);
 
   const startAndEndDate = [
@@ -25,10 +29,12 @@ const EducationReview: React.FC<EducationReviewT> = ({ watch, index }) => {
     formatDate(field.end_date),
   ].filter((v) => v !== "");
 
-  if (Object.values(field).every((v) => v === "")) return null;
+  const hasNotValue = Object.values(field).every((v) => v === "");
+
+  if (hasNotValue) return null;
 
   return (
-    <ReviewContainer>
+    <ReviewContainer onDelete={onDelete} onEdit={onEdit}>
       {field.university && (
         <ReviewItem Icon={University} value={field.university} />
       )}

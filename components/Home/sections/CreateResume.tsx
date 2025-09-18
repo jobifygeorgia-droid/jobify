@@ -12,7 +12,7 @@ const CreateResume: React.FC<CreateResumeT> = () => {
         <div className="flex-1 flex">
           <figure className="relative w-full h-full flex justify-center items-center">
             <Image
-              src="/create-resume-sidebar-asset.png"
+              src="/create-resume-sidebar-asset.webp"
               alt="create resume"
               fill
               className="object-contain scale-[140%]"

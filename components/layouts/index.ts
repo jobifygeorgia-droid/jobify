@@ -9,3 +9,5 @@ export { default as AddToFavoriteButton } from "./AddToFavoriteButton/AddToFavor
 export { default as VacancyAdditionalDetails } from "./VacancyAdditionalDetails/VacancyAdditionalDetails";
 export { default as ReceivedResumeCardCubic } from "./ReceivedResumeCard/ReceivedResumeCardCubic";
 export { default as ReceivedResumeCardHorizontal } from "./ReceivedResumeCard/ReceivedResumeCardHorizontal";
+export { default as GridTable } from "./GridTable/GridTable";
+export { default as GridTableItem } from "./GridTable/GridTableItem";

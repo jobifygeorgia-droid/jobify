@@ -11,17 +11,17 @@ type AlertPropsT = AlertT & {
 };
 
 const Alert: React.FC<AlertPropsT> = (props) => {
-  const { id, title, text, type = "", onRemove } = props;
+  const { id, title, text, type = "", onRemove, delay = 5000 } = props;
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onRemove(id || "");
-    }, 5000);
+    }, delay);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [id, onRemove]);
+  }, [id, onRemove, delay]);
 
   return (
     <div

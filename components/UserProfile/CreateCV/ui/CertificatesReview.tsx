@@ -10,10 +10,12 @@ import { University, Calendar, EducationHat } from "@/components/ui/icons";
 type CertificatesReviewT = {
   index: number;
   watch: UseFormWatch<CVSchemaT>;
+  onEdit: () => void;
+  onDelete: () => void;
 };
 
 const CertificatesReview: React.FC<CertificatesReviewT> = (props) => {
-  const { watch, index } = props;
+  const { watch, index, onEdit, onDelete } = props;
 
   const field = watch(`certificates.${index}`);
 
@@ -21,7 +23,7 @@ const CertificatesReview: React.FC<CertificatesReviewT> = (props) => {
 
   return (
     <div>
-      <ReviewContainer>
+      <ReviewContainer onDelete={onDelete} onEdit={onEdit}>
         {field.name && <ReviewItem Icon={EducationHat} value={field.name} />}
 
         {field.organization && (

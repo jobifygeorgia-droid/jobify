@@ -9,6 +9,8 @@ export const vipVacancies = [
     salary: "10,000 - 15,000 ₾",
     location: "თბილისი",
     jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 15 წამი წინ
   {
     id: 2000,
@@ -18,6 +20,8 @@ export const vipVacancies = [
     salary: "12,000 - 18,000 ₾",
     location: "ბათუმი",
     jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 10 წუთის წინ
   {
     id: 3000,
@@ -27,6 +31,8 @@ export const vipVacancies = [
     salary: "8,000 - 12,000 ₾",
     location: "ქუთაისი",
     jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 3 საათის წინ
   {
     id: 4000,
@@ -36,6 +42,8 @@ export const vipVacancies = [
     salary: "6,000 - 9,000 ₾",
     location: "ზუგდიდი",
     jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 2 დღის წინ
   {
     id: 5000,
@@ -45,6 +53,8 @@ export const vipVacancies = [
     salary: "9,000 - 14,000 ₾",
     location: "გორი",
     jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 15 დღის წინ
   {
     id: 6000,
@@ -56,6 +66,8 @@ export const vipVacancies = [
     salary: "5,000 - 7,000 ₾",
     location: "ბათუმი",
     jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 2 თვის წინ
   {
     id: 7000,
@@ -67,6 +79,8 @@ export const vipVacancies = [
     salary: "11,000 - 16,000 ₾",
     location: "თბილისი",
     jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 8 თვის წინ
   {
     id: 8000,
@@ -78,6 +92,8 @@ export const vipVacancies = [
     salary: "7,000 - 10,000 ₾",
     location: "რუსთავი",
     jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 1 წლის წინ
   {
     id: 9000,
@@ -89,6 +105,8 @@ export const vipVacancies = [
     salary: "13,000 - 19,000 ₾",
     location: "თბილისი",
     jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   }, // 3 წლის წინ
   {
     id: 1,
@@ -98,6 +116,8 @@ export const vipVacancies = [
     salary: "10,000 - 15,000 ₾",
     location: "თბილისი",
     jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
@@ -107,6 +127,8 @@ export const vipVacancies = [
     salary: "12,000 - 18,000 ₾",
     location: "ბათუმი",
     jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
@@ -116,6 +138,8 @@ export const vipVacancies = [
     salary: "8,000 - 12,000 ₾",
     location: "ქუთაისი",
     jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
@@ -125,6 +149,8 @@ export const vipVacancies = [
     salary: "6,000 - 9,000 ₾",
     location: "ზუგდიდი",
     jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
@@ -134,6 +160,8 @@ export const vipVacancies = [
     salary: "9,000 - 14,000 ₾",
     location: "გორი",
     jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 6,
@@ -143,6 +171,8 @@ export const vipVacancies = [
     salary: "5,000 - 7,000 ₾",
     location: "ბათუმი",
     jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 7,
@@ -152,6 +182,8 @@ export const vipVacancies = [
     salary: "11,000 - 16,000 ₾",
     location: "თბილისი",
     jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 8,
@@ -161,6 +193,8 @@ export const vipVacancies = [
     salary: "7,000 - 10,000 ₾",
     location: "რუსთავი",
     jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 9,
@@ -170,6 +204,8 @@ export const vipVacancies = [
     salary: "13,000 - 19,000 ₾",
     location: "თბილისი",
     jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 10,
@@ -179,6 +215,8 @@ export const vipVacancies = [
     salary: "10,000 - 14,000 ₾",
     location: "ქუთაისი",
     jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 11,
@@ -188,6 +226,8 @@ export const vipVacancies = [
     salary: "9,000 - 13,000 ₾",
     location: "თბილისი",
     jobFormat: "მზადყოფნაში ყოფნა",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 12,
@@ -197,6 +237,8 @@ export const vipVacancies = [
     salary: "6,000 - 8,000 ₾",
     location: "ბათუმი",
     jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 13,
@@ -206,6 +248,8 @@ export const vipVacancies = [
     salary: "8,000 - 11,000 ₾",
     location: "თბილისი",
     jobFormat: "შეკუმშული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 14,
@@ -215,6 +259,8 @@ export const vipVacancies = [
     salary: "7,000 - 12,000 ₾",
     location: "გორი",
     jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 15,
@@ -224,6 +270,8 @@ export const vipVacancies = [
     salary: "9,000 - 13,000 ₾",
     location: "თელავი",
     jobFormat: "სეზონური სამუშაო",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 16,
@@ -233,6 +281,8 @@ export const vipVacancies = [
     salary: "11,000 - 15,000 ₾",
     location: "ქუთაისი",
     jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 17,
@@ -242,6 +292,8 @@ export const vipVacancies = [
     salary: "12,000 - 18,000 ₾",
     location: "თბილისი",
     jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 18,
@@ -251,6 +303,8 @@ export const vipVacancies = [
     salary: "8,000 - 12,000 ₾",
     location: "ბათუმი",
     jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 19,
@@ -260,6 +314,8 @@ export const vipVacancies = [
     salary: "11,000 - 17,000 ₾",
     location: "თბილისი",
     jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 20,
@@ -269,34 +325,46 @@ export const vipVacancies = [
     salary: "10,000 - 14,000 ₾",
     location: "ზუგდიდი",
     jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
 export const section2Data = [
   {
     id: 21,
-    title: "იპოვე იდეალური სამსახური ერთი",
+    title: "იპოვე იდეალური სამსახური",
     text: "იპოვე ისეთი სამსახური, სადაც შენი უნარები და ინტერესები სრულად დაფასდება და ყოველდღე მოტივაციით დაიწყებ ახალ პროექტებს.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1606961947900-6722c7358f23?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 22,
     title: "განივითარე შენი კარიერა",
     text: "კარიერული ზრდა იწყება სწორი გარემოს არჩევით, სადაც შეგიძლია ახალი გამოცდილების მიღება და პროფესიული განვითარების გაგრძელება.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 23,
     title: "გახდი გუნდის ლიდერი",
     text: "გუნდური მუშაობის გამოცდილება გაძლევს შესაძლებლობას გამოავლინო ლიდერობა, მართო პროექტები და შექმნა ძლიერი თანამშრომლობის კულტურა.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1610816168075-f19d937635f5?q=80&w=1078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 24,
     title: "აღმოაჩინე შესაძლებლობები",
     text: "სამუშაოს შეცვლა ან ახალი გამოწვევის მიღება დაგეხმარება აღმოაჩინო ისეთი შესაძლებლობები, რომლებიც კარიერაში ახალ გზას გაგიხსნის.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1587226513115-f1e3439f1a35?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 25,
     title: "ბალანსი ცხოვრებაში",
     text: "მნიშვნელოვანია ისეთი სამსახურის პოვნა, რომელიც მოგცემს მოქნილ გრაფიკს და საშუალებას დაგიტოვებს დროს პირადი ცხოვრებისათვის.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1541834167531-0db139a8d22d?q=80&w=1089&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 

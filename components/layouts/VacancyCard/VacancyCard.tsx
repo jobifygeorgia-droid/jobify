@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { Chip, IconChip } from "@/components/ui";
 import { AddToFavoriteButton } from "@/components/layouts";
@@ -13,6 +14,7 @@ type VacancyCardT = {
   salary: string;
   location: string;
   jobFormat: string;
+  image: string;
 };
 
 const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
@@ -22,7 +24,14 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
         href={DYNAMIC_ROUTES.vacancy_details("123")}
         className="w-full flex items-center gap-5"
       >
-        <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light"></figure>
+        <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light">
+          <Image
+            src={vacancy.image}
+            alt={vacancy.companyName}
+            fill
+            className="object-cover object-center"
+          />
+        </figure>
 
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-7">

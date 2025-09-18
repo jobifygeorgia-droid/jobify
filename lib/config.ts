@@ -1,6 +1,9 @@
 import { VACANCY_GROUPS } from "@/interface/global.types";
 
 export const PATHS = {
+  // OTHERS //
+  faq: "/faq",
+
   // AUTH //
   sign_up: "/auth/signup",
   sign_up_user: "/auth/signup/user",

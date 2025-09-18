@@ -365,3 +365,53 @@ export const ListView: React.FC<IconT> = (props) => {
     </Icon>
   );
 };
+
+export const Login: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      login
+    </Icon>
+  );
+};
+
+export const Logout: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      logout
+    </Icon>
+  );
+};
+
+export const Person: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      person
+    </Icon>
+  );
+};
+
+export const Check: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      check
+    </Icon>
+  );
+};
+
+export const Exclamation: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      exclamation
+    </Icon>
+  );
+};

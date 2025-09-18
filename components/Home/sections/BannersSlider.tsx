@@ -27,7 +27,7 @@ const BannersSlider: React.FC<BannersSliderT> = () => {
               fill
               quality={100}
               alt="find job"
-              src="/find-job-sidebar-asset.png"
+              src="/find-job-sidebar-asset.webp"
               className="object-contain"
             />
           </figure>

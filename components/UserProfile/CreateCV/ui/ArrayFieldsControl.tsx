@@ -1,16 +1,20 @@
 import { Button } from "@/components/ui";
 
 type ArrayFieldsControlT = {
-  onAppend: () => void;
+  onAdd: () => void;
+  onRemove: () => void;
 };
 
 const ArrayFieldsControl: React.FC<ArrayFieldsControlT> = (props) => {
-  const { onAppend } = props;
+  const { onAdd, onRemove } = props;
 
   return (
-    <div className="flex items-center justify-end">
-      <Button>გაუქმება</Button>
-      <Button buttonType="secondary" type="button" onClick={onAppend}>
+    <div className="flex items-center gap-6">
+      <Button fullWidth buttonType="tertiary" onClick={onRemove} type="button">
+        გაუქმება
+      </Button>
+
+      <Button fullWidth buttonType="primary" type="button" onClick={onAdd}>
         დამატება
       </Button>
     </div>

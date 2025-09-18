@@ -35,6 +35,7 @@ type TipTapProviderT = React.FC<{
   children: React.ReactNode;
   readonly?: boolean;
   content?: Content;
+  menuButtonSize?: number;
 }> & {
   Menu: typeof TipTapMenu;
 };
@@ -46,6 +47,7 @@ type TipTapContextT = {
   onSelectColor: (color: ColorT, cb: () => void) => void;
   onSelectHighlight: (color: ColorT, cb: () => void) => void;
   setLink: (url: string) => void;
+  menuButtonSize?: number;
 };
 
 const TipTapContext = createContext<TipTapContextT>({
@@ -55,10 +57,11 @@ const TipTapContext = createContext<TipTapContextT>({
   onSelectColor: () => {},
   onSelectHighlight: () => {},
   setLink: () => {},
+  menuButtonSize: undefined,
 });
 
 const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
-  const { readonly = true, content = "" } = props;
+  const { readonly = true, content = "", menuButtonSize = 16 } = props;
 
   const instance = useEditor({
     extensions: [
@@ -216,6 +219,7 @@ const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
   return (
     <TipTapContext.Provider
       value={{
+        menuButtonSize,
         editor,
         onSelectColor,
         onSelectHighlight,

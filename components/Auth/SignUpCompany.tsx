@@ -25,6 +25,13 @@ const SignUpCompany: React.FC = () => {
         text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
       });
 
+    addAlert({
+      type: "warning",
+      title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
+      text: "კომპანიის პროფილი გააქტიურდება ადმინისტარატორის დადასტურებისთანავე",
+      delay: 20000,
+    });
+
     console.log(values);
   });
 
@@ -78,8 +85,8 @@ const SignUpCompany: React.FC = () => {
         render={({ field, fieldState: { error } }) => (
           <TextField
             {...field}
-            labelPosition="out"
             label="ელ.ფოსტა"
+            labelPosition="out"
             message={error?.message}
           />
         )}

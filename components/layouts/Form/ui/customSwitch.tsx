@@ -1,9 +1,15 @@
 import { styled } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 
-export const IOSSwitch = styled((props: SwitchProps) => (
-  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
+export const IOSSwitch = styled(
+  (props: SwitchProps & { switchtype: "primary" | "secondary" }) => (
+    <Switch
+      focusVisibleClassName=".Mui-focusVisible"
+      disableRipple
+      {...props}
+    />
+  )
+)(({ theme, switchtype }) => ({
   width: 42,
   height: 26,
   padding: 0,
@@ -15,10 +21,11 @@ export const IOSSwitch = styled((props: SwitchProps) => (
 
     "&.Mui-checked": {
       transform: "translateX(16px)",
-      color: "var(--color-blue-light)",
+      color: switchtype === "primary" ? "var(--color-blue-light)" : "#ffffff",
 
       "& + .MuiSwitch-track": {
-        backgroundColor: "var(--color-green)",
+        backgroundColor:
+          switchtype === "primary" ? "var(--color-green)" : "var(--color-blue)",
         opacity: 1,
         border: 0,
       },

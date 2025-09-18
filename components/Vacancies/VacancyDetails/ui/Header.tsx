@@ -1,14 +1,24 @@
+import Image from "next/image";
+
 import { Chip } from "@/components/ui";
 import CompanyDetailChip from "./CompanyDetailChip";
 import { Link, Phone, Mail } from "@/components/ui/icons";
 import { AddToFavoriteButton, SendResumeButton } from "@/components/layouts";
+import { vipVacancies } from "@/data/data";
 
 type HeaderT = {};
 
 const Header: React.FC<HeaderT> = () => {
   return (
     <header className="flex items-center gap-6 py-8">
-      <figure className="size-16 aspect-square relative bg-light-grey-active rounded-md overflow-hidden"></figure>
+      <figure className="size-16 aspect-square relative bg-light-grey rounded-md overflow-hidden">
+        <Image
+          src={vipVacancies[1].image}
+          alt=""
+          fill
+          className="object-center object-cover"
+        />
+      </figure>
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-x-4">
