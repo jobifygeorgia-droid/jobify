@@ -176,6 +176,16 @@ export const Video: React.FC<IconT> = (props) => {
   );
 };
 
+export const AddVideo: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      video_camera_back_add
+    </Icon>
+  );
+};
+
 export const Image: React.FC<IconT> = (props) => {
   const { className, filled, size } = props;
 
@@ -412,6 +422,16 @@ export const Exclamation: React.FC<IconT> = (props) => {
   return (
     <Icon className={className} filled={filled} size={size}>
       exclamation
+    </Icon>
+  );
+};
+
+export const Crown: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      fertile
     </Icon>
   );
 };

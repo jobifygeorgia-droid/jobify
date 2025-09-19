@@ -16,15 +16,6 @@ export const customSelectStyles = <
   T extends object,
   IsMulti extends boolean = false
 >(): StylesConfig<T, IsMulti, GroupBase<T>> => ({
-  control: (baseStyles) => ({
-    ...baseStyles,
-    borderColor: "var(--color-bc)",
-    minHeight: "44px",
-    height: "44px",
-    width: "100%",
-    borderRadius: "6px",
-    outline: "none",
-  }),
   menu: (baseStyles) => ({
     ...baseStyles,
     border: "none",

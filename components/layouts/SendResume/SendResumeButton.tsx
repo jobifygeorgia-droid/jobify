@@ -2,22 +2,22 @@
 
 import { useSendResumeContext } from "@/providers/SendResumeProvider";
 
-import { Button } from "@/components/ui";
-import { ButtonT } from "@/components/ui/Button/button.types";
+import { AnchorButton } from "@/components/ui";
+import { AnchorButtonT } from "@/components/ui/Button/button.types";
 
 type SendResumeButtonT = {
   title?: "short" | "long";
-  buttonProps?: Omit<ButtonT, "onClick" | "buttonType" | "rounded">;
+  buttonProps?: Omit<AnchorButtonT, "buttonType" | "rounded" | "href">;
 };
 
 const SendResumeButton: React.FC<SendResumeButtonT> = (props) => {
   const { title, buttonProps } = props;
-  const { onOpenModal } = useSendResumeContext();
+  const { paramsToAttach } = useSendResumeContext();
 
   return (
-    <Button {...buttonProps} buttonType="primary" onClick={onOpenModal}>
+    <AnchorButton {...buttonProps} href={paramsToAttach} buttonType="primary">
       {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
-    </Button>
+    </AnchorButton>
   );
 };
 

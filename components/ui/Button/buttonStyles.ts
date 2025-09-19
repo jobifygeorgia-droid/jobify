@@ -2,7 +2,9 @@ import classnames from "classnames";
 
 import { ButtonBaseT } from "./button.types";
 
-export const buttonStyles = (params: ButtonBaseT) => {
+export const buttonStyles = (
+  params: ButtonBaseT & { isAnchorButton: boolean }
+) => {
   const {
     buttonType,
     textSize = "base",
@@ -11,6 +13,7 @@ export const buttonStyles = (params: ButtonBaseT) => {
     fullWidth = false,
     justify = "center",
     className,
+    isAnchorButton,
   } = params;
 
   return classnames(
@@ -21,16 +24,24 @@ export const buttonStyles = (params: ButtonBaseT) => {
       "justify-between": justify === "between",
     },
     {
-      "bg-blue-light text-blue hover:bg-blue-hover hover:text-white active:bg-blue-active active:text-white focus:bg-blue-active focus:text-white disabled:bg-blue-light-active disabled:text-white":
+      "bg-blue-light text-blue hover:bg-blue-hover hover:text-white active:bg-blue-active active:text-white disabled:bg-blue-light-active disabled:text-white":
         buttonType === "primary",
-      "bg-orange-light-hover text-orange hover:bg-orange hover:text-white active:bg-orange-active active:text-white focus:bg-orange-active focus:text-white disabled:bg-orange-light-active disabled:text-white":
+      "bg-orange-light-hover text-orange hover:bg-orange hover:text-white active:bg-orange-active active:text-white disabled:bg-orange-light-active disabled:text-white":
         buttonType === "secondary",
-      "bg-light-grey text-dark-grey-active hover:bg-light-grey-hover active:bg-light-grey-active focus:bg-light-grey-active disabled:bg-light-grey disabled:text-light-grey-dark":
+      "bg-light-grey text-dark-grey-active hover:bg-light-grey-hover active:bg-light-grey-active disabled:bg-light-grey disabled:text-light-grey-dark":
         buttonType === "tertiary",
       "bg-none border border-bc text-dark-grey-darker hover:border-light-grey-active active:border-light-grey-dark-active focus:border-light-grey-dark-active disabled:bg-light-grey-light-active disabled:text-light-grey-hover":
         buttonType === "outlined",
       "bg-none text-dark-grey-darker hover:text-dark-grey-dark-hover disabled:text-dark-grey-light-active active:underline focus:underline underline-offset-5":
         buttonType === "text",
+    },
+    {
+      "focus:bg-blue-active focus:text-white":
+        buttonType === "primary" && !isAnchorButton,
+      "focus:bg-orange-active focus:text-white":
+        buttonType === "secondary" && !isAnchorButton,
+      "focus:bg-light-grey-active":
+        buttonType === "tertiary" && !isAnchorButton,
     },
     {
       "text-base-sm ": textSize === "sm",

@@ -21,6 +21,7 @@ export default function useButton(props: ButtonT | AnchorButtonT) {
     textSize,
     paddingSize,
     className,
+    isAnchorButton: "href" in componentProps,
   });
 
   return { styles, componentProps };

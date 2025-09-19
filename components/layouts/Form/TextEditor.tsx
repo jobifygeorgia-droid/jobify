@@ -43,27 +43,29 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
   }, [editor, onChange]);
 
   return (
-    <div
-      className={classnames("flex flex-col gap-[6px]", props.className || "")}
-      style={{ width, minHeight: height, maxHeight: height }}
-    >
+    <div className="flex flex-col gap-[6px]">
       {props.label && (
         <Label label={props.label} labelPosition="out" keepOrder={true} />
       )}
 
-      <div className="border border-bc rounded-xl p-3 h-full w-full flex flex-col gap-3">
-        <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
-          <Bold />
-          <Italic />
-          <Underline />
-          <AddBulletList />
-          <AddOrderedList />
-        </div>
+      <div
+        className={classnames(props.className || "")}
+        style={{ width, minHeight: height, height: height }}
+      >
+        <div className="border border-bc rounded-xl p-3 min-h-full w-full flex flex-col gap-3">
+          <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
+            <Bold />
+            <Italic />
+            <Underline />
+            <AddBulletList />
+            <AddOrderedList />
+          </div>
 
-        <EditorContent
-          editor={editor}
-          className="w-full min-h-[calc(100%-50px)] pt-2 overflow-y-auto"
-        />
+          <EditorContent
+            editor={editor}
+            className="w-full min-h-[calc(100%-50px)] pt-2 overflow-y-auto"
+          />
+        </div>
       </div>
 
       {props.message && <FormErrorMessage message={props.message} />}

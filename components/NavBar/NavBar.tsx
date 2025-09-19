@@ -5,7 +5,7 @@ import { Container, Logo } from "@/components/ui";
 const NavBar: React.FC = () => {
   const roles = ["job_seeker", "employer"];
 
-  const isAuthenticated = 1;
+  const isAuthenticated = 0;
   const role = isNaN(isAuthenticated) ? "" : roles[isAuthenticated];
 
   return (

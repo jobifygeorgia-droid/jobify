@@ -9,14 +9,14 @@ type SendResumeProviderT = React.FC<{ children: React.ReactNode }> & {};
 
 type SendResumeContextT = {
   modalIsOpen: boolean;
-  onOpenModal: () => void;
   onCloseModal: () => void;
+  paramsToAttach: string;
 };
 
 const SendResumeContext = createContext<SendResumeContextT>({
   modalIsOpen: false,
   onCloseModal() {},
-  onOpenModal() {},
+  paramsToAttach: "",
 });
 
 const SendResumeProvider: SendResumeProviderT = ({ children }) => {
@@ -29,10 +29,7 @@ const SendResumeProvider: SendResumeProviderT = ({ children }) => {
 
   const buildPath = () => `${pathname}?${params.toString()}`;
 
-  const onOpenModal = () => {
-    params.set("send-resume", "1");
-    router.push(buildPath(), { scroll: false });
-  };
+  const paramsToAttach = "?send-resume=1";
 
   const onCloseModal = () => {
     params.delete("send-resume");
@@ -41,7 +38,7 @@ const SendResumeProvider: SendResumeProviderT = ({ children }) => {
 
   return (
     <SendResumeContext.Provider
-      value={{ modalIsOpen, onOpenModal, onCloseModal }}
+      value={{ modalIsOpen, paramsToAttach, onCloseModal }}
     >
       <UploadResumeModal />
       {children}

@@ -17,7 +17,7 @@ const UserActions: React.FC<UserActionsT> = ({ children }) => {
   return (
     <div className="flex items-center gap-6">
       <AnchorButton
-        href={PATHS.user_create_cv}
+        href={PATHS.user_create_statement}
         buttonType="primary"
         className="mr-4"
       >

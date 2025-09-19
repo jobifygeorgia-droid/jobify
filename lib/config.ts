@@ -28,6 +28,7 @@ export const PATHS = {
   // Natural-Person //
   user_profile: "/user/:userId/profile",
   user_create_cv: "/user/create-cv",
+  user_create_statement: "/user/create-statement",
 
   // Vacancies //
   vacancies: "/vacancies",

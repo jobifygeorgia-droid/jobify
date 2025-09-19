@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { DYNAMIC_ROUTES } from "@/lib/config";
 
 import { Menu } from "@/components/ui";
 import { Person, Logout } from "@/components/ui/icons";
@@ -10,6 +13,8 @@ type AvatarMenuT = {
 };
 
 const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
+  const router = useRouter();
+
   const { isUser = true } = props;
 
   const userSrc =
@@ -20,6 +25,15 @@ const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
 
   const src = isUser ? userSrc : companySrc;
 
+  const onNavigateToProfile = () => {
+    router.push(
+      isUser
+        ? DYNAMIC_ROUTES.user_profile("123")
+        : DYNAMIC_ROUTES.company_profile("123"),
+      { scroll: true }
+    );
+  };
+
   return (
     <Menu>
       <Menu.MenuButton>
@@ -29,7 +43,10 @@ const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
       </Menu.MenuButton>
 
       <Menu.MenuList>
-        <Menu.MenuItem onClick={() => {}} className="hover:text-blue!">
+        <Menu.MenuItem
+          onClick={onNavigateToProfile}
+          className="hover:text-blue!"
+        >
           <Person size={18} className="text-current" />
           <span className="text-base-sm">პროფილი</span>
         </Menu.MenuItem>

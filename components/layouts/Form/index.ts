@@ -11,3 +11,4 @@ export { default as DatePicker } from "./DatePicker";
 export { default as Switch } from "./Switch";
 export { default as ErrorMessage } from "./FormErrorMessage";
 export { default as Label } from "./Label";
+export { default as ChipsField } from "./ChipsField";

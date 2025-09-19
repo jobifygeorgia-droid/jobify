@@ -1,5 +1,5 @@
 import { FileType } from "../types/form-fields.types";
-import { IconT, Doc, Video, Image } from "@/components/ui/icons";
+import { IconT, Doc, AddVideo, Image } from "@/components/ui/icons";
 
 type FileInputContentLabelT = {
   inputType: FileType;
@@ -24,7 +24,7 @@ const contentLabelConfigByType: Record<
     buttonText: "აირჩიე ფაილი",
   },
   video: {
-    Icon: Video,
+    Icon: AddVideo,
     messageText: "გთხოვთ აირჩიოთ Video ფაილი ან ჩააგდეთ აქ",
     buttonText: "აირჩიე ფაილი",
   },
@@ -37,11 +37,11 @@ const FileInputContentLabel: React.FC<FileInputContentLabelT> = (props) => {
 
   return (
     <>
-      <configToShow.Icon className="text-blue" size={45} />
+      <configToShow.Icon className="text-dark-grey-dark" size={45} />
 
       <span className="text-sm">{configToShow.messageText}</span>
 
-      <label className="ml-auto text-blue border border-blue px-4 py-3 rounded-md text-sm">
+      <label className="ml-auto text-blue border border-blue px-4 py-3 rounded-md text-sm cursor-pointer">
         {configToShow.buttonText}
       </label>
     </>

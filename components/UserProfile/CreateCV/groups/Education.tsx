@@ -5,13 +5,18 @@ import { useCV } from "@/components/UserProfile/CreateCV/CVProvider";
 import { useEducation } from "@/components/UserProfile/CreateCV/hooks";
 
 import {
-  DegreesChips,
   FormGroupGrid,
   EducationReview,
   ArrayFieldsControl,
   FormGroupContainer,
 } from "@/components/UserProfile/CreateCV/ui";
-import { DatePicker, TextField } from "@/components/layouts/Form";
+import { ChipsField, DatePicker, TextField } from "@/components/layouts/Form";
+
+const degrees = [
+  { title: "ბაკალავრიატი", value: "ბაკალავრიატი" },
+  { title: "მაგისტრატურა", value: "მაგისტრატურა" },
+  { title: "დოქტორანტურა", value: "დოქტორანტურა" },
+];
 
 const Education: React.FC = () => {
   const { watch, control } = useCV();
@@ -42,10 +47,11 @@ const Education: React.FC = () => {
               control={control}
               name={`education.${index}.degree`}
               render={({ field, fieldState: { error } }) => (
-                <DegreesChips
+                <ChipsField
+                  data={degrees}
                   value={field.value}
                   message={error?.message}
-                  onChoose={(v) => field.onChange(v)}
+                  onChange={(v) => field.onChange(v)}
                 />
               )}
             />

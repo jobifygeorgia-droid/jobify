@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SelectEl from "react-select";
+import classnames from "classnames";
 
 import { SelectedOptionT } from "./types/form-fields.types";
 
@@ -14,6 +15,7 @@ type SelectT<T> = {
   isMulti?: boolean;
   placeholder?: string;
   width?: string;
+  containerClassName?: string;
   variant?: "filled" | "outlined";
   adornment?: React.ReactNode;
   instanceId: string;
@@ -24,10 +26,10 @@ const Select = <T extends object>(props: SelectT<T>) => {
     options = [],
     isMulti = false,
     placeholder,
-    variant = "filled",
     width = "100%",
     adornment,
     instanceId,
+    containerClassName,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<SelectedOptionT<T>>(
@@ -39,14 +41,20 @@ const Select = <T extends object>(props: SelectT<T>) => {
   };
 
   return (
-    <div className="relative flex items-center gap-1" style={{ width }}>
+    <div
+      className={classnames(
+        "relative flex items-center gap-1 border border-bc rounded-xl bg-white",
+        containerClassName
+      )}
+      style={{ width }}
+    >
       <SelectEl
         instanceId={instanceId}
         isMulti={!!isMulti}
         defaultValue={selectedOption}
         options={options}
         onChange={onChange}
-        className="w-full"
+        className="w-full outline-none"
         classNamePrefix="custom-select"
         components={{
           ValueContainer: (props) => (
@@ -63,8 +71,10 @@ const Select = <T extends object>(props: SelectT<T>) => {
             zIndex: 9999,
             minHeight: "44px",
             boxShadow: "none",
-            border:
-              variant === "outlined" ? "none" : "1px solid var(--color-bc)",
+            borderRadius: "inherit",
+            background: "inherit",
+            border: "inherit",
+            fontSize: "inherit",
           }),
         }}
       />
