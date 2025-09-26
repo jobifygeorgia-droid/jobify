@@ -5,7 +5,7 @@ import classnames from "classnames";
 import { TextFieldPropsT } from "./types/form-fields.types";
 import { filledContainerStyles } from "./ui/TextFieldContentContainer";
 
-import Label from "./ui/Label";
+import Label from "./Label";
 import AdornmentWrapper from "./ui/AdornmentWrapper";
 import TextFieldContainer from "./ui/TextFieldContainer";
 import TextFieldContentContainer from "./ui/TextFieldContentContainer";
@@ -27,7 +27,7 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
   const isLabelOut = labelPosition === "out";
 
   return (
-    <TextFieldContainer>
+    <TextFieldContainer className={rest.containerClassName}>
       <TextFieldContentContainer
         isLabelOut={isLabelOut}
         onClick={rest.onClick}
@@ -43,7 +43,6 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
           placeholder={placeholder || " "}
           className={classnames(
             "peer w-full h-11 outline-none pl-2 rounded-[inherit] bg-white",
-            // { "w-[calc(100%-38px)]!": hasAdornment },
             { [`order-2 ${filledContainerStyles}`]: isLabelOut }
           )}
         />

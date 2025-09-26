@@ -3,17 +3,27 @@
 import classnames from "classnames";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
-import { Close } from "./icons";
+
+import { Close } from "@/components/ui/icons";
 
 type ModalT = {
   onClose: () => void;
   backdrop?: boolean;
-  rounded?: "base" | "lg";
+  className?: string;
+  zIndexOnMobile?: number;
+  rounded?: "base" | "lg" | "none";
   children: React.ReactNode;
 };
 
 const Modal: React.FC<ModalT> = (props) => {
-  const { onClose, children, rounded = "base", backdrop } = props;
+  const {
+    onClose,
+    children,
+    rounded = "base",
+    backdrop,
+    className = "",
+    zIndexOnMobile = 999,
+  } = props;
 
   const [portalRoot, setPortalRoot] = useState<HTMLDivElement | null>(null);
 
@@ -31,18 +41,23 @@ const Modal: React.FC<ModalT> = (props) => {
 
   return createPortal(
     <div
-      className={classnames("fixed inset-0 z-[9999]", {
-        "bg-[rgba(0,0,0,0.3)]": backdrop,
-      })}
       onClick={closeModal}
+      className={classnames(
+        `fixed inset-0 z-[${zIndexOnMobile}] tablet:z-[999] scroll-block`,
+        {
+          "bg-[rgba(0,0,0,0.3)]": backdrop,
+        }
+      )}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         className={classnames(
+          className,
           "shadow-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-bc bg-white overflow-hidden",
           {
-            "rounded-lg": rounded === "base",
-            "rounded-[25px]": rounded === "lg",
+            "rounded-none": rounded === "none",
+            "tablet:rounded-lg": rounded === "base",
+            "tablet:rounded-[25px]": rounded === "lg",
           }
         )}
       >
@@ -50,7 +65,7 @@ const Modal: React.FC<ModalT> = (props) => {
           onClick={closeModal}
           className="absolute z-[9] top-6 right-6 cursor-pointer"
         >
-          <Close width={20} height={20} />
+          <Close size={30} />
         </button>
 
         {children}

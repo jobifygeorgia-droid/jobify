@@ -32,7 +32,7 @@ const PopupsProvider: React.FC<PopupsProviderT> = ({ children }) => {
   return (
     <PopupsContext.Provider value={{ addAlert }}>
       {alerts.length > 0 && (
-        <div className="fixed z-[99] top-4 w-full flex flex-col gap-4 justify-center items-center">
+        <div className="fixed z-[999] top-4 w-full flex flex-col gap-4 justify-center items-center">
           {alerts.map((alert) => (
             <Alert key={alert.id} {...alert} onRemove={onRemoveAlert} />
           ))}

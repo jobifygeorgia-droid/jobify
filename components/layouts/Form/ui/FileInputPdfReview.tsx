@@ -1,5 +1,5 @@
-import { FileInputReviewComponentPropsT } from "@/components/layouts/Form/types/form-fields.types";
 import { Close } from "@/components/ui/icons";
+import { FileInputReviewComponentPropsT } from "@/components/layouts/Form/types/form-fields.types";
 
 const FileInputPdfReview: React.FC<FileInputReviewComponentPropsT> = (
   props
@@ -14,8 +14,11 @@ const FileInputPdfReview: React.FC<FileInputReviewComponentPropsT> = (
           className="flex justify-between items-center gap-4 py-1 px-3 mb-1 rounded-md border border-bc"
         >
           <span>{file.name}</span>
-          <button onClick={() => removeFile(file)} className="cursor-pointer">
-            <Close width={15} height={15} />
+          <button
+            onClick={() => removeFile(file)}
+            className="cursor-pointer flex items-center"
+          >
+            <Close size={18} />
           </button>
         </div>
       ))}

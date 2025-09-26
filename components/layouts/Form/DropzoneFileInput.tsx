@@ -33,11 +33,11 @@ const DropzoneFileInput: React.FC<DropzoneFileInputT> = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2 laptop:gap-4">
       <div
         {...getRootProps()}
         className={classnames(
-          "border border-dashed border-bc p-4 rounded-lg flex items-center gap-6 cursor-pointer",
+          "border border-dashed border-bc p-2 laptop:p-4 rounded-lg flex items-center gap-3 laptop:gap-6 cursor-pointer",
           { "border-green": isDragActive }
         )}
       >

@@ -6,8 +6,11 @@
 
   /* Colors */
 
-  --background: #ffffff;
-  --foreground: #30353b;
+  --color-background: #ffffff;
+  --color-background-secondary: #f9f9f9;
+  --color-primary: var(--color-dark-grey-dark-hover);
+  --color-secondary: var(--color-light-grey-darker);
+  --color-light: var(--color-light-grey-active);
 
   --color-bc: var(--color-light-grey); /* Border color */
   --color-blue-footer: #f5faff;
@@ -90,11 +93,52 @@
   --text-3xl: 28px;
   --text-4xl: 32px;
   --text-5xl: 36px;
+
+  --breakpoint-tablet: 40rem; /* 640px*/
+  --breakpoint-laptop: 66rem; /* 1056px */
+  --breakpoint-desktop-sm: 80rem; /* 1280px */
+  --breakpoint-desktop-lg: 96rem; /* 1536px */
+}
+
+@layer utilities {
+  .scrollbar-transparent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ---------------------------------------------  */
 /* ---------------- TipTap ---------------------- */
 /* ---------------------------------------------  */
+
+body {
+  color: var(--color-secondary);
+  background-color: var(--color-background);
+  font-family: var(--font-noto-sans-georgian);
+  overflow-x: hidden;
+}
+
+.scrollbar::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-grey-dark);
+  border-radius: 5px;
+}
+
+body:has(.scroll-block) {
+  overflow: hidden !important;
+}
 
 input::-webkit-inner-spin-button {
   display: none;
@@ -108,22 +152,6 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: black !important;
   caret-color: black;
   transition: background-color 9999s ease-in-out 0s;
-}
-
-body {
-  color: var(--foreground);
-  background-color: var(--background);
-  font-family: var(--font-noto-sans-georgian);
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar-track {
-  background-color: blue;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: red;
 }
 
 .custom-select__control {
@@ -140,17 +168,14 @@ body {
   border-radius: inherit;
 }
 
-.italic {
-  @apply bg-red-400;
+.tiptap p.is-editor-empty.is-empty:first-child::before {
+  font-size: 20px;
+  color: #9ca3af;
+  font-style: italic;
 }
 
 .tiptap a {
-  color: purple;
   cursor: pointer;
-
-  /* &:hover {
-    color: var(--purple-contrast);
-  } */
 }
 
 .tiptap ul {

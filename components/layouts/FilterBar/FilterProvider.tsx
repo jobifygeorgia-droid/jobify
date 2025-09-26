@@ -3,6 +3,8 @@
 import { createContext, useContext, useState, useRef } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
+import { useDevice } from "@/hooks/utils";
+
 import {
   workTypeOptions,
   experienceOptions,
@@ -51,7 +53,10 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
 
   const isFilterExpanded = params.get("filter") === "1";
 
-  const categoriesDefaultLimit = 12;
+  const device = useDevice();
+
+  const categoriesDefaultLimit =
+    device === "mobile" ? 4 : device === "tablet" ? 8 : 12;
   const categoriesCount = workCategoryOptions.length;
   const [expandCategories, setExpandCategories] = useState(false);
 

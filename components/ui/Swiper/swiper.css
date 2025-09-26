@@ -13,19 +13,33 @@
 
 .swiper-pagination {
   position: unset;
-  padding-top: 40px;
+  padding-top: 12px;
 }
 
 span.swiper-pagination-bullet {
-  /* background-color: var(--color-orange-light-active); */
   background-color: rgba(255, 134, 35, 1);
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 100%;
 }
 
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: var(--color-orange);
-  width: 25px;
+  width: 16px;
   border-radius: 32px;
+  background-color: var(--color-orange);
+}
+
+@media (min-width: 66rem) {
+  .swiper-pagination {
+    padding-top: 40px;
+  }
+
+  span.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+
+  span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 25px;
+  }
 }

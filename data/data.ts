@@ -1,0 +1,1076 @@
+import { VACANCY_GROUPS } from "@/interface/global.types";
+
+export const vipVacancies = [
+  {
+    id: 1000,
+    companyName: "ტექნო ინოვატორები",
+    createdAt: new Date(Date.now() - 15 * 1000).toISOString(),
+    position: "ვებ დეველოპერი",
+    salary: "10,000 - 15,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 15 წამი წინ
+  {
+    id: 2000,
+    companyName: "კრეატივი სოლუშენსი",
+    createdAt: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+    position: "პროდუქტის მენეჯერი",
+    salary: "12,000 - 18,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 10 წუთის წინ
+  {
+    id: 3000,
+    companyName: "გლობალ ენტერპრაიზი",
+    createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+    position: "მარკეტინგის სპეციალისტი",
+    salary: "8,000 - 12,000 ₾",
+    location: "ქუთაისი",
+    jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 3 საათის წინ
+  {
+    id: 4000,
+    companyName: "ინოვაციური დიზაინი",
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    position: "გრაფიკული დიზაინერი",
+    salary: "6,000 - 9,000 ₾",
+    location: "ზუგდიდი",
+    jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 2 დღის წინ
+  {
+    id: 5000,
+    companyName: "დიგიტალ ჰაბი",
+    createdAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+    position: "SEO სპეციალისტი",
+    salary: "9,000 - 14,000 ₾",
+    location: "გორი",
+    jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 15 დღის წინ
+  {
+    id: 6000,
+    companyName: "კრეატივი მაინდსი",
+    createdAt: new Date(
+      Date.now() - 2 * 30 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "კონტენტის მწერალი",
+    salary: "5,000 - 7,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 2 თვის წინ
+  {
+    id: 7000,
+    companyName: "ტექნოლაბი",
+    createdAt: new Date(
+      Date.now() - 8 * 30 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "ფრონტ-ენდ დეველოპერი",
+    salary: "11,000 - 16,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 8 თვის წინ
+  {
+    id: 8000,
+    companyName: "მედია ჰაუსი",
+    createdAt: new Date(
+      Date.now() - 1 * 365 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "ვიდეომონტაჟის სპეციალისტი",
+    salary: "7,000 - 10,000 ₾",
+    location: "რუსთავი",
+    jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 1 წლის წინ
+  {
+    id: 9000,
+    companyName: "ქლაუდ სერვისები",
+    createdAt: new Date(
+      Date.now() - 3 * 365 * 24 * 60 * 60 * 1000
+    ).toISOString(),
+    position: "DevOps ინჟინერი",
+    salary: "13,000 - 19,000 ₾",
+    location: "თბილისი",
+    jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }, // 3 წლის წინ
+  {
+    id: 1,
+    companyName: "ტექნო ინოვატორები",
+    createdAt: "2025-05-12",
+    position: "ვებ დეველოპერი",
+    salary: "10,000 - 15,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 2,
+    companyName: "კრეატივი სოლუშენსი",
+    createdAt: "2025-01-20",
+    position: "პროდუქტის მენეჯერი",
+    salary: "12,000 - 18,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 3,
+    companyName: "გლობალ ენტერპრაიზი",
+    createdAt: "2024-11-03",
+    position: "მარკეტინგის სპეციალისტი",
+    salary: "8,000 - 12,000 ₾",
+    location: "ქუთაისი",
+    jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 4,
+    companyName: "ინოვაციური დიზაინი",
+    createdAt: "2025-03-18",
+    position: "გრაფიკული დიზაინერი",
+    salary: "6,000 - 9,000 ₾",
+    location: "ზუგდიდი",
+    jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 5,
+    companyName: "დიგიტალ ჰაბი",
+    createdAt: "2025-07-27",
+    position: "SEO სპეციალისტი",
+    salary: "9,000 - 14,000 ₾",
+    location: "გორი",
+    jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 6,
+    companyName: "კრეატივი მაინდსი",
+    createdAt: "2025-08-01",
+    position: "კონტენტის მწერალი",
+    salary: "5,000 - 7,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 7,
+    companyName: "ტექნოლაბი",
+    createdAt: "2025-02-10",
+    position: "ფრონტ-ენდ დეველოპერი",
+    salary: "11,000 - 16,000 ₾",
+    location: "თბილისი",
+    jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 8,
+    companyName: "მედია ჰაუსი",
+    createdAt: "2025-06-05",
+    position: "ვიდეომონტაჟის სპეციალისტი",
+    salary: "7,000 - 10,000 ₾",
+    location: "რუსთავი",
+    jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 9,
+    companyName: "ქლაუდ სერვისები",
+    createdAt: "2025-04-14",
+    position: "DevOps ინჟინერი",
+    salary: "13,000 - 19,000 ₾",
+    location: "თბილისი",
+    jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 10,
+    companyName: "ფინტექ სოლუშენსი",
+    createdAt: "2024-12-25",
+    position: "ფინანსური ანალიტიკოსი",
+    salary: "10,000 - 14,000 ₾",
+    location: "ქუთაისი",
+    jobFormat: "ნახევარი განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 11,
+    companyName: "გეიმსტუდიო",
+    createdAt: "2025-01-08",
+    position: "გეიმ დეველოპერი",
+    salary: "9,000 - 13,000 ₾",
+    location: "თბილისი",
+    jobFormat: "მზადყოფნაში ყოფნა",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 12,
+    companyName: "არტ გალერეა",
+    createdAt: "2025-07-01",
+    position: "არტ მენეჯერი",
+    salary: "6,000 - 8,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "სტაჟირება",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 13,
+    companyName: "სუპერბაიტი",
+    createdAt: "2025-02-22",
+    position: "QA ინჟინერი",
+    salary: "8,000 - 11,000 ₾",
+    location: "თბილისი",
+    jobFormat: "შეკუმშული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 14,
+    companyName: "სეილსფორსი",
+    createdAt: "2025-03-29",
+    position: "გაყიდვების მენეჯერი",
+    salary: "7,000 - 12,000 ₾",
+    location: "გორი",
+    jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 15,
+    companyName: "გრინტექი",
+    createdAt: "2025-06-20",
+    position: "ეკო ინჟინერი",
+    salary: "9,000 - 13,000 ₾",
+    location: "თელავი",
+    jobFormat: "სეზონური სამუშაო",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 16,
+    companyName: "მედიკო ცენტრი",
+    createdAt: "2025-04-09",
+    position: "ჯანდაცვის სპეციალისტი",
+    salary: "11,000 - 15,000 ₾",
+    location: "ქუთაისი",
+    jobFormat: "ცვლებში მუშაობა",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 17,
+    companyName: "სტარტაპ ჰაბი",
+    createdAt: "2025-08-10",
+    position: "სტარტაპ მენტორი",
+    salary: "12,000 - 18,000 ₾",
+    location: "თბილისი",
+    jobFormat: "ჰიბრიდული",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 18,
+    companyName: "შოპონლაინი",
+    createdAt: "2025-05-25",
+    position: "E-commerce მენეჯერი",
+    salary: "8,000 - 12,000 ₾",
+    location: "ბათუმი",
+    jobFormat: "სრული განაკვეთი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 19,
+    companyName: "მობილაბი",
+    createdAt: "2025-03-06",
+    position: "მობილური აპლიკაციის დეველოპერი",
+    salary: "11,000 - 17,000 ₾",
+    location: "თბილისი",
+    jobFormat: "კონტრაქტი",
+    image:
+      "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 20,
+    companyName: "ელექტრო სოლუშენსი",
+    createdAt: "2025-07-15",
+    position: "ელექტრო ინჟინერი",
+    salary: "10,000 - 14,000 ₾",
+    location: "ზუგდიდი",
+    jobFormat: "მოქნილი გრაფიკი",
+    image:
+      "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+export const section2Data = [
+  {
+    id: 21,
+    title: "იპოვე იდეალური სამსახური",
+    text: "იპოვე ისეთი სამსახური, სადაც შენი უნარები და ინტერესები სრულად დაფასდება და ყოველდღე მოტივაციით დაიწყებ ახალ პროექტებს.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1606961947900-6722c7358f23?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 22,
+    title: "განივითარე შენი კარიერა",
+    text: "კარიერული ზრდა იწყება სწორი გარემოს არჩევით, სადაც შეგიძლია ახალი გამოცდილების მიღება და პროფესიული განვითარების გაგრძელება.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 23,
+    title: "გახდი გუნდის ლიდერი",
+    text: "გუნდური მუშაობის გამოცდილება გაძლევს შესაძლებლობას გამოავლინო ლიდერობა, მართო პროექტები და შექმნა ძლიერი თანამშრომლობის კულტურა.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1610816168075-f19d937635f5?q=80&w=1078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 24,
+    title: "აღმოაჩინე შესაძლებლობები",
+    text: "სამუშაოს შეცვლა ან ახალი გამოწვევის მიღება დაგეხმარება აღმოაჩინო ისეთი შესაძლებლობები, რომლებიც კარიერაში ახალ გზას გაგიხსნის.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1587226513115-f1e3439f1a35?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 25,
+    title: "ბალანსი ცხოვრებაში",
+    text: "მნიშვნელოვანია ისეთი სამსახურის პოვნა, რომელიც მოგცემს მოქნილ გრაფიკს და საშუალებას დაგიტოვებს დროს პირადი ცხოვრებისათვის.",
+    thumbnail:
+      "https://images.unsplash.com/photo-1541834167531-0db139a8d22d?q=80&w=1089&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+export const vacanciesForDifferentGroupsData = [
+  {
+    id: 28,
+    title: "სტუდენტებისთვის",
+    subtitle: "სწავლა-სამსახურის შეთავაზება",
+    group: VACANCY_GROUPS.GROUP_3,
+  },
+  {
+    id: 27,
+    title: "უკრაინელი ხალხისთვის",
+    subtitle: "ჩვენ თქვენს გვერდით ვარ",
+    group: VACANCY_GROUPS.GROUP_2,
+  },
+  {
+    id: 26,
+    title: "ტუტორებისთვის",
+    subtitle: "აბიტურიენტებისთვის",
+    group: VACANCY_GROUPS.GROUP_1,
+  },
+  {
+    id: 29,
+    title: "ემიგრანტებისთვის",
+    subtitle: "",
+    group: VACANCY_GROUPS.GROUP_4,
+  },
+];
+
+export const reviewsData = [
+  {
+    id: 30,
+    username: "ნინო აბაშიძე",
+    createdAt: "2024-07-12",
+    rating: 5,
+    text: "ვებსაიტი ძალიან მარტივად გამოსაყენებელია, დიზაინი თანამედროვეა და ფუნქციები ზუსტად ისეთი როგორც მჭირდებოდა.",
+  },
+  {
+    id: 31,
+    username: "გიორგი ქავთარაძე",
+    createdAt: "2023-11-03",
+    rating: 4,
+    text: "კარგი საიტია, თუმცა ზოგჯერ დატვირთვისას ცოტათი ნელა მუშაობს. მთლიანობაში კმაყოფილი ვარ.",
+  },
+  {
+    id: 32,
+    username: "თამარ გუგუშვილი",
+    createdAt: "2022-09-25",
+    rating: 3,
+    text: "საიტი საინტერესოა, მაგრამ მობილურიდან მუშაობისას დიზაინი ცოტა არეულად ჩანს.",
+  },
+  {
+    id: 33,
+    username: "ლაშა ჯანელიძე",
+    createdAt: "2021-05-18",
+    rating: 2,
+    text: "ძალიან ბევრჯერ გაიჭედა გვერდი და მომიწია თავიდან ჩატვირთვა, რამაც ხანგრძლივი დრო დამაკარგვინა.",
+  },
+  {
+    id: 34,
+    username: "მარიამ ჭანტურია",
+    createdAt: "2020-12-07",
+    rating: 1,
+    text: "საიტი საერთოდ არ მუშაობდა სწორად, ვერ ვიპოვე საჭირო ინფორმაცია და ძალიან निराशად დავრჩი.",
+  },
+  {
+    id: 35,
+    username: "დავით ხაჩიძე",
+    createdAt: "2023-03-14",
+    rating: 5,
+    text: "ფუნქციონალი და დიზაინი უმაღლეს დონეზეა, ყველაფერი სწრაფად იტვირთება და მარტივად ვპოულობ რაც მჭირდება.",
+  },
+  {
+    id: 36,
+    username: "ეკა ბერიძე",
+    createdAt: "2022-06-09",
+    rating: 4,
+    text: "ძალიან კარგია, თუმცა სასურველი იქნებოდა მეტი ფილტრი ძიებაში.",
+  },
+  {
+    id: 37,
+    username: "ირაკლი ცინცაძე",
+    createdAt: "2021-08-21",
+    rating: 3,
+    text: "სერვისი კარგია, მაგრამ ზოგჯერ მონაცემების განახლება იგვიანებს.",
+  },
+  {
+    id: 38,
+    username: "ხათუნა სამხარაძე",
+    createdAt: "2024-01-02",
+    rating: 5,
+    text: "საუკეთესო გამოცდილება მქონდა, საიტზე ყველა ინფორმაცია ძალიან გასაგებადაა წარმოდგენილი.",
+  },
+  {
+    id: 39,
+    username: "ბექა ნოზაძე",
+    createdAt: "2023-04-27",
+    rating: 2,
+    text: "დასაწყისში კარგად მუშაობდა, მაგრამ ახლა ხშირად მიჩვენებს შეცდომებს და გამოსწორება სჭირდება.",
+  },
+  {
+    id: 40,
+    username: "ანა დვალიშვილი",
+    createdAt: "2020-02-16",
+    rating: 1,
+    text: "ძალიან ცუდი გამოცდილება მქონდა, საიტი საერთოდ არ იტვირთებოდა და ვერაფერი ვერ გავაკეთე.",
+  },
+  {
+    id: 41,
+    username: "სანდრო მჭედლიძე",
+    createdAt: "2022-10-10",
+    rating: 4,
+    text: "საიტი მოსახერხებელია, ვიზუალი კარგია, მაგრამ ზოგჯერ ძიების შედეგები არასწორია.",
+  },
+  {
+    id: 42,
+    username: "ქეთევან შარიქაძე",
+    createdAt: "2021-03-05",
+    rating: 3,
+    text: "საშუალო გამოცდილება მქონდა, არც ცუდია და არც განსაკუთრებულად კარგი. გაუმჯობესება შეიძლება.",
+  },
+  {
+    id: 43,
+    username: "ნიკა ტაბატაძე",
+    createdAt: "2024-05-19",
+    rating: 5,
+    text: "საიტი საოცრად სწრაფია, ყველაფერი ზუსტად ისეა როგორც წარმომედგინა, ნამდვილად გირჩევთ.",
+  },
+  {
+    id: 44,
+    username: "მაკა ლომიძე",
+    createdAt: "2023-07-30",
+    rating: 4,
+    text: "ძალიან კარგი გამოცდილება, თუმცა ზოგჯერ რეკლამები ზედმეტად ბევრია.",
+  },
+  {
+    id: 45,
+    username: "გიგა აბულაძე",
+    createdAt: "2022-01-22",
+    rating: 2,
+    text: "საიტი ნელა მუშაობს და ზოგჯერ ჩატვირთვა საერთოდ ვერ ხერხდება. სასწრაფოდ გამოსწორებაა საჭირო.",
+  },
+  {
+    id: 46,
+    username: "თეონა მარგველაშვილი",
+    createdAt: "2021-04-11",
+    rating: 3,
+    text: "ფუნქციები ძირითადად კარგია, მაგრამ ინტერფეისი ძალიან მოძველებულია და უნდა განახლდეს.",
+  },
+  {
+    id: 47,
+    username: "ლუკა ბექაური",
+    createdAt: "2024-02-28",
+    rating: 5,
+    text: "ერთ-ერთი საუკეთესო ვებსაიტია, რაც კი გამომიყენებია. ყველაფერი ნათელია და სუპერ სწრაფად მუშაობს.",
+  },
+  {
+    id: 48,
+    username: "სოფო ქობალია",
+    createdAt: "2023-09-13",
+    rating: 4,
+    text: "საიტი კარგი და მოსახერხებელია, თუმცა დიზაინში მცირე გაუმჯობესებები საჭირო იქნება.",
+  },
+  {
+    id: 49,
+    username: "გიორგი შონია",
+    createdAt: "2020-06-01",
+    rating: 1,
+    text: "სრულიად უსარგებლო აღმოჩნდა ჩემთვის, არაფერი მუშაობდა და საერთოდ ვერ ვიხმარე საიტი.",
+  },
+];
+
+export const liveInCompanyData = [
+  { id: 50, title: "Google" },
+  { id: 51, title: "Microsoft" },
+  { id: 52, title: "Apple" },
+  { id: 53, title: "Amazon" },
+  { id: 54, title: "Facebook" },
+  { id: 55, title: "Tesla" },
+  { id: 56, title: "Netflix" },
+  { id: 57, title: "Adobe" },
+  { id: 58, title: "IBM" },
+  { id: 59, title: "Intel" },
+  { id: 60, title: "Samsung" },
+  { id: 61, title: "Sony" },
+  { id: 62, title: "Nvidia" },
+  { id: 63, title: "Oracle" },
+  { id: 64, title: "Airbnb" },
+  { id: 65, title: "Uber" },
+  { id: 66, title: "Lyft" },
+  { id: 67, title: "Twitter" },
+  { id: 68, title: "LinkedIn" },
+  { id: 69, title: "PayPal" },
+  { id: 70, title: "eBay" },
+  { id: 71, title: "Spotify" },
+  { id: 72, title: "Snapchat" },
+  { id: 73, title: "TikTok" },
+  { id: 74, title: "Shopify" },
+];
+
+export const tipTapValue = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "სამუშოს აღწერა" },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად 1500-იან ნორმებში ჩნდება, რომელიც საბოლოო მომხმარებელმა უნდა დაამატოს შემდეგში. ძირითადი ემპირიული ტექსტია, რომელიც უზრუნველყოფს დოკუმენტის სტრუქტურულ შევსებას. არაფორმალური ან ნეიტრალური სტილი, რომელიც არ შეიცავს მნიშვნელოვნად დამუშავებულ თემატიკას, არამედ მხოლოდ მაგალითის სახით გამოიყენება.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "მოვალეობები" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფა",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "მოთხოვნები" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [
+        { type: "text", marks: [{ type: "bold" }], text: "რას გთავაზობთ" },
+      ],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                { type: "text", text: "სამუშაო და პროფესიული გამოცდილება" },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  type: "text",
+                  text: "სამუშაო და პროფესიული გამოცდილების უზრუნველყოფის ტექსტია. იდი სტანდარტად",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const companyProfileData = [
+  {
+    id: 80,
+    vacancy: "Frontend Developer",
+    creationDate: "2025-09-01",
+    remainingDays: 12,
+    views: 145,
+    resume: 24,
+    chosenCandidate: 3,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 81,
+    vacancy: "Backend Developer",
+    creationDate: "2025-08-28",
+    remainingDays: 5,
+    views: 220,
+    resume: 31,
+    chosenCandidate: 2,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 82,
+    vacancy: "UI/UX Designer",
+    creationDate: "2025-07-20",
+    remainingDays: 0,
+    views: 95,
+    resume: 14,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "archive",
+  },
+  {
+    id: 83,
+    vacancy: "Project Manager",
+    creationDate: "2025-08-15",
+    remainingDays: 20,
+    views: 305,
+    resume: 40,
+    chosenCandidate: 4,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 84,
+    vacancy: "Mobile Developer",
+    creationDate: "2025-07-30",
+    remainingDays: 0,
+    views: 188,
+    resume: 22,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "archive",
+  },
+  {
+    id: 85,
+    vacancy: "DevOps Engineer",
+    creationDate: "2025-08-10",
+    remainingDays: 8,
+    views: 270,
+    resume: 36,
+    chosenCandidate: 2,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 86,
+    vacancy: "QA Engineer",
+    creationDate: "2025-07-18",
+    remainingDays: 0,
+    views: 130,
+    resume: 15,
+    chosenCandidate: 0,
+    hired: 2,
+    status: "draft",
+  },
+  {
+    id: 87,
+    vacancy: "System Analyst",
+    creationDate: "2025-09-02",
+    remainingDays: 30,
+    views: 90,
+    resume: 12,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "draft",
+  },
+  {
+    id: 88,
+    vacancy: "Product Owner",
+    creationDate: "2025-08-01",
+    remainingDays: 2,
+    views: 240,
+    resume: 29,
+    chosenCandidate: 2,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 89,
+    vacancy: "Scrum Master",
+    creationDate: "2025-08-25",
+    remainingDays: 14,
+    views: 165,
+    resume: 19,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 90,
+    vacancy: "Content Writer",
+    creationDate: "2025-07-05",
+    remainingDays: 0,
+    views: 78,
+    resume: 9,
+    chosenCandidate: 0,
+    hired: 2,
+    status: "archive",
+  },
+  {
+    id: 91,
+    vacancy: "SEO Specialist",
+    creationDate: "2025-08-12",
+    remainingDays: 10,
+    views: 140,
+    resume: 17,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 92,
+    vacancy: "Marketing Manager",
+    creationDate: "2025-08-03",
+    remainingDays: 6,
+    views: 210,
+    resume: 25,
+    chosenCandidate: 2,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 93,
+    vacancy: "HR Specialist",
+    creationDate: "2025-07-29",
+    remainingDays: 0,
+    views: 110,
+    resume: 13,
+    chosenCandidate: 0,
+    hired: 2,
+    status: "archive",
+  },
+  {
+    id: 94,
+    vacancy: "Graphic Designer",
+    creationDate: "2025-08-14",
+    remainingDays: 9,
+    views: 175,
+    resume: 20,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 95,
+    vacancy: "Data Scientist",
+    creationDate: "2025-08-17",
+    remainingDays: 18,
+    views: 330,
+    resume: 45,
+    chosenCandidate: 3,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 96,
+    vacancy: "AI Engineer",
+    creationDate: "2025-08-26",
+    remainingDays: 11,
+    views: 420,
+    resume: 52,
+    chosenCandidate: 4,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 97,
+    vacancy: "Database Administrator",
+    creationDate: "2025-07-22",
+    remainingDays: 0,
+    views: 95,
+    resume: 12,
+    chosenCandidate: 1,
+    hired: 2,
+    status: "archive",
+  },
+  {
+    id: 98,
+    vacancy: "Customer Support",
+    creationDate: "2025-08-05",
+    remainingDays: 7,
+    views: 200,
+    resume: 23,
+    chosenCandidate: 2,
+    hired: 2,
+    status: "active",
+  },
+  {
+    id: 99,
+    vacancy: "Sales Manager",
+    creationDate: "2025-08-18",
+    remainingDays: 15,
+    views: 310,
+    resume: 38,
+    chosenCandidate: 3,
+    hired: 2,
+    status: "active",
+  },
+];
+
+export const companyInbox = [
+  {
+    id: 91,
+    fullname: "გიორგი ბერიძე",
+    position: "ფრონტენდ დეველოპერი",
+    experience: 3,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 92,
+    fullname: "ანა ხურციძე",
+    position: "ბექენდ დეველოპერი",
+    experience: 5,
+    education: "მაგისტრი",
+  },
+  {
+    id: 93,
+    fullname: "ლუკა მელაძე",
+    position: "UI/UX დიზაინერი",
+    experience: 2,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 94,
+    fullname: "მარიამ აბაშიძე",
+    position: "პროექტ მენეჯერი",
+    experience: 7,
+    education: "მაგისტრი",
+  },
+  {
+    id: 95,
+    fullname: "დავით ჩიხლაძე",
+    position: "QA ინჟინერი",
+    experience: 4,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 96,
+    fullname: "თეკლა ქავთარაძე",
+    position: "ბიზნეს ანალიტიკოსი",
+    experience: 6,
+    education: "მაგისტრი",
+  },
+  {
+    id: 97,
+    fullname: "სანდრო კიკნაველიძე",
+    position: "DevOps ინჟინერი",
+    experience: 5,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 98,
+    fullname: "ნინო კერესელიძე",
+    position: "HR მენეჯერი",
+    experience: 8,
+    education: "მაგისტრი",
+  },
+  {
+    id: 99,
+    fullname: "ირაკლი ჯაფარიძე",
+    position: "მობილური დეველოპერი",
+    experience: 4,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 100,
+    fullname: "ელენე ტაბატაძე",
+    position: "კონტენტ მენეჯერი",
+    experience: 3,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 101,
+    fullname: "ალექსანდრე ხვედელიძე",
+    position: "ინფორმაციული უსაფრთხოების სპეციალისტი",
+    experience: 6,
+    education: "მაგისტრი",
+  },
+  {
+    id: 102,
+    fullname: "მარიამ დოლიძე",
+    position: "გრაფიკული დიზაინერი",
+    experience: 2,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 103,
+    fullname: "თორნიკე გეგეჭკორი",
+    position: "სისტემური ადმინი",
+    experience: 9,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 104,
+    fullname: "სალომე კუპრაშვილი",
+    position: "ფინანსური ანალიტიკოსი",
+    experience: 7,
+    education: "მაგისტრი",
+  },
+  {
+    id: 105,
+    fullname: "გიორგი მესხიშვილი",
+    position: "Machine Learning ინჟინერი",
+    experience: 4,
+    education: "მაგისტრი",
+  },
+  {
+    id: 106,
+    fullname: "ნატა აბულაძე",
+    position: "კოპირაიტერი",
+    experience: 3,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 107,
+    fullname: "ნიკოლოზ კანდელაკი",
+    position: "პროდუქტის მენეჯერი",
+    experience: 8,
+    education: "მაგისტრი",
+  },
+  {
+    id: 108,
+    fullname: "მარიამ ბლიაძე",
+    position: "ფულ-სტეკ დეველოპერი",
+    experience: 5,
+    education: "ბაკალავრიატი",
+  },
+  {
+    id: 109,
+    fullname: "დემეტრე ამირანაშვილი",
+    position: "Data Scientist",
+    experience: 6,
+    education: "მაგისტრი",
+  },
+  {
+    id: 110,
+    fullname: "ქეთევან ცინცაძე",
+    position: "რეკრუტერი",
+    experience: 4,
+    education: "ბაკალავრიატი",
+  },
+];

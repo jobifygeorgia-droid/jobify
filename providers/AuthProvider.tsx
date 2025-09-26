@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
+import { PATHS } from "@/lib/config";
+import { useSearchParamUtils } from "@/hooks/utils";
 import { AuthModeT } from "@/components/Auth/auth.types";
 
 type AuthProviderT = {
@@ -13,38 +14,57 @@ type AuthContextT = {
   method: string | null;
   authMode: AuthModeT | null;
   onCloseAuthPopup: () => void;
+  onCancel: () => void;
+  onSignIn: () => void;
+  onForgotPassword: () => void;
   onChoosePasswordUpdateMethod: () => void;
   onVerifyUserIdentity: () => void;
+  onUpdatePassword: () => void;
 };
 
 const AuthContext = createContext<AuthContextT | undefined>(undefined);
 
 const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const nextParams = useSearchParams();
-
-  const searchParams = new URLSearchParams(nextParams);
+  const {
+    mergeParams,
+    mergeAndNavigate,
+    deleteParams,
+    navigate,
+    searchParams,
+    deleteMergeAndNavigate,
+  } = useSearchParamUtils();
 
   const authMode = searchParams.get("auth") as AuthModeT | null;
   const method = searchParams.get("method") as string | null;
 
   const onCloseAuthPopup = () => {
-    searchParams.delete("auth");
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
+    if (authMode === "update-success") mergeParams(PATHS.sign_in);
+    else deleteParams(["auth", "method"]);
+
+    navigate();
   };
 
-  const onChoosePasswordUpdateMethod = () => {
-    searchParams.set("auth", "verify-user");
-    searchParams.set("method", "email");
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onCancel = () =>
+    deleteMergeAndNavigate({
+      delete: ["method"],
+      merge: PATHS.sign_in,
+    });
 
-  const onVerifyUserIdentity = () => {
-    searchParams.delete("method");
-    searchParams.set("auth", "update-password");
-    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
-  };
+  const onSignIn = () => mergeAndNavigate(PATHS.sign_in);
+
+  const onForgotPassword = () => mergeAndNavigate(PATHS.forgot_password);
+
+  const onChoosePasswordUpdateMethod = () =>
+    mergeAndNavigate(PATHS.forgot_password_verify_by_email);
+
+  const onVerifyUserIdentity = () =>
+    deleteMergeAndNavigate({
+      delete: ["method"],
+      merge: PATHS.forgot_password_update,
+    });
+
+  const onUpdatePassword = () =>
+    mergeAndNavigate(PATHS.forgot_password_update_success);
 
   return (
     <AuthContext.Provider
@@ -52,8 +72,12 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
         authMode,
         method,
         onCloseAuthPopup,
+        onCancel,
+        onSignIn,
+        onForgotPassword,
         onChoosePasswordUpdateMethod,
         onVerifyUserIdentity,
+        onUpdatePassword,
       }}
     >
       {children}

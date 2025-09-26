@@ -1,12 +1,16 @@
-import { FilterBar } from "@/components/layouts";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
 
-export default function Home() {
+import Home from "@/components/Home/Home";
+import { Container } from "@/components/ui";
+import { FilterBar } from "@/components/layouts";
+
+export default async function Page() {
   return (
-    <div className="py-5">
-      <FilterProvider>
+    <FilterProvider>
+      <Container>
         <FilterBar />
-      </FilterProvider>
-    </div>
+        <Home />
+      </Container>
+    </FilterProvider>
   );
 }

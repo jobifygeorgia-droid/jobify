@@ -4,7 +4,8 @@ import { Suspense } from "react";
 import "@/styles/globals.css";
 
 import ThemeRegistry from "@/services/mui/ThemeRegistry";
-import { AuthProvider, PopupsProvider } from "@/providers";
+import { AuthProvider, PopupsProvider, RouteTracker } from "@/providers";
+import GoogleFontIconsHead from "@/components/ui/icons/GoogleFontIconsHead";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["georgian"],
@@ -20,15 +21,18 @@ type RootLayoutT = {
 const RootLayout: React.FC<RootLayoutT> = ({ children, AuthPopup }) => {
   return (
     <html lang="en">
+      <GoogleFontIconsHead />
       <body className={`${notoSansGeorgian.className}`}>
         <ThemeRegistry>
           <Suspense fallback={null}>
-            <PopupsProvider>
-              <AuthProvider>
-                {children}
-                {AuthPopup}
-              </AuthProvider>
-            </PopupsProvider>
+            <RouteTracker>
+              <PopupsProvider>
+                <AuthProvider>
+                  {children}
+                  {AuthPopup}
+                </AuthProvider>
+              </PopupsProvider>
+            </RouteTracker>
           </Suspense>
         </ThemeRegistry>
 

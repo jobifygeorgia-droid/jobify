@@ -9,9 +9,15 @@ const FilterForm: React.FC = () => {
       <TextField
         label="მდებარეობა"
         labelPosition="out"
-        adornment={<Location className="fill-none stroke-dark-grey" />}
+        containerClassName="col-span-2 tablet:col-span-1"
+        adornment={<Location className="text-light-grey-dark" />}
       />
-      <DatePicker disablePortal={true} placement="top-start" />
+      <DatePicker
+        disablePortal={true}
+        placement="top-start"
+        className="col-span-2 tablet:col-span-1"
+        label="გამოქვეყნების თარიღი"
+      />
     </div>
   );
 };

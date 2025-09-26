@@ -22,6 +22,7 @@ const RadioItem: React.FC<RadioItemT> = (props) => {
         id={item?.id || item.value.toString()}
         checked={item.value.toString() === selectedValue}
         sx={{
+          padding: 0,
           "&.MuiButtonBase-root.MuiRadio-root": {
             color: "var(--color-bc)",
           },

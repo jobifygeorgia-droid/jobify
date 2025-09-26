@@ -23,6 +23,7 @@ type TextFieldBaseProps = {
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fieldWrapperClassName?: React.ComponentProps<"div">["className"];
+  containerClassName?: React.ComponentProps<"div">["className"];
 };
 
 export type TextFieldPropsT = TextFieldBaseProps &

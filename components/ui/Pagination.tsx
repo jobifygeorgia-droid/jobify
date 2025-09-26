@@ -5,10 +5,10 @@ import { useState } from "react";
 import MuiPagination, {
   PaginationRenderItemParams,
 } from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import classnames from "classnames";
+import Stack from "@mui/material/Stack";
 
-import { PaginationMultipleArrow, PaginationArrow } from "./icons";
+import { DoubleArrowRight, KeyboardArrowRight } from "./icons";
 
 type PaginationT = {
   x?: string;
@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationT> = () => {
   const [currentPage, setCurrentPage] = useState(2);
 
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} direction="row" gap="100px" alignItems="center">
       <MuiPagination
         count={20}
         page={currentPage}
@@ -34,6 +34,16 @@ const Pagination: React.FC<PaginationT> = () => {
           />
         )}
       />
+
+      <div className="hidden laptop:flex items-center gap-3 text-base-sm">
+        <label htmlFor="manual-page-pagination">გვერდი</label>
+        <input
+          defaultValue={1}
+          type="number"
+          className="border border-bc w-14 h-10 rounded-lg text-center outline-none"
+        />
+        <span>20&nbsp;-დან</span>
+      </div>
     </Stack>
   );
 };
@@ -73,7 +83,7 @@ function PaginationPageBox(props: PaginationRenderItemParams) {
     <button
       onClick={props.onClick}
       className={classnames(
-        "flex items-center justify-center w-8 h-8 rounded-lg leading-2.5 mx-[5px]",
+        "flex items-center justify-center size-7 tablet:size-8 text-sm tablet:text-base-sm rounded-lg leading-2.5 mx-[5px]",
         {
           "text-white bg-orange": isSelected,
           "bg-none text-dark-grey-dark": !isSelected,
@@ -158,11 +168,15 @@ function PaginationArrowButton(props: {
     <button
       onClick={onChangePage}
       className={classnames(
-        "border border-bc flex items-center justify-center w-8 h-8 rounded-lg leading-2.5 mx-[5px] cursor-pointer",
-        { "rotate-180": isPrevious }
+        "border border-bc flex items-center justify-center size-7 tablet:size-8 text-sm tablet:text-base-sm rounded-lg leading-2.5 mx-[5px] cursor-pointer",
+        { "rotate-180": isPrevious, "hidden tablet:flex": isMultiple }
       )}
     >
-      {isMultiple ? <PaginationMultipleArrow /> : <PaginationArrow />}
+      {isMultiple ? (
+        <DoubleArrowRight size={16} />
+      ) : (
+        <KeyboardArrowRight size={16} />
+      )}
     </button>
   );
 }

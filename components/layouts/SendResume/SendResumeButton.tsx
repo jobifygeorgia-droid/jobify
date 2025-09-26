@@ -1,16 +1,23 @@
 "use client";
 
-import { Button } from "@/components/ui";
-import { ButtonT } from "@/components/ui/Button/button.types";
-import { useSendResumeContext } from "./SendResume";
+import { useSendResumeContext } from "@/providers/SendResumeProvider";
 
-const SendResumeButton: React.FC<Omit<ButtonT, "onClick">> = (props) => {
-  const { onOpenModal } = useSendResumeContext();
+import { AnchorButton } from "@/components/ui";
+import { AnchorButtonT } from "@/components/ui/Button/button.types";
+
+type SendResumeButtonT = {
+  title?: "short" | "long";
+  buttonProps?: Omit<AnchorButtonT, "buttonType" | "rounded" | "href">;
+};
+
+const SendResumeButton: React.FC<SendResumeButtonT> = (props) => {
+  const { title, buttonProps } = props;
+  const { paramsToAttach } = useSendResumeContext();
 
   return (
-    <Button {...props} onClick={onOpenModal}>
-      გაგზავნა
-    </Button>
+    <AnchorButton {...buttonProps} href={paramsToAttach} buttonType="primary">
+      {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
+    </AnchorButton>
   );
 };
 

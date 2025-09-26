@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { components, ValueContainerProps } from "react-select";
 import "./selectInputContainer.css";
 
@@ -11,9 +12,18 @@ const SelectInputContainer = <T,>({
   ...rest
 }: SelectInputContainerProps<T>) => {
   return (
-    <components.ValueContainer {...rest}>
+    <components.ValueContainer
+      {...rest}
+      className={classnames(
+        "rounded-inherit border-red outline-none! border-none!"
+      )}
+    >
       <div className="flex items-center w-full gap-2">
-        {adornment && <span className="flex-none">{adornment}</span>}
+        {adornment && (
+          <span className="flex-none flex items-center justify-center">
+            {adornment}
+          </span>
+        )}
 
         <div className="flex-1 relative flex items-center justify-start">
           {children}

@@ -3,7 +3,7 @@
 import { useTipTap } from "@/providers/TipTapProvider";
 import { HighLight as Icon } from "@/components/ui/icons";
 import { MenuButton } from "@/components/layouts/TipTap/components/ui";
-import { IconPropsT } from "@/components/ui/icons/icon.types";
+import { IconT } from "@/components/ui/icons";
 
 const TurnOffHighLight: React.FC = () => {
   const { editor } = useTipTap();
@@ -20,7 +20,7 @@ const TurnOffHighLight: React.FC = () => {
 
 export default TurnOffHighLight;
 
-function TurnOffHighlightIcon(props: IconPropsT) {
+function TurnOffHighlightIcon(props: IconT) {
   return (
     <span className="relative">
       <span className="h-[20px] w-[1px] bg-current absolute -rotate-45" />

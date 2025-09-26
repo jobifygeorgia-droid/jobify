@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { IconPropsT } from "./icons";
+import { IconT } from "./icons";
 
 type IconChipT = {
   /**
@@ -9,24 +9,29 @@ type IconChipT = {
    */
   size?: "sm" | "base";
   text: string;
-  Icon: React.ComponentType<IconPropsT>;
+  Icon?: React.ComponentType<IconT>;
+  children?: React.ReactNode;
+  className?: string;
 };
 
 const IconChip: React.FC<IconChipT> = (props) => {
-  const { Icon, text, size = "base" } = props;
+  const { Icon, text, size = "base", children, className = "" } = props;
 
   return (
     <div
-      className={classnames("flex items-center", {
+      className={classnames("flex items-center", className, {
         "text-sm gap-1": size === "sm",
-        "text-base-sm gap-2": size === "base",
+        "text-sm laptop:text-base-sm gap-2": size === "base",
       })}
     >
-      <Icon
-        width={size === "base" ? 22 : 18}
-        height={size === "base" ? 22 : 18}
-        className="fill-none stroke-light-grey-active"
-      />
+      {children ? (
+        children
+      ) : Icon ? (
+        <Icon
+          size={size === "base" ? 22 : 18}
+          className="fill-none stroke-light-grey-active"
+        />
+      ) : null}
       <span className="text-light-grey-dark-active">{text}</span>
     </div>
   );

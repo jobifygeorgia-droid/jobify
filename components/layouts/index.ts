@@ -1,7 +1,16 @@
 export { default as VacancyCard } from "./VacancyCard/VacancyCard";
+export { default as VIPVacanciesSlider } from "./VIPVacanciesSlider/VIPVacanciesSlider";
 export { default as VIPVacancyCard } from "./VIPVacancyCard/VIPVacancyCard";
+export { default as VipVacancyCardSkeleton } from "./VIPVacancyCard/VipVacancyCardSkeleton";
 export { default as FilterBar } from "./FilterBar/FilterBar";
+export { default as FilterButton } from "./FilterBar/FilterButton";
 export { default as TextEditor } from "./TextEditor/TextEditor";
-export { default as SendResume } from "./SendResume/SendResume";
+export { default as TextEditorContent } from "./TextEditor/TextEditorContent";
 export { default as SendResumeButton } from "./SendResume/SendResumeButton";
 export { default as ReviewCard } from "./ReviewCard/ReviewCard";
+export { default as AddToFavoriteButton } from "./AddToFavoriteButton/AddToFavoriteButton";
+export { default as VacancyAdditionalDetails } from "./VacancyAdditionalDetails/VacancyAdditionalDetails";
+export { default as ReceivedResumeCardCubic } from "./ReceivedResumeCard/ReceivedResumeCardCubic";
+export { default as ReceivedResumeCardHorizontal } from "./ReceivedResumeCard/ReceivedResumeCardHorizontal";
+export { default as GridTable } from "./GridTable/GridTable";
+export { default as GridTableItem } from "./GridTable/GridTableItem";

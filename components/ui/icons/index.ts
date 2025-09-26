@@ -1,5 +1,3 @@
-export * from "./arrow.icons";
-export * from "./calendar.icons";
-export * from "./common.icons";
-export * from "./icons";
+export * from "./google-font-icons";
+export * from "./static-icons";
 export * from "./tip-tap.icons";

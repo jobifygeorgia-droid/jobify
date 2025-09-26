@@ -1,25 +1,35 @@
-import Link from "next/link";
-
-import NavLink from "./NavLink";
-import { Logo } from "@/components/ui";
 import User from "./User";
+import BottomNavigation from "./ui/BottomNavigation";
+import BurgerMenu from "./ui/BurgerMenu";
+import NavList from "./ui/NavList";
+import { Container, Logo } from "@/components/ui";
 
 const NavBar: React.FC = () => {
+  const roles = ["job_seeker", "employer"];
+
+  const isAuthenticated = 0;
+  const role = isNaN(isAuthenticated) ? "" : roles[isAuthenticated];
+
   return (
-    <nav className="flex items-center w-full gap-8 text-base font-medium text-dark-grey-dark-hover">
-      <Logo />
+    <>
+      <div className="sticky top-0 bg-white z-[999]">
+        <Container className="p-0!">
+          <nav className="py-4 px-5 desktop-lg:px-0 flex items-center w-full gap-8 text-base font-medium text-dark-grey-dark-hover">
+            <Logo />
 
-      <ul className="flex items-center gap-10 pl-16">
-        <NavLink href="/">მთავარი</NavLink>
-        <NavLink href="/">შეფასებები</NavLink>
-      </ul>
+            <div className="w-full items-center hidden laptop:flex">
+              <NavList role={role} />
 
-      <div className="flex items-center ml-auto gap-8">
-        <Link href="/">ვაკანსიის დამატება</Link>
+              <User role={role} />
+            </div>
 
-        <User />
+            <BurgerMenu />
+          </nav>
+        </Container>
       </div>
-    </nav>
+
+      <BottomNavigation />
+    </>
   );
 };
 

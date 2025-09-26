@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
+import { PATHS } from "@/lib/config";
+
 import { Button } from "@/components/ui";
 import { Radio } from "@/components/layouts/Form";
-
 import SignupContainer from "./ui/SignupContainer";
 
 const options = [
@@ -26,14 +27,15 @@ const SignUp: React.FC = () => {
 
     const data = formData.get("user-type");
 
-    const candidateEndpoint = data === "natural_person" ? "user" : "company";
+    const candidateEndpoint =
+      data === "natural_person" ? PATHS.sign_up_user : PATHS.sign_up_company;
 
-    redirect(`/auth/signup/${candidateEndpoint}`);
+    redirect(candidateEndpoint);
   }
 
   return (
     <SignupContainer>
-      <span className="text-base-sm text-dark-grey-dark-active mt-7">
+      <span className="text-center text-base-sm text-dark-grey-dark-active mt-7 px-5 tablet:px-10">
         რეგისტრაციისთვის გთხოვთ აირჩიოთ მომხმარებლის ტიპი
       </span>
 
@@ -44,8 +46,8 @@ const SignUp: React.FC = () => {
 
         <Button
           type="submit"
+          buttonType="primary"
           className="w-full max-w-[375px] mt-12"
-          rounded="base"
         >
           გაგრძელება
         </Button>

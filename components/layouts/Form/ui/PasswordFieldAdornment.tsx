@@ -12,15 +12,15 @@ const PasswordFieldAdornment: React.FC<PasswordFieldAdornmentT> = ({
   return (
     <button
       type="button"
-      className="cursor-pointer"
+      className="cursor-pointer flex items-center"
       onClick={() =>
         setInputType((prev) => (prev === "text" ? "password" : "text"))
       }
     >
       {inputType === "password" ? (
-        <Eye className="fill-light-grey-dark" />
+        <Eye className="text-light-grey-dark" />
       ) : (
-        <EyeOff className="fill-light-grey-dark" />
+        <EyeOff className="text-light-grey-dark" />
       )}
     </button>
   );

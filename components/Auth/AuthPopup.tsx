@@ -9,6 +9,7 @@ import UpdatePassword from "./UpdatePassword";
 import BaseAuthentication from "./BaseAuthentication";
 import VerifyUserIdentity from "./VerifyUserIdentity";
 import ForgotPasswordUpdateMethod from "./ForgotPasswordUpdateMethod";
+import SignInButtonOnSuccess from "./ui/SignInButtonOnSuccess";
 
 const AuthPopupByMode: Record<AuthModeT, React.ReactNode> = {
   base: <BaseAuthentication />,
@@ -16,7 +17,9 @@ const AuthPopupByMode: Record<AuthModeT, React.ReactNode> = {
   ["verify-user"]: <VerifyUserIdentity />,
   ["update-password"]: <UpdatePassword />,
   ["update-success"]: (
-    <SuccessPopupWindow message="პაროლი წარმატებით შეიცვალა" />
+    <SuccessPopupWindow message="პაროლი წარმატებით შეიცვალა">
+      <SignInButtonOnSuccess />
+    </SuccessPopupWindow>
   ),
 };
 
@@ -31,7 +34,9 @@ const AuthPopup: React.FC<AuthPopupT> = ({ authMode }) => {
 
   return (
     <AuthModal>
-      <div className="w-[475px] rounded-xl p-6">{AuthPopupByMode[mode]}</div>
+      <div className="w-screen h-screen tablet:h-auto tablet:w-[475px] rounded-xl pt-24 px-6 tablet:p-6">
+        {AuthPopupByMode[mode]}
+      </div>
     </AuthModal>
   );
 };

@@ -1,8 +1,9 @@
 "use client";
 
-import Tooltip from "./Tooltip";
-import { ImageIcon } from "@/components/ui/icons";
 import { useTipTap } from "@/providers/TipTapProvider";
+
+import Tooltip from "./Tooltip";
+import { Image as ImageIcon } from "@/components/ui/icons";
 
 const MenuFileButton: React.FC = () => {
   const { addImage } = useTipTap();
@@ -19,7 +20,7 @@ const MenuFileButton: React.FC = () => {
         htmlFor="tiptap-image"
         className="group relative text-2xl size-10 flex items-center justify-center rounded-full capitalize cursor-pointer"
       >
-        <ImageIcon width={18} height={18} className="stroke-dark-grey" />
+        <ImageIcon size={18} className="text-dark-grey" />
         <Tooltip>embed image</Tooltip>
       </label>
       <input

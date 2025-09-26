@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import classnames from "classnames";
 import { EditorContent } from "@tiptap/react";
 
 import { useTipTap } from "@/providers/TipTapProvider";
@@ -11,34 +13,62 @@ import {
   AddBulletList,
   AddOrderedList,
 } from "@/components/layouts/TipTap/components/MenuButtons";
+import Label from "./Label";
+import FormErrorMessage from "./FormErrorMessage";
 
 type TextEditorT = {
   width?: string;
   height?: string;
+  className?: string;
+  label?: string;
+  message?: string;
+  onChange?: (v: string) => void;
 };
 
 const TextEditor: React.FC<TextEditorT> = (props) => {
-  const { width = "100%", height = "400px" } = props;
+  const { width = "100%", height = "400px", onChange } = props;
 
   const { editor } = useTipTap();
 
+  useEffect(() => {
+    if (!editor) return;
+
+    editor.on("update", ({ editor }) => {
+      onChange?.(editor.getHTML());
+    });
+
+    return () => {
+      editor.off("update");
+    };
+  }, [editor, onChange]);
+
   return (
-    <div
-      style={{ width, minHeight: height }}
-      className="border border-bc rounded-xl p-3"
-    >
-      <div className="flex items-center gap-4 pb-3 mb-3 border-b border-b-bc">
-        <Bold />
-        <Italic />
-        <Underline />
-        <AddBulletList />
-        <AddOrderedList />
+    <div className="flex flex-col gap-[6px]">
+      {props.label && (
+        <Label label={props.label} labelPosition="out" keepOrder={true} />
+      )}
+
+      <div
+        className={classnames(props.className || "")}
+        style={{ width, minHeight: height, height: height }}
+      >
+        <div className="border border-bc rounded-xl p-3 min-h-full w-full flex flex-col gap-3">
+          <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
+            <Bold />
+            <Italic />
+            <Underline />
+            <AddBulletList />
+            <AddOrderedList />
+          </div>
+
+          <EditorContent
+            editor={editor}
+            className="w-full min-h-[calc(100%-50px)] pt-2 overflow-y-auto"
+          />
+        </div>
       </div>
 
-      <EditorContent
-        editor={editor}
-        className="w-full h-full overflow-y-auto"
-      />
+      {props.message && <FormErrorMessage message={props.message} />}
     </div>
   );
 };

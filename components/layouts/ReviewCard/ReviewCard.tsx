@@ -1,16 +1,23 @@
 import Image from "next/image";
 
-import { Rating } from "@/components/ui";
-import UserAvatar from "@/public/user-avatar.png";
+import { LineClamp, Rating } from "@/components/ui";
 
-const ReviewCard: React.FC = () => {
+type ReviewCardT = {
+  id: number;
+  username: string;
+  createdAt: string;
+  rating: number;
+  text: string;
+};
+
+const ReviewCard: React.FC<ReviewCardT> = (review) => {
   return (
-    <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5">
+    <div className="w-full max-w-[400px] h-auto max-h-[210px] border border-bc rounded-lg px-3 py-4 flex flex-col gap-5 bg-white">
       <div className="flex items-start gap-5">
         <figure className="relative bg-light-grey-dark rounded-full size-14 border-dark-grey-dark overflow-hidden">
           <Image
-            src={UserAvatar}
             fill
+            src="/user-avatar.png"
             alt="user default avatar"
             className="object-cover"
           />
@@ -19,9 +26,11 @@ const ReviewCard: React.FC = () => {
         <div className="flex flex-col gap-2">
           <div className="flex flex-col">
             <span className="text-base font-medium text-dark-grey-dark">
-              უცნობი მომხმარებელი
+              {review.username}
             </span>
-            <span className="text-sm text-light-grey-dark">12 დღის წინ</span>
+            <span className="text-sm text-light-grey-dark">
+              {review.createdAt}
+            </span>
           </div>
 
           <div>
@@ -30,10 +39,9 @@ const ReviewCard: React.FC = () => {
         </div>
       </div>
 
-      <p className="text-base text-dark-grey-dark line-clamp-3">
-        ძალიან კარგი პლატფორმაა, უმარტივესია გამოსაყენებლად და ნამდვილად
-        უკონკურენტოა ქართულ ბაზარზე
-      </p>
+      <LineClamp className="text-base text-dark-grey-dark h-[72px]" clamp={3}>
+        {review.text}
+      </LineClamp>
     </div>
   );
 };

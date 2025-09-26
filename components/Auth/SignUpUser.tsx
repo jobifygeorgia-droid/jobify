@@ -6,7 +6,6 @@ import { Controller } from "react-hook-form";
 
 import { useSignupUserForm } from "@/hooks/forms";
 import { useSignupUserQuery } from "@/hooks/api/auth";
-
 import { usePopupsContext } from "@/providers/PopupsProvider";
 
 import {
@@ -15,9 +14,8 @@ import {
   PasswordField,
   ErrorMessage,
 } from "@/components/layouts/Form";
-import Divider from "./ui/Divider";
 import GoogleButton from "./ui/GoogleButton";
-import { Button, Spinner } from "@/components/ui";
+import { Button, Spinner, Divider } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
   const { addAlert } = usePopupsContext();
@@ -100,7 +98,7 @@ const SignUpUser: React.FC = () => {
         )}
       />
 
-      <div className="flex items-center mt-1">
+      <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
         <Checkbox
           id="remember-me"
           name="privacy_policy"
@@ -109,8 +107,8 @@ const SignUpUser: React.FC = () => {
         >
           ვეთანხმები
         </Checkbox>
-        &nbsp;&nbsp;
-        <Link href="/" className="underline">
+
+        <Link href="/" className="underline leading-0 p-0">
           წესებს და პირობებს
         </Link>
       </div>
@@ -118,8 +116,8 @@ const SignUpUser: React.FC = () => {
       {status.error && <ErrorMessage message={status.message} />}
 
       <Button
-        rounded="base"
         className="mt-3"
+        buttonType="primary"
         disabled={!acceptsPrivacyAndPolicy}
       >
         რეგისტრაცია

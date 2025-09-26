@@ -28,9 +28,9 @@ const Radio: React.FC<RadioPropsT> = (props) => {
   };
 
   return (
-    <div className="flex flex-col items-start gap-2">
+    <div className="flex flex-col items-start justify-start gap-2">
       <div
-        className={classnames("flex gap-3", {
+        className={classnames("flex gap-6", {
           "flex-row items-center": direction === "row",
           "flex-col justify-center-center": direction === "column",
         })}

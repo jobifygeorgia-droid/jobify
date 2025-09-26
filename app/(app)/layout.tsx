@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import { Container } from "@/components/ui";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 
@@ -19,11 +18,8 @@ export const metadata: Metadata = {
 const Layout: React.FC<layoutT> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Container>
-        <NavBar />
-        {children}
-      </Container>
-
+      <NavBar />
+      {children}
       <Footer />
     </div>
   );

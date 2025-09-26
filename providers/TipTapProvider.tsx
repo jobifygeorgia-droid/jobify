@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import StarterKit from "@tiptap/starter-kit";
-import { useEditor, Editor } from "@tiptap/react";
+import { useEditor, Editor, Content } from "@tiptap/react";
 
 import Typography from "@tiptap/extension-typography";
 import ListKeymap from "@tiptap/extension-list-keymap";
@@ -31,7 +31,12 @@ export type ColorT = {
   textColor: string;
 };
 
-type TipTapProviderT = React.FC<{ children: React.ReactNode }> & {
+type TipTapProviderT = React.FC<{
+  children: React.ReactNode;
+  readonly?: boolean;
+  content?: Content;
+  menuButtonSize?: number;
+}> & {
   Menu: typeof TipTapMenu;
 };
 
@@ -42,6 +47,7 @@ type TipTapContextT = {
   onSelectColor: (color: ColorT, cb: () => void) => void;
   onSelectHighlight: (color: ColorT, cb: () => void) => void;
   setLink: (url: string) => void;
+  menuButtonSize?: number;
 };
 
 const TipTapContext = createContext<TipTapContextT>({
@@ -51,9 +57,12 @@ const TipTapContext = createContext<TipTapContextT>({
   onSelectColor: () => {},
   onSelectHighlight: () => {},
   setLink: () => {},
+  menuButtonSize: undefined,
 });
 
-const TipTapProvider: TipTapProviderT = ({ children }) => {
+const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
+  const { readonly = true, content = "", menuButtonSize = 16 } = props;
+
   const instance = useEditor({
     extensions: [
       StarterKit.configure({
@@ -146,7 +155,8 @@ const TipTapProvider: TipTapProviderT = ({ children }) => {
       Underline,
     ],
     immediatelyRender: false,
-    content: "",
+    content,
+    editable: !readonly,
     editorProps: { attributes: { spellcheck: "true" } },
   });
 
@@ -209,6 +219,7 @@ const TipTapProvider: TipTapProviderT = ({ children }) => {
   return (
     <TipTapContext.Provider
       value={{
+        menuButtonSize,
         editor,
         onSelectColor,
         onSelectHighlight,

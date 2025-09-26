@@ -1,18 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 
-import Divider from "./ui/Divider";
-import GoogleButton from "./ui/GoogleButton";
-import { Button } from "@/components/ui";
-import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
 import { useSignupCompanyForm } from "@/hooks/forms";
 
+import GoogleButton from "./ui/GoogleButton";
+import { Button, Divider } from "@/components/ui";
+import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
+import { usePopupsContext } from "@/providers/PopupsProvider";
+
 const SignUpCompany: React.FC = () => {
+  const { addAlert } = usePopupsContext();
   const { control, handleSubmit } = useSignupCompanyForm();
 
+  const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
+
   const onRegistration = handleSubmit((values) => {
+    if (!acceptsPrivacyAndPolicy)
+      return addAlert({
+        type: "warning",
+        title: "წესები და პირობები",
+        text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
+      });
+
+    addAlert({
+      type: "warning",
+      title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
+      text: "კომპანიის პროფილი გააქტიურდება ადმინისტარატორის დადასტურებისთანავე",
+      delay: 20000,
+    });
+
     console.log(values);
   });
 
@@ -66,8 +85,8 @@ const SignUpCompany: React.FC = () => {
         render={({ field, fieldState: { error } }) => (
           <TextField
             {...field}
-            labelPosition="out"
             label="ელ.ფოსტა"
+            labelPosition="out"
             message={error?.message}
           />
         )}
@@ -102,15 +121,25 @@ const SignUpCompany: React.FC = () => {
         )}
       />
 
-      <div className="flex items-center mt-1">
-        <Checkbox id="remember-me">ვეთანხმები</Checkbox>
-        &nbsp;&nbsp;
-        <Link href="/" className="underline">
+      <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
+        <Checkbox
+          id="remember-me"
+          name="privacy_policy"
+          isChecked={acceptsPrivacyAndPolicy}
+          onChange={(checked) => setAcceptsPrivacyAndPolicy(checked)}
+        >
+          ვეთანხმები
+        </Checkbox>
+        <Link href="/" className="underline leading-0 p-0">
           წესებს და პირობებს
         </Link>
       </div>
 
-      <Button rounded="base" className="mt-3">
+      <Button
+        className="mt-3"
+        buttonType="primary"
+        disabled={!acceptsPrivacyAndPolicy}
+      >
         რეგისტრაცია
       </Button>
 
