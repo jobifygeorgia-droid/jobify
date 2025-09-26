@@ -11,26 +11,26 @@ type CreateVacancyT = {};
 
 const CreateVacancy: React.FC<CreateVacancyT> = () => {
   return (
-    <div className="bg-white rounded-2xl w-full h-[80vh] my-6 flex items-stretch overflow-hidden">
-      <div className="flex-1 h-full">
+    <div className="bg-white rounded-2xl w-full laptop:h-[80vh] laptop:my-6 flex items-stretch overflow-hidden">
+      <div className="hidden laptop:block flex-1 h-full">
         <figure className="relative h-full w-full">
           <Image
-            src="/typing-machine.png"
-            alt="create cv"
             fill
-            className="object-cover object-[0px_-150px]"
+            alt="create cv"
+            src="/typing-machine.png"
+            className="object-cover tablet:object-[0px_-220px] desktop-sm:object-[0px_-150px] h-full"
           />
         </figure>
       </div>
 
-      <div className="flex-1 pt-6 pb-2">
+      <div className="flex-1 tablet:pt-2 desktop-lg:pt-6 pb-2">
         <ScrollableContainer
           rounded={0}
           height={"100%"}
           transparentScroll
-          containerClassName="w-[600px] mx-auto"
+          wrapperClassName="tablet:w-[600px] mx-auto!"
         >
-          <form className="px-10 pt-4 pb-0 flex flex-col gap-6 h-full overflow-y-auto">
+          <form className="px-2 laptop:px-10 pt-4 mx-auto pb-0 flex flex-col gap-6 h-full w-full">
             <TextField label="პოზიციის დასახელება" labelPosition="out" />
 
             <TipTapProvider readonly={false}>

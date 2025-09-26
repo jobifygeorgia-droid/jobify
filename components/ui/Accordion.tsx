@@ -42,7 +42,7 @@ const accordionSlotProps: MuiAccordionProps["slotProps"] = {
         padding: "0px 10px",
 
         "& .MuiAccordionSummary-content": {
-          margin: "25px 0px !important",
+          margin: { xs: "15px 0px !important", sm: "25px 0px !important" },
         },
       },
 
@@ -79,8 +79,7 @@ const Accordion: React.FC<AccordionT> = (props) => {
       <AccordionSummary
         expandIcon={
           <KeyboardArrowRight
-            size={32}
-            className={classnames("-rotate-90", {
+            className={classnames("-rotate-90 text-2xl! tablet:text-4xl!", {
               "text-orange": panel.name === expandedPanel,
             })}
           />
@@ -88,12 +87,16 @@ const Accordion: React.FC<AccordionT> = (props) => {
         aria-controls={`panel-${panel.name}-content"`}
         id={`panel-${panel.name}-header"`}
       >
-        <span className="text-md font-bold text-primary">{panel.title}</span>
+        <span className="text-base-sm tablet:text-md font-bold text-primary">
+          {panel.title}
+        </span>
         {panel.explanation && <span>{panel.explanation}</span>}
       </AccordionSummary>
 
       <AccordionDetails>
-        <p className="text-secondary">{panel.details}</p>
+        <p className="text-secondary text-base-sm tablet:text-base">
+          {panel.details}
+        </p>
       </AccordionDetails>
     </MuiAccordion>
   ));

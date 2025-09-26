@@ -1,7 +1,6 @@
 import { useFilterContext } from "../FilterProvider";
 
 import { Button } from "@/components/ui";
-import { ArrowRight } from "@/components/ui/icons";
 import { Checkbox } from "@/components/layouts/Form";
 import ExpandedFilterSectionTitle from "./ExpandedFilterSectionTitle";
 
@@ -16,9 +15,9 @@ const FilterByCategory: React.FC = () => {
 
   return (
     <div className="flex flex-col" ref={categoriesRef}>
-      <ExpandedFilterSectionTitle title="აირჩიე კატეგორია" />
+      <ExpandedFilterSectionTitle title="აირჩიე შენი სფერო" />
 
-      <div className="grid grid-cols-3 gap-x-12 gap-y-5 mt-8 mb-3">
+      <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-x-12 gap-y-5 mt-8 mb-3">
         {workCategoryOptions.slice(0, categoriesLimit).map((option) => (
           <Checkbox
             name=""
@@ -36,12 +35,7 @@ const FilterByCategory: React.FC = () => {
         className="ml-auto text-blue! decoration-transparent"
         onClick={toggleCategories}
       >
-        <span>{expandCategories ? "დაკეცვა" : "ყველას ნახვა"}</span>
-        {!expandCategories && (
-          <span className="flex items-center">
-            <ArrowRight className="text-blue" size={20} />
-          </span>
-        )}
+        <span>{expandCategories ? "დაკეცვა" : "სრულად ნახვა"}</span>
       </Button>
     </div>
   );

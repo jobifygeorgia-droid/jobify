@@ -1,12 +1,16 @@
 import { IconButton } from "@/components/ui";
 import { Heart } from "@/components/ui/icons";
 
-type AddToFavoriteButtonT = {};
+type AddToFavoriteButtonT = {
+  className?: string;
+};
 
-const AddToFavoriteButton: React.FC<AddToFavoriteButtonT> = () => {
+const AddToFavoriteButton: React.FC<AddToFavoriteButtonT> = ({
+  className = "",
+}) => {
   return (
-    <IconButton color="orange" isFilled={false}>
-      <Heart className="text-orange" />
+    <IconButton color="orange" isFilled={false} className={className}>
+      <Heart className="text-orange text-lg! laptop:text-3xl!" />
     </IconButton>
   );
 };

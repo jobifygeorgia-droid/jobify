@@ -12,7 +12,7 @@ const VacanciesForDifferentGroups: React.FC<
 > = () => {
   return (
     <SectionContainer title="ვაკანსიები სხვადასხვა ჯგუფებისთვის">
-      <div className="flex items-center gap-3 h-[400px]">
+      <div className="flex items-center gap-3 laptop:h-[400px] overflow-x-scroll no-scrollbar laptop:overflow-visible">
         {vacanciesForDifferentGroupsData.map((segment) => (
           <VacanciesForDifferentGroupsCard
             key={segment.id}

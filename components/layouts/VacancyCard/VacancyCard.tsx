@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { DYNAMIC_ROUTES } from "@/lib/config";
+
 import { Chip, IconChip } from "@/components/ui";
 import { AddToFavoriteButton } from "@/components/layouts";
 import { Calendar, Wallet, Location } from "@/components/ui/icons";
-import { DYNAMIC_ROUTES } from "@/lib/config";
 
 type VacancyCardT = {
   id: number;
@@ -19,12 +20,12 @@ type VacancyCardT = {
 
 const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
   return (
-    <div className="max-w-full w-full px-4 py-3 rounded-2xl bg-white border border-bc flex items-center gap-5">
+    <div className="max-w-full w-full px-3 laptop:px-4 py-2 laptop:py-3 rounded-2xl bg-white border border-bc flex items-center gap-2 tablet:gap-5">
       <Link
         href={DYNAMIC_ROUTES.vacancy_details("123")}
-        className="w-full flex items-center gap-5"
+        className="w-full flex items-center gap-2 tablet:gap-5"
       >
-        <figure className="relative w-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light">
+        <figure className="relative size-11 laptop:size-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light">
           <Image
             src={vacancy.image}
             alt={vacancy.companyName}
@@ -33,32 +34,44 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
           />
         </figure>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 laptop:gap-3">
           <div className="flex items-center gap-7">
-            <span className="leading-4 text-md font-semibold">
+            <span className="leading-4 text-sm tablet:text-base-sm laptop:text-md font-semibold">
               {vacancy.position}
             </span>
 
-            <Chip type="tertiary">{vacancy.jobFormat}</Chip>
+            <Chip type="tertiary" className="hidden tablet:flex">
+              {vacancy.jobFormat}
+            </Chip>
           </div>
 
-          <div className="flex items-center gap-6">
-            <IconChip text={vacancy.location}>
+          <div className="flex items-center gap-2 tablet:gap-6">
+            <IconChip text={vacancy.location} className="hidden tablet:flex">
               <Location className="text-light-grey-dark" filled size={20} />
             </IconChip>
 
-            <IconChip text={vacancy.salary}>
-              <Wallet className="text-light-grey-dark" filled size={20} />
+            <IconChip text={vacancy.salary} className="text-xs">
+              <Wallet
+                className="text-light-grey-dark text-base! laptop:text-lg!"
+                filled
+              />
             </IconChip>
 
-            <IconChip text={`${new Date().toLocaleDateString()}-მდე`}>
-              <Calendar className="text-light-grey-dark" filled size={20} />
+            <IconChip
+              className="text-xs"
+              text={`${new Date().toLocaleDateString()}-მდე`}
+            >
+              <Calendar
+                className="text-light-grey-dark text-base! laptop:text-lg!"
+                filled
+                size={20}
+              />
             </IconChip>
           </div>
         </div>
       </Link>
 
-      <div className="ml-auto flex items-center gap-5">
+      <div className="ml-auto flex items-center">
         <AddToFavoriteButton />
       </div>
     </div>

@@ -4,7 +4,7 @@ type AsideT = {};
 
 const Aside: React.FC<AsideT> = () => {
   return (
-    <aside className="flex-1">
+    <aside className="flex-1 w-full">
       <VacancyAdditionalDetails />
     </aside>
   );

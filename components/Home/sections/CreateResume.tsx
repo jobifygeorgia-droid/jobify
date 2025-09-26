@@ -8,29 +8,32 @@ type CreateResumeT = {};
 const CreateResume: React.FC<CreateResumeT> = () => {
   return (
     <SectionContainer>
-      <div className="my-4 flex items-stretch gap-16">
-        <div className="flex-1 flex">
+      <div className="my-4 flex flex-col tablet:flex-row items-center gap-1 tablet:gap-8 laptop:gap-16">
+        <div className="flex w-full h-[200px] tablet:h-[270px] tablet:flex-1">
           <figure className="relative w-full h-full flex justify-center items-center">
             <Image
-              src="/create-resume-sidebar-asset.webp"
-              alt="create resume"
               fill
-              className="object-contain scale-[140%]"
+              alt="create resume"
+              src="/create-resume-sidebar-asset.webp"
+              className="object-contain laptop:scale-[130%]"
             />
           </figure>
         </div>
 
-        <div className="flex-1 flex flex-col pt-32">
-          <span className="text-xl font-semibold text-dark-grey-hover leading-12">
+        <div className="flex-1 flex flex-col items-center tablet:items-start tablet:pt-4 laptop:pt-12">
+          <span className="text-base-sm tablet:text-base laptop:text-xl font-semibold text-dark-grey-hover leading-12">
             შექმენი პროფესიონალური ანგარიში
           </span>
 
-          <p className="mt-8 text-base text-light-grey-dark-active">
+          <p className="hidden tablet:block mt-4 laptop:mt-8 text-base text-light-grey-dark-active">
             პროფილის შექმნით შეძლებ წარმოაჩინო შენი უნარები, მიიღო
             პერსონალიზებული შეთავაზებები და მართო დასაქმების პროცესი მარტივად
           </p>
 
-          <Button className="mt-12 px-32 w-max" buttonType="primary">
+          <Button
+            buttonType="primary"
+            className="mt-3 tablet:mt-12 px-16 tablet:px-32 w-max"
+          >
             ავტორიზაცია
           </Button>
         </div>

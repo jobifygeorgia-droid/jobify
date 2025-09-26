@@ -10,8 +10,8 @@ const BannerSliderCard: React.FC<BannerSliderCardT> = (props) => {
   const { title, text, thumbnail } = props;
 
   return (
-    <div key={"test"} className="w-full flex flex-col gap-6">
-      <figure className="relative w-full h-[150px] bg-light-grey rounded-xl overflow-hidden">
+    <div className="w-full flex flex-col gap-4 laptop:gap-6">
+      <figure className="relative w-full h-[85px] tablet:h-[95px] laptop:h-[135px] bg-light-grey rounded-xl overflow-hidden">
         <Image
           fill
           alt={title}
@@ -19,9 +19,9 @@ const BannerSliderCard: React.FC<BannerSliderCardT> = (props) => {
           className="object-cover object-center"
         />
       </figure>
-      <div className="flex flex-col gap-5 text-dark-grey">
-        <span className="text-[40px] font-bold">{title}</span>
-        <p className="text-xl font-light line-clamp-2">{text}</p>
+      <div className="flex flex-col gap-3 laptop:gap-5 text-dark-grey">
+        <span className="text-base-sm laptop:text-xl font-bold">{title}</span>
+        <p className="text-sm laptop:text-md font-light line-clamp-2">{text}</p>
       </div>
     </div>
   );

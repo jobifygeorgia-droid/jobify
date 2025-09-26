@@ -35,7 +35,7 @@ const SignUp: React.FC = () => {
 
   return (
     <SignupContainer>
-      <span className="text-base-sm text-dark-grey-dark-active mt-7">
+      <span className="text-center text-base-sm text-dark-grey-dark-active mt-7 px-5 tablet:px-10">
         რეგისტრაციისთვის გთხოვთ აირჩიოთ მომხმარებლის ტიპი
       </span>
 

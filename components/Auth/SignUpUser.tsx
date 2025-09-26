@@ -98,7 +98,7 @@ const SignUpUser: React.FC = () => {
         )}
       />
 
-      <div className="flex items-center mt-1">
+      <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
         <Checkbox
           id="remember-me"
           name="privacy_policy"
@@ -107,8 +107,8 @@ const SignUpUser: React.FC = () => {
         >
           ვეთანხმები
         </Checkbox>
-        &nbsp;&nbsp;
-        <Link href="/" className="underline">
+
+        <Link href="/" className="underline leading-0 p-0">
           წესებს და პირობებს
         </Link>
       </div>

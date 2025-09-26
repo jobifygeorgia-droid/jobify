@@ -93,6 +93,11 @@
   --text-3xl: 28px;
   --text-4xl: 32px;
   --text-5xl: 36px;
+
+  --breakpoint-tablet: 40rem; /* 640px*/
+  --breakpoint-laptop: 66rem; /* 1056px */
+  --breakpoint-desktop-sm: 80rem; /* 1280px */
+  --breakpoint-desktop-lg: 96rem; /* 1536px */
 }
 
 @layer utilities {

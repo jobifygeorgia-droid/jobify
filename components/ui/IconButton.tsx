@@ -31,8 +31,9 @@ const IconButton: React.FC<IconButtonT> = (props) => {
         className,
         `bg-blue-light stroke-${color}! fill-${color} rounded-full flex items-center justify-center cursor-pointer`,
         {
-          "w-9 h-9": size === "sm",
-          "w-11 h-11": size === "base",
+          "size-9": size === "sm",
+          "min-w-8 size-8 laptop:min-w-11 laptop:size-11 aspect-square ":
+            size === "base",
         },
         {
           "fill-none!": !isFilled,

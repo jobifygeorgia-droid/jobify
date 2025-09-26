@@ -15,7 +15,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
       <Header />
 
       <TipTapProvider content={tipTapValue}>
-        <div className="flex items-start gap-20 py-5">
+        <div className="flex flex-col-reverse laptop:flex-row items-start gap-5 tablet:gap-6 laptop:gap-20 py-5 tablet:py-6 laptop:py-5">
           <div className="flex-2">
             <TextEditorContent />
           </div>
@@ -24,7 +24,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
         </div>
       </TipTapProvider>
 
-      <div className="pb-12 pt-6">
+      <div className="pb-6 tablet:pb-12 tablet:pt-6">
         <SectionTitle size="base" title="შენთვის საინტერესო ვაკანსიები" />
 
         <div className="flex flex-col gap-4 mt-5">
@@ -33,7 +33,7 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
           ))}
         </div>
 
-        <div className="flex items-center mt-10">
+        <div className="flex flex-col-reverse items-end gap-2 mt-3 tablet:flex-row tablet:mt-10">
           <div className="w-full flex justify-center">
             <Pagination />
           </div>

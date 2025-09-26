@@ -13,19 +13,19 @@ const Vacancies: React.FC<VacanciesT> = () => {
 
   return (
     <SectionContainer>
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-4 tablet:gap-7">
         <div className="flex flex-col gap-3">
           {vipVacancies.slice(0, limit).map((vacancy) => (
             <VacancyCard key={vacancy.id} {...vacancy} />
           ))}
         </div>
 
-        <div className="flex items-center">
+        <div className="flex flex-col-reverse gap-2 tablet:flex-row tablet:items-center">
           <div className="w-full flex justify-center">
             <Pagination />
           </div>
 
-          <ViewAllButton href={PATHS.vacancies} />
+          <ViewAllButton href={PATHS.vacancies} className="ml-auto" />
         </div>
       </div>
     </SectionContainer>

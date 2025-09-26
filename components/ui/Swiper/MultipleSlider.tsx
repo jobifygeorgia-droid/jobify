@@ -7,30 +7,36 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./swiper.css";
 
+import { useDevice } from "@/hooks/utils";
+
 type MultipleSliderT = {
   slides: React.ReactNode[];
-  slidesPerView?: number;
-  spaceBetween?: number;
-  slidesPerGroup?: number;
+  showPaginationBullets?: boolean;
+  showPaginationBulletsOnMobile?: boolean;
+  breakpoints: Record<
+    number,
+    { slidesPerView: number; spaceBetween: number; slidesPerGroup: number }
+  >;
 };
 
 const MultipleSlider: React.FC<MultipleSliderT> = (props) => {
   const {
     slides,
-    slidesPerView = 4,
-    spaceBetween = 20,
-    slidesPerGroup,
+    breakpoints,
+    showPaginationBullets = true,
+    showPaginationBulletsOnMobile = false,
   } = props;
+
+  const device = useDevice();
+
+  const showBullets =
+    device === "mobile" ? showPaginationBulletsOnMobile : showPaginationBullets;
 
   return (
     <Swiper
-      slidesPerView={slidesPerView}
-      slidesPerGroup={slidesPerGroup || slidesPerView}
-      spaceBetween={spaceBetween}
+      breakpoints={breakpoints}
       autoplay={{ delay: 4000 }}
-      pagination={{
-        clickable: true,
-      }}
+      pagination={showBullets ? { clickable: true } : false}
       modules={[Pagination, Autoplay]}
       className="mySwiper"
     >

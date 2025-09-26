@@ -14,7 +14,7 @@ const AuthModal: React.FC<AuthModalT> = ({ children }) => {
   if (!authMode || !AuthModes.includes(authMode)) return null;
 
   return (
-    <Modal rounded="lg" onClose={onCloseAuthPopup} backdrop>
+    <Modal rounded="lg" onClose={onCloseAuthPopup} backdrop zIndexOnMobile={99}>
       {children}
     </Modal>
   );

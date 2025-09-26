@@ -1,9 +1,6 @@
 import Image from "next/image";
 
-import { section2Data } from "@/data/data";
-
-import { MultipleSlider } from "@/components/ui";
-import BannerSliderCard from "@/components/Home/ui/BannerSliderCard";
+import Slider from "@/components/Home/ui/BannerSlider";
 import SectionContainer from "@/components/Home/ui/SectionContainer";
 
 type BannersSliderT = {};
@@ -11,17 +8,10 @@ type BannersSliderT = {};
 const BannersSlider: React.FC<BannersSliderT> = () => {
   return (
     <SectionContainer>
-      <div className="flex items-center w-full gap-6">
-        <div className="w-[55%] h-full">
-          <MultipleSlider
-            slidesPerView={1}
-            slides={section2Data.map((slide) => (
-              <BannerSliderCard key={slide.id} {...slide} />
-            ))}
-          />
-        </div>
+      <div className="flex flex-col tablet:flex-row items-start w-full gap-4 laptop:gap-6">
+        <Slider />
 
-        <div className="w-[45%] h-[366px]">
+        <div className="hidden tablet:block w-[45%] h-[214px] laptop:h-[366px] -translate-y-[7%]">
           <figure className="relative w-full h-full">
             <Image
               fill

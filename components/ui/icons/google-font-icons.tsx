@@ -435,3 +435,53 @@ export const Crown: React.FC<IconT> = (props) => {
     </Icon>
   );
 };
+
+export const BurgerMenu: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      menu
+    </Icon>
+  );
+};
+
+export const Home: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      home
+    </Icon>
+  );
+};
+
+export const FilterSecondary: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      tune
+    </Icon>
+  );
+};
+
+export const CalendarSecondary: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      calendar_month
+    </Icon>
+  );
+};
+
+export const Work: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      work
+    </Icon>
+  );
+};

@@ -26,7 +26,7 @@ const GoBackButton: React.FC = () => {
     <Button
       buttonType="primary"
       className={classnames(
-        "pointer-events-none opacity-0 scale-[90%] transition-opacity transition-transform duration-100 ease-out",
+        "w-full laptop:w-max laptop:px-12 text-base-sm tablet:text-base pointer-events-none opacity-0 scale-[90%] transition-opacity transition-transform duration-100 ease-out",
         {
           "pointer-events-auto! opacity-100 scale-[100%]": candidateURL !== "",
         }

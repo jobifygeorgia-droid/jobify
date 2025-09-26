@@ -13,7 +13,7 @@ const ChipsFilter: React.FC<ChipsFilterT> = (props) => {
     <div className="flex flex-col gap-4">
       <ExpandedFilterFieldLabel label={title} />
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center flex-wrap gap-2 tablet:gap-5">
         {options.map((option, index) => (
           <Chip
             key={option.value}

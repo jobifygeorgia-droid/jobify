@@ -1,6 +1,9 @@
 export { default as VacancyCard } from "./VacancyCard/VacancyCard";
+export { default as VIPVacanciesSlider } from "./VIPVacanciesSlider/VIPVacanciesSlider";
 export { default as VIPVacancyCard } from "./VIPVacancyCard/VIPVacancyCard";
+export { default as VipVacancyCardSkeleton } from "./VIPVacancyCard/VipVacancyCardSkeleton";
 export { default as FilterBar } from "./FilterBar/FilterBar";
+export { default as FilterButton } from "./FilterBar/FilterButton";
 export { default as TextEditor } from "./TextEditor/TextEditor";
 export { default as TextEditorContent } from "./TextEditor/TextEditorContent";
 export { default as SendResumeButton } from "./SendResume/SendResumeButton";

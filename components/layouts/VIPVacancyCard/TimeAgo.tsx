@@ -16,7 +16,11 @@ const TimeAgo: React.FC<TimeAgoT> = ({ createdAt }) => {
     setTimeAgo(candidateValue);
   }, [createdAt]);
 
-  return <span className="text-sm text text-light-grey-dark">{timeAgo}</span>;
+  return (
+    <span className="text-xs tablet:text-sm text text-light-grey-dark">
+      {timeAgo}
+    </span>
+  );
 };
 
 export default TimeAgo;

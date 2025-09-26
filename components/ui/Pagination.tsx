@@ -35,7 +35,7 @@ const Pagination: React.FC<PaginationT> = () => {
         )}
       />
 
-      <div className="flex items-center gap-3 text-base-sm">
+      <div className="hidden laptop:flex items-center gap-3 text-base-sm">
         <label htmlFor="manual-page-pagination">გვერდი</label>
         <input
           defaultValue={1}
@@ -83,7 +83,7 @@ function PaginationPageBox(props: PaginationRenderItemParams) {
     <button
       onClick={props.onClick}
       className={classnames(
-        "flex items-center justify-center w-8 h-8 rounded-lg leading-2.5 mx-[5px]",
+        "flex items-center justify-center size-7 tablet:size-8 text-sm tablet:text-base-sm rounded-lg leading-2.5 mx-[5px]",
         {
           "text-white bg-orange": isSelected,
           "bg-none text-dark-grey-dark": !isSelected,
@@ -168,11 +168,15 @@ function PaginationArrowButton(props: {
     <button
       onClick={onChangePage}
       className={classnames(
-        "border border-bc flex items-center justify-center w-8 h-8 rounded-lg leading-2.5 mx-[5px] cursor-pointer",
-        { "rotate-180": isPrevious }
+        "border border-bc flex items-center justify-center size-7 tablet:size-8 text-sm tablet:text-base-sm rounded-lg leading-2.5 mx-[5px] cursor-pointer",
+        { "rotate-180": isPrevious, "hidden tablet:flex": isMultiple }
       )}
     >
-      {isMultiple ? <DoubleArrowRight /> : <KeyboardArrowRight />}
+      {isMultiple ? (
+        <DoubleArrowRight size={16} />
+      ) : (
+        <KeyboardArrowRight size={16} />
+      )}
     </button>
   );
 }

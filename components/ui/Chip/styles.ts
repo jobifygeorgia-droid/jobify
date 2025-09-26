@@ -8,11 +8,11 @@ type Params = {
 
 export const chipStyles = (params: Params) =>
   classnames(
-    "rounded-full text-base-sm text-center",
+    "rounded-full text-sm tablet:text-base-sm text-center",
     {
-      "bg-blue-light text-dark-grey-dark-active leading-[18px] py-3 px-7 cursor-pointer":
+      "bg-blue-light text-dark-grey-dark-active leading-[18px] py-2 tablet:py-3 px-4 tablet:px-7 cursor-pointer":
         params.type === "primary" || params.type === "secondary",
-      "bg-orange-light text-orange font-medium text-sm leading-5 py-[1px] px-3":
+      "bg-orange-light text-orange tablet:font-medium text-xs! tablet:text-sm! leading-5 py-[1px] px-3 line-clamp-1":
         params.type === "tertiary",
     },
     {

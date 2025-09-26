@@ -1,6 +1,7 @@
 "use client";
 
 import dayjs from "dayjs";
+import classnames from "classnames";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -14,14 +15,23 @@ type DatePickerT = {
   label?: string;
   message?: string;
   value?: string;
+  className?: string;
   onChange?: (v: string) => void;
 };
 
 const DatePicker: React.FC<DatePickerT> = (props) => {
-  const { disablePortal = false, placement = "bottom-start", message } = props;
+  const {
+    message,
+    className = "",
+    disablePortal = false,
+    placement = "bottom-start",
+  } = props;
 
   return (
-    <div className="flex flex-col gap-2" id="date-picker--wrapper">
+    <div
+      className={classnames(className, "flex flex-col gap-2")}
+      id="date-picker--wrapper"
+    >
       <Label id="12" label={props.label} labelPosition="out" />
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>

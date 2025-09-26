@@ -14,6 +14,7 @@ const Logo: React.FC = () => {
           height={44}
           quality={100}
           priority
+          className="w-[74px] tablet:w-[106px] laptop:w-[136px]"
         />
       </Link>
     </figure>

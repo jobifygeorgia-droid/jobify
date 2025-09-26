@@ -23,7 +23,7 @@ const Checkbox: React.FC<CheckboxT> = (props) => {
   };
 
   return (
-    <div className="flex items-start gap-2 cursor-pointer">
+    <div className="flex items-start gap-2 cursor-pointer text-[inherit]">
       <MuiCheckbox
         id={id}
         name={name}

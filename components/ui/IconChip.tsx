@@ -11,16 +11,17 @@ type IconChipT = {
   text: string;
   Icon?: React.ComponentType<IconT>;
   children?: React.ReactNode;
+  className?: string;
 };
 
 const IconChip: React.FC<IconChipT> = (props) => {
-  const { Icon, text, size = "base", children } = props;
+  const { Icon, text, size = "base", children, className = "" } = props;
 
   return (
     <div
-      className={classnames("flex items-center", {
+      className={classnames("flex items-center", className, {
         "text-sm gap-1": size === "sm",
-        "text-base-sm gap-2": size === "base",
+        "text-sm laptop:text-base-sm gap-2": size === "base",
       })}
     >
       {children ? (

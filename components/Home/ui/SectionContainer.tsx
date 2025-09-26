@@ -12,7 +12,10 @@ const SectionContainer: React.FC<SectionContainerT> = (props) => {
 
   return (
     <section
-      className={classNames("my-10 flex flex-col gap-5", className || "")}
+      className={classNames(
+        "my-7 laptop:my-10 flex flex-col gap-4 tablet:gap-5",
+        className || ""
+      )}
     >
       {title && <SectionTitle title={title} />}
       {children}

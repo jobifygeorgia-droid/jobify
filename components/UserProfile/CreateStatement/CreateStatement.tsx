@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 
+import { useDevice } from "@/hooks/utils";
 import { TipTapProvider } from "@/providers";
 import { useStatementForm } from "@/hooks/forms";
+import { usePopupsContext } from "@/providers/PopupsProvider";
 
 import {
   Label,
@@ -14,10 +17,8 @@ import {
   TextEditor,
   DropzoneFileInput,
 } from "@/components/layouts/Form";
-import { Button } from "@/components/ui";
+import { Button, SectionTitle } from "@/components/ui";
 import { Crown } from "@/components/ui/icons";
-import { useState } from "react";
-import { usePopupsContext } from "@/providers/PopupsProvider";
 
 type CreateStatementT = {};
 
@@ -28,6 +29,8 @@ const jobTypes = [
 ];
 
 const CreateStatement: React.FC<CreateStatementT> = () => {
+  const device = useDevice();
+
   const { addAlert } = usePopupsContext();
   const { control, handleSubmit } = useStatementForm(null);
 
@@ -45,13 +48,19 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
   });
 
   return (
-    <div className="h-[85vh] flex items-stretch">
-      <div className="flex-1 bg-dark-grey-light max-h-[83vh] rounded-2xl"></div>
-      <div className="flex-1 h-full overflow-y-auto scrollbar">
+    <div className="laptop:h-[85vh] flex items-stretch bg-background rounded-2xl overflow-hidden">
+      <div className="flex-1 bg-dark-grey-light laptop:max-h-[85vh] rounded-2xl hidden laptop:flex"></div>
+      <div className="flex-1 laptop:max-h-full laptop:overflow-y-auto scrollbar mr-5 tablet:my-6">
         <form
           onSubmit={onPublishStatement}
-          className="w-full max-w-[620px] px-10 py-6 mx-auto flex flex-col gap-6"
+          className="w-full max-w-[620px] px-5 tablet:px-10 mx-auto flex flex-col gap-6"
         >
+          <SectionTitle
+            title="განაცხადის გაკეთება"
+            size="base"
+            className="text-center tablet:text-start"
+          />
+
           <Controller
             control={control}
             name="job_type"
@@ -140,20 +149,22 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
             </span>
           </Checkbox>
 
-          <div className="bg-blue-light py-3 px-4 rounded-xl flex items-center justify-between gap-4 text-base-sm">
+          <div className="bg-blue-light py-2 tablet:py-3 px-3 tablet:px-4 rounded-xl flex items-center justify-between gap-4 text-base-sm">
             <figure className="flex items-center gap-4">
-              <div className="size-10 bg-blue text-white rounded-full overflow-hidden flex items-center justify-center">
-                <Crown />
+              <div className="size-8 tablet:size-10 bg-blue text-white rounded-full overflow-hidden flex items-center justify-center">
+                <Crown className="text-lg! tablet:text-3xl!" />
               </div>
-              <figcaption className="font-medium">VIP მომსახურება</figcaption>
+              <figcaption className="font-medium ">
+                {device === "mobile" ? "VIP" : "VIP მომსახურება"}
+              </figcaption>
             </figure>
 
             <div className="flex items-center gap-4">
               <span>7.00₾</span>
 
               <Select
-                width="110px"
-                containerClassName="border-orange"
+                width={device === "mobile" ? "90px" : "110px"}
+                containerClassName="border-orange bg-transparent! max-sm:h-[40px]"
                 options={[
                   { label: "1 დღე", value: "one-day" },
                   { label: "10 დღე", value: "ten-day" },

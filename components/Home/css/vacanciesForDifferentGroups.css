@@ -9,11 +9,13 @@
   transition: all 0.3s ease;
 }
 
-.segment-card:hover {
-  height: 100%;
-}
+@media (min-width: 64rem) and (any-hover: hover) {
+  .segment-card:hover {
+    height: 100%;
+  }
 
-.segment-card:hover .segment-card--content {
-  top: 36px;
-  height: 40%;
+  .segment-card:hover .segment-card--content {
+    top: 36px;
+    height: 40%;
+  }
 }

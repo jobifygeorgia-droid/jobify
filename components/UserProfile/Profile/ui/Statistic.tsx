@@ -15,7 +15,7 @@ const Statistic: React.FC<StatisticT> = (props) => {
   return (
     <div
       className={classnames(
-        "w-full max-w-[400px] flex items-center justify-center border rounded-xl py-3",
+        "w-full tablet:max-w-[400px] flex items-center justify-center border rounded-xl py-3",
         {
           "bg-orange-light border-orange-light-active": highlighted,
           "bg-white border-light-grey": !highlighted,
