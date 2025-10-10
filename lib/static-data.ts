@@ -16,13 +16,18 @@ export const experienceOptions = [
 
 export const workTypeOptions = [
   { value: "remote", label: "დისტანციური" },
-  { value: "on-site", label: "ადგილზე" },
   { value: "hybrid", label: "ჰიბრიდული" },
+  { value: "office", label: "საოფისე" },
 ];
 
 export const workSectorOptions = [
   { label: "საჯარო სექტორი", value: "საჯარო სექტორი" },
   { label: "კერძო სექტორი", value: "კერძო სექტორი" },
+];
+
+export const vacancyTypeOptions = [
+  { label: "პრემიუმი", value: "პრემიუმი" },
+  { label: "სტანდარტული", value: "სტანდარტული" },
 ];
 
 export const workCategoryOptions = [

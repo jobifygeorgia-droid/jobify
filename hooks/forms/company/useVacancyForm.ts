@@ -2,23 +2,24 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  SigninSchema,
-  SigninSchemaT,
-  signinInitialState,
-} from "@/lib/schemas/SigninSchema";
 import { APIErrorMessages } from "@/interface/global.types";
+
+import {
+  VacancySchema,
+  VacancySchemaT,
+  vacancyInitialState,
+} from "@/lib/schemas/company/VacancySchema";
 import { usePropagateAPIErrorToHookForms } from "@/hooks/utils";
 
-export default function useSigninForm(messages: APIErrorMessages | null) {
-  const { control, handleSubmit, reset, setError } = useForm<SigninSchemaT>({
-    resolver: zodResolver(SigninSchema),
-    defaultValues: signinInitialState,
+export default function useVacancyForm(messages: APIErrorMessages | null) {
+  const { control, handleSubmit, reset, setError } = useForm<VacancySchemaT>({
+    resolver: zodResolver(VacancySchema),
+    defaultValues: vacancyInitialState,
   });
 
   useEffect(() => {
     return () => {
-      reset(signinInitialState);
+      reset(vacancyInitialState);
     };
   }, [reset]);
 

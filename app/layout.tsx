@@ -1,10 +1,7 @@
 import { Noto_Sans_Georgian } from "next/font/google";
-import { Suspense } from "react";
 
 import "@/styles/globals.css";
-
-import ThemeRegistry from "@/services/mui/ThemeRegistry";
-import { AuthProvider, PopupsProvider, RouteTracker } from "@/providers";
+import RootProvider from "./RootProvider";
 import GoogleFontIconsHead from "@/components/ui/icons/GoogleFontIconsHead";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
@@ -23,18 +20,10 @@ const RootLayout: React.FC<RootLayoutT> = ({ children, AuthPopup }) => {
     <html lang="en">
       <GoogleFontIconsHead />
       <body className={`${notoSansGeorgian.className}`}>
-        <ThemeRegistry>
-          <Suspense fallback={null}>
-            <RouteTracker>
-              <PopupsProvider>
-                <AuthProvider>
-                  {children}
-                  {AuthPopup}
-                </AuthProvider>
-              </PopupsProvider>
-            </RouteTracker>
-          </Suspense>
-        </ThemeRegistry>
+        <RootProvider>
+          {children}
+          {AuthPopup}
+        </RootProvider>
 
         <div id="portal" />
       </body>

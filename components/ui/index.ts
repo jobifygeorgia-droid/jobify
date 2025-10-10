@@ -13,6 +13,7 @@ export { default as Logo } from "./Logo";
 export { default as SuccessPopupWindow } from "./SuccessPopupWindow";
 export { default as Alert } from "./Alert";
 export { default as Spinner } from "./Spinner/Spinner";
+export { default as SecondarySpinner } from "./Spinner/SecondarySpinner";
 export { default as SectionTitle } from "./SectionTitle";
 export { default as NotFound } from "./404/NotFound";
 export { default as Divider } from "./Divider";

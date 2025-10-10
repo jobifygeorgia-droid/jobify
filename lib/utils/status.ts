@@ -62,12 +62,20 @@ class Status {
   }
 
   parseAPIErrorMessages(error: any): APIErrorMessages {
-    const messages: APIErrorMessages = JSON.parse(error?.message as string);
-    return messages;
+    const message = error?.message || "";
+
+    try {
+      const messages: APIErrorMessages = JSON.parse(message);
+      return messages;
+    } catch {
+      return { message };
+    }
   }
 }
 
-export const getStatus = new Status();
+const getStatus = new Status();
+
+export default getStatus;
 
 export type StatusT = {
   loading: boolean;

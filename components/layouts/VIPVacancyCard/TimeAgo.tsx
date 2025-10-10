@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { calcTimeAgo } from "@/lib/utils/calcTimeAgo";
+import { calcTimeAgo } from "@/lib/utils";
 
 type TimeAgoT = {
   createdAt: string;

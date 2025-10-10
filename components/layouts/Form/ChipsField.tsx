@@ -1,29 +1,44 @@
 import { Chip } from "@/components/ui";
 import { ErrorMessage, Label } from ".";
+import { ChipT } from "@/components/ui/Chip/Chip";
 
 type ChipsFieldT = {
   value: string;
   label?: string;
+  isRequired?: boolean;
+  labelClassname?: string;
   message?: string;
-  onChange: (v: string) => void;
-  data: Array<{ title: string; value: string }>;
+  onChange: (value: string) => void;
+  data: Array<{ label: string; value: string }>;
+  chipOptions?: Partial<Omit<ChipT, "isActive" | "onClick">>;
 };
 
 const ChipsField: React.FC<ChipsFieldT> = (props) => {
-  const { onChange, value, message, data, label } = props;
+  const { value, data, message, chipOptions, ...rest } = props;
 
   return (
     <div className="flex flex-col gap-2">
-      {label && <Label label={label} labelPosition="out" keepOrder />}
+      {rest.label && (
+        <Label
+          keepOrder
+          label={rest.label}
+          labelPosition="out"
+          isRequired={rest.isRequired}
+          className={rest.labelClassname}
+        />
+      )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center flex-wrap gap-3">
         {data.map((item, index) => (
           <Chip
-            isActive={item.value === value}
-            onClick={() => onChange(item.value)}
+            {...{
+              ...chipOptions,
+              isActive: item.value === value,
+              onClick: () => rest.onChange(item.value),
+            }}
             key={`chip-${index}-${item.value}`}
           >
-            {item.title}
+            {item.label}
           </Chip>
         ))}
       </div>

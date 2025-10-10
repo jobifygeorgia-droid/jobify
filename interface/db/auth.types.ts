@@ -1,9 +1,9 @@
-import { UserTypes } from "@/interface/global.types";
+import { USER_TYPES } from "@/lib/config";
 
-export type SignupUserResponseT = {
+export type UserSessionT = {
   id: number;
-  username: string;
   email: string;
-  user_type: UserTypes;
-  phone_number: "+995555444333";
+  user_type: USER_TYPES;
+  full_name: string;
+  phone_number: string | null;
 };

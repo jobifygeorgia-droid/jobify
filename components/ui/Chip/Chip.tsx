@@ -10,7 +10,7 @@ type StaticChipT = {
   onClick?: undefined;
 };
 
-type ChipT = {
+export type ChipT = {
   type?: "primary" | "secondary" | "tertiary";
   className?: string;
   children: React.ReactNode;

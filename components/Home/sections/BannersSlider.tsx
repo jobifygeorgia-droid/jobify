@@ -15,6 +15,8 @@ const BannersSlider: React.FC<BannersSliderT> = () => {
           <figure className="relative w-full h-full">
             <Image
               fill
+              priority
+              sizes="(max-width: 1024px) 45vw, 45vw"
               quality={100}
               alt="find job"
               src="/find-job-sidebar-asset.webp"

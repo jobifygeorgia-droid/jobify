@@ -1,10 +1,12 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { useSession } from "next-auth/react";
+import { useEffect, useContext, useCallback, createContext } from "react";
 
+import { LS } from "@/lib/utils";
 import { PATHS } from "@/lib/config";
 import { useSearchParamUtils } from "@/hooks/utils";
-import { AuthModeT } from "@/components/Auth/auth.types";
+import { AuthModeT } from "@/interface/global.types";
 
 type AuthProviderT = {
   children: React.ReactNode;
@@ -17,32 +19,35 @@ type AuthContextT = {
   onCancel: () => void;
   onSignIn: () => void;
   onForgotPassword: () => void;
-  onChoosePasswordUpdateMethod: () => void;
+  onChoosePasswordUpdateMethod: (email: string) => void;
   onVerifyUserIdentity: () => void;
   onUpdatePassword: () => void;
+  isAuthenticated: boolean;
 };
 
 const AuthContext = createContext<AuthContextT | undefined>(undefined);
 
 const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
   const {
-    mergeParams,
-    mergeAndNavigate,
-    deleteParams,
     navigate,
+    mergeParams,
+    deleteParams,
     searchParams,
+    mergeAndNavigate,
     deleteMergeAndNavigate,
   } = useSearchParamUtils();
 
   const authMode = searchParams.get("auth") as AuthModeT | null;
   const method = searchParams.get("method") as string | null;
 
-  const onCloseAuthPopup = () => {
+  // ============== Control Auth Modes ==================== //
+
+  const onCloseAuthPopup = useCallback(() => {
     if (authMode === "update-success") mergeParams(PATHS.sign_in);
     else deleteParams(["auth", "method"]);
 
     navigate();
-  };
+  }, [authMode, deleteParams, mergeParams, navigate]);
 
   const onCancel = () =>
     deleteMergeAndNavigate({
@@ -54,8 +59,10 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
 
   const onForgotPassword = () => mergeAndNavigate(PATHS.forgot_password);
 
-  const onChoosePasswordUpdateMethod = () =>
+  const onChoosePasswordUpdateMethod = (email: string) => {
     mergeAndNavigate(PATHS.forgot_password_verify_by_email);
+    LS.setPasswordUpdateEmail(email);
+  };
 
   const onVerifyUserIdentity = () =>
     deleteMergeAndNavigate({
@@ -65,6 +72,18 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
 
   const onUpdatePassword = () =>
     mergeAndNavigate(PATHS.forgot_password_update_success);
+
+  const { data } = useSession();
+  const isAuthenticated = Boolean(data?.user);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log({ isAuthenticated });
+      onCloseAuthPopup();
+    }
+  }, [isAuthenticated, onCloseAuthPopup]);
+
+  // const { isLoading } = useTokenRotation();
 
   return (
     <AuthContext.Provider
@@ -78,6 +97,7 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
         onChoosePasswordUpdateMethod,
         onVerifyUserIdentity,
         onUpdatePassword,
+        isAuthenticated,
       }}
     >
       {children}

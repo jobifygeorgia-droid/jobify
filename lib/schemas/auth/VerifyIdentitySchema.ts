@@ -1,6 +1,6 @@
 import z from "zod";
 
-import * as validators from "./customValidators";
+import * as validators from "../customValidators";
 
 export const VerifyIdentitySchema = z.object({
   pin: z
@@ -10,7 +10,7 @@ export const VerifyIdentitySchema = z.object({
 });
 
 export const verifyIdentityInitialState: VerifyIdentitySchemaT = {
-  pin: "123456",
+  pin: "",
 };
 
 export type VerifyIdentitySchemaT = z.infer<typeof VerifyIdentitySchema>;

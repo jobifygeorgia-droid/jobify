@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { getStatus, StatusT } from "@/lib/utils/status";
+import { getStatus, StatusT } from "@/lib/utils";
 import { signupUser } from "@/lib/actions/auth.actions";
-import { SignupUserSchemaT } from "@/lib/schemas/SignupUserSchema";
+import { SignupUserSchemaT } from "@/lib/schemas/auth/SignupUserSchema";
 
 export default function useSignupUserQuery() {
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());

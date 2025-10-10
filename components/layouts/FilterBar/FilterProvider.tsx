@@ -1,17 +1,23 @@
 "use client";
 
-import { createContext, useContext, useState, useRef } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-
-import { useDevice } from "@/hooks/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Control, useForm } from "react-hook-form";
+import { createContext, useContext, useState, useRef, useEffect } from "react";
 
 import {
-  workTypeOptions,
-  experienceOptions,
-  workSectorOptions,
-  workCategoryOptions,
   OptionT,
-} from "./data";
+  workTypeOptions,
+  workSectorOptions,
+  experienceOptions,
+  workCategoryOptions,
+} from "@/lib/static-data";
+import {
+  FilterSchema,
+  FilterSchemaT,
+  filterInitialState,
+} from "@/lib/schemas/FilterSchema";
+import { useDevice, useSearchParamUtils } from "@/hooks/utils";
+import { PATHS } from "@/lib/config";
 
 type FilterProviderT = {
   children: React.ReactNode;
@@ -28,9 +34,12 @@ type FilterContextType = {
   workSectorOptions: Array<OptionT>;
   experienceOptions: Array<OptionT>;
   workCategoryOptions: Array<OptionT>;
+  control: Control<FilterSchemaT> | undefined;
+  onFilter: () => void;
 };
 
 const FilterContext = createContext<FilterContextType>({
+  control: undefined,
   onCloseFilter: () => {},
   toggleCategories: () => {},
   categoriesLimit: 0,
@@ -41,17 +50,19 @@ const FilterContext = createContext<FilterContextType>({
   workSectorOptions: [],
   experienceOptions: [],
   workCategoryOptions: [],
+  onFilter: () => {},
 });
 
 const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
   const categoriesRef = useRef<HTMLDivElement | null>(null);
+  const { control, handleSubmit, reset } = useForm<FilterSchemaT>({
+    resolver: zodResolver(FilterSchema),
+    defaultValues: filterInitialState,
+  });
 
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const { searchParams, deleteAndNavigate, router } = useSearchParamUtils();
 
-  const isFilterExpanded = params.get("filter") === "1";
+  const isFilterExpanded = searchParams.get("filter") === "1";
 
   const device = useDevice();
 
@@ -70,14 +81,46 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
       categoriesRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const onFilter = handleSubmit((values) => {
+    const queryParts = [];
+
+    for (const [key, value] of Object.entries(values)) {
+      if (Array.isArray(value) && value.length > 0) {
+        queryParts.push(`${key}=${value.join(",")}`);
+      } else if (typeof value === "string" && value)
+        queryParts.push(`${key}=${value}`);
+    }
+
+    router.push(`${PATHS.vacancies}?${queryParts.join("&")}`);
+  });
+
   const onCloseFilter = () => {
-    params.delete("filter");
-    router.push(`${pathname}?${params.toString()}`);
+    deleteAndNavigate(["filter"]);
   };
+
+  useEffect(() => {
+    const resetValues: FilterSchemaT = {
+      ...filterInitialState,
+      ...Object.fromEntries(
+        Object.keys(filterInitialState).map((key) => {
+          const value = searchParams.get(key);
+
+          if (key === "categories") {
+            return [key, value ? value.split(",") : []];
+          }
+          return [key, value ?? ""];
+        })
+      ),
+    };
+
+    reset(resetValues);
+  }, [searchParams, reset]);
 
   return (
     <FilterContext.Provider
       value={{
+        onFilter,
+        control,
         isFilterExpanded,
         onCloseFilter,
         toggleCategories,

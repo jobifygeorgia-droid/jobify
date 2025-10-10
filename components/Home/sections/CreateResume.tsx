@@ -13,6 +13,7 @@ const CreateResume: React.FC<CreateResumeT> = () => {
           <figure className="relative w-full h-full flex justify-center items-center">
             <Image
               fill
+              sizes="884px"
               alt="create resume"
               src="/create-resume-sidebar-asset.webp"
               className="object-contain laptop:scale-[130%]"

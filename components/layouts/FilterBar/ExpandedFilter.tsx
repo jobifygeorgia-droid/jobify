@@ -1,23 +1,24 @@
 "use client";
 
-import * as UI from "./ui";
-import { Modal } from "@/components/ui";
+import { Controller } from "react-hook-form";
+
 import { useFilterContext } from "./FilterProvider";
 
-const ExpandedFilter: React.FC = () => {
-  const {
-    workSectorOptions,
-    workTypeOptions,
-    experienceOptions,
-    onCloseFilter,
-    isFilterExpanded,
-  } = useFilterContext();
+import * as UI from "./ui";
+import { Modal } from "@/components/ui";
+import { ChipsField } from "@/components/layouts/Form";
 
-  if (!isFilterExpanded) return null;
+const ExpandedFilter: React.FC = () => {
+  const { control, ...filter } = useFilterContext();
+
+  if (!filter.isFilterExpanded) return null;
 
   return (
-    <Modal onClose={onCloseFilter} backdrop>
-      <div className="w-screen h-screen overflow-y-auto tablet:w-[624px] tablet:h-[700px] laptop:w-[760px] laptop:h-[85vh] desktop:w-[900px] desktop:h-[660px] flex flex-col p-6 pb-0">
+    <Modal onClose={filter.onCloseFilter} backdrop>
+      <form
+        onSubmit={filter.onFilter}
+        className="w-screen h-screen overflow-y-auto tablet:w-[624px] tablet:h-[700px] laptop:w-[760px] laptop:h-[85vh] desktop:w-[900px] desktop:h-[660px] flex flex-col p-6 pb-0"
+      >
         <UI.Header />
 
         <div className="h-full mt-6 mb-4 pr-3 tablet:pr-6 overflow-y-auto">
@@ -27,24 +28,60 @@ const ExpandedFilter: React.FC = () => {
             <UI.ExpandedFilterSectionTitle title="სამუშაოს დეტალები" />
 
             <div className="flex flex-col gap-5 laptop:gap-10">
-              <UI.ChipsFilter title="აირჩიე ტიპი" options={workTypeOptions} />
+              <Controller
+                control={control}
+                name="vacancy_type"
+                render={({ field }) => (
+                  <ChipsField
+                    value={field.value}
+                    onChange={field.onChange}
+                    data={filter.workTypeOptions}
+                    label="აირჩიე ტიპი"
+                    chipOptions={{ type: "secondary" }}
+                    labelClassname="text-base-sm text-light-grey-dark tablet:mx-auto"
+                  />
+                )}
+              />
 
-              <UI.ChipsFilter
-                title="აირჩიე სექტორი"
-                options={workSectorOptions}
+              <Controller
+                control={control}
+                name="sector"
+                render={({ field }) => (
+                  <ChipsField
+                    value={field.value}
+                    onChange={field.onChange}
+                    data={filter.workSectorOptions}
+                    label="აირჩიე სექტორი"
+                    chipOptions={{ type: "secondary" }}
+                    labelClassname="text-base-sm text-light-grey-dark tablet:mx-auto"
+                  />
+                )}
               />
 
               <UI.SalaryExpectation />
 
               <UI.FilterForm />
 
-              <UI.ChipsFilter title="გამოცდილება" options={experienceOptions} />
+              <Controller
+                control={control}
+                name="experience"
+                render={({ field }) => (
+                  <ChipsField
+                    value={field.value}
+                    onChange={field.onChange}
+                    label="გამოცდილება"
+                    data={filter.experienceOptions}
+                    chipOptions={{ className: "px-4!", type: "secondary" }}
+                    labelClassname="text-base-sm text-light-grey-dark tablet:mx-auto"
+                  />
+                )}
+              />
             </div>
           </div>
         </div>
 
         <UI.Footer />
-      </div>
+      </form>
     </Modal>
   );
 };

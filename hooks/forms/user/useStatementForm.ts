@@ -8,7 +8,7 @@ import {
   StatementSchema,
   StatementSchemaT,
   statementInitialState,
-} from "@/lib/schemas/StatementSchema";
+} from "@/lib/schemas/user/StatementSchema";
 import { usePropagateAPIErrorToHookForms } from "@/hooks/utils";
 
 export default function useStatementForm(messages: APIErrorMessages | null) {

@@ -3,30 +3,39 @@
 import { Controller } from "react-hook-form";
 
 import { useUpdatePasswordForm } from "@/hooks/forms";
+import { useUpdatePasswordQuery } from "@/hooks/api/auth";
 import { useAuthContext } from "@/providers/AuthProvider";
 
-import { Button } from "@/components/ui";
+import { Spinner } from "@/components/ui";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
-import { PasswordField } from "@/components/layouts/Form";
+import { PasswordField, ErrorMessage } from "@/components/layouts/Form";
+import ForgotPasswordActionButtons from "./ui/ForgotPasswordActionButtons";
 
 const UpdatePassword: React.FC = () => {
-  const { onUpdatePassword, onCancel } = useAuthContext();
-  const { control, handleSubmit } = useUpdatePasswordForm();
+  const { onCancel } = useAuthContext();
 
-  const onUpdate = handleSubmit((values) => {
-    onUpdatePassword();
-    console.log(values);
+  const { updatePasswordQuery, status } = useUpdatePasswordQuery();
+
+  const { control, handleSubmit, resetForm } = useUpdatePasswordForm(
+    status.messages
+  );
+
+  const onUpdate = handleSubmit(async (values) => {
+    await updatePasswordQuery(values);
+    resetForm();
   });
 
   return (
-    <div>
+    <div className="relative">
+      {status.loading && <Spinner />}
+
       <AuthPopupTitle title="პაროლის აღდგენა" />
 
       <form onSubmit={onUpdate}>
         <div className="mt-11 flex flex-col gap-3 justify-center">
           <Controller
             control={control}
-            name="password"
+            name="new_password"
             render={({ field, fieldState: { error } }) => (
               <PasswordField
                 inputProps={{
@@ -41,7 +50,7 @@ const UpdatePassword: React.FC = () => {
 
           <Controller
             control={control}
-            name="confirmPassword"
+            name="new_password2"
             render={({ field, fieldState: { error } }) => (
               <PasswordField
                 inputProps={{
@@ -53,17 +62,15 @@ const UpdatePassword: React.FC = () => {
               />
             )}
           />
+
+          {status.error && <ErrorMessage message={status.message} />}
         </div>
 
-        <div className="mt-16 flex flex-col gap-2">
-          <Button type="submit" buttonType="primary">
-            დადასტურება
-          </Button>
-
-          <Button onClick={onCancel} fullWidth buttonType="text" type="button">
-            უკან დაბრუნება
-          </Button>
-        </div>
+        <ForgotPasswordActionButtons
+          onCancel={onCancel}
+          disabled={status.loading}
+          titles={["დადასტურება", "უკან დაბრუნება"]}
+        />
       </form>
     </div>
   );

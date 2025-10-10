@@ -1,6 +1,7 @@
+import { formatDate } from "@/lib/utils";
+
 import { Checkbox } from "@/components/layouts/Form";
 import { GridTableItem } from "@/components/layouts";
-import { formatDate } from "@/lib/utils/formatDate";
 
 type SendEmailTableRowT = {
   position: string;

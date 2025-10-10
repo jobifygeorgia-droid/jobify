@@ -13,9 +13,9 @@ import {
 import { ChipsField, DatePicker, TextField } from "@/components/layouts/Form";
 
 const degrees = [
-  { title: "ბაკალავრიატი", value: "ბაკალავრიატი" },
-  { title: "მაგისტრატურა", value: "მაგისტრატურა" },
-  { title: "დოქტორანტურა", value: "დოქტორანტურა" },
+  { label: "ბაკალავრიატი", value: "ბაკალავრიატი" },
+  { label: "მაგისტრატურა", value: "მაგისტრატურა" },
+  { label: "დოქტორანტურა", value: "დოქტორანტურა" },
 ];
 
 const Education: React.FC = () => {

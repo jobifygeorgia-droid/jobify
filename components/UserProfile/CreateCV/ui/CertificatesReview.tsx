@@ -1,7 +1,7 @@
 import { UseFormWatch } from "react-hook-form";
 
-import { formatDate } from "@/lib/utils/formatDate";
-import { CVSchemaT } from "@/lib/schemas/CVSchema";
+import { formatDate } from "@/lib/utils";
+import { CVSchemaT } from "@/lib/schemas/user/CVSchema";
 
 import ReviewItem from "./ReviewItem";
 import ReviewContainer from "./ReviewContainer";

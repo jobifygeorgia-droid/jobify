@@ -5,7 +5,7 @@ import {
 } from "date-fns";
 import { ka } from "date-fns/locale";
 
-export function calcTimeAgo(date: string) {
+export default function calcTimeAgo(date: string) {
   const customLocale = {
     ...ka,
     formatDistance: (

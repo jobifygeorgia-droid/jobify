@@ -5,23 +5,23 @@ import { useMemo } from "react";
 import classnames from "classnames";
 import { usePathname } from "next/navigation";
 
-import { DYNAMIC_ROUTES } from "@/lib/config";
+import { DYNAMIC_ROUTES, USER_TYPES } from "@/lib/config";
 
 const nav_routes = (userId: string) => [
   {
     title: "მთავარი",
     href: "/",
-    roles: ["employer"],
+    roles: [USER_TYPES.EMPLOYER],
   },
   {
     title: "სამუშაო პანელი",
     href: DYNAMIC_ROUTES.company_profile(userId),
-    roles: ["employer"],
+    roles: [USER_TYPES.EMPLOYER],
   },
 ];
 
 type NavListT = {
-  role: string;
+  role: USER_TYPES | undefined;
 };
 
 const NavList: React.FC<NavListT> = (props) => {

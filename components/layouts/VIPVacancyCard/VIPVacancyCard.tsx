@@ -43,6 +43,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = ({
               src={vacancy.image}
               alt={vacancy.companyName}
               fill
+              sizes="36px, 56px"
               className="object-cover object-center"
             />
           </figure>
