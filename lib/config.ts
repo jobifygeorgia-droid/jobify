@@ -57,3 +57,16 @@ export const DYNAMIC_ROUTES = {
   vacancy_details: (vacancyId: string) =>
     PATHS.vacancies_details.replace(":vacancyId", vacancyId),
 };
+
+export enum USER_TYPES {
+  ADMIN = "admin",
+  EMPLOYER = "employer",
+  JOB_SEEKER = "job_seeker",
+}
+
+export const cookieOptions = {
+  path: "/",
+  secure: false,
+  httpOnly: true,
+  sameSite: "lax" as const,
+};

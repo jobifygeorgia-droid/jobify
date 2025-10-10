@@ -2,22 +2,35 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Controller } from "react-hook-form";
 
+import { PATHS } from "@/lib/config";
 import { useSignupCompanyForm } from "@/hooks/forms";
-
-import GoogleButton from "./ui/GoogleButton";
-import { Button, Divider } from "@/components/ui";
-import { TextField, PasswordField, Checkbox } from "@/components/layouts/Form";
+import { useSignupCompanyQuery } from "@/hooks/api/auth";
 import { usePopupsContext } from "@/providers/PopupsProvider";
 
+import {
+  Checkbox,
+  TextField,
+  ErrorMessage,
+  PasswordField,
+} from "@/components/layouts/Form";
+import GoogleButton from "./ui/GoogleButton";
+import { Button, Divider, Spinner } from "@/components/ui";
+
 const SignUpCompany: React.FC = () => {
+  const router = useRouter();
   const { addAlert } = usePopupsContext();
-  const { control, handleSubmit } = useSignupCompanyForm();
+
+  const { status, registerCompanyQuery } = useSignupCompanyQuery();
+  const { control, handleSubmit, resetForm } = useSignupCompanyForm(
+    status.messages
+  );
 
   const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
 
-  const onRegistration = handleSubmit((values) => {
+  const onRegistration = handleSubmit(async (values) => {
     if (!acceptsPrivacyAndPolicy)
       return addAlert({
         type: "warning",
@@ -25,130 +38,141 @@ const SignUpCompany: React.FC = () => {
         text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
       });
 
+    await registerCompanyQuery(values);
+
     addAlert({
       type: "warning",
       title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
-      text: "კომპანიის პროფილი გააქტიურდება ადმინისტარატორის დადასტურებისთანავე",
+      text: "კომპანიის პროფილი გააქტიურდება ადმინისტარატორის დადასტურებისთანავე. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
       delay: 20000,
     });
 
-    console.log(values);
+    resetForm();
+    setAcceptsPrivacyAndPolicy(false);
+
+    router.push(PATHS.home);
   });
 
   return (
-    <form
-      onSubmit={onRegistration}
-      className="w-full max-w-[375px] mt-6 flex flex-col gap-3"
-    >
-      <Controller
-        control={control}
-        name="company_name"
-        render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            labelPosition="out"
-            label="კომპანიის სახელი"
-            message={error?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="company_id"
-        render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            labelPosition="out"
-            label="საიდენტიფიკაციო კოდი"
-            message={error?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="contact_person"
-        render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            labelPosition="out"
-            label="საკონტაქტო პირი"
-            message={error?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="email"
-        render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            label="ელ.ფოსტა"
-            labelPosition="out"
-            message={error?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="phone_number"
-        render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            labelPosition="out"
-            label="ტელეფონი"
-            inputType="number"
-            message={error?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="password"
-        render={({ field, fieldState: { error } }) => (
-          <PasswordField
-            inputProps={{
-              ...field,
-              label: "პაროლი",
-              labelPosition: "out",
-              message: error?.message,
-            }}
-          />
-        )}
-      />
-
-      <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
-        <Checkbox
-          id="remember-me"
-          name="privacy_policy"
-          isChecked={acceptsPrivacyAndPolicy}
-          onChange={(checked) => setAcceptsPrivacyAndPolicy(checked)}
-        >
-          ვეთანხმები
-        </Checkbox>
-        <Link href="/" className="underline leading-0 p-0">
-          წესებს და პირობებს
-        </Link>
-      </div>
-
-      <Button
-        className="mt-3"
-        buttonType="primary"
-        disabled={!acceptsPrivacyAndPolicy}
+    <>
+      <form
+        onSubmit={onRegistration}
+        className="w-full max-w-[375px] mt-6 flex flex-col gap-3"
       >
-        რეგისტრაცია
-      </Button>
+        {status.loading && <Spinner type="inline" />}
 
-      <div className="my-3">
-        <Divider />
-      </div>
+        <Controller
+          control={control}
+          name="employer_profile.company_name"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              labelPosition="out"
+              label="კომპანიის სახელი"
+              message={error?.message}
+            />
+          )}
+        />
 
-      <GoogleButton />
-    </form>
+        <Controller
+          control={control}
+          name="employer_profile.company_id_number"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              labelPosition="out"
+              label="საიდენტიფიკაციო კოდი"
+              message={error?.message}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="employer_profile.contact_person"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              labelPosition="out"
+              label="საკონტაქტო პირი"
+              message={error?.message}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="email"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              label="ელ.ფოსტა"
+              labelPosition="out"
+              message={error?.message}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="phone_number"
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              labelPosition="out"
+              label="ტელეფონი"
+              inputType="number"
+              message={error?.message}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field, fieldState: { error } }) => (
+            <PasswordField
+              inputProps={{
+                ...field,
+                label: "პაროლი",
+                labelPosition: "out",
+                message: error?.message,
+              }}
+            />
+          )}
+        />
+
+        <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
+          <Checkbox
+            id="privacy-policy"
+            name="privacy_policy"
+            checked={acceptsPrivacyAndPolicy}
+            onCheck={() => setAcceptsPrivacyAndPolicy((prev) => !prev)}
+          >
+            ვეთანხმები
+          </Checkbox>
+          <Link href="/" className="underline leading-0 p-0">
+            წესებს და პირობებს
+          </Link>
+        </div>
+
+        {status.error && <ErrorMessage message={status.message} />}
+
+        <Button
+          className="mt-3"
+          buttonType="primary"
+          disabled={!acceptsPrivacyAndPolicy || status.loading}
+        >
+          რეგისტრაცია
+        </Button>
+
+        <div className="my-3">
+          <Divider />
+        </div>
+
+        <GoogleButton />
+      </form>
+    </>
   );
 };
 

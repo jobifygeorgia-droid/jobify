@@ -29,7 +29,7 @@ const TextFieldContentContainer: React.FC<TextFieldContentContainerT> = (
     <div
       onClick={onClick}
       className={classnames(
-        "relative flex flex-col gap-[6px] items-start border-bc bg-white",
+        "relative flex flex-col gap-[6px] items-start border-bc  bg-white",
         {
           [filledContainerStyles]: variant === "fill",
           "border-b": variant === "outlined",

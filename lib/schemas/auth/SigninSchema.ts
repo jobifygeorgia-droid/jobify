@@ -1,6 +1,6 @@
 import z from "zod";
 
-import * as validators from "./customValidators";
+import * as validators from "../customValidators";
 
 export const SigninSchema = z.object({
   email: z.email("გთხოვთ მიუთითოთ ვალიდური იმაილი"),
@@ -14,8 +14,8 @@ export const SigninSchema = z.object({
 });
 
 export const signinInitialState: SigninSchemaT = {
-  email: "user@io.com",
-  password: "password.1234",
+  email: "@io.com",
+  password: "Pass.1234",
 };
 
 export type SigninSchemaT = z.infer<typeof SigninSchema>;

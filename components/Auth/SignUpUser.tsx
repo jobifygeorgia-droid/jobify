@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Controller } from "react-hook-form";
 
+import { PATHS } from "@/lib/config";
 import { useSignupUserForm } from "@/hooks/forms";
 import { useSignupUserQuery } from "@/hooks/api/auth";
 import { usePopupsContext } from "@/providers/PopupsProvider";
@@ -11,19 +13,23 @@ import { usePopupsContext } from "@/providers/PopupsProvider";
 import {
   Checkbox,
   TextField,
-  PasswordField,
   ErrorMessage,
+  PasswordField,
 } from "@/components/layouts/Form";
 import GoogleButton from "./ui/GoogleButton";
 import { Button, Spinner, Divider } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
+  const router = useRouter();
   const { addAlert } = usePopupsContext();
 
   const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
 
   const { registerUserQuery, status } = useSignupUserQuery();
-  const { control, handleSubmit } = useSignupUserForm(status.messages);
+
+  const { control, handleSubmit, resetForm } = useSignupUserForm(
+    status.messages
+  );
 
   const onRegistration = handleSubmit(async (values) => {
     if (!acceptsPrivacyAndPolicy)
@@ -34,6 +40,18 @@ const SignUpUser: React.FC = () => {
       });
 
     await registerUserQuery(values);
+
+    addAlert({
+      type: "warning",
+      title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
+      text: "თქვენი წარმატებით გაიარეთ რეგისტრაცა. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
+      delay: 20000,
+    });
+
+    resetForm();
+    setAcceptsPrivacyAndPolicy(false);
+
+    router.push(PATHS.home);
   });
 
   return (
@@ -41,10 +59,9 @@ const SignUpUser: React.FC = () => {
       onSubmit={onRegistration}
       className="w-full max-w-[375px] mt-6 flex flex-col gap-3 relative"
     >
-      {status.loading && <Spinner type="inline" />}
-
+      {status.loading && <Spinner type="relative" />}
       <Controller
-        name="username"
+        name="full_name"
         control={control}
         render={({ field, fieldState: { error } }) => (
           <TextField
@@ -55,7 +72,6 @@ const SignUpUser: React.FC = () => {
           />
         )}
       />
-
       <Controller
         control={control}
         name="email"
@@ -68,7 +84,6 @@ const SignUpUser: React.FC = () => {
           />
         )}
       />
-
       <Controller
         control={control}
         name="phone_number"
@@ -82,7 +97,6 @@ const SignUpUser: React.FC = () => {
           />
         )}
       />
-
       <Controller
         control={control}
         name="password"
@@ -97,13 +111,12 @@ const SignUpUser: React.FC = () => {
           />
         )}
       />
-
       <div className="text-base-sm tablet:text-base flex items-center gap-1 mt-1">
         <Checkbox
-          id="remember-me"
+          id="privacy-policy"
           name="privacy_policy"
-          isChecked={acceptsPrivacyAndPolicy}
-          onChange={(checked) => setAcceptsPrivacyAndPolicy(checked)}
+          checked={acceptsPrivacyAndPolicy}
+          onCheck={() => setAcceptsPrivacyAndPolicy((prev) => !prev)}
         >
           ვეთანხმები
         </Checkbox>
@@ -112,21 +125,17 @@ const SignUpUser: React.FC = () => {
           წესებს და პირობებს
         </Link>
       </div>
-
       {status.error && <ErrorMessage message={status.message} />}
-
       <Button
         className="mt-3"
         buttonType="primary"
-        disabled={!acceptsPrivacyAndPolicy}
+        disabled={!acceptsPrivacyAndPolicy || status.loading}
       >
         რეგისტრაცია
       </Button>
-
       <div className="my-3">
         <Divider />
       </div>
-
       <GoogleButton />
     </form>
   );

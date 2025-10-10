@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { DYNAMIC_ROUTES } from "@/lib/config";
+import { logout } from "@/lib/actions/auth.actions";
 
 import { Menu } from "@/components/ui";
 import { Person, Logout } from "@/components/ui/icons";
@@ -51,7 +52,12 @@ const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
           <span className="text-base-sm">პროფილი</span>
         </Menu.MenuItem>
 
-        <Menu.MenuItem onClick={() => {}} className="hover:text-red!">
+        <Menu.MenuItem
+          onClick={async () => {
+            await logout();
+          }}
+          className="hover:text-red!"
+        >
           <Logout size={18} className="text-current" />
           <span className="text-base-sm">გასვლა</span>
         </Menu.MenuItem>

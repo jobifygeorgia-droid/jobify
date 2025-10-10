@@ -4,10 +4,12 @@ import { Controller } from "react-hook-form";
 
 import { useAuthContext } from "@/providers/AuthProvider";
 import { useRequestPasswordUpdateForm } from "@/hooks/forms";
+import { useRequestPasswordUpdateQuery } from "@/hooks/api/auth";
 
-import { Button } from "@/components/ui";
+import { Spinner } from "@/components/ui";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
-import { TextField } from "@/components/layouts/Form";
+import { TextField, ErrorMessage } from "@/components/layouts/Form";
+import ForgotPasswordActionButtons from "./ui/ForgotPasswordActionButtons";
 
 // const options = [
 //   { label: "ელ.ფოსტით აღდგენა", value: "email", id: "update-by-email" },
@@ -19,24 +21,29 @@ import { TextField } from "@/components/layouts/Form";
 // ];
 
 const ForgotPasswordUpdateMethod: React.FC = () => {
-  const { control, handleSubmit } = useRequestPasswordUpdateForm();
+  const { onCancel } = useAuthContext();
+
+  const { requestPasswordUpdateQuery, status } =
+    useRequestPasswordUpdateQuery();
+
+  const { control, handleSubmit, resetForm } = useRequestPasswordUpdateForm(
+    status.messages
+  );
 
   // const [updateMethod, setUpdateMethod] = useState<string>("email");
-
-  const { onChoosePasswordUpdateMethod, onCancel } = useAuthContext();
 
   // const onChangeMethod = (value: string | number) => {
   //   onReset();
   //   setUpdateMethod(value as string);
   // };
 
-  const onRequest = handleSubmit((values) => {
-    onChoosePasswordUpdateMethod();
-    console.log(values);
+  const onRequestPasswordUpdate = handleSubmit(async (values) => {
+    await requestPasswordUpdateQuery(values);
+    resetForm();
   });
 
   return (
-    <div>
+    <div className="relative">
       <AuthPopupTitle title="დაგავიწყდა პაროლი ?" />
 
       <span className="text-base-sm flex justify-center mt-5">
@@ -44,8 +51,10 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
         შეიყვანეთ თქვენი ელ.ფოსტა
       </span>
 
-      <form onSubmit={onRequest}>
-        <div className="mt-11">
+      {status.loading && <Spinner type="relative" />}
+
+      <form onSubmit={onRequestPasswordUpdate}>
+        <div className="mt-11 flex flex-col gap-2">
           {/* <Radio
             value={updateMethod}
             data={options}
@@ -84,17 +93,15 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
               />
             )} */}
           </div>
+
+          {status.error && <ErrorMessage message={status.message} />}
         </div>
 
-        <div className="mt-16 flex flex-col gap-2">
-          <Button fullWidth buttonType="primary" type="submit">
-            გაგრძელება
-          </Button>
-
-          <Button onClick={onCancel} fullWidth buttonType="text" type="button">
-            გაუქმება
-          </Button>
-        </div>
+        <ForgotPasswordActionButtons
+          onCancel={onCancel}
+          disabled={status.loading}
+          titles={["გაგრძელება", "გაუქმება"]}
+        />
       </form>
     </div>
   );

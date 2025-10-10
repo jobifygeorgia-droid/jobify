@@ -30,6 +30,7 @@ const VacancyCard: React.FC<VacancyCardT> = (vacancy) => {
             src={vacancy.image}
             alt={vacancy.companyName}
             fill
+            sizes="44px, 64px"
             className="object-cover object-center"
           />
         </figure>

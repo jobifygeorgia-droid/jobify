@@ -10,7 +10,9 @@ const Reviews: React.FC<ReviewsT> = () => {
   return (
     <SectionContainer title="შეფასებები" className="relative">
       <MultipleSlider
-        slidesPerView={3.5}
+        breakpoints={{
+          220: { slidesPerView: 3.5, slidesPerGroup: 3.5, spaceBetween: 0 },
+        }}
         slides={reviewsData.map((review) => (
           <ReviewCard key={review.id} {...review} />
         ))}

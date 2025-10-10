@@ -8,23 +8,32 @@ import { useSigninForm } from "@/hooks/forms";
 import { useSigninQuery } from "@/hooks/api/auth";
 import { useAuthContext } from "@/providers/AuthProvider";
 
+import {
+  Checkbox,
+  TextField,
+  ErrorMessage,
+  PasswordField,
+} from "@/components/layouts/Form";
 import GoogleButton from "./ui/GoogleButton";
 import AuthPopupTitle from "./ui/AuthPopupTitle";
-import { Button, Divider } from "@/components/ui";
-import { PasswordField, TextField, Checkbox } from "@/components/layouts/Form";
+import { Button, Divider, Spinner } from "@/components/ui";
 
 const BaseAuthentication: React.FC = () => {
   const { onForgotPassword } = useAuthContext();
 
   const { signInQuery, status } = useSigninQuery();
-  const { control, handleSubmit } = useSigninForm(status?.messages);
+
+  const { control, handleSubmit, resetForm } = useSigninForm(status?.messages);
 
   const onSignin = handleSubmit(async (values) => {
     await signInQuery(values);
+    resetForm();
   });
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 relative">
+      {status.loading && <Spinner type="relative" />}
+
       <AuthPopupTitle title="ავტორიზაცია" />
 
       <form onSubmit={onSignin} className="flex flex-col gap-3">
@@ -56,6 +65,8 @@ const BaseAuthentication: React.FC = () => {
           )}
         />
 
+        {status.error && <ErrorMessage message={status.message} />}
+
         <div className="flex items-center justify-between">
           <Checkbox id="remember-me">დამახსოვრება</Checkbox>
 
@@ -68,7 +79,13 @@ const BaseAuthentication: React.FC = () => {
           </button>
         </div>
 
-        <Button fullWidth className="mt-1" buttonType="primary" type="submit">
+        <Button
+          fullWidth
+          disabled={status.loading}
+          className="mt-1"
+          buttonType="primary"
+          type="submit"
+        >
           შესვლა
         </Button>
       </form>

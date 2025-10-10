@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useFieldArray, useFormState } from "react-hook-form";
 
-import { cvInitialState } from "@/lib/schemas/CVSchema";
-import { objectDeepCopy } from "@/lib/utils/objectDeepCopy";
+import { objectDeepCopy } from "@/lib/utils";
+import { cvInitialState } from "@/lib/schemas/user/CVSchema";
 import { useCV } from "@/components/UserProfile/CreateCV/CVProvider";
 
 export default function useEducation() {

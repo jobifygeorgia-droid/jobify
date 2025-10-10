@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils/formatDate";
+import { formatDate } from "@/lib/utils";
 
 import { GridTableItem } from "@/components/layouts";
 import Status from "./Status";

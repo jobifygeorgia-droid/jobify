@@ -5,11 +5,6 @@ const GoogleFontIcons: React.FC = () => {
   return (
     <head>
       <link
-        rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-        as="style"
-      />
-      <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
       />

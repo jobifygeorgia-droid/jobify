@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils/formatDate";
+import { formatDate } from "@/lib/utils";
 
 import { Button, Chip } from "@/components/ui";
 import { Calendar, Download } from "@/components/ui/icons";

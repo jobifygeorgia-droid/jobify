@@ -2,9 +2,10 @@ import LoginButton from "./ui/LoginButton";
 import CompanyActions from "./ui/CompanyActions";
 import UserActions from "./ui/UserActions";
 import AvatarMenu from "./ui/AvatarMenu";
+import { USER_TYPES } from "@/lib/config";
 
 type UserT = {
-  role: string;
+  role: USER_TYPES | undefined;
 };
 
 const User: React.FC<UserT> = (props) => {

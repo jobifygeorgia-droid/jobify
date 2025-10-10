@@ -10,7 +10,11 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { CVSchema, CVSchemaT, cvInitialState } from "@/lib/schemas/CVSchema";
+import {
+  CVSchema,
+  CVSchemaT,
+  cvInitialState,
+} from "@/lib/schemas/user/CVSchema";
 
 type CVProviderT = {
   children: React.ReactNode;

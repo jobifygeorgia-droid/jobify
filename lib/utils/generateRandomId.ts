@@ -1,4 +1,4 @@
-export function generateRandomId(length = 16): string {
+export default function generateRandomId(length = 16): string {
   const chars =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 

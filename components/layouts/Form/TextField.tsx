@@ -42,7 +42,7 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
           type={rest.inputType || "text"}
           placeholder={placeholder || " "}
           className={classnames(
-            "peer w-full h-11 outline-none pl-2 rounded-[inherit] bg-white",
+            "peer w-full h-11 outline-none pl-2 rounded-[inherit] bg-white focus:border-light-grey-active ring-transparent",
             { [`order-2 ${filledContainerStyles}`]: isLabelOut }
           )}
         />

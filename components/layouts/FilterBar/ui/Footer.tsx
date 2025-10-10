@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       >
         გაუქმება
       </Button>
-      <Button buttonType="primary" textSize="sm" className="w-40!">
+      <Button buttonType="primary" textSize="sm" type="submit">
         გაფილტვრა
       </Button>
     </div>

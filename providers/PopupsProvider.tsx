@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useState } from "react";
 
 import { Alert } from "@/components/ui";
-import { generateRandomId } from "@/lib/utils/generateRandomId";
+import { generateRandomId } from "@/lib/utils";
 
 type PopupsProviderT = {
   children: React.ReactNode;
@@ -32,7 +32,7 @@ const PopupsProvider: React.FC<PopupsProviderT> = ({ children }) => {
   return (
     <PopupsContext.Provider value={{ addAlert }}>
       {alerts.length > 0 && (
-        <div className="fixed z-[999] top-4 w-full flex flex-col gap-4 justify-center items-center">
+        <div className="fixed z-[9999] top-4 w-full flex flex-col gap-4 justify-center items-center">
           {alerts.map((alert) => (
             <Alert key={alert.id} {...alert} onRemove={onRemoveAlert} />
           ))}

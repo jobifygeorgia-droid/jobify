@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFieldArray, useFormState } from "react-hook-form";
 
-import { cvInitialState, CVSchemaT } from "@/lib/schemas/CVSchema";
+import { cvInitialState, CVSchemaT } from "@/lib/schemas/user/CVSchema";
 import { useCV } from "@/components/UserProfile/CreateCV/CVProvider";
 
 export default function useForeignLanguages() {

@@ -36,3 +36,35 @@
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
 }
+
+/* //////// */
+/* HTML: <div class="loader"></div> */
+.secondary-loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 var(--color-green),
+      -20px 0 var(--color-green-light-active);
+    background: var(--color-green);
+  }
+  33% {
+    box-shadow: 20px 0 var(--color-green),
+      -20px 0 var(--color-green-light-active);
+    background: var(--color-green-light-active);
+  }
+  66% {
+    box-shadow: 20px 0 var(--color-green-light-active),
+      -20px 0 var(--color-green);
+    background: var(--color-green-light-active);
+  }
+  100% {
+    box-shadow: 20px 0 var(--color-green-light-active),
+      -20px 0 var(--color-green);
+    background: var(--color-green);
+  }
+}

@@ -26,8 +26,9 @@ const Inbox: React.FC<InboxT> = () => {
       </div>
 
       <MultipleSlider
-        slidesPerGroup={1.5}
-        slidesPerView={1.65}
+        breakpoints={{
+          220: { slidesPerView: 1.5, slidesPerGroup: 1.5, spaceBetween: 0 },
+        }}
         slides={companyInbox.slice(0, 8).map((resume) => (
           <div key={resume.id} className="w-[275px]">
             <ReceivedResumeCardCubic {...resume} />

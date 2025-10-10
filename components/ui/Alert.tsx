@@ -43,31 +43,41 @@ const Alert: React.FC<AlertPropsT> = (props) => {
           <span className={classnames("font-semibold text-base")}>{title}</span>
         )}
 
-        <button className="ml-auto" onClick={() => onRemove(id || "")}>
+        <button
+          className="ml-auto cursor-pointer"
+          onClick={() => onRemove(id || "")}
+        >
           <Close size={25} className="text-current" />
         </button>
       </div>
 
-      {text && (
-        <p
-          className={classnames("text-base-sm mt-2 ml-8 font-normal", {
-            "text-red": type === "danger",
-            "text-orange-active": type === "warning",
-            "text-green-active": type === "success",
-          })}
-        >
-          {text}
-        </p>
-      )}
+      <div className="pl-3">
+        {text && (
+          <p
+            className={classnames(
+              "text-base-sm mt-2 ml-8 font-normal flex flex-col",
+              {
+                "text-red": type === "danger",
+                "text-orange-active": type === "warning",
+                "text-green-active": type === "success",
+              }
+            )}
+          >
+            {text.split("/n").map((line, index) => (
+              <span key={`alert-${line}-${index}`}>{line}</span>
+            ))}
+          </p>
+        )}
 
-      <AnchorButton
-        href={""}
-        buttonType="text"
-        className="p-0! ml-8 mt-6 text-[inherit]! w-max"
-      >
-        <span className="font-semibold text-base-sm">გაიგე მეტი</span>
-        <ArrowRight className="text-current!" size={20} />
-      </AnchorButton>
+        <AnchorButton
+          href={""}
+          buttonType="text"
+          className="p-0! ml-8 mt-6 text-[inherit]! w-max"
+        >
+          <span className="font-semibold text-base-sm">გაიგე მეტი</span>
+          <ArrowRight className="text-current!" size={20} />
+        </AnchorButton>
+      </div>
     </div>
   );
 };

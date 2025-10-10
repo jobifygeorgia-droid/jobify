@@ -1,23 +1,23 @@
 import z from "zod";
 
-import * as validators from "./customValidators";
+import * as validators from "../customValidators";
 
 export const UpdatePasswordSchema = z
   .object({
-    password: z
+    new_password: z
       .string()
       .min(1, "გთხოვთ შეიყვანოთ პაროლი")
       .refine(
         validators.isValidPassword.validator,
         validators.isValidPassword.message
       ),
-    confirmPassword: z.string().min(1, "გთხოვთ გაიმეოროთ პაროლი"),
+    new_password2: z.string().min(1, "გთხოვთ გაიმეოროთ პაროლი"),
   })
   .refine(
     (data) => {
       return validators.confirmPasswordValidation.validator(
-        data.password,
-        data.confirmPassword
+        data.new_password,
+        data.new_password2
       );
     },
     {
@@ -27,8 +27,8 @@ export const UpdatePasswordSchema = z
   );
 
 export const updatePasswordInitialState: UpdatePasswordSchemaT = {
-  password: "password",
-  confirmPassword: "password",
+  new_password: "Pass.4321",
+  new_password2: "Pass.4321",
 };
 
 export type UpdatePasswordSchemaT = z.infer<typeof UpdatePasswordSchema>;

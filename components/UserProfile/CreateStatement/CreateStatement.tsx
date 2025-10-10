@@ -23,9 +23,9 @@ import { Crown } from "@/components/ui/icons";
 type CreateStatementT = {};
 
 const jobTypes = [
-  { title: "დისტანციური", value: "დისტანციური" },
-  { title: "ჰიბრიდული", value: "ჰიბრიდული" },
-  { title: "საოფისე", value: "საოფისე" },
+  { label: "დისტანციური", value: "დისტანციური" },
+  { label: "ჰიბრიდული", value: "ჰიბრიდული" },
+  { label: "საოფისე", value: "საოფისე" },
 ];
 
 const CreateStatement: React.FC<CreateStatementT> = () => {
@@ -141,8 +141,8 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
             size="medium"
             id="data-useage"
             name="data-useage"
-            isChecked={acceptsDataUsage}
-            onChange={() => setAcceptsDataUsage((prev) => !prev)}
+            checked={acceptsDataUsage}
+            onCheck={() => setAcceptsDataUsage((prev) => !prev)}
           >
             <span className="text-base-sm">
               ვეთანხმები მონაცემების დამუშავებას და სამომავლოდ გამოყენებას
@@ -170,6 +170,7 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
                   { label: "10 დღე", value: "ten-day" },
                 ]}
                 instanceId="select-vip-days"
+                onChange={(v) => console.log(v)}
               />
             </div>
           </div>

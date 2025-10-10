@@ -1,14 +1,13 @@
+import { auth } from "@/services/next-auth";
+
 import User from "./User";
-import BottomNavigation from "./ui/BottomNavigation";
-import BurgerMenu from "./ui/BurgerMenu";
 import NavList from "./ui/NavList";
+import BurgerMenu from "./ui/BurgerMenu";
+import BottomNavigation from "./ui/BottomNavigation";
 import { Container, Logo } from "@/components/ui";
 
-const NavBar: React.FC = () => {
-  const roles = ["job_seeker", "employer"];
-
-  const isAuthenticated = 0;
-  const role = isNaN(isAuthenticated) ? "" : roles[isAuthenticated];
+const NavBar = async () => {
+  const session = await auth();
 
   return (
     <>
@@ -18,9 +17,9 @@ const NavBar: React.FC = () => {
             <Logo />
 
             <div className="w-full items-center hidden laptop:flex">
-              <NavList role={role} />
+              <NavList role={session?.user?.user_type} />
 
-              <User role={role} />
+              <User role={session?.user?.user_type} />
             </div>
 
             <BurgerMenu />

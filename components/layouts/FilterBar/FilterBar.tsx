@@ -1,3 +1,5 @@
+"use client";
+
 import { IconButton } from "@/components/ui";
 import { TextField, Select } from "@/components/layouts/Form";
 
@@ -29,6 +31,7 @@ const FilterBar: React.FC = () => {
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
+              onChange={() => {}}
               options={workTypes}
               variant="outlined"
               placeholder="სამუშაოს ტიპი"
@@ -40,6 +43,7 @@ const FilterBar: React.FC = () => {
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
+              onChange={() => {}}
               options={workTypes}
               variant="outlined"
               placeholder="მდებარეობა"

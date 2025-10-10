@@ -1,9 +1,9 @@
 import z from "zod";
 
-import * as validators from "./customValidators";
+import * as validators from "../customValidators";
 
 export const SignupUserSchema = z.object({
-  username: z
+  full_name: z
     .string()
     .min(1, "გთხოვთ შეიყვანოთ მომხმარებლის სრული სახელი")
     .refine(
@@ -29,10 +29,10 @@ export const SignupUserSchema = z.object({
 });
 
 export const signupUserInitialState: SignupUserSchemaT = {
-  username: "მომხმარებლის სახელი",
-  email: "user@io.com",
-  phone_number: "555444333",
-  password: "password.1234",
+  email: "snow@io.com",
+  password: "Pass.1234",
+  phone_number: "555444332",
+  full_name: "ჯონ სნოუ",
 };
 
 export type SignupUserSchemaT = z.infer<typeof SignupUserSchema>;
