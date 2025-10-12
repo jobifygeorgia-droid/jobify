@@ -21,3 +21,10 @@ export const AuthModes = [
 ] as const;
 
 export type AuthModeT = (typeof AuthModes)[number];
+
+export type LocationT = {
+  lat: number;
+  lon: number;
+  location: string;
+  location_name: string;
+};

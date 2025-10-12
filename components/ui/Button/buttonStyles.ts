@@ -45,15 +45,15 @@ export const buttonStyles = (
     },
     {
       "text-base-sm ": textSize === "sm",
-      "text-base ": textSize === "base",
-      "text-md": textSize === "md",
-      "text-lg": textSize === "lg",
+      "max-tablet:text-base-sm text-base": textSize === "base",
+      "max-tablet:text-base text-md": textSize === "md",
+      "max-tablet:text-md text-lg": textSize === "lg",
     },
     {
-      "py-3 px-5": paddingSize === "base",
-      "py-3 px-9": paddingSize === "base-wide",
-      "py-3 px-12": paddingSize === "base-wider",
-      "py-4 px-10": paddingSize === "md",
+      "max-tablet:py-2 py-3 px-5": paddingSize === "base",
+      "max-tablet:py-2 py-3 px-9": paddingSize === "base-wide",
+      "max-tablet:py-2 py-3 px-12": paddingSize === "base-wider",
+      "max-tablet:py-2 py-4 px-10": paddingSize === "md",
     },
     { "w-full": fullWidth },
     {

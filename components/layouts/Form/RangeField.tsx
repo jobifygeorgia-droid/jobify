@@ -1,17 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { CustomRangeSlider } from "./ui/rangeSlider";
+
+import { RangeFieldT } from "@/interface/ui/forms-ui";
+import { CustomRangeSlider } from "./styles/rangeSlider";
 
 function valuetext(value: number) {
   return `${value}°C`;
 }
-
-type RangeFieldT = {
-  max?: number;
-  min?: number;
-  step?: number;
-};
 
 const RangeField: React.FC<RangeFieldT> = (props) => {
   const { max = 100, min = 0, step = 10 } = props;

@@ -125,7 +125,9 @@ const SignUpUser: React.FC = () => {
           წესებს და პირობებს
         </Link>
       </div>
+
       {status.error && <ErrorMessage message={status.message} />}
+
       <Button
         className="mt-3"
         buttonType="primary"

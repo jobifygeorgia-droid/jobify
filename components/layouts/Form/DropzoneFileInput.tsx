@@ -5,13 +5,9 @@ import { useDropzone } from "react-dropzone";
 import classnames from "classnames";
 
 import FileInputReview from "./ui/FileInputReview";
-import { fileInputAcceptMap, FileType } from "./types/form-fields.types";
+import { fileInputAcceptMap } from "./utils/fileInputAcceptMap";
 import FileInputContentLabel from "./ui/FileInputContentLabel";
-
-type DropzoneFileInputT = {
-  type: FileType;
-  multiple?: boolean;
-};
+import { DropzoneFileInputT } from "@/interface/ui/forms-ui";
 
 const DropzoneFileInput: React.FC<DropzoneFileInputT> = (props) => {
   const { type, multiple = false } = props;

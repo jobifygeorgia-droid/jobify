@@ -112,7 +112,16 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .inherit-font-size {
+    font-size: inherit !important;
+  }
 }
+
+/* .touch-pan-x {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+} */
 
 /* ---------------------------------------------  */
 /* ---------------- TipTap ---------------------- */
@@ -128,6 +137,7 @@ body {
 .scrollbar::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb,

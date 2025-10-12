@@ -33,8 +33,8 @@ const Options: React.FC<OptionsT> = () => {
             Icon={Eye}
             text="დეტალურად ნახვა"
           />
-          <OptionItem onClick={onEdit} Icon={Edit} text="რედაქტირება" />
           <OptionItem onClick={onDelete} Icon={Delete} text="წაშლა" isDanger />
+          <OptionItem onClick={onEdit} Icon={Edit} text="რედაქტირება" />
         </Menu.MenuList>
       </Menu>
     </div>

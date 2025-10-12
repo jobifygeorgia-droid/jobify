@@ -1,9 +1,9 @@
-import { useFilterContext } from "../FilterProvider";
+import { Controller } from "react-hook-form";
 
 import { Button } from "@/components/ui";
 import { Checkbox } from "@/components/layouts/Form";
 import ExpandedFilterSectionTitle from "./ExpandedFilterSectionTitle";
-import { Controller } from "react-hook-form";
+import { useFilterContext } from "@/components/layouts/FilterBar/FilterProvider";
 
 const FilterByCategory: React.FC = () => {
   const {

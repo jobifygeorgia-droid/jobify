@@ -15,7 +15,7 @@ type CompanyProfileT = {};
 
 const CompanyProfile: React.FC<CompanyProfileT> = () => {
   return (
-    <div className="my-6 rounded-3xl px-10 py-8 bg-white flex flex-col gap-4">
+    <div className="my-6 rounded-3xl px-3 desktop-sm:px-10 py-4 desktop-sm:py-4 bg-white flex flex-col gap-4">
       <StatisticHeader />
 
       {/* <div className="my-4 flex items-center gap-6 w-max mx-auto">
@@ -27,30 +27,34 @@ const CompanyProfile: React.FC<CompanyProfileT> = () => {
 
       <SectionTitle title="ვაკანსიები" size="base" />
 
-      <div className="flex items-center justify-start gap-4">
+      <div className="flex items-start laptop:items-center flex-col-reverse laptop:flex-row justify-between gap-4">
         <Filter />
 
-        <SendEmail />
+        <div className="flex tablet:gap-6 items-center justify-between w-full">
+          <SendEmail />
 
-        <AnchorButton
-          href={PATHS.company_create_vacancy}
-          className="gap-3 font-semibold w-max p-0!"
-        >
-          <Plus size={26} className="translate-y-[2px]" />
-          ვაკანსიის დამატება
-        </AnchorButton>
+          <AnchorButton
+            href={PATHS.company_create_vacancy}
+            className="max-tablet:gap-1 gap-3 font-semibold w-max p-0! text-sm! tablet:text-base-sm!"
+          >
+            <Plus className="translate-y-[2px] text-lg! tablet:text-2xl!" />
+            ვაკანსიის დამატება
+          </AnchorButton>
+        </div>
       </div>
 
-      <GridTable
-        cols={9}
-        className="mt-2 rounded-xl overflow-hidden border border-t-0 border-bc"
-      >
-        <VacanciesTableHeader />
+      <div className="overflow-x-auto no-scrollbar touch-pan-x">
+        <GridTable
+          cols={9}
+          className="mt-2 rounded-xl overflow-hidden border border-t-0 border-bc w-max desktop-sm:w-full"
+        >
+          <VacanciesTableHeader />
 
-        {companyProfileData.slice(0, 7).map((item) => (
-          <VacanciesTableRow key={item.id} {...item} />
-        ))}
-      </GridTable>
+          {companyProfileData.slice(0, 7).map((item) => (
+            <VacanciesTableRow key={item.id} {...item} />
+          ))}
+        </GridTable>
+      </div>
 
       <div className="w-full flex justify-center">
         <Pagination />

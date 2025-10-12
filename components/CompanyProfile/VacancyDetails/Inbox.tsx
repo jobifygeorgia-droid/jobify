@@ -12,10 +12,10 @@ const Inbox: React.FC<InboxT> = () => {
   const onFilter = () => {};
 
   return (
-    <div className="rounded-xl border border-blue-light-hover p-8 flex flex-col gap-6">
+    <div className="rounded-xl border border-blue-light-hover py-5 px-4 laptop:p-8 flex flex-col gap-4 laptop:gap-6">
       <span className="font-semibold">შემოსული რეზიუმეები</span>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 laptop:gap-2">
         <Chip className="text-sm!" isActive={true} onClick={onFilter}>
           ახალი
         </Chip>
@@ -27,7 +27,9 @@ const Inbox: React.FC<InboxT> = () => {
 
       <MultipleSlider
         breakpoints={{
-          220: { slidesPerView: 1.5, slidesPerGroup: 1.5, spaceBetween: 0 },
+          220: { slidesPerView: 1.05, slidesPerGroup: 1, spaceBetween: 0 },
+          640: { slidesPerView: 2.4, slidesPerGroup: 2, spaceBetween: 0 },
+          1056: { slidesPerView: 1.45, slidesPerGroup: 1, spaceBetween: 0 },
         }}
         slides={companyInbox.slice(0, 8).map((resume) => (
           <div key={resume.id} className="w-[275px]">

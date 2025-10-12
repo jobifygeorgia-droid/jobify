@@ -1,15 +1,9 @@
 "use client";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { IOSSwitch } from "./ui/customSwitch";
+import { IOSSwitch } from "./styles/customSwitch";
 import Label from "./Label";
-
-type SwitchT = {
-  label?: string;
-  value: boolean;
-  onChange?: (v: boolean) => void;
-  type?: "primary" | "secondary";
-};
+import { SwitchT } from "@/interface/ui/forms-ui";
 
 const Switch: React.FC<SwitchT> = (props) => {
   const { type = "primary", label, value, onChange = () => {} } = props;

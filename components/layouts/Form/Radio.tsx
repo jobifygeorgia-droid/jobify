@@ -5,9 +5,9 @@ import classnames from "classnames";
 
 import RadioItem from "./ui/RadioItem";
 import FormErrorMessage from "./FormErrorMessage";
-import { RadioPropsT } from "./types/form-fields.types";
+import { RadioT } from "@/interface/ui/forms-ui";
 
-const Radio: React.FC<RadioPropsT> = (props) => {
+const Radio: React.FC<RadioT> = (props) => {
   const {
     data,
     size,
@@ -17,6 +17,7 @@ const Radio: React.FC<RadioPropsT> = (props) => {
     value,
     onChange,
   } = props;
+
   const [selectedValue, setSelectedValue] = useState<string | number>(
     () => value?.toString() || ""
   );

@@ -7,7 +7,7 @@ import {
   signIn as nextAuthSignIn,
   signOut as nextAuthSignOut,
 } from "@/services/next-auth";
-import { publicApi } from "@/lib/actions/api";
+import { publicApi } from "@/services/axios/api";
 import { api_endpoints } from "@/lib/api-endpoints";
 
 import { extractCookieHeader } from "@/lib/utils";

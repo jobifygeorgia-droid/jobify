@@ -1,0 +1,9 @@
+.grid-table {
+  grid-template-columns: repeat(var(--cols), minmax(max-content, 1fr));
+}
+
+@media (max-width: 640px) {
+  .grid-table {
+    grid-template-columns: repeat(var(--cols), max-content);
+  }
+}

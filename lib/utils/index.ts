@@ -7,3 +7,4 @@ export { default as LS } from "./LocaleStorage";
 export { default as objectDeepCopy } from "./objectDeepCopy";
 export { default as getStatus } from "./status";
 export type { StatusT } from "./status";
+export { default as logger } from "./logger";

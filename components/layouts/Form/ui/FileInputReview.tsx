@@ -1,7 +1,7 @@
 import {
   FileType,
   FileInputReviewComponentPropsT,
-} from "@/components/layouts/Form/types/form-fields.types";
+} from "@/interface/ui/forms-ui";
 
 import FileInputPdfReview from "./FileInputPdfReview";
 import FileInputImageReview from "./FileInputImageReview";

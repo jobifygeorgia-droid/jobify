@@ -6,18 +6,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
-import { ErrorMessage, Label } from ".";
-import { MuiDatePicker, PopperStyles, RootStyles } from "./ui/datePicker";
+import { DatePickerT } from "@/interface/ui/forms-ui";
 
-type DatePickerT = {
-  disablePortal?: boolean;
-  placement?: "top-start" | "bottom-end";
-  label?: string;
-  message?: string;
-  value?: string;
-  className?: string;
-  onChange?: (v: string) => void;
-};
+import { ErrorMessage, Label } from ".";
+import { MuiDatePicker, PopperStyles, RootStyles } from "./styles/datePicker";
 
 const DatePicker: React.FC<DatePickerT> = (props) => {
   const {

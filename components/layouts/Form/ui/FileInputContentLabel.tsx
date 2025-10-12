@@ -2,7 +2,7 @@
 
 import { useDevice } from "@/hooks/utils";
 
-import { FileType } from "@/components/layouts/Form/types/form-fields.types";
+import { FileType } from "@/interface/ui/forms-ui";
 import { IconT, Doc, AddVideo, Image } from "@/components/ui/icons";
 
 type FileInputContentLabelT = {

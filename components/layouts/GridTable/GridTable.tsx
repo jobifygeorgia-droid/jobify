@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import "./grid-table.css";
 
 type GridTableT = {
   cols: number;
@@ -11,8 +12,9 @@ const GridTable: React.FC<GridTableT> = (props) => {
 
   return (
     <div
-      style={{ gridTemplateColumns: `repeat(${cols},minmax(max-content,1fr))` }}
-      className={classnames(className, `grid content-start`)}
+      data-cols={cols}
+      style={{ "--cols": cols } as React.CSSProperties}
+      className={classnames(className, `grid content-start grid-table`)}
     >
       {children}
     </div>

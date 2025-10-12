@@ -163,6 +163,8 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
               <span>7.00₾</span>
 
               <Select
+                id="create-statement-vip-days"
+                values={[]}
                 width={device === "mobile" ? "90px" : "110px"}
                 containerClassName="border-orange bg-transparent! max-sm:h-[40px]"
                 options={[

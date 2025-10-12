@@ -31,9 +31,11 @@ const FilterBar: React.FC = () => {
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
+              values={[]}
               onChange={() => {}}
               options={workTypes}
               variant="outlined"
+              id="filter-work-type"
               placeholder="სამუშაოს ტიპი"
               instanceId="filter-bar-work-type"
               containerClassName="text-sm laptop:text-base border-none"
@@ -43,10 +45,12 @@ const FilterBar: React.FC = () => {
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
+              values={[]}
               onChange={() => {}}
               options={workTypes}
               variant="outlined"
               placeholder="მდებარეობა"
+              id="filter-select-location"
               instanceId="filter-bar-location"
               containerClassName="text-sm laptop:text-base border-none"
               adornment={

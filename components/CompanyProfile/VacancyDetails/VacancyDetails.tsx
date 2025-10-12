@@ -15,19 +15,19 @@ const VacancyDetails: React.FC<VacancyDetailsT> = () => {
     <div>
       <SectionTitle title="UI UX Designer" size="base" />
 
-      <TipTapProvider content={tipTapValue}>
-        <div className="flex items-start gap-20 py-5">
-          <div className="flex-3">
+      <div className="flex flex-col-reverse laptop:flex-row items-start gap-8 laptop:gap-20 py-5">
+        <div className="laptop:flex-3">
+          <TipTapProvider content={tipTapValue}>
             <TextEditorContent />
-          </div>
-
-          <aside className="flex-2 max-w-[536px] flex flex-col gap-6">
-            <VacancyAdditionalDetails />
-
-            <Inbox />
-          </aside>
+          </TipTapProvider>
         </div>
-      </TipTapProvider>
+
+        <aside className="laptop:flex-2 w-full laptop:max-w-[536px] flex flex-col gap-6">
+          <VacancyAdditionalDetails />
+
+          <Inbox />
+        </aside>
+      </div>
     </div>
   );
 };

@@ -20,14 +20,16 @@ const SendEmailModal: React.FC<SendEmailModalT> = ({ children }) => {
 
   return (
     <Modal onClose={closeModal} backdrop>
-      <div className="flex flex-col py-6 gap-3 w-[800px] px-2">
-        {children}
+      <div className="flex flex-col tablet:gap-6 pt-6 pb-0 tablet:py-6 h-screen tablet:h-auto">
+        <div className="w-screen tablet:w-[90vw] desktop-sm:w-[800px] flex flex-col gap-3 pl-2 desktop-sm:px-2">
+          {children}
+        </div>
 
-        <div className="flex items-center justify-end gap-3 px-6 bg-white">
+        <div className="flex items-center justify-center tablet:justify-end gap-3 px-6 py-4 tablet:py-0 bg-white">
           <Button
-            paddingSize="base-wider"
-            buttonType="tertiary"
             onClick={closeModal}
+            buttonType="tertiary"
+            paddingSize="base-wider"
           >
             გაუქმება
           </Button>

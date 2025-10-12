@@ -2,7 +2,7 @@
 
 import classnames from "classnames";
 
-import { TextFieldPropsT } from "./types/form-fields.types";
+import { TextFieldPropsT } from "@/interface/ui/forms-ui";
 import { filledContainerStyles } from "./ui/TextFieldContentContainer";
 
 import Label from "./Label";
@@ -41,6 +41,7 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
           onChange={rest.onChange}
           type={rest.inputType || "text"}
           placeholder={placeholder || " "}
+          {...rest.htmlInputProps}
           className={classnames(
             "peer w-full h-11 outline-none pl-2 rounded-[inherit] bg-white focus:border-light-grey-active ring-transparent",
             { [`order-2 ${filledContainerStyles}`]: isLabelOut }

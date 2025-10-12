@@ -1,17 +1,7 @@
+import { ChipsFieldT } from "@/interface/ui/forms-ui";
+
 import { Chip } from "@/components/ui";
 import { ErrorMessage, Label } from ".";
-import { ChipT } from "@/components/ui/Chip/Chip";
-
-type ChipsFieldT = {
-  value: string;
-  label?: string;
-  isRequired?: boolean;
-  labelClassname?: string;
-  message?: string;
-  onChange: (value: string) => void;
-  data: Array<{ label: string; value: string }>;
-  chipOptions?: Partial<Omit<ChipT, "isActive" | "onClick">>;
-};
 
 const ChipsField: React.FC<ChipsFieldT> = (props) => {
   const { value, data, message, chipOptions, ...rest } = props;

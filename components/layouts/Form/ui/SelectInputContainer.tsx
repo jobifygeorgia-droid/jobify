@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import { components, ValueContainerProps } from "react-select";
-import "./selectInputContainer.css";
+
+import "@/components/layouts/Form/styles/selectInputContainer.css";
 
 type SelectInputContainerProps<T> = ValueContainerProps<T, boolean> & {
   adornment?: React.ReactNode;

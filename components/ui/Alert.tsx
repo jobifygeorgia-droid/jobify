@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import classnames from "classnames";
 
+import { AlertT } from "@/interface/ui/ui";
+
 import { AnchorButton } from "@/components/ui";
 import { ArrowRight, Close, Warning } from "./icons";
 

@@ -20,11 +20,16 @@ export const customSelectStyles = <
     ...baseStyles,
     border: "none",
     overflow: "hidden",
-    zIndex: 9,
+    zIndex: 99,
+    minHeight: "70px",
     boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
 
     ".custom-select__menu-list": {
       padding: 0,
+
+      "&.loading-active": {
+        overflowY: "hidden",
+      },
     },
   }),
   option: (baseStyles, state) => ({

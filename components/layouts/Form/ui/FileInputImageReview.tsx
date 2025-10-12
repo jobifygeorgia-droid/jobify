@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { useGenerateUrlsFromFiles } from "@/hooks/utils";
 
-import { FileInputReviewComponentPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { FileInputReviewComponentPropsT } from "@/interface/ui/forms-ui";
 import FileInputReviewRemoveFileButton from "./FileInputReviewRemoveFileButton";
 
 const FileInputImageReview: React.FC<FileInputReviewComponentPropsT> = (

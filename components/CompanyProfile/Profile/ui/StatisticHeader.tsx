@@ -7,8 +7,8 @@ type StatisticHeaderT = {};
 
 const StatisticHeader: React.FC<StatisticHeaderT> = () => {
   return (
-    <header className="flex flex-col gap-5 mb-4">
-      <div className="grid grid-cols-3 gap-4">
+    <header className="flex flex-col gap-5 ">
+      <div className="overflow-x-auto no-scrollbar touch-pan-x flex desktop-sm:grid grid-cols-3 gap-4 desktop-sm:px-4 desktop-sm:py-4">
         <ViewsStatistic />
 
         <Statistic

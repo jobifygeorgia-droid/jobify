@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import { TextFieldPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { TextFieldPropsT } from "@/interface/ui/forms-ui";
 
 type TextFieldLabelT = {
   id?: TextFieldPropsT["id"];

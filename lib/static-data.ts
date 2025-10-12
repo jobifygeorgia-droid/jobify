@@ -26,8 +26,8 @@ export const workSectorOptions = [
 ];
 
 export const vacancyTypeOptions = [
-  { label: "პრემიუმი", value: "პრემიუმი" },
-  { label: "სტანდარტული", value: "სტანდარტული" },
+  { label: "სტანდარტული", value: "standard" },
+  { label: "პრემიუმი", value: "premium" },
 ];
 
 export const workCategoryOptions = [

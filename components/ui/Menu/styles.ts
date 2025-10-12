@@ -13,10 +13,17 @@ export const Menu = styled(MuiMenu)(() => ({
     gap: "15px",
     padding: "20px",
     borderRadius: "inherit",
+
+    "@media (max-width: 640px)": {
+      gap: "0px",
+      padding: "10px 15px",
+    },
   },
 
   ".MuiMenuItem-root": {
-    padding: "0px",
+    padding: "0px !important",
+    display: "flex",
+    alignItems: "center",
 
     "&:hover": {
       background: "none",

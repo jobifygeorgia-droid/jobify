@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useState } from "react";
 
 import { Alert } from "@/components/ui";
 import { generateRandomId } from "@/lib/utils";
+import { AlertT } from "@/interface/ui/ui";
 
 type PopupsProviderT = {
   children: React.ReactNode;

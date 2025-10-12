@@ -1,10 +1,10 @@
 import MuiRadio from "@mui/material/Radio";
-import { RadioPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { RadioT } from "@/interface/ui/forms-ui";
 
 type RadioItemT = {
-  size: RadioPropsT["size"];
-  name: RadioPropsT["name"];
-  item: RadioPropsT["data"][number];
+  size: RadioT["size"];
+  name: RadioT["name"];
+  item: RadioT["data"][number];
   selectedValue: string | number | undefined;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };

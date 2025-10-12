@@ -63,7 +63,7 @@ const Modal: React.FC<ModalT> = (props) => {
       >
         <button
           onClick={closeModal}
-          className="absolute z-[9] top-6 right-6 cursor-pointer"
+          className="absolute z-[9] max-tablet:top-1 max-tablet:right-2 top-6 right-6 cursor-pointer"
         >
           <Close size={30} />
         </button>

@@ -1,218 +1,236 @@
 "use client";
 
-import Image from "next/image";
 import { Controller } from "react-hook-form";
 
-import {
-  workTypeOptions,
-  vacancyTypeOptions,
-  workCategoryOptions,
-} from "@/lib/static-data";
 import { TipTapProvider } from "@/providers";
 import { useVacancyForm } from "@/hooks/forms";
+import { useAuthLazyCheck } from "@/hooks/utils";
+import { useCreateVacancyQuery } from "@/hooks/api/company/vacancies";
+import { workTypeOptions, vacancyTypeOptions } from "@/lib/static-data";
 
 import {
   Label,
   TextField,
   ChipsField,
   TextEditor,
-  Select,
+  ErrorMessage,
+  LocationField,
+  CategoriesField,
 } from "@/components/layouts/Form";
-import { Button, ScrollableContainer } from "@/components/ui";
-import { SelectedOptionT } from "@/components/layouts/Form/types/form-fields.types";
+import Aside from "./ui/Aside";
+import FormContainer from "./ui/FormContainer";
+import { Button, Spinner } from "@/components/ui";
 
 type CreateVacancyT = {};
 
 const CreateVacancy: React.FC<CreateVacancyT> = () => {
-  const { control, handleSubmit } = useVacancyForm(null);
+  const { session, checkIsEmployer } = useAuthLazyCheck();
 
-  const onChangeCategory = (
-    value: SelectedOptionT<{ value: string; label: string }>,
-    cb: (v: Array<string>) => void
-  ) => {
-    if (Array.isArray(value)) cb(value.map((v) => v.value));
-  };
+  const { status, createVacancyQuery } = useCreateVacancyQuery();
 
-  const onCreateVacancy = handleSubmit((values) => {
-    console.log(values);
+  const { control, handleSubmit, resetForm, editorRefs, ...handlers } =
+    useVacancyForm(status.messages);
+
+  const onCreateVacancy = handleSubmit(async (values) => {
+    const isEmployer = checkIsEmployer(
+      `${
+        session?.user?.full_name?.split(" ")?.[0] || ""
+      } თქვენ არ გაქვთ წვდომა მოთხოვნილ ოპერაციაზე`
+    );
+
+    if (!isEmployer) return;
+
+    await createVacancyQuery(values);
+
+    resetForm();
   });
 
   return (
     <div className="bg-white rounded-2xl w-full laptop:h-[80vh] laptop:my-6 flex items-stretch overflow-hidden">
-      <div className="hidden laptop:block flex-1 h-full">
-        <figure className="relative h-full w-full">
-          <Image
-            fill
-            alt="create cv"
-            src="/typing-machine.png"
-            className="object-cover tablet:object-[0px_-220px] desktop-sm:object-[0px_-150px] h-full"
-          />
-        </figure>
-      </div>
+      <Aside />
 
-      <div className="flex-1 tablet:pt-2 desktop-lg:pt-6 pb-2">
-        <ScrollableContainer
-          rounded={0}
-          height={"100%"}
-          transparentScroll
-          wrapperClassName="tablet:w-[600px] mx-auto!"
+      <FormContainer disableScroll={status.loading}>
+        {status.loading && (
+          <div className="absolute w-full bottom-0 h-[80vh] z-10">
+            <Spinner />
+          </div>
+        )}
+
+        <form
+          onSubmit={onCreateVacancy}
+          className="px-2 laptop:px-10 pt-4 mx-auto pb-0 flex flex-col gap-6 h-full w-full relative"
         >
-          <form
-            onSubmit={onCreateVacancy}
-            className="px-2 laptop:px-10 pt-4 mx-auto pb-0 flex flex-col gap-6 h-full w-full"
-          >
-            <Controller
-              control={control}
-              name="title"
-              render={({ field, fieldState: { error } }) => (
-                <TextField
+          <Controller
+            control={control}
+            name="title"
+            render={({ field, fieldState: { error } }) => (
+              <TextField
+                {...field}
+                message={error?.message}
+                label="პოზიციის დასახელება"
+                labelPosition="out"
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="categories"
+            render={({ field, fieldState: { error } }) => (
+              <CategoriesField
+                value={field.value}
+                message={error?.message}
+                onChange={(category) =>
+                  handlers.onChangeCategory(category, field.onChange)
+                }
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="description"
+            render={({ field, fieldState: { error } }) => (
+              <TipTapProvider
+                readonly={false}
+                content={field.value}
+                ref={editorRefs.description}
+              >
+                <TextEditor
                   {...field}
                   message={error?.message}
-                  label="პოზიციის დასახელება"
-                  labelPosition="out"
+                  label="სამუშაოს აღწერა"
+                  height="200px"
                 />
-              )}
-            />
+              </TipTapProvider>
+            )}
+          />
 
-            <Controller
-              control={control}
-              name="categories"
-              render={({ field, fieldState: { error } }) => (
-                <Select
-                  onChange={(v) => onChangeCategory(v, field.onChange)}
-                  placeholder=""
-                  isMulti
-                  label="კატეგორია"
-                  options={workCategoryOptions}
-                  instanceId="vacancy-categories"
-                  containerClassName="rounded-lg!"
+          <Controller
+            control={control}
+            name="requirements"
+            render={({ field, fieldState: { error } }) => (
+              <TipTapProvider
+                readonly={false}
+                content={field.value}
+                ref={editorRefs.requirements}
+              >
+                <TextEditor
+                  {...field}
                   message={error?.message}
+                  label="საკვალიფიკაციო მოთხოვნები"
+                  height="200px"
                 />
-              )}
-            />
+              </TipTapProvider>
+            )}
+          />
 
-            <Controller
-              control={control}
-              name="description"
-              render={({ field, fieldState: { error } }) => (
-                <TipTapProvider readonly={false} content={field.value}>
-                  <TextEditor
-                    {...field}
-                    message={error?.message}
-                    label="სამუშაოს აღწერა"
-                    height="200px"
-                  />
-                </TipTapProvider>
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="requirements"
-              render={({ field, fieldState: { error } }) => (
-                <TipTapProvider readonly={false} content={field.value}>
-                  <TextEditor
-                    {...field}
-                    message={error?.message}
-                    label="საკვალიფიკაციო მოთხოვნები"
-                    height="200px"
-                  />
-                </TipTapProvider>
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="title"
-              render={({ field, fieldState: { error } }) => (
-                <TipTapProvider readonly={false}>
-                  <TextEditor
-                    {...field}
-                    message={error?.message}
-                    label="კომპანიის უპირატესობები"
-                    height="200px"
-                  />
-                </TipTapProvider>
-              )}
-            />
-
-            <div className="flex flex-col gap-2">
-              <Label label="ანაზღაურება" labelPosition="out" />
-
-              <div className="flex gap-5 w-full order-1">
-                <Controller
-                  control={control}
-                  name="min_salary"
-                  render={({ field, fieldState: { error } }) => (
-                    <TextField
-                      {...field}
-                      message={error?.message}
-                      label="დან"
-                      labelPosition="out"
-                      containerClassName="flex-1"
-                    />
-                  )}
+          <Controller
+            control={control}
+            name="advantages"
+            render={({ field, fieldState: { error } }) => (
+              <TipTapProvider readonly={false} ref={editorRefs.advantages}>
+                <TextEditor
+                  {...field}
+                  message={error?.message}
+                  label="კომპანიის უპირატესობები"
+                  height="200px"
                 />
+              </TipTapProvider>
+            )}
+          />
 
-                <Controller
-                  control={control}
-                  name="max_salary"
-                  render={({ field, fieldState: { error } }) => (
-                    <TextField
-                      {...field}
-                      message={error?.message}
-                      label="მდე"
-                      labelPosition="out"
-                      containerClassName="flex-1"
-                    />
-                  )}
-                />
-              </div>
+          <div className="flex flex-col gap-2">
+            <Label label="ანაზღაურება" labelPosition="out" />
+
+            <div className="flex gap-5 w-full order-1">
+              <Controller
+                control={control}
+                name="min_salary"
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    {...{
+                      ...field,
+                      value: field.value ? field.value.toString() : "",
+                      onChange: (e) => field.onChange(Number(e.target.value)),
+                    }}
+                    message={error?.message}
+                    label="დან"
+                    labelPosition="out"
+                    containerClassName="flex-1"
+                  />
+                )}
+              />
+
+              <Controller
+                control={control}
+                name="max_salary"
+                render={({ field, fieldState: { error } }) => (
+                  <TextField
+                    {...{
+                      ...field,
+                      value: field.value ? field.value.toString() : "",
+                      onChange: (e) => field.onChange(Number(e.target.value)),
+                    }}
+                    message={error?.message}
+                    label="მდე"
+                    labelPosition="out"
+                    containerClassName="flex-1"
+                  />
+                )}
+              />
             </div>
+          </div>
 
-            <Controller
-              control={control}
-              name="vacancy_type"
-              render={({ field, fieldState: { error } }) => (
-                <ChipsField
-                  {...field}
-                  message={error?.message}
-                  data={workTypeOptions}
-                  label="ვაკანსიის ტიპი"
-                />
-              )}
-            />
+          <Controller
+            control={control}
+            name="vacancy_type"
+            render={({ field, fieldState: { error } }) => (
+              <ChipsField
+                {...field}
+                message={error?.message}
+                data={workTypeOptions}
+                label="ვაკანსიის ტიპი"
+              />
+            )}
+          />
 
-            <Controller
-              control={control}
-              name="title"
-              render={({ field, fieldState: { error } }) => (
-                <ChipsField
-                  {...field}
-                  message={error?.message}
-                  data={vacancyTypeOptions}
-                  label="განცხადების ტიპი"
-                />
-              )}
-            />
+          <Controller
+            control={control}
+            name="is_premium"
+            render={({
+              field: { onChange, ...field },
+              fieldState: { error },
+            }) => (
+              <ChipsField
+                {...{ ...field, value: field.value ? "premium" : "standard" }}
+                onChange={(v) => onChange(v === "premium")}
+                message={error?.message}
+                data={vacancyTypeOptions}
+                label="განცხადების ტიპი"
+              />
+            )}
+          />
 
-            <Controller
-              control={control}
-              name="location"
-              render={({ field, fieldState: { error } }) => (
-                <TextField
-                  {...field}
-                  message={error?.message}
-                  label="მდებარეობა"
-                  labelPosition="out"
-                />
-              )}
-            />
+          <Controller
+            control={control}
+            name="location_name"
+            render={({ field, fieldState: { error } }) => (
+              <LocationField
+                value={field.value}
+                onChange={handlers.onChangeLocation}
+                textFieldProps={{
+                  message: error?.message,
+                }}
+              />
+            )}
+          />
 
-            <Button buttonType="primary">გამოქვეყნება</Button>
-          </form>
-        </ScrollableContainer>
-      </div>
+          {status.error && <ErrorMessage message={status.message} />}
+
+          <Button buttonType="primary">გამოქვეყნება</Button>
+        </form>
+      </FormContainer>
     </div>
   );
 };
