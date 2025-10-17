@@ -23,3 +23,7 @@ export type ChipT = {
   className?: string;
   children: React.ReactNode;
 } & (ClickableChipT | StaticChipT);
+
+export type AnchorChipT = Omit<ChipT, "onClick"> & {
+  href: string;
+};

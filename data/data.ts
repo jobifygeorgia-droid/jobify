@@ -373,25 +373,25 @@ export const vacanciesForDifferentGroupsData = [
     id: 28,
     title: "სტუდენტებისთვის",
     subtitle: "სწავლა-სამსახურის შეთავაზება",
-    group: VACANCY_GROUPS.GROUP_3,
+    group: VACANCY_GROUPS.STUDENTS,
   },
   {
     id: 27,
     title: "უკრაინელი ხალხისთვის",
     subtitle: "ჩვენ თქვენს გვერდით ვარ",
-    group: VACANCY_GROUPS.GROUP_2,
+    group: VACANCY_GROUPS.UKRAINIAN,
   },
   {
     id: 26,
     title: "ტუტორებისთვის",
     subtitle: "აბიტურიენტებისთვის",
-    group: VACANCY_GROUPS.GROUP_1,
+    group: VACANCY_GROUPS.TUTORS,
   },
   {
     id: 29,
     title: "ემიგრანტებისთვის",
     subtitle: "",
-    group: VACANCY_GROUPS.GROUP_4,
+    group: VACANCY_GROUPS.IMMIGRANTS,
   },
 ];
 

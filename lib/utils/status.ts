@@ -40,16 +40,11 @@ class Status {
     };
   }
 
-  public failed(error: unknown, message?: string) {
-    const defaultMessage = "დაფიქსირდა შეცდომა ოპერაციის დროს";
-
-    const candidateMessage = message
-      ? message
-      : typeof error === "string"
-      ? error
-      : error && typeof error === "object" && "message" in error
-      ? (error as { message: string }).message
-      : defaultMessage;
+  public failed(error: any) {
+    const responseMessage =
+      typeof error === "string"
+        ? error
+        : error?.response?.data?.detail ?? error?.message;
 
     const messages = this.parseAPIErrorMessages(error);
 
@@ -57,7 +52,7 @@ class Status {
       error: true,
       loading: false,
       messages: messages,
-      message: candidateMessage,
+      message: responseMessage,
     };
   }
 

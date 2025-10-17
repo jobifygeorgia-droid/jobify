@@ -1,11 +1,11 @@
 import { IconT } from "@/components/ui/icons";
 
-type CompanyDetailChipT = {
+type HeaderChipT = {
   text: string;
   Icon: React.ComponentType<IconT>;
 };
 
-const CompanyDetailChip: React.FC<CompanyDetailChipT> = (props) => {
+const HeaderChip: React.FC<HeaderChipT> = (props) => {
   const { Icon, text } = props;
 
   return (
@@ -16,4 +16,4 @@ const CompanyDetailChip: React.FC<CompanyDetailChipT> = (props) => {
   );
 };
 
-export default CompanyDetailChip;
+export default HeaderChip;

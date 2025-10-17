@@ -1,3 +1,5 @@
+import { VACANCY_TYPES } from "@/interface/global.types";
+
 export type OptionT = {
   label: string;
   value: string;
@@ -14,10 +16,11 @@ export const experienceOptions = [
   { label: "10+ წელი", value: "10+" },
 ];
 
+// ASK: add more options ?
 export const workTypeOptions = [
-  { value: "remote", label: "დისტანციური" },
-  { value: "hybrid", label: "ჰიბრიდული" },
-  { value: "office", label: "საოფისე" },
+  { value: VACANCY_TYPES.REMOTE, label: "დისტანციური" },
+  { value: VACANCY_TYPES.FULL_TIME, label: "სრული განაკვეთი" },
+  { value: VACANCY_TYPES.PART_TIME, label: "ნახევარი განაკვეთი" },
 ];
 
 export const workSectorOptions = [

@@ -1,45 +1,97 @@
 "use client";
 
-import { useSearchParamUtils } from "@/hooks/utils";
+import { useEffect, useState } from "react";
 
-import { BurgerMenu as BurgerMenuIcon, Close } from "@/components/ui/icons";
-import Link from "next/link";
-import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
+import { LS } from "@/lib/utils";
+import { useDevice } from "@/hooks/utils";
+import { DYNAMIC_ROUTES } from "@/lib/config";
+import { SessionUserT, USER_TYPES } from "@/interface/global.types";
 
-type BurgerMenuT = {};
+import { CV, Person, CalendarSecondary } from "@/components/ui/icons";
 
-const BurgerMenu: React.FC<BurgerMenuT> = () => {
-  const { mergeAndNavigate, deleteAndNavigate, searchParams } =
-    useSearchParamUtils();
+import {
+  BurgerButton,
+  BurgerMenuAvatar,
+  BurgerMenuListItem,
+  BurgerMenuContainer,
+  BurgerMenuLogoutButton,
+} from "./";
 
-  const isOpen = searchParams.get("menu") === "open";
+type BurgerMenuT = {
+  user: SessionUserT;
+};
+
+const BurgerMenu: React.FC<BurgerMenuT> = ({ user }) => {
+  const device = useDevice();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isJobSeeker = user?.user_type === USER_TYPES.JOB_SEEKER;
+  const isEmployer = user?.user_type === USER_TYPES.EMPLOYER;
+
+  const profileUrl = isJobSeeker
+    ? DYNAMIC_ROUTES.user_profile(user.id.toString())
+    : isEmployer
+    ? DYNAMIC_ROUTES.company_profile(user.id.toString())
+    : "";
 
   const onToggleMenu = () => {
-    if (isOpen) deleteAndNavigate(["menu"]);
-    else mergeAndNavigate("menu=open");
+    setIsOpen((prev) => {
+      const newState = !prev;
+      LS.setBurgerMenuState(newState);
+      return newState;
+    });
   };
+
+  useEffect(() => {
+    const isOpened = LS.getBurgerMenuState();
+    setIsOpen(isOpened);
+  }, []);
+
+  useEffect(() => {
+    if (device !== "mobile" && device !== "tablet") {
+      setIsOpen(false);
+      LS.removeBurgerMenuState();
+    }
+  }, [device]);
 
   return (
     <>
-      <button
-        onClick={onToggleMenu}
-        className="laptop:hidden ml-auto flex items-center justify-center relative z-[9999] cursor-pointer"
-      >
-        {isOpen ? <Close size={32} /> : <BurgerMenuIcon size={32} />}
-      </button>
+      <BurgerButton isOpen={isOpen} onToggleMenu={onToggleMenu} />
 
-      {isOpen && (
-        <div className="scroll-block fixed z-[999] inset-0 flex justify-end">
-          <div className="h-screen w-[320px] bg-white border-l border-l-bc flex flex-col py-4 px-2 gap-3 text-base-sm">
-            <Link href={DYNAMIC_ROUTES.company_profile("123")}>
-              კომპანიის პროფილი
-            </Link>
-            <Link href={DYNAMIC_ROUTES.user_profile("123")}>
-              მომხმარებლის პროფილი
-            </Link>
-            <Link href={PATHS.sign_in}>შესვლა</Link>
+      {isOpen && user && (
+        <BurgerMenuContainer>
+          <BurgerMenuAvatar />
+
+          <div className="mt-4 flex flex-col gap-1 h-[calc(100%-64px)]">
+            <ul className="flex flex-col">
+              <BurgerMenuListItem setIsOpen={setIsOpen} href={profileUrl}>
+                <Person />
+                <span>პროფილი</span>
+              </BurgerMenuListItem>
+
+              <BurgerMenuListItem setIsOpen={setIsOpen}>
+                <CalendarSecondary />
+                <span>კალენდარი</span>
+              </BurgerMenuListItem>
+
+              {isJobSeeker && (
+                <>
+                  <BurgerMenuListItem setIsOpen={setIsOpen}>
+                    <CV />
+                    <span>ჩემი რეზიუმე</span>
+                  </BurgerMenuListItem>
+
+                  <BurgerMenuListItem setIsOpen={setIsOpen}>
+                    <CV />
+                    <span>გაგზავნილი რეზიუმეები</span>
+                  </BurgerMenuListItem>
+                </>
+              )}
+            </ul>
+
+            {user && <BurgerMenuLogoutButton setIsOpen={setIsOpen} />}
           </div>
-        </div>
+        </BurgerMenuContainer>
       )}
     </>
   );

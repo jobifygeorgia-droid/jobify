@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui";
-import SectionContainer from "@/components/Home/ui/SectionContainer";
+import { SectionContainer } from "@/components/Home/ui";
 
 type SubscribeT = {};
 

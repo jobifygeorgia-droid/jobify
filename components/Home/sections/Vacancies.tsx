@@ -1,33 +1,34 @@
-import { vipVacancies } from "@/data/data";
+import { getVacancies } from "@/lib/actions/vacancy.actions";
 
-import { PATHS } from "@/lib/config";
+import { EmptyMessage, ErrorMessage } from "@/components/ui";
+import { SectionContainer, VacanciesList } from "@/components/Home/ui";
 
-import { VacancyCard } from "@/components/layouts";
-import { Pagination, ViewAllButton } from "@/components/ui";
-import SectionContainer from "@/components/Home/ui/SectionContainer";
+type VacanciesT = {
+  query: string;
+  limit: number;
+};
 
-type VacanciesT = {};
+const Vacancies: React.FC<VacanciesT> = async ({ query, limit }) => {
+  const { data, error } = await getVacancies({ query, limit });
 
-const Vacancies: React.FC<VacanciesT> = () => {
-  const limit = 5;
+  const vacancies = data?.results || [];
+  const isEmpty = !(vacancies.length > 0);
 
   return (
     <SectionContainer>
-      <div className="flex flex-col gap-4 tablet:gap-7">
-        <div className="flex flex-col gap-3">
-          {vipVacancies.slice(0, limit).map((vacancy) => (
-            <VacancyCard key={vacancy.id} {...vacancy} />
-          ))}
-        </div>
+      {!isEmpty && !error && (
+        <VacanciesList
+          limit={limit}
+          vacancies={vacancies}
+          total={data.total || 0}
+        />
+      )}
 
-        <div className="flex flex-col-reverse gap-2 tablet:flex-row tablet:items-center">
-          <div className="w-full flex justify-center">
-            <Pagination />
-          </div>
+      {isEmpty && !error && (
+        <EmptyMessage message="ამ ეტაპზე საიტზე ვაკანსიები არ მოიძებნება" />
+      )}
 
-          <ViewAllButton href={PATHS.vacancies} className="ml-auto" />
-        </div>
-      </div>
+      {error && <ErrorMessage message={error.message} />}
     </SectionContainer>
   );
 };

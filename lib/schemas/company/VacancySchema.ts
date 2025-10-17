@@ -58,19 +58,22 @@ export const VacancySchema = z
   );
 
 export const vacancyInitialState: VacancySchemaT = {
-  title: "",
-  categories: [],
-  description: "",
-  requirements: "",
-  advantages: "",
-  min_salary: 0,
-  max_salary: 0,
+  title: "საგანმანათლებლო პროგრამების მენეჯერი",
+  categories: [3],
+  description:
+    "ჩვენ ვეძებთ გამოცდილ მენეჯერს, რომელიც შეძლებს საგანმანათლებლო პროგრამების დაგეგმვას, განხორციელებას და მონიტორინგს. სამუშაოს ფარგლებში შედის ახალი კურსების შექმნა, მასწავლებლების ტრენინგი, სასწავლო მასალების განახლება და ხარისხის კონტროლი. კანდიდატი უნდა იყოს მოტივირებული, კომუნიკაბელური და ჰქონდეს გუნდური მუშაობის უნარი.",
+  requirements:
+    "აუცილებელია უმაღლესი განათლება განათლების სფეროში ან შესაბამისი მიმართულებით. მინიმუმ 3 წლიანი გამოცდილება საგანმანათლებლო პროექტების მართვაში. სასურველია ინგლისური ენის ცოდნა B2 დონეზე ან მეტი. კომპიუტერული უნარები: MS Office, Google Workspace.",
+  advantages:
+    "კორპორატიული დაზღვევა, პროფესიული განვითარების შესაძლებლობა, მოქნილი სამუშაო გრაფიკი, მეგობრული გარემო, თანამედროვე ოფისი ქალაქის ცენტრში.",
+  min_salary: 4000,
+  max_salary: 6000,
   location: "",
   location_name: "",
   latitude: 0,
   longitude: 0,
-  vacancy_type: "",
-  is_premium: false,
+  vacancy_type: "remote",
+  is_premium: true,
 };
 
 export type VacancySchemaT = z.infer<typeof VacancySchema>;

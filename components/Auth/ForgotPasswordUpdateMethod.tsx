@@ -38,8 +38,7 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
   // };
 
   const onRequestPasswordUpdate = handleSubmit(async (values) => {
-    await requestPasswordUpdateQuery(values);
-    resetForm();
+    await requestPasswordUpdateQuery(values, resetForm);
   });
 
   return (

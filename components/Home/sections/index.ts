@@ -1,0 +1,10 @@
+export { default as Banners } from "./Banners";
+export { default as CreateResume } from "./CreateResume";
+export { default as InterestingForYou } from "./InterestingForYou";
+export { default as LiveInCompany } from "./LiveInCompany";
+export { default as Reviews } from "./Reviews";
+export { default as Subscribe } from "./Subscribe";
+export { default as TopCompanies } from "./TopCompanies";
+export { default as Vacancies } from "./Vacancies";
+export { default as VacanciesForDifferentGroups } from "./VacanciesForDifferentGroups";
+export { default as VIPVacancies } from "./VIPVacancies";

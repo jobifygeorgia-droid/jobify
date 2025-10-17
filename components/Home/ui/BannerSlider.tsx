@@ -4,8 +4,7 @@ import dynamic from "next/dynamic";
 
 import { section2Data } from "@/data/data";
 
-import BannerSliderCard from "./BannerSliderCard";
-import BannerSliderFallback from "@/BannerSliderFallback";
+import { BannerSliderFallback, BannerSliderCard } from "./";
 
 const MultipleSlider = dynamic(
   () => import("@/components/ui/Swiper/MultipleSlider"),

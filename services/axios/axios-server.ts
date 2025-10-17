@@ -1,43 +1,68 @@
-"use server";
+import axios, { AxiosInstance, AxiosResponseHeaders } from "axios";
 
-import axios, { AxiosInstance } from "axios";
+import { API_ENDPOINT } from "@/lib/constants";
+import { getHeaders, logger } from "@/lib/utils";
 
-import {
-  API_ENDPOINT,
-  ACCESS_TOKEN_KEY,
-  REFRESH_TOKEN_KEY,
-} from "@/lib/constants";
-import { auth } from "@/services/next-auth";
-
-export const api: AxiosInstance = axios.create({
+export const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_ENDPOINT,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
 });
 
-export const publicApi: AxiosInstance = axios.create({
-  baseURL: API_ENDPOINT,
-  withCredentials: true,
-  headers: { "Content-Type": "application/json" },
-});
+class PrivateApi {
+  async mergeHeaders(cookieHeaders?: Array<string>) {
+    const customHeaders = await getHeaders();
 
-api.interceptors.request.use(async (config) => {
-  const data = await auth();
+    const cookiesToMerge = cookieHeaders ? cookieHeaders.join("; ") : "";
+    const cookies = customHeaders.headers?.Cookie
+      ? customHeaders.headers.Cookie.concat("; ", cookiesToMerge)
+      : cookiesToMerge;
 
-  const accessToken = data?.access;
-  const refreshToken = data?.refresh;
+    return {
+      ...customHeaders,
+      headers: { ...customHeaders?.headers, Cookie: cookies },
+    };
+  }
 
-  if (accessToken && refreshToken && config.headers)
-    config.headers.Authorization = `Bearer ${accessToken}`;
+  async post<T, K>(
+    url: string,
+    data?: T | null,
+    cookieHeaders?: Array<string>
+  ): Promise<{ response: K; headers: Partial<AxiosResponseHeaders> }> {
+    try {
+      const customHeaders = await this.mergeHeaders(cookieHeaders);
 
-  const cookieHeader = [
-    accessToken ? `${ACCESS_TOKEN_KEY}=${accessToken}` : "",
-    refreshToken ? `${REFRESH_TOKEN_KEY}=${refreshToken}` : "",
-  ]
-    .filter(Boolean)
-    .join("; ");
+      const { data: response, headers } = await axiosInstance.post(
+        url,
+        data,
+        customHeaders
+      );
 
-  if (cookieHeader && config.headers) config.headers.Cookie = cookieHeader;
+      return { response, headers };
+    } catch (error) {
+      logger(error);
+      throw error;
+    }
+  }
 
-  return config;
-});
+  async get<T>(
+    url: string,
+    cookieHeaders?: Array<string>
+  ): Promise<{ response: T; headers: Partial<AxiosResponseHeaders> }> {
+    try {
+      const customHeaders = await this.mergeHeaders(cookieHeaders);
+
+      const { data: response, headers } = await axiosInstance.get(
+        url,
+        customHeaders
+      );
+
+      return { response, headers };
+    } catch (error) {
+      logger(error);
+      throw error;
+    }
+  }
+}
+
+export const api = new PrivateApi();

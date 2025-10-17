@@ -1,4 +1,4 @@
-import NextAuth, { JWT } from "next-auth";
+import NextAuth, { AuthError, JWT } from "next-auth";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -10,6 +10,14 @@ import {
 } from "@/lib/constants";
 import { extractCookieHeader } from "@/lib/utils";
 import { api_endpoints } from "@/lib/api-endpoints";
+
+export class CustomAuthError extends AuthError {
+  constructor(msg: string) {
+    super();
+    this.message = msg;
+    this.stack = undefined;
+  }
+}
 
 // global singletons (persist inside one node process)
 const globalForAuth = globalThis as unknown as {
@@ -31,29 +39,46 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
       },
 
       async authorize(credentials): Promise<any> {
-        const res = await fetch(`${API_ENDPOINT}${api_endpoints.auth.login}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(credentials),
-        });
+        try {
+          const { data, headers } = await axios.post(
+            `${API_ENDPOINT}${api_endpoints.auth.login}`,
+            credentials,
+            {
+              withCredentials: true,
+              headers: { "Content-Type": "application/json" },
+            }
+          );
 
-        if (!res.ok) return null;
+          const accessToken = await extractCookieHeader(
+            headers,
+            ACCESS_TOKEN_KEY
+          );
 
-        const data = await res.json();
+          const refreshToken = await extractCookieHeader(
+            headers,
+            REFRESH_TOKEN_KEY
+          );
 
-        const sessionData = {
-          access: data.access,
-          refresh: data.refresh,
-          exp: jwtDecode(data.access!).exp! * 1000,
-          user: {
-            id: data?.id,
-            email: data?.email,
-            full_name: data?.full_name,
-            user_type: data?.user_type,
-          },
-        };
+          const sessionData = {
+            access: accessToken,
+            refresh: refreshToken,
+            exp: jwtDecode(accessToken!).exp! * 1000,
+            user: data.user,
+          };
 
-        return sessionData;
+          return sessionData;
+        } catch (error: any) {
+          const backendMessage =
+            error?.response?.data?.detail ||
+            error?.response?.data?.message ||
+            error?.response?.data?.error ||
+            null;
+
+          // Fallback human-readable error
+          const message = backendMessage || "ელფოსტა ან პაროლი არასწორია";
+
+          throw new CustomAuthError(message);
+        }
       },
     }),
   ],
@@ -129,7 +154,9 @@ function normalizeExp(exp?: number) {
   return exp;
 }
 
-async function refreshAccessToken(sessionData: JWT): Promise<JWT | null> {
+export async function refreshAccessToken(
+  sessionData: JWT
+): Promise<JWT | null> {
   try {
     const cookieHeaders = [
       `${ACCESS_TOKEN_KEY}=${sessionData.access}`,
@@ -171,4 +198,13 @@ async function refreshAccessToken(sessionData: JWT): Promise<JWT | null> {
     sessionData.error = "RefreshAccessTokenError";
     return null;
   }
+}
+
+export function checkIsExpired(exp?: string) {
+  if (!exp) return true;
+
+  const expDate = new Date(exp).getTime();
+  const expMs = normalizeExp(expDate);
+
+  return Date.now() > expMs;
 }

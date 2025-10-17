@@ -26,8 +26,7 @@ const BaseAuthentication: React.FC = () => {
   const { control, handleSubmit, resetForm } = useSigninForm(status?.messages);
 
   const onSignin = handleSubmit(async (values) => {
-    await signInQuery(values);
-    resetForm();
+    await signInQuery(values, resetForm);
   });
 
   return (

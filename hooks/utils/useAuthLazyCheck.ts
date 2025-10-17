@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 
-import { USER_TYPES } from "@/lib/config";
+import { USER_TYPES } from "@/interface/global.types";
 import { usePopupsContext } from "@/providers/PopupsProvider";
 
 export default function useAuthLazyCheck(onUnauthenticated?: () => void) {

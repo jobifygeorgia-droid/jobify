@@ -1,19 +1,26 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { Menu } from "@/components/ui";
 import OptionItem from "./OptionItem";
 import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
 import { DYNAMIC_ROUTES } from "@/lib/config";
 
-type OptionsT = {};
+type OptionsT = {
+  vacancyId: string;
+};
 
-const Options: React.FC<OptionsT> = () => {
+const Options: React.FC<OptionsT> = ({ vacancyId }) => {
   const router = useRouter();
+  const params = useParams();
+
+  const entityId = (params?.entityId as string) || "";
 
   const onViewDetails = () => {
-    router.push(DYNAMIC_ROUTES.company_vacancy_details("123", "456"));
+    if (!entityId) return;
+
+    router.push(DYNAMIC_ROUTES.company_vacancy_details(entityId, vacancyId));
   };
 
   const onEdit = () => {};
@@ -29,9 +36,9 @@ const Options: React.FC<OptionsT> = () => {
 
         <Menu.MenuList>
           <OptionItem
-            onClick={onViewDetails}
             Icon={Eye}
             text="დეტალურად ნახვა"
+            onClick={onViewDetails}
           />
           <OptionItem onClick={onDelete} Icon={Delete} text="წაშლა" isDanger />
           <OptionItem onClick={onEdit} Icon={Edit} text="რედაქტირება" />

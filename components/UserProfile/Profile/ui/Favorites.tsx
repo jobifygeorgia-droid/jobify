@@ -9,13 +9,13 @@ const Favorites: React.FC<FavoritesT> = () => {
   return (
     <>
       <div className="flex flex-col gap-4">
-        {vipVacancies.slice(0, 5).map((vacancy) => (
-          <VacancyCard key={vacancy.id} {...vacancy} />
-        ))}
+        {/* {vipVacancies.slice(0, 5).map((vacancy) => (
+          <VacancyCard key={vacancy.id} vacancy={null}/>
+        ))} */}
       </div>
 
       <div className="mt-7 flex justify-center">
-        <Pagination />
+        <Pagination limit={1} total={1} />
       </div>
     </>
   );

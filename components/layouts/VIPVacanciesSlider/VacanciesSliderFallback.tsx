@@ -1,9 +1,9 @@
+"use client";
+
 import { useDevice } from "@/hooks/utils";
 import { VipVacancyCardSkeleton } from "@/components/layouts";
 
-type VacanciesSliderFallbackT = {};
-
-const VacanciesSliderFallback: React.FC<VacanciesSliderFallbackT> = () => {
+const VacanciesSliderFallback: React.FC = () => {
   const device = useDevice();
 
   const limit = device === "mobile" ? 2 : device === "tablet" ? 3 : 4;

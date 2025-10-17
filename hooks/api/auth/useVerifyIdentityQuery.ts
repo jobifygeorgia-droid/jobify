@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getStatus, StatusT } from "@/lib/utils";
+import { getStatus, logger, StatusT } from "@/lib/utils";
 import { useAuthContext } from "@/providers/AuthProvider";
 import { verifyIdentity } from "@/lib/actions/auth.actions";
 import { VerifyIdentitySchemaT } from "@/lib/schemas/auth/VerifyIdentitySchema";
@@ -16,14 +16,18 @@ export default function useVerifyIdentityQuery() {
       await verifyIdentity(data);
 
       onVerifyUserIdentity();
+
       setStatus(() => getStatus.success());
     } catch (error) {
-      setStatus(() =>
-        getStatus.failed(
-          error,
-          "დაფიქსირდა შეცდომა მომხმარებლის ვერიფიკაციის დროს"
-        )
-      );
+      const status = getStatus.failed(error);
+
+      setStatus(() => ({
+        ...status,
+        message:
+          status.message || "დაფიქსირდა შეცდომა მომხმარებლის ვერიფიკაციის დროს",
+      }));
+
+      logger(error);
     }
   }
 

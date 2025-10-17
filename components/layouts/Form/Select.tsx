@@ -26,7 +26,7 @@ const Select = (props: SelectT) => {
   const onChange = (value: SelectValueT) => props.onChange(value);
 
   return (
-    <div className="flex flex-col gap-2" style={{ width: props.width }}>
+    <div className="w-full flex flex-col gap-2" style={{ width: props.width }}>
       {props.label && (
         <Label
           keepOrder

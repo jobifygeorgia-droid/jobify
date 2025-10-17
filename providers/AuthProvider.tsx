@@ -77,13 +77,8 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
   const isAuthenticated = Boolean(data?.user);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      console.log({ isAuthenticated });
-      onCloseAuthPopup();
-    }
+    if (isAuthenticated) onCloseAuthPopup();
   }, [isAuthenticated, onCloseAuthPopup]);
-
-  // const { isLoading } = useTokenRotation();
 
   return (
     <AuthContext.Provider

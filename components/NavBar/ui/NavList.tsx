@@ -5,7 +5,8 @@ import { useMemo } from "react";
 import classnames from "classnames";
 import { usePathname } from "next/navigation";
 
-import { DYNAMIC_ROUTES, USER_TYPES } from "@/lib/config";
+import { DYNAMIC_ROUTES } from "@/lib/config";
+import { USER_TYPES } from "@/interface/global.types";
 
 const nav_routes = (userId: string) => [
   {
@@ -21,19 +22,22 @@ const nav_routes = (userId: string) => [
 ];
 
 type NavListT = {
-  role: USER_TYPES | undefined;
+  userId?: number;
+  role?: USER_TYPES;
 };
 
 const NavList: React.FC<NavListT> = (props) => {
-  const { role } = props;
+  const { role, userId } = props;
 
   const pathname = usePathname();
 
   const routes = useMemo(() => {
-    return role
-      ? nav_routes("123").filter((route) => route.roles.includes(role))
+    return role && userId
+      ? nav_routes(userId.toString()).filter((route) =>
+          route.roles.includes(role)
+        )
       : [];
-  }, [role]);
+  }, [role, userId]);
 
   if (!role) return null;
 

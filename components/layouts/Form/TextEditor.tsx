@@ -52,7 +52,7 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
         className={classnames(props.className || "")}
         style={{ width, minHeight: height, height: height }}
       >
-        <div className="border border-bc rounded-xl p-3 min-h-full w-full flex flex-col gap-3">
+        <div className="border border-bc rounded-xl p-3 h-full w-full flex flex-col gap-3">
           <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
             <Bold />
             <Italic />
@@ -63,7 +63,7 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
 
           <EditorContent
             editor={editor}
-            className="w-full min-h-[calc(100%-50px)] pt-2 overflow-y-auto"
+            className="w-full h-full max-h-[calc(100%-50px)] pt-2 overflow-y-auto"
           />
         </div>
       </div>

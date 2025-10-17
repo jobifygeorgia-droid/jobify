@@ -6,10 +6,31 @@ export type PageParamsT = {
 };
 
 export enum VACANCY_GROUPS {
-  GROUP_1 = "tutors",
-  GROUP_2 = "ukrainian",
-  GROUP_3 = "students",
-  GROUP_4 = "immigrants",
+  TUTORS = "tutors",
+  UKRAINIAN = "ukrainian",
+  STUDENTS = "students",
+  IMMIGRANTS = "immigrants",
+}
+
+export enum USER_TYPES {
+  ADMIN = "admin",
+  EMPLOYER = "employer",
+  JOB_SEEKER = "job_seeker",
+}
+
+// ASK: შემოსულ აპლიკაციაზე სტატუსის მითითება
+// ASK: სტაჟირება -> add სტაჟირება?
+export enum VACANCY_TYPES {
+  REMOTE = "remote",
+  FULL_TIME = "full-time",
+  PART_TIME = "part-time",
+  INTERNSHIP = "internship",
+}
+
+export enum VACANCY_STATUS_TYPES {
+  DRAFT = "draft",
+  ACTIVE = "active",
+  ARCHIVE = "archive",
 }
 
 export const AuthModes = [
@@ -28,3 +49,24 @@ export type LocationT = {
   location: string;
   location_name: string;
 };
+
+type SessionUserBaseT = {
+  id: number;
+  email: string;
+  phone_number: string | null;
+  profile_image: string | null;
+};
+
+export type SessionUserT =
+  | undefined
+  | (SessionUserBaseT & {
+      user_type: USER_TYPES.EMPLOYER;
+      company_name: string | null;
+      contact_person: string | null;
+      company_id_number: string | null;
+      is_approved_by_admin: boolean;
+    })
+  | (SessionUserBaseT & {
+      user_type: USER_TYPES.JOB_SEEKER;
+      full_name: string;
+    });

@@ -48,7 +48,7 @@ const Inbox: React.FC<InboxT> = ({ viewMode }) => {
       </ul>
 
       <div className="w-full flex justify-center">
-        <Pagination />
+        <Pagination limit={1} total={0} />
       </div>
     </div>
   );

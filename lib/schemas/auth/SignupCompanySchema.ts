@@ -20,13 +20,8 @@ export const SignupCompanySchema = z.object({
       validators.isValidGeorgianPhoneNumber.message
     ),
   employer_profile: z.object({
-    company_name: z
-      .string()
-      .min(1, "გთხოვთ შეიყვანოთ კომპანიის სახელი")
-      .refine(
-        validators.isOnlyGeorgianLetters.validator,
-        validators.isOnlyLatinLetters.message
-      ),
+    company_name: z.string().min(1, "გთხოვთ შეიყვანოთ კომპანიის სახელი"),
+
     company_id_number: z.string("გთხოვთ მიუთითოთ საიდენტიფიკაციო კოდი"),
     contact_person: z.email("გთხოვთ მიუთითოთ საკონტაქტო პირის ელ.ფოსტა"),
   }),

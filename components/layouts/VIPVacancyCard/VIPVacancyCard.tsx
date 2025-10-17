@@ -1,30 +1,18 @@
-import Link from "next/link";
-import Image from "next/image";
 import classnames from "classnames";
 
-import TimeAgo from "./TimeAgo";
-import { Chip, IconChip, LineClamp } from "@/components/ui";
-import { Location, Star } from "@/components/ui/icons";
-import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
+import { VacancyT } from "@/interface/db/vacancies.types";
+import { CardFooter, CardBody, CardHeader } from "./ui";
 
 type VIPVacancyCardT = {
-  vacancy: {
-    id: number;
-    companyName: string;
-    createdAt: string;
-    position: string;
-    salary: string;
-    location: string;
-    jobFormat: string;
-    image: string;
-  };
+  vacancy: VacancyT;
   className?: string;
 };
 
-const VIPVacancyCard: React.FC<VIPVacancyCardT> = ({
-  vacancy,
-  className = "",
-}) => {
+const VIPVacancyCard: React.FC<VIPVacancyCardT> = (props) => {
+  const { className, vacancy } = props;
+
+  const salaryRange = `${vacancy.min_salary} - ${vacancy.max_salary}`;
+
   return (
     <div
       className={classnames(
@@ -33,71 +21,27 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = ({
       )}
     >
       <div className="flex flex-col gap-1 tablet:gap-3">
-        {/* Header */}
-        <Link
-          href={`${PATHS.vacancies}?company=${123}`}
-          className="w-full flex items-start gap-3 tablet:gap-5"
-        >
-          <figure className="relative w-9 laptop:w-14 aspect-square rounded-md overflow-hidden bg-dark-grey-light">
-            <Image
-              src={vacancy.image}
-              alt={vacancy.companyName}
-              fill
-              sizes="36px, 56px"
-              className="object-cover object-center"
-            />
-          </figure>
+        <CardHeader
+          publishedDate={vacancy.published_date}
+          companyName={vacancy.employer.company_name}
+          companyId={vacancy.employer.company_id_number}
+          companyLogo={
+            vacancy.employer?.profile_image ||
+            "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        />
 
-          <div className="flex flex-col gap-1 tablet:gap-2 font-semibold">
-            <LineClamp
-              title={vacancy.companyName}
-              className="capitalize text-base-sm"
-            >
-              {vacancy.companyName}
-            </LineClamp>
-            <TimeAgo createdAt={vacancy.createdAt} />
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-1 laptop:gap-2">
-          <span className="font-bold text-sm laptop:text-base">VIP</span>
-          <Star
-            className="text-orange text-lg! laptop:text-2xl!"
-            filled={true}
-          />
-        </div>
-
-        {/* Body */}
-        <Link
-          href={DYNAMIC_ROUTES.vacancy_details("123")}
-          className="flex flex-col gap-1"
-        >
-          <LineClamp
-            title={vacancy.position}
-            className="text-blue font-bold text-sm laptop:text-base-sm"
-          >
-            {vacancy.position}
-          </LineClamp>
-
-          <span className="font-semibold text-sm">
-            <span>ანაზღაურება:</span>
-            &nbsp;
-            <span>{vacancy.salary}</span>
-          </span>
-        </Link>
+        <CardBody
+          id={vacancy.id}
+          title={vacancy.title}
+          salaryRange={salaryRange}
+        />
       </div>
 
-      {/* Footer */}
-      <div className="flex items-center justify-between gap-1">
-        <IconChip size="sm" text={vacancy.location}>
-          <Location
-            filled
-            className="text-light-grey-dark text-md! laptop:text-lg!"
-          />
-        </IconChip>
-
-        <Chip type="tertiary">{vacancy.jobFormat}</Chip>
-      </div>
+      <CardFooter
+        location={vacancy.location}
+        vacancyType={vacancy.vacancy_type}
+      />
     </div>
   );
 };

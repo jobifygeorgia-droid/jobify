@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getStatus, LS, StatusT } from "@/lib/utils";
+import { getStatus, logger, LS, StatusT } from "@/lib/utils";
 import { updatePassword } from "@/lib/actions/auth.actions";
 import { useAuthContext } from "@/providers/AuthProvider";
 import { UpdatePasswordSchemaT } from "@/lib/schemas/auth/UpdatePasswordSchema";
@@ -10,19 +10,30 @@ export default function useUpdatePasswordQuery() {
 
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
-  async function updatePasswordQuery(data: UpdatePasswordSchemaT) {
+  async function updatePasswordQuery(
+    data: UpdatePasswordSchemaT,
+    onSuccess?: () => void
+  ) {
     try {
       setStatus(() => getStatus.pending());
 
       await updatePassword(data);
 
-      onUpdatePassword();
       LS.removePasswordUpdateEmail();
+
+      onSuccess?.();
+      onUpdatePassword();
+
       setStatus(() => getStatus.success());
     } catch (error) {
-      setStatus(() =>
-        getStatus.failed(error, "დაფიქსირდა შეცდომა პაროლის აღდგენის დროს")
-      );
+      const status = getStatus.failed(error);
+
+      setStatus(() => ({
+        ...status,
+        message: status.message || "დაფიქსირდა შეცდომა პაროლის აღდგენის დროს",
+      }));
+
+      logger(error);
     }
   }
 

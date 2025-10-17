@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Controller } from "react-hook-form";
 
-import { PATHS } from "@/lib/config";
 import { useSignupUserForm } from "@/hooks/forms";
 import { useSignupUserQuery } from "@/hooks/api/auth";
 import { usePopupsContext } from "@/providers/PopupsProvider";
@@ -20,7 +18,6 @@ import GoogleButton from "./ui/GoogleButton";
 import { Button, Spinner, Divider } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
-  const router = useRouter();
   const { addAlert } = usePopupsContext();
 
   const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
@@ -31,6 +28,17 @@ const SignUpUser: React.FC = () => {
     status.messages
   );
 
+  const onRegistrationSuccess = () => {
+    resetForm();
+    setAcceptsPrivacyAndPolicy(false);
+    addAlert({
+      type: "warning",
+      title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
+      text: "თქვენი წარმატებით გაიარეთ რეგისტრაცა. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
+      delay: 20000,
+    });
+  };
+
   const onRegistration = handleSubmit(async (values) => {
     if (!acceptsPrivacyAndPolicy)
       return addAlert({
@@ -39,19 +47,7 @@ const SignUpUser: React.FC = () => {
         text: "გთხოვთ დაეთანხმოთ წესებსა და პირობებს",
       });
 
-    await registerUserQuery(values);
-
-    addAlert({
-      type: "warning",
-      title: "თქვენი რეგისტრაციის მოთხოვნა წარმატებით გაიგზავნა",
-      text: "თქვენი წარმატებით გაიარეთ რეგისტრაცა. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
-      delay: 20000,
-    });
-
-    resetForm();
-    setAcceptsPrivacyAndPolicy(false);
-
-    router.push(PATHS.home);
+    await registerUserQuery(values, onRegistrationSuccess);
   });
 
   return (

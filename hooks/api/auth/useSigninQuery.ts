@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn as nextAuthSignIn } from "next-auth/react";
 
-import { getStatus, StatusT } from "@/lib/utils";
-import { signIn } from "@/lib/actions/auth.actions";
+import { getStatus, logger, StatusT } from "@/lib/utils";
 import { useAuthContext } from "@/providers/AuthProvider";
 import { SigninSchemaT } from "@/lib/schemas/auth/SigninSchema";
 
@@ -12,21 +12,34 @@ export default function useSigninQuery() {
 
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
-  async function signInQuery(data: SigninSchemaT) {
-    try {
-      setStatus(() => getStatus.pending());
+  async function signInQuery(data: SigninSchemaT, onSuccess?: () => void) {
+    setStatus(() => getStatus.pending());
 
-      await signIn(data);
+    const results = await nextAuthSignIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
 
-      onCloseAuthPopup();
-      setStatus(() => getStatus.success());
+    if (results.error) {
+      const status = getStatus.failed(results.error);
 
-      router.refresh();
-    } catch (error) {
-      setStatus(() =>
-        getStatus.failed(error, "დაფიქსირდა შეცდომა ავტორიზაციის დროს")
-      );
+      setStatus(() => ({
+        ...status,
+        message: "წარმოიშვა შეცდომა ავტორიზაციის დროს",
+      }));
+
+      logger(results.error);
+
+      return;
     }
+
+    onSuccess?.();
+    onCloseAuthPopup();
+
+    setStatus(() => getStatus.success());
+
+    router.refresh();
   }
 
   return { status, signInQuery };

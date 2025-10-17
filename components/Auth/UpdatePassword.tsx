@@ -21,8 +21,7 @@ const UpdatePassword: React.FC = () => {
   );
 
   const onUpdate = handleSubmit(async (values) => {
-    await updatePasswordQuery(values);
-    resetForm();
+    await updatePasswordQuery(values, resetForm);
   });
 
   return (

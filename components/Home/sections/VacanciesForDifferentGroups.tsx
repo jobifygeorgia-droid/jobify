@@ -1,9 +1,10 @@
 import { vacanciesForDifferentGroupsData } from "@/data/data";
 
+import {
+  SectionContainer,
+  VacanciesForDifferentGroupsCard,
+} from "@/components/Home/ui";
 import "@/components/Home/css/vacanciesForDifferentGroups.css";
-
-import SectionContainer from "@/components/Home/ui/SectionContainer";
-import VacanciesForDifferentGroupsCard from "@/components/Home/ui/VacanciesForDifferentGroupsCard";
 
 type VacanciesForDifferentGroupsT = {};
 

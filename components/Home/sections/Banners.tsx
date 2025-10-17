@@ -1,15 +1,14 @@
 import Image from "next/image";
 
-import Slider from "@/components/Home/ui/BannerSlider";
-import SectionContainer from "@/components/Home/ui/SectionContainer";
+import { SectionContainer, BannerSlider } from "@/components/Home/ui";
 
-type BannersSliderT = {};
+type BannersT = {};
 
-const BannersSlider: React.FC<BannersSliderT> = () => {
+const Banners: React.FC<BannersT> = () => {
   return (
     <SectionContainer>
       <div className="flex flex-col tablet:flex-row items-start w-full gap-4 laptop:gap-6">
-        <Slider />
+        <BannerSlider />
 
         <div className="hidden tablet:block w-[45%] h-[214px] laptop:h-[366px] -translate-y-[7%]">
           <figure className="relative w-full h-full">
@@ -29,4 +28,4 @@ const BannersSlider: React.FC<BannersSliderT> = () => {
   );
 };
 
-export default BannersSlider;
+export default Banners;

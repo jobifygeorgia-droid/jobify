@@ -1,26 +1,40 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { getStatus, StatusT } from "@/lib/utils";
+import { PATHS } from "@/lib/config";
+import { getStatus, logger, StatusT } from "@/lib/utils";
 import { signupCompany } from "@/lib/actions/auth.actions";
 import { SignupCompanySchemaT } from "@/lib/schemas/auth/SignupCompanySchema";
 
 export default function useSignupCompanyQuery() {
+  const router = useRouter();
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
-  async function registerCompanyQuery(data: SignupCompanySchemaT) {
+  async function registerCompanyQuery(
+    data: SignupCompanySchemaT,
+    onSuccess?: () => void
+  ) {
     try {
       setStatus(() => getStatus.pending());
 
       await signupCompany(data);
 
       setStatus(() => getStatus.success());
+
+      onSuccess?.();
+
+      router.push(PATHS.home);
     } catch (error) {
-      setStatus(() =>
-        getStatus.failed(
-          error,
-          "დაფიქსირდა შეცდომა იურიდიული პირის რეგისტრაციის დროს"
-        )
-      );
+      const status = getStatus.failed(error);
+
+      setStatus(() => ({
+        ...status,
+        message:
+          status.message ||
+          "დაფიქსირდა შეცდომა იურიდიული პირის რეგისტრაციის დროს",
+      }));
+
+      logger(error);
     }
   }
 

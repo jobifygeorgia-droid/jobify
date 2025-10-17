@@ -1,29 +1,41 @@
-import VIPVacancies from "./sections/VIPVacancies";
-import BannersSlider from "./sections/BannersSlider";
-import Vacancies from "./sections/Vacancies";
-import VacanciesForDifferentGroups from "./sections/VacanciesForDifferentGroups";
-// import InterestingForYou from "./sections/InterestingForYou";
-import CreateResume from "./sections/CreateResume";
-import Subscribe from "./sections/Subscribe";
-// import Reviews from "./sections/Reviews";
-// import LiveInCompany from "./sections/LiveInCompany";
-// import TopCompanies from "./sections/TopCompanies";
+import { Suspense } from "react";
 
-type HomeT = {};
+import {
+  VacancyCardsSkeleton,
+  VacanciesSliderFallback,
+} from "@/components/layouts";
+import * as S from "./sections";
 
-const Home: React.FC<HomeT> = () => {
+type HomeT = {
+  query: string;
+};
+
+const Home: React.FC<HomeT> = ({ query }) => {
+  const limit = 1;
+
   return (
     <div className="py-5">
-      <VIPVacancies />
-      <BannersSlider />
-      <Vacancies />
-      <VacanciesForDifferentGroups />
-      {/* <InterestingForYou /> */}
-      {/* <LiveInCompany /> */}
-      <CreateResume />
-      <Subscribe />
-      {/* <Reviews /> */}
-      {/* <TopCompanies /> */}
+      <Suspense fallback={<VacanciesSliderFallback />}>
+        <S.VIPVacancies key={query} />
+      </Suspense>
+
+      <S.Banners />
+
+      <Suspense fallback={<VacancyCardsSkeleton limit={limit} />}>
+        <S.Vacancies query={query} limit={limit} />
+      </Suspense>
+
+      <S.VacanciesForDifferentGroups />
+
+      {/* <S.InterestingForYou /> */}
+      {/* <S.LiveInCompany /> */}
+
+      <S.CreateResume />
+
+      <S.Subscribe />
+
+      {/* <S.Reviews /> */}
+      {/* <S.TopCompanies /> */}
     </div>
   );
 };

@@ -1,16 +1,20 @@
 import { tipTapValue } from "@/data/data";
 import { TipTapProvider } from "@/providers";
+import { getCompanyOwnVacancy } from "@/lib/actions/vacancy.actions";
 
 import {
   TextEditorContent,
   VacancyAdditionalDetails,
 } from "@/components/layouts";
-import { SectionTitle } from "@/components/ui";
 import Inbox from "./Inbox";
+import { SectionTitle } from "@/components/ui";
 
 type VacancyDetailsT = {};
 
-const VacancyDetails: React.FC<VacancyDetailsT> = () => {
+const VacancyDetails: React.FC<VacancyDetailsT> = async () => {
+  const data = await getCompanyOwnVacancy("3");
+  console.log(data);
+
   return (
     <div>
       <SectionTitle title="UI UX Designer" size="base" />

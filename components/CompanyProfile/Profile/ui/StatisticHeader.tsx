@@ -17,10 +17,11 @@ const StatisticHeader: React.FC<StatisticHeaderT> = () => {
           value="989879799"
         />
 
+        {/* ASK: აქ რა სტატისტიკა დვუდოთ -> მოიფიქრებენ */}
         <Statistic
+          value="897869"
           Icon={Notification}
           title="აქ კიდე რამე სტატისტიკა დვუდოთ"
-          value="897869"
         />
       </div>
     </header>

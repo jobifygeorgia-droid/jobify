@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { LS } from "@/lib/utils";
+
 type RouteTrackerT = {
   children: React.ReactNode;
 };
@@ -16,12 +18,11 @@ const RouteTracker: React.FC<RouteTrackerT> = ({ children }) => {
 
     const fullURL = `${pathname}${paramsStr ? `?${paramsStr}` : ""}`;
 
-    const lastStoredURL = localStorage.getItem("currentRoute") || "";
+    const { currentRoute: lastStoredURL } = LS.getRouteTrack();
 
     if (lastStoredURL === fullURL) return;
 
-    localStorage.setItem("previousRoute", lastStoredURL);
-    localStorage.setItem("currentRoute", fullURL);
+    LS.setRouteTrack(fullURL);
   }, [pathname, searchParams]);
 
   return <div>{children}</div>;

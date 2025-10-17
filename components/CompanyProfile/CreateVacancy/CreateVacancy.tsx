@@ -24,7 +24,7 @@ import { Button, Spinner } from "@/components/ui";
 type CreateVacancyT = {};
 
 const CreateVacancy: React.FC<CreateVacancyT> = () => {
-  const { session, checkIsEmployer } = useAuthLazyCheck();
+  const { checkIsEmployer } = useAuthLazyCheck();
 
   const { status, createVacancyQuery } = useCreateVacancyQuery();
 
@@ -33,22 +33,19 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
 
   const onCreateVacancy = handleSubmit(async (values) => {
     const isEmployer = checkIsEmployer(
-      `${
-        session?.user?.full_name?.split(" ")?.[0] || ""
-      } თქვენ არ გაქვთ წვდომა მოთხოვნილ ოპერაციაზე`
+      "თქვენ არ გაქვთ წვდომა მოთხოვნილ ოპერაციაზე"
     );
 
     if (!isEmployer) return;
 
-    await createVacancyQuery(values);
-
-    resetForm();
+    await createVacancyQuery(values, resetForm);
   });
 
   return (
     <div className="bg-white rounded-2xl w-full laptop:h-[80vh] laptop:my-6 flex items-stretch overflow-hidden">
       <Aside />
 
+      {/* ASK: where to go after creation -> go through profile */}
       <FormContainer disableScroll={status.loading}>
         {status.loading && (
           <div className="absolute w-full bottom-0 h-[80vh] z-10">
@@ -129,7 +126,11 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             control={control}
             name="advantages"
             render={({ field, fieldState: { error } }) => (
-              <TipTapProvider readonly={false} ref={editorRefs.advantages}>
+              <TipTapProvider
+                readonly={false}
+                content={field.value}
+                ref={editorRefs.advantages}
+              >
                 <TextEditor
                   {...field}
                   message={error?.message}

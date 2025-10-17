@@ -11,9 +11,10 @@ const AddToFavoriteButton: React.FC<AddToFavoriteButtonT> = ({
 }) => {
   return (
     <IconButton
+      size="sm"
       color="orange"
       isFilled={false}
-      className={classNames(className, "text-lg! laptop:text-3xl!")}
+      className={classNames(className, " text-lg! laptop:text-2xl!")}
     >
       <Heart className="text-orange inherit-font-size" />
     </IconButton>

@@ -1,5 +1,7 @@
 "use client";
 
+import { Container } from "@/components/ui";
+
 type ErrorT = {
   error: Error & { digest?: string };
   reset: () => void;
@@ -7,10 +9,12 @@ type ErrorT = {
 
 const Error: React.FC<ErrorT> = ({ error }) => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      error occurred
-      <p>{error.message}</p>
-    </div>
+    <Container>
+      <div className="flex flex-col gap3">
+        <p>error occurred</p>
+        <p>{error.message}</p>
+      </div>
+    </Container>
   );
 };
 

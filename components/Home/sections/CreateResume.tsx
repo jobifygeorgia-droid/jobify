@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { Button } from "@/components/ui";
-import SectionContainer from "@/components/Home/ui/SectionContainer";
+import { SectionContainer } from "@/components/Home/ui";
 
 type CreateResumeT = {};
 

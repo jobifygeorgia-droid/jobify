@@ -206,8 +206,7 @@ input:-webkit-autofill:active {
 
 .tiptap ul,
 .tiptap ol {
-  padding: 0 1rem;
-  margin: 1.25rem 1rem 1.25rem 0.4rem;
+  padding: 0px 0px 0px 20px;
 }
 
 .tiptap ul li p,

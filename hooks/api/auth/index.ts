@@ -4,3 +4,4 @@ export { default as useSignupUserQuery } from "./useSignupUserQuery";
 export { default as useRequestPasswordUpdateQuery } from "./useRequestPasswordUpdateQuery";
 export { default as useVerifyIdentityQuery } from "./useVerifyIdentityQuery";
 export { default as useUpdatePasswordQuery } from "./useUpdatePasswordQuery";
+export { default as useLogoutQuery } from "./useLogoutQuery";
