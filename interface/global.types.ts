@@ -18,8 +18,6 @@ export enum USER_TYPES {
   JOB_SEEKER = "job_seeker",
 }
 
-// ASK: შემოსულ აპლიკაციაზე სტატუსის მითითება
-// ASK: სტაჟირება -> add სტაჟირება?
 export enum VACANCY_TYPES {
   REMOTE = "remote",
   FULL_TIME = "full-time",

@@ -1,10 +1,13 @@
-import { auth } from "@/services/next-auth";
+"use client";
+
+import { useSession } from "next-auth/react";
 
 import { Container, Logo } from "@/components/ui";
 import { NavList, BurgerMenu, BottomNavigation, User } from "./ui";
 
-const NavBar = async () => {
-  const session = await auth();
+const NavBar = () => {
+  // const session = await auth();
+  const { data: session } = useSession();
   const user = session?.user;
 
   return (

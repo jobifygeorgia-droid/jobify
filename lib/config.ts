@@ -16,7 +16,7 @@ const ALL_ROUTES = [
     name: "faq",
     path: "/faq",
     isPrivate: false,
-    roles: [], //ASK: is public ?
+    roles: [],
   },
 
   // AUTH //
@@ -57,8 +57,8 @@ const ALL_ROUTES = [
     roles: [],
   },
   {
-    name: "forgot_password_verify_by_phone_number",
-    path: "?auth=verify-user&method=phone-number",
+    name: "forgot_password_verify_by_phone",
+    path: "?auth=verify-user&method=phone",
     isPrivate: false,
     roles: [],
   },
@@ -71,6 +71,12 @@ const ALL_ROUTES = [
   {
     name: "forgot_password_update_success",
     path: "?auth=update-success",
+    isPrivate: false,
+    roles: [],
+  },
+  {
+    name: "email_verification",
+    path: "/verify-email",
     isPrivate: false,
     roles: [],
   },
@@ -94,7 +100,7 @@ const ALL_ROUTES = [
     name: "company_profile",
     path: "/legal-entity/:entityId/profile",
     isPrivate: true,
-    roles: [USER_TYPES.EMPLOYER], //ASK: allow job-seekers to see user profile ? - ჯობ სიქერებს შეუძლია კომპანიების პროფილების ნახვა მაგრამ სხვა ჯობ სიქერების არა
+    roles: [USER_TYPES.EMPLOYER],
   },
   {
     name: "company_inbox",
@@ -114,7 +120,7 @@ const ALL_ROUTES = [
     name: "user_profile",
     path: "/user/:userId/profile",
     isPrivate: true,
-    roles: [USER_TYPES.JOB_SEEKER, USER_TYPES.EMPLOYER], // ASK: allow employers to see user profile ? - MVP _ში ჯობ სიქერების პროფილს ვერ ნახავს - კომპამნიებს შეუძლიათ ჯობ სიქერების პროფილების ნახვა თუ გადახდილი აქვთ
+    roles: [USER_TYPES.JOB_SEEKER, USER_TYPES.EMPLOYER],
   },
   {
     name: "user_create_cv",
@@ -146,7 +152,7 @@ const ALL_ROUTES = [
     name: "vacancies_details",
     path: "/vacancies/:vacancyId",
     isPrivate: false,
-    roles: [USER_TYPES.JOB_SEEKER], //ASK: allow employers/unauthenticated-users to see vacancy details ? - no
+    roles: [USER_TYPES.JOB_SEEKER],
   },
 
   // VIP-Vacancies //
@@ -154,7 +160,7 @@ const ALL_ROUTES = [
     name: "vip_vacancies",
     path: "/vip-vacancies",
     isPrivate: false,
-    roles: [], //ASK: is public for authorized users ? yes - but cant see vacancy details
+    roles: [],
   },
 ] as const;
 

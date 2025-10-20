@@ -37,8 +37,10 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
     deleteMergeAndNavigate,
   } = useSearchParamUtils();
 
-  const authMode = searchParams.get("auth") as AuthModeT | null;
+  const { data: session } = useSession();
+
   const method = searchParams.get("method") as string | null;
+  const authMode = searchParams.get("auth") as AuthModeT | null;
 
   // ============== Control Auth Modes ==================== //
 
@@ -73,8 +75,7 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
   const onUpdatePassword = () =>
     mergeAndNavigate(PATHS.forgot_password_update_success);
 
-  const { data } = useSession();
-  const isAuthenticated = Boolean(data?.user);
+  const isAuthenticated = Boolean(session?.user);
 
   useEffect(() => {
     if (isAuthenticated) onCloseAuthPopup();

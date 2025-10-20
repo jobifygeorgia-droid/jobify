@@ -13,7 +13,6 @@ const HeaderChips: React.FC<HeaderChipsT> = (props) => {
 
   return (
     <div className="col-start-2 tablet:col-span-1 row-start-3 tablet:row-start-2 flex flex-col tablet:flex-row tablet:flex-wrap flex-wrap gap-y-2 gap-x-4 desktop-sm:-translate-y-[8px]">
-      {/* ASK: ეს ბმული რას წარმოადგენს ? -> instead view company all vacancies */}
       <HeaderChip
         Icon={Link}
         text="https://github.com/some-project-name-here/project/tree/main"

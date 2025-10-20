@@ -13,8 +13,6 @@ type VacancyT = {
 const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
   const { data, error } = await getCompanyOwnVacancy(vacancyId);
 
-  const salaryRange = `${data?.min_salary} - ${data?.max_salary}`;
-
   if (error && error.status === 404) notFound();
 
   return (
@@ -39,7 +37,8 @@ const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
             <Aside>
               <VacancyAdditionalDetails
                 location={data.location}
-                salaryRange={salaryRange}
+                minSalary={data.min_salary}
+                maxSalary={data.max_salary}
                 expiryDate={data.expiry_date}
                 publishDate={data.published_date}
               />

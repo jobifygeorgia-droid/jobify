@@ -16,7 +16,6 @@ export const experienceOptions = [
   { label: "10+ წელი", value: "10+" },
 ];
 
-// ASK: add more options ?
 export const workTypeOptions = [
   { value: VACANCY_TYPES.REMOTE, label: "დისტანციური" },
   { value: VACANCY_TYPES.FULL_TIME, label: "სრული განაკვეთი" },

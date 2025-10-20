@@ -27,7 +27,6 @@ const VacanciesTableRow: React.FC<VacanciesTableRowT> = (props) => {
       <GridTableItem>{vacancy.title}</GridTableItem>
       <GridTableItem>{formatDate(vacancy.published_date)}</GridTableItem>
       <GridTableItem>{remainingDays}</GridTableItem>
-      {/* ASK: to Sandro about views and resumes */}
       <GridTableItem>{120}</GridTableItem>
       <GridTableItem>{100}</GridTableItem>
       {/* ASK: to STEIKHOLDERS about chosen candidates; employed candidates -> removed */}

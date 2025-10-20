@@ -8,12 +8,14 @@ import {
 } from "@/components/layouts";
 import Inbox from "./Inbox";
 import { SectionTitle } from "@/components/ui";
+import { notFound } from "next/navigation";
 
 type VacancyDetailsT = {};
 
 const VacancyDetails: React.FC<VacancyDetailsT> = async () => {
-  const data = await getCompanyOwnVacancy("3");
-  console.log(data);
+  const { data } = await getCompanyOwnVacancy("3");
+
+  if (!data) notFound();
 
   return (
     <div>
@@ -27,7 +29,13 @@ const VacancyDetails: React.FC<VacancyDetailsT> = async () => {
         </div>
 
         <aside className="laptop:flex-2 w-full laptop:max-w-[536px] flex flex-col gap-6">
-          <VacancyAdditionalDetails />
+          <VacancyAdditionalDetails
+            location={data.location}
+            minSalary={data.min_salary}
+            maxSalary={data.max_salary}
+            expiryDate={data.expiry_date}
+            publishDate={data.published_date}
+          />
 
           <Inbox />
         </aside>

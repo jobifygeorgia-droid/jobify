@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn as nextAuthSignIn } from "next-auth/react";
+import { signIn as nextAuthSignIn, useSession } from "next-auth/react";
 
 import { getStatus, logger, StatusT } from "@/lib/utils";
 import { useAuthContext } from "@/providers/AuthProvider";
@@ -8,6 +8,7 @@ import { SigninSchemaT } from "@/lib/schemas/auth/SigninSchema";
 
 export default function useSigninQuery() {
   const router = useRouter();
+  const { update } = useSession();
   const { onCloseAuthPopup } = useAuthContext();
 
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
@@ -34,9 +35,10 @@ export default function useSigninQuery() {
       return;
     }
 
+    await update();
+
     onSuccess?.();
     onCloseAuthPopup();
-
     setStatus(() => getStatus.success());
 
     router.refresh();

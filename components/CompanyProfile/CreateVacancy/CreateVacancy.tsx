@@ -45,7 +45,6 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
     <div className="bg-white rounded-2xl w-full laptop:h-[80vh] laptop:my-6 flex items-stretch overflow-hidden">
       <Aside />
 
-      {/* ASK: where to go after creation -> go through profile */}
       <FormContainer disableScroll={status.loading}>
         {status.loading && (
           <div className="absolute w-full bottom-0 h-[80vh] z-10">
