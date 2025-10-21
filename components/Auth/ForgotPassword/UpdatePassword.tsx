@@ -6,10 +6,12 @@ import { useUpdatePasswordForm } from "@/hooks/forms";
 import { useUpdatePasswordQuery } from "@/hooks/api/auth";
 import { useAuthContext } from "@/providers/AuthProvider";
 
+import {
+  AuthPopupTitle,
+  ForgotPasswordActionButtons,
+} from "@/components/Auth/ui";
 import { Spinner } from "@/components/ui";
-import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { PasswordField, ErrorMessage } from "@/components/layouts/Form";
-import ForgotPasswordActionButtons from "./ui/ForgotPasswordActionButtons";
 
 const UpdatePassword: React.FC = () => {
   const { onCancel } = useAuthContext();

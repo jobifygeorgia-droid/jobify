@@ -1,39 +1,34 @@
 "use client";
 
-import { IconButton } from "@/components/ui";
-import { TextField, Select } from "@/components/layouts/Form";
+import { workTypeOptions } from "@/lib/static-data";
+import { useFilterContext } from "./FilterProvider";
 
-import ExpandedFilter from "./ExpandedFilter";
+import {
+  Bag,
+  Filter,
+  Location,
+  Search as SearchIcon,
+} from "@/components/ui/icons";
 import FilterButton from "./FilterButton";
-import FilterBarInputContainer from "./ui/FilterBarInputContainer";
-import { Search, Bag, Location, Filter } from "@/components/ui/icons";
-
-const workTypes = [
-  { value: "remote", label: "დისტანციური" },
-  { value: "on-site", label: "ადგილზე" },
-  { value: "hybrid", label: "ჰიბრიდული" },
-];
+import ExpandedFilter from "./ExpandedFilter";
+import { IconButton } from "@/components/ui";
+import { Select } from "@/components/layouts/Form";
+import { FilterBarInputContainer, Search } from "./ui";
 
 const FilterBar: React.FC = () => {
+  const { onFilter } = useFilterContext();
+
   return (
     <>
       <div className="w-full max-w-[650px] laptop:max-w-[880px] mx-auto flex items-center border-2 laptop:border-3 border-blue rounded-full px-[2px] py-0 tablet:px-2 laptop:px-3  tablet:py-[5px] laptop:py-2 gap-4 mt-4 bg-white">
         <div className="w-full flex items-center pl-1 laptop:pl-2">
-          <FilterBarInputContainer>
-            <Search className="text-blue laptop:text-xl!" />
-            <TextField
-              containerClassName="w-full"
-              placeholder="ძებნა"
-              variant="outlined"
-              fieldWrapperClassName="border-none text-sm laptop:text-base"
-            />
-          </FilterBarInputContainer>
+          <Search />
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
               values={[]}
               onChange={() => {}}
-              options={workTypes}
+              options={workTypeOptions}
               variant="outlined"
               id="filter-work-type"
               placeholder="სამუშაოს ტიპი"
@@ -47,7 +42,7 @@ const FilterBar: React.FC = () => {
             <Select
               values={[]}
               onChange={() => {}}
-              options={workTypes}
+              options={workTypeOptions}
               variant="outlined"
               placeholder="მდებარეობა"
               id="filter-select-location"
@@ -57,6 +52,7 @@ const FilterBar: React.FC = () => {
                 <Location className="text-blue text-lg! laptop:text-xl!" />
               }
             />
+            {/* <LocationField value="" onChange={() => {}} /> */}
           </FilterBarInputContainer>
         </div>
 
@@ -67,8 +63,11 @@ const FilterBar: React.FC = () => {
             </span>
           </FilterButton>
 
-          <IconButton className="bg-blue! size-9! laptop:size-12!">
-            <Search className="text-white" />
+          <IconButton
+            className="bg-blue! size-9! laptop:size-12! relative"
+            onClick={onFilter}
+          >
+            <SearchIcon className="text-white" />
           </IconButton>
         </div>
       </div>

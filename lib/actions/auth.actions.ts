@@ -5,9 +5,9 @@ import { cookies } from "next/headers";
 import { api } from "@/services/axios/api";
 import { api_endpoints } from "@/lib/api-endpoints";
 
-import { extractCookieHeader } from "@/lib/utils";
 import { USER_TYPES } from "@/interface/global.types";
 import { PASSWORD_RESET_TOKEN_KEY } from "@/lib/constants";
+import { actionWrapper, extractCookieHeader } from "@/lib/utils";
 
 import { UserSessionT } from "@/interface/db/auth.types";
 import { SignupUserSchemaT } from "@/lib/schemas/auth/SignupUserSchema";
@@ -17,79 +17,97 @@ import { VerifyIdentitySchemaT } from "@/lib/schemas/auth/VerifyIdentitySchema";
 import { RequestPasswordUpdateSchemaT } from "@/lib/schemas/auth/RequestPasswordUpdateSchema";
 
 export async function signupUser(data: SignupUserSchemaT) {
-  const { response } = await api.post<
-    SignupUserSchemaT & { user_type: USER_TYPES },
-    UserSessionT
-  >(api_endpoints.auth.register, {
-    ...data,
-    user_type: USER_TYPES.JOB_SEEKER,
-  });
+  return await actionWrapper(async () => {
+    const { response } = await api.post<
+      SignupUserSchemaT & { user_type: USER_TYPES },
+      UserSessionT
+    >(api_endpoints.auth.register, {
+      ...data,
+      user_type: USER_TYPES.JOB_SEEKER,
+    });
 
-  return response;
+    return response;
+  });
 }
 
 export async function signupCompany(data: SignupCompanySchemaT) {
-  const { response } = await api.post<
-    SignupCompanySchemaT & { user_type: USER_TYPES },
-    UserSessionT
-  >(api_endpoints.auth.register, {
-    ...data,
-    user_type: USER_TYPES.EMPLOYER,
-  });
+  return await actionWrapper(async () => {
+    const { response } = await api.post<
+      SignupCompanySchemaT & { user_type: USER_TYPES },
+      UserSessionT
+    >(api_endpoints.auth.register, {
+      ...data,
+      user_type: USER_TYPES.EMPLOYER,
+    });
 
-  return response;
+    return response;
+  });
 }
 
 export async function verifyEmail(token: string) {
-  const { response } = await api.post(api_endpoints.auth.verifyEmail, {
-    token,
-  });
+  return await actionWrapper(async () => {
+    const { response } = await api.post(api_endpoints.auth.verifyEmail, {
+      token,
+    });
 
-  return response;
+    return response;
+  });
 }
 
 export async function logout() {
-  await api.post(api_endpoints.auth.logout);
+  return await actionWrapper(async () => {
+    const { response } = await api.post(api_endpoints.auth.logout);
+
+    return response;
+  });
 }
 
 export async function requestPasswordUpdate(
   data: RequestPasswordUpdateSchemaT
 ) {
-  const { response } = await api.post(
-    api_endpoints.auth.requestPasswordReset,
-    data
-  );
+  return await actionWrapper(async () => {
+    const { response } = await api.post(
+      api_endpoints.auth.requestPasswordReset,
+      data
+    );
 
-  return response;
+    return response;
+  });
 }
 
 export async function verifyIdentity(data: VerifyIdentitySchemaT) {
-  const { response, headers } = await api.post(
-    api_endpoints.auth.verifyPasswordResetPin,
-    data
-  );
+  return await actionWrapper(async () => {
+    const { response, headers } = await api.post(
+      api_endpoints.auth.verifyPasswordResetPin,
+      data
+    );
 
-  const token = await extractCookieHeader(headers, PASSWORD_RESET_TOKEN_KEY);
+    const token = await extractCookieHeader(headers, PASSWORD_RESET_TOKEN_KEY);
 
-  if (!token) throw new Error("Token is not provided from the server");
+    if (!token) throw new Error("Token is not provided from the server");
 
-  const cookieStore = await cookies();
-  cookieStore.set("reset_token", token);
+    const cookieStore = await cookies();
+    cookieStore.set(PASSWORD_RESET_TOKEN_KEY, token);
 
-  return response;
+    return response;
+  });
 }
 
 export async function updatePassword(data: UpdatePasswordSchemaT) {
-  const cookieStore = await cookies();
-  const resetToken = cookieStore.get("reset_token")?.value;
+  return await actionWrapper(async () => {
+    const cookieStore = await cookies();
+    const resetToken = cookieStore.get(PASSWORD_RESET_TOKEN_KEY)?.value;
 
-  if (!resetToken) throw new Error("Token is not provided");
+    if (!resetToken) throw new Error("Token is not provided");
 
-  const { response } = await api.post(api_endpoints.auth.updatePassword, data, [
-    `${PASSWORD_RESET_TOKEN_KEY}=${resetToken}`,
-  ]);
+    const { response } = await api.post(
+      api_endpoints.auth.updatePassword,
+      data,
+      [`${PASSWORD_RESET_TOKEN_KEY}=${resetToken}`]
+    );
 
-  cookieStore.delete(PASSWORD_RESET_TOKEN_KEY);
+    cookieStore.delete(PASSWORD_RESET_TOKEN_KEY);
 
-  return response;
+    return response;
+  });
 }

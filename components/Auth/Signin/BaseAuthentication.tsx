@@ -14,9 +14,8 @@ import {
   ErrorMessage,
   PasswordField,
 } from "@/components/layouts/Form";
-import GoogleButton from "./ui/GoogleButton";
-import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { Button, Divider, Spinner } from "@/components/ui";
+import { GoogleButton, AuthPopupTitle } from "@/components/Auth/ui";
 
 const BaseAuthentication: React.FC = () => {
   const { onForgotPassword } = useAuthContext();

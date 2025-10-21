@@ -13,7 +13,6 @@ import { MuiDatePicker, PopperStyles, RootStyles } from "./styles/datePicker";
 
 const DatePicker: React.FC<DatePickerT> = (props) => {
   const {
-    message,
     className = "",
     disablePortal = false,
     placement = "bottom-start",
@@ -44,7 +43,7 @@ const DatePicker: React.FC<DatePickerT> = (props) => {
       </LocalizationProvider>
 
       <div className="order-3">
-        {message && <ErrorMessage message={message} />}
+        {props.message && <ErrorMessage message={props.message} />}
       </div>
     </div>
   );

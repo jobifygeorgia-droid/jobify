@@ -1,10 +1,12 @@
+"use server";
+
 import { redirect } from "next/navigation";
 
 import { PATHS } from "@/lib/config";
 
 import { Button } from "@/components/ui";
 import { Radio } from "@/components/layouts/Form";
-import SignupContainer from "./ui/SignupContainer";
+import { SignupContainer } from "@/components/Auth/ui";
 
 const options = [
   {

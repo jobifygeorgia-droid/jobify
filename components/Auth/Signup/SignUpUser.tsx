@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 
 import { useSignupUserForm } from "@/hooks/forms";
@@ -14,7 +14,7 @@ import {
   ErrorMessage,
   PasswordField,
 } from "@/components/layouts/Form";
-import GoogleButton from "./ui/GoogleButton";
+import { GoogleButton } from "@/components/Auth/ui";
 import { Button, Spinner, Divider } from "@/components/ui";
 
 const SignUpUser: React.FC = () => {
@@ -28,7 +28,7 @@ const SignUpUser: React.FC = () => {
     status.messages
   );
 
-  const onRegistrationSuccess = () => {
+  const onRegistrationSuccess = useCallback(() => {
     resetForm();
     setAcceptsPrivacyAndPolicy(false);
     addAlert({
@@ -37,7 +37,7 @@ const SignUpUser: React.FC = () => {
       text: "თქვენი წარმატებით გაიარეთ რეგისტრაცა. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
       delay: 20000,
     });
-  };
+  }, [resetForm, addAlert]);
 
   const onRegistration = handleSubmit(async (values) => {
     if (!acceptsPrivacyAndPolicy)

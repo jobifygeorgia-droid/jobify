@@ -1,5 +1,6 @@
 "use client";
 
+import { format } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Control, useForm } from "react-hook-form";
 import { createContext, useContext, useState, useRef, useEffect } from "react";
@@ -17,17 +18,16 @@ import {
   filterInitialState,
 } from "@/lib/schemas/FilterSchema";
 import { useDevice, useSearchParamUtils } from "@/hooks/utils";
-import { PATHS } from "@/lib/config";
 
 type FilterProviderT = {
   children: React.ReactNode;
+  redirectTo: string;
 };
 
 type FilterContextType = {
   onCloseFilter: () => void;
   toggleCategories: () => void;
   categoriesLimit: number;
-  isFilterExpanded: boolean;
   expandCategories: boolean;
   categoriesRef: React.RefObject<HTMLDivElement | null>;
   workTypeOptions: Array<OptionT>;
@@ -36,6 +36,16 @@ type FilterContextType = {
   workCategoryOptions: Array<OptionT>;
   control: Control<FilterSchemaT> | undefined;
   onFilter: () => void;
+  isOpen: boolean;
+  onOpenFilter: () => void;
+  onSelectCategory: (
+    newValue: string | number,
+    existingValues: Array<string>,
+    cb: (value: Array<string>) => void
+  ) => void;
+  onChangeDate: (value: string, cb: (v: string) => void) => void;
+  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  currentSearch: string;
 };
 
 const FilterContext = createContext<FilterContextType>({
@@ -43,7 +53,6 @@ const FilterContext = createContext<FilterContextType>({
   onCloseFilter: () => {},
   toggleCategories: () => {},
   categoriesLimit: 0,
-  isFilterExpanded: false,
   expandCategories: false,
   categoriesRef: { current: null },
   workTypeOptions: [],
@@ -51,25 +60,47 @@ const FilterContext = createContext<FilterContextType>({
   experienceOptions: [],
   workCategoryOptions: [],
   onFilter: () => {},
+  isOpen: false,
+  onOpenFilter: () => {},
+  onSelectCategory: () => {},
+  onChangeDate: () => {},
+  onSearchChange: () => {},
+  currentSearch: "",
 });
 
-const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
-  const categoriesRef = useRef<HTMLDivElement | null>(null);
-  const { control, handleSubmit, reset } = useForm<FilterSchemaT>({
+const FilterProvider: React.FC<FilterProviderT> = (props) => {
+  const { children, redirectTo } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { control, handleSubmit, reset, ...form } = useForm<FilterSchemaT>({
     resolver: zodResolver(FilterSchema),
     defaultValues: filterInitialState,
   });
 
-  const { searchParams, deleteAndNavigate, router } = useSearchParamUtils();
-
-  const isFilterExpanded = searchParams.get("filter") === "1";
+  const { searchParams, router } = useSearchParamUtils();
 
   const device = useDevice();
+
+  // Search state //
+  const currentSearch = form.watch("search");
+
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    form.setValue("search", value);
+  };
+
+  // Filter state //
+  const onOpenFilter = () => setIsOpen(true);
+  const onCloseFilter = () => setIsOpen(false);
+
+  // Categories state //
+  const categoriesRef = useRef<HTMLDivElement | null>(null);
+  const [expandCategories, setExpandCategories] = useState(false);
 
   const categoriesDefaultLimit =
     device === "mobile" ? 4 : device === "tablet" ? 8 : 12;
   const categoriesCount = workCategoryOptions.length;
-  const [expandCategories, setExpandCategories] = useState(false);
 
   const categoriesLimit = expandCategories
     ? categoriesCount
@@ -81,6 +112,36 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
       categoriesRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const onSelectCategory = (
+    newValue: string | number,
+    existingValues: Array<string>,
+    cb: (value: Array<string>) => void
+  ) => {
+    const strValue = newValue.toString();
+
+    const candidateValue = existingValues.includes(strValue)
+      ? existingValues.filter((v) => v !== strValue)
+      : [...existingValues, strValue];
+
+    cb(candidateValue);
+  };
+
+  // Published date change handler //
+  const onChangeDate = (value: string, cb: (v: string) => void) => {
+    const dateToReceive = value ? new Date(value) : "";
+
+    if (!dateToReceive) return;
+
+    const year = String(dateToReceive.getFullYear());
+    const month = String(dateToReceive.getMonth() + 1).padStart(2, "0");
+    const day = String(dateToReceive.getDate()).padStart(2, "0");
+
+    const localOnly = new Date(`${year}-${month}-${day}`);
+
+    cb(format(localOnly, "yyyy-MM-dd"));
+  };
+
+  // Handle filter form submission //
   const onFilter = handleSubmit((values) => {
     const queryParts = [];
 
@@ -91,13 +152,13 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
         queryParts.push(`${key}=${value}`);
     }
 
-    router.push(`${PATHS.vacancies}?${queryParts.join("&")}`);
+    console.log(queryParts);
+
+    router.push(`${redirectTo}?${queryParts.join("&")}`);
+    setIsOpen(false);
   });
 
-  const onCloseFilter = () => {
-    deleteAndNavigate(["filter"]);
-  };
-
+  // Reset filter values from URL params
   useEffect(() => {
     const resetValues: FilterSchemaT = {
       ...filterInitialState,
@@ -119,10 +180,14 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
   return (
     <FilterContext.Provider
       value={{
+        currentSearch,
+        onSearchChange,
         onFilter,
         control,
-        isFilterExpanded,
+        isOpen,
+        onOpenFilter,
         onCloseFilter,
+        onChangeDate,
         toggleCategories,
         categoriesLimit,
         categoriesRef,
@@ -131,6 +196,7 @@ const FilterProvider: React.FC<FilterProviderT> = ({ children }) => {
         workCategoryOptions,
         workSectorOptions,
         experienceOptions,
+        onSelectCategory,
       }}
     >
       {children}

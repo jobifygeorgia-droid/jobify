@@ -6,7 +6,7 @@ import { useEffect, useContext, useCallback, createContext } from "react";
 import { LS } from "@/lib/utils";
 import { PATHS } from "@/lib/config";
 import { useSearchParamUtils } from "@/hooks/utils";
-import { AuthModeT } from "@/interface/global.types";
+import { AuthModes } from "@/interface/global.types";
 
 type AuthProviderT = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ type AuthProviderT = {
 
 type AuthContextT = {
   method: string | null;
-  authMode: AuthModeT | null;
+  authMode: AuthModes | null;
   onCloseAuthPopup: () => void;
   onCancel: () => void;
   onSignIn: () => void;
@@ -40,7 +40,7 @@ const AuthProvider: React.FC<AuthProviderT> = ({ children }) => {
   const { data: session } = useSession();
 
   const method = searchParams.get("method") as string | null;
-  const authMode = searchParams.get("auth") as AuthModeT | null;
+  const authMode = searchParams.get("auth") as AuthModes | null;
 
   // ============== Control Auth Modes ==================== //
 

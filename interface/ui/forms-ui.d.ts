@@ -81,13 +81,13 @@ export type CheckboxT = {
 
 // ChipsField
 export type ChipsFieldT = {
-  value: string;
+  value: string | number;
   label?: string;
   isRequired?: boolean;
   labelClassname?: string;
   message?: string;
   onChange: (value: string) => void;
-  data: Array<{ label: string; value: string }>;
+  data: Array<{ label: string; value: string | number }>;
   chipOptions?: Partial<Omit<ChipT, "isActive" | "onClick">>;
 };
 
@@ -119,8 +119,9 @@ export type DropzoneFileInputT = {
 
 // Location
 export type LocationFieldT = {
+  containerClassName?: string;
   value: string;
-  textFieldProps: Omit<
+  textFieldProps?: Omit<
     TextFieldPropsT,
     | "label"
     | "labelPosition"

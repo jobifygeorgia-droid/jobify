@@ -12,6 +12,29 @@ import { SelectValueT } from "@/interface/ui/forms-ui";
 import { usePropagateAPIErrorToHookForms } from "@/hooks/utils";
 import { APIErrorMessages, LocationT } from "@/interface/global.types";
 
+/**
+ * @see
+ * - {@link LocationT}
+ * - {@link SelectValueT}
+ * - {@link VacancySchema}
+ *
+ * React hook that initializes and manages the "vacancy" form.
+ *
+ * @param messages - API error messages to surface on the form fields; pass `null` if none.
+ *
+ * Workflow:
+ *  - Configures react-hook-form with a Zod-based resolver for {@link VacancySchema}
+ *  - Seeds the form with {@link vacancyInitialState}
+ *  - Propagates server-side API validation errors to the appropriate fields.
+ *
+ * @returns
+ * - control: The react-hook-form control instance for use with Controller/useController.
+ * - handleSubmit: A submit handler wrapper that validates against the schema before invoking your callback.
+ * - resetForm: A convenience function that resets all fields to {@link vacancyInitialState}.
+ * - onChangeCategory: Handler for category select changes.
+ * - onChangeLocation: Handler for location selection changes.
+ * - editorRefs: Refs for rich text editors used in the form.
+ */
 export default function useVacancyForm(messages: APIErrorMessages | null) {
   const { control, handleSubmit, reset, setError, ...form } =
     useForm<VacancySchemaT>({
@@ -59,8 +82,8 @@ export default function useVacancyForm(messages: APIErrorMessages | null) {
     control,
     handleSubmit,
     resetForm,
+    editorRefs,
     onChangeCategory,
     onChangeLocation,
-    editorRefs,
   };
 }

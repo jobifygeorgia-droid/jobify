@@ -1,13 +1,13 @@
 "use server";
 
+import {
+  VacancyT,
+  GetVacanciesResponseT,
+} from "@/interface/db/vacancies.types";
+import { actionWrapper } from "@/lib/utils";
 import { api_endpoints } from "@/lib/api-endpoints";
-import { delay, actionWrapper } from "@/lib/utils";
 import { api } from "@/services/axios/axios-server";
 import { VacancySchemaT } from "@/lib//schemas/company/VacancySchema";
-import {
-  GetVacanciesResponseT,
-  VacancyT,
-} from "@/interface/db/vacancies.types";
 import { PaginatedRequestParamsT } from "@/interface/db/common.types";
 
 export async function createVacancy(data: VacancySchemaT) {
@@ -23,8 +23,6 @@ export async function createVacancy(data: VacancySchemaT) {
 
 export async function getCompanyOwnVacancies(params: PaginatedRequestParamsT) {
   return await actionWrapper(async () => {
-    await delay();
-
     const query = params.query ? `&${params.query}` : "";
 
     const { response } = await api.get<GetVacanciesResponseT>(
@@ -57,8 +55,6 @@ export async function getCompanyOwnVacancy(id: string) {
 
 export async function getVacancies(params: PaginatedRequestParamsT) {
   return await actionWrapper(async () => {
-    await delay();
-
     const query = params.query ? `&${params.query}` : "";
 
     const { response } = await api.get<GetVacanciesResponseT>(
@@ -71,8 +67,6 @@ export async function getVacancies(params: PaginatedRequestParamsT) {
 
 export async function getVIPVacancies(params: PaginatedRequestParamsT) {
   return await actionWrapper(async () => {
-    await delay();
-
     const query = params.query ? `&${params.query}` : "";
 
     const { response } = await api.get<GetVacanciesResponseT>(

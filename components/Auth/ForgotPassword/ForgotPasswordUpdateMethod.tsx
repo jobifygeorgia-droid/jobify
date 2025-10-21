@@ -6,10 +6,12 @@ import { useAuthContext } from "@/providers/AuthProvider";
 import { useRequestPasswordUpdateForm } from "@/hooks/forms";
 import { useRequestPasswordUpdateQuery } from "@/hooks/api/auth";
 
+import {
+  AuthPopupTitle,
+  ForgotPasswordActionButtons,
+} from "@/components/Auth/ui";
 import { Spinner } from "@/components/ui";
-import AuthPopupTitle from "./ui/AuthPopupTitle";
 import { TextField, ErrorMessage } from "@/components/layouts/Form";
-import ForgotPasswordActionButtons from "./ui/ForgotPasswordActionButtons";
 
 // const options = [
 //   { label: "ელ.ფოსტით აღდგენა", value: "email", id: "update-by-email" },

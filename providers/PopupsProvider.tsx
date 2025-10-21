@@ -21,8 +21,11 @@ const PopupsContext = createContext<PopupsContextT>({
 const PopupsProvider: React.FC<PopupsProviderT> = ({ children }) => {
   const [alerts, setAlerts] = useState<Array<AlertT>>([]);
 
-  const addAlert = (alert: AlertT) =>
-    setAlerts((prev) => [...prev, { ...alert, id: generateRandomId() }]);
+  const addAlert = useCallback(
+    (alert: AlertT) =>
+      setAlerts((prev) => [...prev, { ...alert, id: generateRandomId() }]),
+    []
+  );
 
   const onRemoveAlert = useCallback(
     (id: string) =>

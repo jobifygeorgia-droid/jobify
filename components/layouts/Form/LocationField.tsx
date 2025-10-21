@@ -1,5 +1,6 @@
 "use client";
 
+import classnames from "classnames";
 import { useState, useRef } from "react";
 
 import { LocationT } from "@/interface/global.types";
@@ -10,11 +11,9 @@ import TextField from "./TextField";
 import LocationFieldDropdown from "./ui/LocationFieldDropdown";
 import LocationFieldAdornment from "./ui/LocationFieldAdornment";
 
-const LocationField: React.FC<LocationFieldT> = ({
-  value,
-  onChange,
-  textFieldProps,
-}) => {
+const LocationField: React.FC<LocationFieldT> = (props) => {
+  const { textFieldProps = {}, containerClassName = "" } = props;
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [open, setOpen] = useState(false);
@@ -26,12 +25,12 @@ const LocationField: React.FC<LocationFieldT> = ({
 
   const onOptionSelect = (option: LocationT) => {
     setSearch("");
-    onChange(option);
+    props.onChange(option);
   };
 
   const onClear = () => {
     setSearch("");
-    onChange({ lat: 0, lon: 0, location: "", location_name: "" });
+    props.onChange({ lat: 0, lon: 0, location: "", location_name: "" });
 
     if (inputRef.current) inputRef.current.focus();
   };
@@ -39,20 +38,23 @@ const LocationField: React.FC<LocationFieldT> = ({
   const { loading, options } = useFetchLocations(search);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className={classnames(containerClassName, "relative")}>
       <TextField
         label="მდებარეობა"
         labelPosition="out"
         {...textFieldProps}
         onChange={onSearchChange}
-        value={search || value || ""}
+        value={search || props.value || ""}
         htmlInputProps={{
           onFocus: () => setOpen(true),
           onBlur: () => setOpen(false),
           ref: inputRef,
         }}
         adornment={
-          <LocationFieldAdornment hasValue={Boolean(value)} onClear={onClear} />
+          <LocationFieldAdornment
+            onClear={onClear}
+            hasValue={Boolean(props.value)}
+          />
         }
       />
 

@@ -80,6 +80,18 @@ const ALL_ROUTES = [
     isPrivate: false,
     roles: [],
   },
+  {
+    name: "email_verification_success",
+    path: "/verify-email/success",
+    isPrivate: false,
+    roles: [],
+  },
+  {
+    name: "email_verification_failure",
+    path: "/verify-email/failure",
+    isPrivate: false,
+    roles: [],
+  },
 
   // Home //
   {

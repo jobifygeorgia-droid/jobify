@@ -8,6 +8,7 @@ export const FilterSchema = z.object({
   sector: z.string(),
   salary_min: z.string(),
   experience: z.string(),
+  published_after: z.string(),
 });
 
 export const filterInitialState: FilterSchemaT = {
@@ -18,6 +19,7 @@ export const filterInitialState: FilterSchemaT = {
   sector: "",
   salary_min: "",
   experience: "",
+  published_after: "",
 };
 
 export type FilterSchemaT = z.infer<typeof FilterSchema>;

@@ -1,3 +1,5 @@
+import { filterInitialState } from "./schemas/FilterSchema";
+
 export const API_ENDPOINT = process.env.API_ENDPOINT;
 export const CLIENT_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 export const IS_PRODUCTION = process.env.NEXT_PUBLIC_NODE_ENV === "production";
@@ -14,4 +16,6 @@ export const allowedAddressTypes = [
   "country",
   "village",
   "street",
-];
+] as const;
+
+export const vacanciesFilterableKeys = Object.keys(filterInitialState);

@@ -12,7 +12,7 @@ type VacanciesT = {
 };
 
 const Vacancies: React.FC<VacanciesT> = ({ query }) => {
-  const limit = 1;
+  const limit = 4;
 
   return (
     <div className="py-5 flex flex-col gap-5 tablet:gap-10">

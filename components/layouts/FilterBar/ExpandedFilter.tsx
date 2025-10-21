@@ -11,13 +11,13 @@ import { ChipsField } from "@/components/layouts/Form";
 const ExpandedFilter: React.FC = () => {
   const { control, ...filter } = useFilterContext();
 
-  if (!filter.isFilterExpanded) return null;
+  if (!filter.isOpen) return null;
 
   return (
     <Modal onClose={filter.onCloseFilter} backdrop>
       <form
         onSubmit={filter.onFilter}
-        className="w-screen h-screen overflow-y-auto tablet:w-[624px] tablet:h-[700px] laptop:w-[760px] laptop:h-[85vh] desktop:w-[900px] desktop:h-[660px] flex flex-col p-6 pb-0"
+        className="w-screen h-screen overflow-y-auto tablet:w-[624px] tablet:h-[700px] laptop:w-[760px] laptop:h-[85vh] desktop-sm:w-[900px] desktop-sm:h-[660px] flex flex-col p-6 pb-0"
       >
         <UI.Header />
 
@@ -57,8 +57,6 @@ const ExpandedFilter: React.FC = () => {
                   />
                 )}
               />
-
-              <UI.SalaryExpectation />
 
               <UI.FilterForm />
 

@@ -1,9 +1,30 @@
 import { useState } from "react";
 
-import { getStatus, logger, StatusT } from "@/lib/utils";
-import { VacancySchemaT } from "@/lib/schemas/company/VacancySchema";
+import { getStatus, StatusT } from "@/lib/utils";
 import { createVacancy } from "@/lib/actions/vacancy.actions";
+import { VacancySchemaT } from "@/lib/schemas/company/VacancySchema";
 
+/**
+ * @see
+ * - {@link StatusT}
+ * - {@link createVacancy}
+ * - {@link VacancySchemaT}
+ *
+ * Provides a React hook for creating a vacancy and tracking the request lifecycle.
+ *
+ * Workflow:
+ * - calls the {@link createVacancy}({@link VacancySchemaT})
+ * - On success:
+ *   - invokes the optional `onSuccess` callback.
+ *   - sets status to `success`
+ * - On failure:
+ *   - sets status to `failed` with error details and a localized fallback message.
+ *
+ * @returns
+ * An object with:
+ * - `status` — {@link StatusT} reflecting the request lifecycle.
+ * - `createVacancyQuery` — (data: {@link VacancySchemaT}, onSuccess?: () => void) => Promise<void>
+ */
 export default function useCreateVacancyQuery() {
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
@@ -11,24 +32,18 @@ export default function useCreateVacancyQuery() {
     data: VacancySchemaT,
     onSuccess?: () => void
   ) {
-    try {
-      setStatus(() => getStatus.pending());
+    setStatus(() => getStatus.pending());
 
-      await createVacancy(data);
+    const { error } = await createVacancy(data);
 
-      setStatus(() => getStatus.success());
-      onSuccess?.();
-    } catch (error: any) {
-      const status = getStatus.failed(error);
-
-      setStatus(() => ({
-        ...status,
-        message: status.message || "დაფიქსირდა შეცდომა ვაკანსიის შექმნის დროს",
+    if (error)
+      return setStatus(() => ({
+        ...getStatus.failed(error),
+        message: error.message || "დაფიქსირდა შეცდომა ვაკანსიის შექმნის დროს",
       }));
 
-      logger(error);
-      console.log(error);
-    }
+    onSuccess?.();
+    setStatus(() => getStatus.success());
   }
 
   return { status, createVacancyQuery };

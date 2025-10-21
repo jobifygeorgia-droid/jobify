@@ -31,15 +31,13 @@ export enum VACANCY_STATUS_TYPES {
   ARCHIVE = "archive",
 }
 
-export const AuthModes = [
-  "base",
-  "password-update-method",
-  "verify-user",
-  "update-password",
-  "update-success",
-] as const;
-
-export type AuthModeT = (typeof AuthModes)[number];
+export enum AuthModes {
+  BASE = "base",
+  VERIFY_USER = "verify-user",
+  UPDATE_SUCCESS = "update-success",
+  UPDATE_PASSWORD = "update-password",
+  PASSWORD_UPDATE_METHOD = "password-update-method",
+}
 
 export type LocationT = {
   lat: number;

@@ -1,3 +1,4 @@
+import { PATHS } from "@/lib/config";
 import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
 
 import { PageParamsT } from "@/interface/global.types";
@@ -13,7 +14,7 @@ export const Page: React.FC<PageParamsT> = async ({ searchParams }) => {
   const queryStr = buildQueryStringFromNextSearchParams(query, ["page"]);
 
   return (
-    <FilterProvider>
+    <FilterProvider redirectTo={PATHS.vacancies}>
       <Container>
         <FilterBar />
         <Home query={queryStr} />

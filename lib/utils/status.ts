@@ -1,5 +1,34 @@
 import { APIErrorMessages } from "@/interface/global.types";
 
+/**
+ * @see
+ * - {@link APIErrorMessages}
+ *
+ * Utility for producing consistent status snapshots for async operations (e.g., API calls).
+ *
+ * Provides factory methods to represent the four common states of an async request:
+ * - idle(): not started, no error, no message
+ * - pending(): in progress
+ * - success(message?): completed successfully with an optional message
+ * - failed(error): completed with an error and optional structured API error messages
+ *
+ * Error handling:
+ * - The primary message is derived from a string error, `error.response.data.detail` (Axios-style),
+ *   or `error.message`.
+ * - Structured API errors are extracted by `parseAPIErrorMessages`, which attempts to parse
+ *   `error.message` as JSON into an `APIErrorMessages` shape; if parsing fails, it falls back
+ *   to `{ message: string }`.
+ *
+ * Returned snapshot shape:
+ * - loading: boolean — whether an operation is in progress
+ * - error: boolean — whether an operation failed
+ * - message: string — human-readable summary
+ * - messages: APIErrorMessages | null — structured API error details when available
+ *
+ * @remarks
+ * This class is useful for reducers, stores, or UI state machines to keep status handling
+ * uniform across an application.
+ */
 class Status {
   loading: boolean;
   message: string;

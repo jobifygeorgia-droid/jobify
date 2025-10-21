@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 
 import { useSignupCompanyForm } from "@/hooks/forms";
@@ -14,7 +14,7 @@ import {
   ErrorMessage,
   PasswordField,
 } from "@/components/layouts/Form";
-import GoogleButton from "./ui/GoogleButton";
+import { GoogleButton } from "@/components/Auth/ui";
 import { Button, Divider, Spinner } from "@/components/ui";
 
 const SignUpCompany: React.FC = () => {
@@ -27,7 +27,7 @@ const SignUpCompany: React.FC = () => {
 
   const [acceptsPrivacyAndPolicy, setAcceptsPrivacyAndPolicy] = useState(false);
 
-  const onRegistrationSuccess = () => {
+  const onRegistrationSuccess = useCallback(() => {
     resetForm();
     setAcceptsPrivacyAndPolicy(false);
     addAlert({
@@ -36,7 +36,7 @@ const SignUpCompany: React.FC = () => {
       text: "კომპანიის პროფილი გააქტიურდება ადმინისტარატორის დადასტურებისთანავე. /n გთხოვთ შეამოწმოთ თქვენი ელ.ფოსტა ვერიფიკაციის გასავლელად.",
       delay: 20000,
     });
-  };
+  }, [resetForm, addAlert]);
 
   const onRegistration = handleSubmit(async (values) => {
     if (!acceptsPrivacyAndPolicy)

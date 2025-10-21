@@ -23,8 +23,8 @@ const ChipsField: React.FC<ChipsFieldT> = (props) => {
           <Chip
             {...{
               ...chipOptions,
-              isActive: item.value === value,
-              onClick: () => rest.onChange(item.value),
+              isActive: item.value.toString() === value,
+              onClick: () => rest.onChange(item.value.toString()),
             }}
             key={`chip-${index}-${item.value}`}
           >
