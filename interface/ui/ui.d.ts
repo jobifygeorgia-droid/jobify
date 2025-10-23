@@ -1,3 +1,5 @@
+import React from "react";
+
 // Alert
 type AlertT = {
   id?: string;
@@ -5,6 +7,17 @@ type AlertT = {
   title?: string;
   type?: "danger" | "warning" | "success";
   delay?: number;
+};
+
+// Dialog
+type DialogT = {
+  title?: string;
+  content: React.ReactNode;
+  loading?: boolean;
+  type?: "danger" | "warning" | "normal";
+  onConfirmCallback?: () => void;
+  loadingOnConfirm?: boolean;
+  closeOnConfirm?: boolean;
 };
 
 // Chip

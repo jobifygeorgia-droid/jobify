@@ -20,6 +20,7 @@ const FilterForm: React.FC = () => {
             {...field}
             inputType="number"
             labelPosition="out"
+            containerClassName="col-span-2 tablet:col-span-1"
             label="მინ. ანაზღაურება"
           />
         )}

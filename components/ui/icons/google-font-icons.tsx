@@ -485,3 +485,13 @@ export const Work: React.FC<IconT> = (props) => {
     </Icon>
   );
 };
+
+export const CompanyProfile: React.FC<IconT> = (props) => {
+  const { className, filled, size } = props;
+
+  return (
+    <Icon className={className} filled={filled} size={size}>
+      location_home
+    </Icon>
+  );
+};

@@ -1,8 +1,7 @@
 import { getCompanyOwnVacancies } from "@/lib/actions/vacancy.actions";
 
 import { GridTable } from "@/components/layouts";
-import VacanciesTableRow from "./VacanciesTableRow";
-import VacanciesTableHeader from "./VacanciesTableHeader";
+import { VacanciesTableRow, VacanciesTableHeader } from "./";
 import { Pagination, EmptyMessage, ErrorMessage } from "@/components/ui";
 
 type VacanciesT = {

@@ -7,15 +7,21 @@ type CardBodyT = {
   id: number;
   title: string;
   salaryRange: string;
+  isAuthenticated: boolean;
 };
 
 const CardBody: React.FC<CardBodyT> = (props) => {
-  const { id, title, salaryRange } = props;
+  const { id, title, salaryRange, isAuthenticated } = props;
+
+  const candidateUrl = isAuthenticated
+    ? DYNAMIC_ROUTES.vacancy_details(id.toString())
+    : "";
 
   return (
     <Link
+      href={candidateUrl}
       className="flex flex-col gap-1"
-      href={DYNAMIC_ROUTES.vacancy_details(id.toString())}
+      scroll={isAuthenticated ? true : false}
     >
       <div className="flex items-center gap-1 laptop:gap-2">
         <span className="font-bold text-sm laptop:text-base">VIP</span>

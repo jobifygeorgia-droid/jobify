@@ -6,3 +6,6 @@ export { default as LiveInCompanyCard } from "./LiveInCompanyCard";
 export { default as SectionContainer } from "./SectionContainer";
 export { default as VacanciesForDifferentGroupsCard } from "./VacanciesForDifferentGroupsCard";
 export { default as VacanciesList } from "./VacanciesList";
+export { default as QuotationSliderCard } from "./QuotationSliderCard";
+export { default as Statistic } from "./Statistic";
+export { default as StatisticBox } from "./StatisticBox";

@@ -16,3 +16,5 @@ export { default as buildQueryStringFromNextSearchParams } from "./buildQueryStr
 export { default as generateArray } from "./generateArray";
 export { default as actionWrapper } from "./actionWrapper";
 export { default as formatPhoneNumber } from "./formatPhoneNumber";
+export { default as toGenitive } from "./toGenitive";
+export { default as showSalaryRange } from "./showSalaryRange";

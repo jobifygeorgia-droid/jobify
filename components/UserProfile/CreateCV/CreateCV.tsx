@@ -1,8 +1,8 @@
 "use client";
 
-import CVProvider from "./CVProvider";
-import CVView from "./CVView";
 import Form from "./Form";
+import CVView from "./CVView";
+import CVProvider from "./CVProvider";
 
 type CreateCVT = {};
 

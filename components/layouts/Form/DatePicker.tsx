@@ -33,9 +33,9 @@ const DatePicker: React.FC<DatePickerT> = (props) => {
             onChange={(v) => props?.onChange?.(v?.toString() || "")}
             slotProps={{
               popper: {
-                sx: PopperStyles,
-                disablePortal,
                 placement,
+                disablePortal,
+                sx: PopperStyles,
               },
             }}
           />

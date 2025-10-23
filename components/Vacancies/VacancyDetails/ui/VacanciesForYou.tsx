@@ -1,4 +1,5 @@
 import { PATHS } from "@/lib/config";
+import { auth } from "@/services/next-auth";
 import { getVacancies } from "@/lib/actions/vacancy.actions";
 
 import {
@@ -23,6 +24,9 @@ const VacanciesForYou: React.FC<VacanciesForYouT> = async (props) => {
   const vacancies = data?.results || [];
   const isEmpty = !(vacancies.length > 0);
 
+  const session = await auth();
+  const isAuthenticated = !!session?.user;
+
   return (
     <>
       <div className="pb-6 tablet:pb-12 tablet:pt-6">
@@ -30,7 +34,11 @@ const VacanciesForYou: React.FC<VacanciesForYouT> = async (props) => {
 
         <div className="flex flex-col gap-4 mt-5">
           {vacancies.map((vacancy) => (
-            <VacancyCard key={vacancy.id} vacancy={vacancy} />
+            <VacancyCard
+              key={vacancy.id}
+              vacancy={vacancy}
+              isAuthenticated={isAuthenticated}
+            />
           ))}
         </div>
 

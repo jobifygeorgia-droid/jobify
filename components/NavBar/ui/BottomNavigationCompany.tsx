@@ -1,7 +1,7 @@
 import { PATHS } from "@/lib/config";
 
+import { BottomNavigationItem } from "./";
 import { Plus } from "@/components/ui/icons";
-import BottomNavigationItem from "./BottomNavigationItem";
 
 type BottomNavigationCompanyT = {};
 

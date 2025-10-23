@@ -2,18 +2,28 @@
 
 import { useParams, useRouter } from "next/navigation";
 
-import { Menu } from "@/components/ui";
-import OptionItem from "./OptionItem";
-import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
 import { DYNAMIC_ROUTES } from "@/lib/config";
+import { usePopupsContext } from "@/providers/PopupsProvider";
+
+import {
+  OptionItem,
+  DeleteVacancyDialogError,
+  DeleteVacancyDialogContent,
+} from "./";
+import { Menu } from "@/components/ui";
+import { OptionsDots, Eye, Delete, Edit } from "@/components/ui/icons";
 
 type OptionsT = {
   vacancyId: string;
+  vacancyTitle: string;
 };
 
-const Options: React.FC<OptionsT> = ({ vacancyId }) => {
+const Options: React.FC<OptionsT> = ({ vacancyId, vacancyTitle }) => {
   const router = useRouter();
   const params = useParams();
+
+  const { showDialog, setDialogError, closeDialog, addAlert } =
+    usePopupsContext();
 
   const entityId = (params?.entityId as string) || "";
 
@@ -25,7 +35,31 @@ const Options: React.FC<OptionsT> = ({ vacancyId }) => {
 
   const onEdit = () => {};
 
-  const onDelete = () => {};
+  const deleteVacancy = async () => {
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // throw new Error("Failed to delete vacancy");
+      closeDialog();
+      addAlert({
+        type: "success",
+        title: `ვაკანსიის წაშლა`,
+        text: `ვაკანსია - ${vacancyTitle} წაიშალა წარმატებით.`,
+      });
+    } catch (error: any) {
+      setDialogError(<DeleteVacancyDialogError message={error.message} />);
+    }
+  };
+
+  const onDelete = () => {
+    showDialog({
+      type: "danger",
+      title: "ვაკანსიის წაშლა",
+      loadingOnConfirm: true,
+      content: <DeleteVacancyDialogContent vacancyTitle={vacancyTitle} />,
+      onConfirmCallback: deleteVacancy,
+    });
+  };
 
   return (
     <div>

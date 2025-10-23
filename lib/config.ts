@@ -115,6 +115,12 @@ const ALL_ROUTES = [
     roles: [USER_TYPES.EMPLOYER],
   },
   {
+    name: "company_profile_guest",
+    path: "/legal-entity/:entityId/guest",
+    isPrivate: true,
+    roles: [USER_TYPES.EMPLOYER],
+  },
+  {
     name: "company_inbox",
     path: "/legal-entity/:entityId/inbox?vacancy=:vacancyId",
     isPrivate: true,
@@ -182,22 +188,27 @@ export const PATHS = ALL_ROUTES.reduce((acc, route) => {
 }, {} as PathT);
 
 export const DYNAMIC_ROUTES = {
-  company_profile: (entityId: string) =>
-    PATHS.company_profile.replace(":entityId", entityId),
-  company_inbox: (entityId: string, vacancyId: string) =>
+  company_profile: (entityId: string | number) =>
+    PATHS.company_profile.replace(":entityId", entityId.toString()),
+  company_profile_guest: (entityId: string | number) =>
+    PATHS.company_profile_guest.replace(":entityId", entityId.toString()),
+  company_inbox: (entityId: string | number, vacancyId: string | number) =>
     PATHS.company_inbox
-      .replace(":entityId", entityId)
-      .replace(":vacancyId", vacancyId),
-  company_vacancy_details: (entityId: string, vacancyId: string) =>
+      .replace(":entityId", entityId.toString())
+      .replace(":vacancyId", vacancyId.toString()),
+  company_vacancy_details: (
+    entityId: string | number,
+    vacancyId: string | number
+  ) =>
     PATHS.company_vacancy_details
-      .replace(":entityId", entityId)
-      .replace(":vacancyId", vacancyId),
-  user_profile: (userId: string) =>
-    PATHS.user_profile.replace(":userId", userId),
+      .replace(":entityId", entityId.toString())
+      .replace(":vacancyId", vacancyId.toString()),
+  user_profile: (userId: string | number) =>
+    PATHS.user_profile.replace(":userId", userId.toString()),
   vacancies_groups: (group: VACANCY_GROUPS) =>
     PATHS.vacancies_groups.replace(":group", group),
-  vacancy_details: (vacancyId: string) =>
-    PATHS.vacancies_details.replace(":vacancyId", vacancyId),
+  vacancy_details: (vacancyId: string | number) =>
+    PATHS.vacancies_details.replace(":vacancyId", vacancyId.toString()),
 } as const;
 
 export const PRIVATE_ROUTES = ALL_ROUTES.filter((route) => route.isPrivate);

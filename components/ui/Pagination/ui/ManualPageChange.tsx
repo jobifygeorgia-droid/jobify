@@ -16,9 +16,11 @@ const ManualPageChange: React.FC<ManualPageChangeT> = (props) => {
 
     const formValues = new FormData(e.currentTarget);
     const target = formValues.get("manual-page-change");
-    const newPage = Number(target);
+    const newPage = Math.abs(Number(target));
 
-    if (!isNaN(newPage)) onPageChange(newPage);
+    if (newPage > pagesCount) onPageChange(pagesCount);
+    else if (!isNaN(newPage)) onPageChange(newPage);
+    else return;
   }
 
   useEffect(() => {

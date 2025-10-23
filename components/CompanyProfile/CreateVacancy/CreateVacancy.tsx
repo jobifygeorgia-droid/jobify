@@ -17,8 +17,7 @@ import {
   LocationField,
   CategoriesField,
 } from "@/components/layouts/Form";
-import Aside from "./ui/Aside";
-import FormContainer from "./ui/FormContainer";
+import { Aside, FormContainer } from "./ui";
 import { Button, Spinner } from "@/components/ui";
 
 type CreateVacancyT = {};

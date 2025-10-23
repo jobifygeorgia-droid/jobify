@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Statistic from "./Statistic";
+import { Statistic } from "./";
 import { Switch } from "@/components/layouts/Form";
 import { Notification } from "@/components/ui/icons";
 

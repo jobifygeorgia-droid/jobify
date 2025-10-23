@@ -20,11 +20,13 @@ const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
       {data && !error && (
         <>
           <Header
+            companyId={2}
             title={data.title}
             expiryDate={data.expiry_date}
             vacancyType={data.vacancy_type}
             phone={data.employer.phone_number}
             email={data.employer.company_id_number}
+            companyName={data.employer.company_name}
           />
 
           <div className="flex flex-col-reverse laptop:flex-row items-start gap-5 tablet:gap-6 laptop:gap-20 py-5">
@@ -42,6 +44,8 @@ const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
                 expiryDate={data.expiry_date}
                 publishDate={data.published_date}
               />
+
+              <div className="bg-green w-full aspect-square rounded-md"></div>
             </Aside>
           </div>
         </>

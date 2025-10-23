@@ -46,6 +46,8 @@ type FilterContextType = {
   onChangeDate: (value: string, cb: (v: string) => void) => void;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   currentSearch: string;
+  onChangeWorkType: (value: string) => void;
+  currentWorkType: string;
 };
 
 const FilterContext = createContext<FilterContextType>({
@@ -66,6 +68,8 @@ const FilterContext = createContext<FilterContextType>({
   onChangeDate: () => {},
   onSearchChange: () => {},
   currentSearch: "",
+  onChangeWorkType: () => {},
+  currentWorkType: "",
 });
 
 const FilterProvider: React.FC<FilterProviderT> = (props) => {
@@ -82,6 +86,9 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
 
   const device = useDevice();
 
+  ///// Outside Filter Bar (handle fields which are not included in form ) /////
+  /////////////////////////////////////////////////////////////////////////////
+
   // Search state //
   const currentSearch = form.watch("search");
 
@@ -89,6 +96,17 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
     const value = e.target.value;
     form.setValue("search", value);
   };
+
+  // Work type state //
+
+  const currentWorkType = form.watch("vacancy_type");
+
+  const onChangeWorkType = (value: string) => {
+    form.setValue("vacancy_type", value);
+  };
+
+  /////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
 
   // Filter state //
   const onOpenFilter = () => setIsOpen(true);
@@ -181,6 +199,8 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
     <FilterContext.Provider
       value={{
         currentSearch,
+        currentWorkType,
+        onChangeWorkType,
         onSearchChange,
         onFilter,
         control,

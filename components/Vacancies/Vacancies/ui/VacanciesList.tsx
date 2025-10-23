@@ -1,3 +1,4 @@
+import { auth } from "@/services/next-auth";
 import { getVacancies } from "@/lib/actions/vacancy.actions";
 
 import { Pagination } from "@/components/ui";
@@ -13,12 +14,16 @@ const VacanciesList: React.FC<VacanciesListT> = async ({ query, limit }) => {
 
   const vacancies = data?.results || [];
 
+  const session = await auth();
+  const isAuthenticated = !!session?.user;
+
   return (
     <>
       <section className="flex flex-col gap-4">
         {vacancies.map((vacancy) => (
           <VacancyCard
             vacancy={vacancy}
+            isAuthenticated={isAuthenticated}
             key={`regular-vacancy-${vacancy.id}`}
           />
         ))}

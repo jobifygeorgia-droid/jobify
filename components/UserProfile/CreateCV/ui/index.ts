@@ -7,3 +7,5 @@ export { default as EducationReview } from "./EducationReview";
 export { default as CertificatesReview } from "./CertificatesReview";
 export { default as WorkingExperienceReview } from "./WorkingExperienceReview";
 export { default as ChipValue } from "./ChipValue";
+export { default as ReviewItem } from "./ReviewItem";
+export { default as ReviewContainer } from "./ReviewContainer";

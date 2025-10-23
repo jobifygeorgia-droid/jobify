@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { formatDate } from "@/lib/utils";
 import { DYNAMIC_ROUTES } from "@/lib/config";
+import { formatDate, showSalaryRange } from "@/lib/utils";
 import { VacancyT } from "@/interface/db/vacancies.types";
 import transformVacancyType from "@/lib/utils/transformVacancyType";
 
@@ -12,16 +12,22 @@ import { Calendar, Wallet, Location } from "@/components/ui/icons";
 
 type VacancyCardT = {
   vacancy: VacancyT;
+  isAuthenticated: boolean;
 };
 
-const VacancyCard: React.FC<VacancyCardT> = ({ vacancy }) => {
+const VacancyCard: React.FC<VacancyCardT> = ({ vacancy, isAuthenticated }) => {
   const vacancyType = transformVacancyType(vacancy.vacancy_type);
-  const salary = `${vacancy.min_salary} - ${vacancy.max_salary}`;
+  const salary = showSalaryRange(vacancy.min_salary, vacancy.max_salary);
+
+  const candidateUrl = isAuthenticated
+    ? DYNAMIC_ROUTES.vacancy_details(vacancy.id.toString())
+    : "";
 
   return (
     <div className="max-w-full w-full px-3 laptop:px-4 py-2 laptop:py-3 rounded-2xl bg-white border border-bc flex items-center gap-2 tablet:gap-5">
       <Link
-        href={DYNAMIC_ROUTES.vacancy_details(vacancy.id.toString())}
+        href={candidateUrl}
+        scroll={isAuthenticated ? true : false}
         className="w-full flex items-center gap-2 tablet:gap-5"
       >
         <figure className="relative size-11 laptop:size-16 aspect-square rounded-md overflow-hidden bg-dark-grey-light">

@@ -5,8 +5,7 @@ import {
 } from "@/lib/utils";
 import { VacancyT } from "@/interface/db/vacancies.types";
 
-import Status from "./Status";
-import Options from "./Options";
+import { Status, Options } from "./";
 import { GridTableItem } from "@/components/layouts";
 
 type VacanciesTableRowT = {
@@ -36,7 +35,10 @@ const VacanciesTableRow: React.FC<VacanciesTableRowT> = (props) => {
         <Status status={status} />
       </GridTableItem>
       <GridTableItem alignCenter>
-        <Options vacancyId={vacancy.id.toString()} />
+        <Options
+          vacancyTitle={vacancy.title}
+          vacancyId={vacancy.id.toString()}
+        />
       </GridTableItem>
     </>
   );

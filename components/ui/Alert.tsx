@@ -5,8 +5,12 @@ import classnames from "classnames";
 
 import { AlertT } from "@/interface/ui/ui";
 
-import { AnchorButton } from "@/components/ui";
-import { ArrowRight, Close, Warning } from "./icons";
+import {
+  // ArrowRight,
+  Close,
+  Warning,
+} from "./icons";
+// import { AnchorButton } from "@/components/ui";
 
 type AlertPropsT = AlertT & {
   onRemove: (id: string) => void;
@@ -71,14 +75,14 @@ const Alert: React.FC<AlertPropsT> = (props) => {
           </p>
         )}
 
-        <AnchorButton
+        {/* <AnchorButton
           href={""}
           buttonType="text"
           className="p-0! ml-8 mt-6 text-[inherit]! w-max"
         >
           <span className="font-semibold text-base-sm">გაიგე მეტი</span>
           <ArrowRight className="text-current!" size={20} />
-        </AnchorButton>
+        </AnchorButton> */}
       </div>
     </div>
   );

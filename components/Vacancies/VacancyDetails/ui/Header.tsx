@@ -13,24 +13,29 @@ type HeaderT = {
   email: string;
   title: string;
   phone: string;
+  companyId: number;
+  companyName: string;
   expiryDate: string;
   vacancyType: VACANCY_TYPES;
 };
 
 const Header: React.FC<HeaderT> = (props) => {
-  const { title, vacancyType, phone, email, expiryDate } = props;
-
   return (
     <header className="grid grid-cols-[repeat(2,max-content)] tablet:grid-cols-[repeat(1,max-content_1fr_max-content)] items-start tablet:items-center gap-x-2 laptop:gap-x-4 gap-y-2">
-      <CompanyImage title={title} image={vipVacancies[1].image} />
+      <CompanyImage title={props.title} image={vipVacancies[1].image} />
 
-      <HeaderTitleAndType title={title} vacancyType={vacancyType} />
+      <HeaderTitleAndType title={props.title} vacancyType={props.vacancyType} />
 
-      <HeaderChips email={email} phone={phone} />
+      <HeaderChips
+        email={props.email}
+        phone={props.phone}
+        companyId={props.companyId}
+        companyName={props.companyName}
+      />
 
       <HeaderActions />
 
-      <HeaderExpiryDate expiryDate={expiryDate} />
+      <HeaderExpiryDate expiryDate={props.expiryDate} />
     </header>
   );
 };

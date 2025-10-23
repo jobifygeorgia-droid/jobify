@@ -2,16 +2,18 @@ import classnames from "classnames";
 
 import { VacancyT } from "@/interface/db/vacancies.types";
 import { CardFooter, CardBody, CardHeader } from "./ui";
+import { showSalaryRange } from "@/lib/utils";
 
 type VIPVacancyCardT = {
   vacancy: VacancyT;
   className?: string;
+  isAuthenticated: boolean;
 };
 
 const VIPVacancyCard: React.FC<VIPVacancyCardT> = (props) => {
-  const { className, vacancy } = props;
+  const { className, vacancy, isAuthenticated } = props;
 
-  const salaryRange = `${vacancy.min_salary} - ${vacancy.max_salary}`;
+  const salaryRange = showSalaryRange(vacancy.min_salary, vacancy.max_salary);
 
   return (
     <div
@@ -35,6 +37,7 @@ const VIPVacancyCard: React.FC<VIPVacancyCardT> = (props) => {
           id={vacancy.id}
           title={vacancy.title}
           salaryRange={salaryRange}
+          isAuthenticated={isAuthenticated}
         />
       </div>
 

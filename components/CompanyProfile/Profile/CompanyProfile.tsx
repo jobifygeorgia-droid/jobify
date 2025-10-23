@@ -1,11 +1,13 @@
 import { Suspense } from "react";
 
-// import ImproveStatistic from "./ui/ImproveStatistic";
-import Vacancies from "./ui/Vacancies";
+import {
+  Vacancies,
+  StatisticHeader,
+  FilterAndActions,
+  VacanciesFallback,
+} from "./ui";
 import { SectionTitle } from "@/components/ui";
-import StatisticHeader from "./ui/StatisticHeader";
-import FilterAndActions from "./ui/FilterAndActions";
-import VacanciesFallback from "./ui/VacanciesFallback";
+// import ImproveStatistic from "./ui/ImproveStatistic";
 
 type CompanyProfileT = {
   query: string;

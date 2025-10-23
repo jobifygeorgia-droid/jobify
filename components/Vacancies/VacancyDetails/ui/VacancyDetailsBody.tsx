@@ -21,7 +21,6 @@ const VacancyDetailsBody: React.FC<VacancyDetailsBodyT> = (props) => {
           <TextEditorContent />
         </TipTapProvider>
       </div>
-
       <div className="flex flex-col gap-2">
         <SectionTitle size="base" title="მოთხოვნები" />
 
@@ -29,7 +28,6 @@ const VacancyDetailsBody: React.FC<VacancyDetailsBodyT> = (props) => {
           <TextEditorContent />
         </TipTapProvider>
       </div>
-
       <div className="flex flex-col gap-2">
         <SectionTitle size="base" title="რას გთავაზობთ" />
 

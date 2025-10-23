@@ -1,22 +1,32 @@
-import { formatPhoneNumber } from "@/lib/utils";
+import Link from "next/link";
+
+import { DYNAMIC_ROUTES } from "@/lib/config";
+import { formatPhoneNumber, toGenitive } from "@/lib/utils";
 
 import { HeaderChip } from "./";
-import { Link, Phone, Mail } from "@/components/ui/icons";
+import { Phone, Mail, CompanyProfile } from "@/components/ui/icons";
 
 type HeaderChipsT = {
   phone: string;
   email: string;
+  companyId: number;
+  companyName: string;
 };
 
 const HeaderChips: React.FC<HeaderChipsT> = (props) => {
-  const { phone, email } = props;
+  const { phone, email, companyName, companyId } = props;
 
   return (
     <div className="col-start-2 tablet:col-span-1 row-start-3 tablet:row-start-2 flex flex-col tablet:flex-row tablet:flex-wrap flex-wrap gap-y-2 gap-x-4 desktop-sm:-translate-y-[8px]">
-      <HeaderChip
-        Icon={Link}
-        text="https://github.com/some-project-name-here/project/tree/main"
-      />
+      <Link
+        href={DYNAMIC_ROUTES.company_profile_guest(companyId)}
+        className="bg-blue-light rounded-full px-4 py-[2px]"
+      >
+        <HeaderChip
+          Icon={CompanyProfile}
+          text={`${toGenitive(companyName)} ყველა ვაკანსია`}
+        />
+      </Link>
 
       <HeaderChip Icon={Phone} text={formatPhoneNumber(phone)} />
 

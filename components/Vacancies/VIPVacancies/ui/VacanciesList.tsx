@@ -1,3 +1,4 @@
+import { auth } from "@/services/next-auth";
 import { getVIPVacancies } from "@/lib/actions/vacancy.actions";
 
 import { VIPVacancyCard } from "@/components/layouts";
@@ -14,6 +15,9 @@ const VacanciesList: React.FC<VacanciesListT> = async ({ limit, query }) => {
   const vacancies = data?.results || [];
   const isEmpty = !(vacancies.length > 0);
 
+  const session = await auth();
+  const isAuthenticated = !!session?.user;
+
   return (
     <>
       {!isEmpty && !error && (
@@ -24,6 +28,7 @@ const VacanciesList: React.FC<VacanciesListT> = async ({ limit, query }) => {
                 key={vacancy.id}
                 vacancy={vacancy}
                 className="min-w-full! aspect-auto! tablet:min-w-[unset]"
+                isAuthenticated={isAuthenticated}
               />
             ))}
           </section>

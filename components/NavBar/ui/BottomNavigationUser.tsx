@@ -1,6 +1,7 @@
-import { Heart, Work } from "@/components/ui/icons";
-import BottomNavigationItem from "./BottomNavigationItem";
 import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
+
+import { BottomNavigationItem } from "./";
+import { Heart, Work } from "@/components/ui/icons";
 
 type BottomNavigationUserT = {
   userId: number;

@@ -28,6 +28,7 @@ export const PopperStyles: SxProps = {
 
 export const MuiDatePicker = styled(DatePicker)(() => ({
   width: "100%",
+  height: "100%",
 
   "& .MuiFormLabel-root": {
     display: "none",
@@ -43,6 +44,10 @@ export const MuiDatePicker = styled(DatePicker)(() => ({
     "& .MuiPickersSectionList-root": {
       LineHeight: 1,
       padding: 0,
+
+      ".MuiIconButton-root": {
+        backgroundColor: "green",
+      },
     },
 
     "& .MuiInputAdornment-root": {

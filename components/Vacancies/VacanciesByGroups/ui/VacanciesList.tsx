@@ -1,3 +1,4 @@
+import { auth } from "@/services/next-auth";
 import { getVacancies } from "@/lib/actions/vacancy.actions";
 
 import { VacancyCard } from "@/components/layouts";
@@ -14,13 +15,20 @@ const VacanciesList: React.FC<VacanciesListT> = async ({ limit, query }) => {
   const vacancies = data?.results || [];
   const isEmpty = !(vacancies.length > 0);
 
+  const session = await auth();
+  const isAuthenticated = !!session?.user;
+
   return (
     <>
       {!isEmpty && !error && (
         <>
           <div className="mt-5 tablet:mt-10 flex flex-col gap-4">
             {vacancies.map((vacancy) => (
-              <VacancyCard key={`vacancy-${vacancy.id}`} vacancy={vacancy} />
+              <VacancyCard
+                vacancy={vacancy}
+                isAuthenticated={isAuthenticated}
+                key={`vacancy-${vacancy.id}`}
+              />
             ))}
           </div>
 

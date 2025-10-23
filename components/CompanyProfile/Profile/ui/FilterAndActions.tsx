@@ -1,7 +1,6 @@
 import { PATHS } from "@/lib/config";
 
-import Filter from "./Filter";
-import SendEmail from "./SendEmail";
+import { Filter, SendEmail } from "./";
 import { Plus } from "@/components/ui/icons";
 import { AnchorButton } from "@/components/ui";
 

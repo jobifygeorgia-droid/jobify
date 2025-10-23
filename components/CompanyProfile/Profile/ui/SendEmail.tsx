@@ -3,12 +3,14 @@
 import { useDevice } from "@/hooks/utils";
 import { companyProfileData } from "@/data/data";
 
+import {
+  SendEmailModal,
+  SendEmailHeader,
+  SendEmailTableRow,
+  SendEmailTableHeader,
+} from "./";
 import { Mail } from "@/components/ui/icons";
-import SendEmailModal from "./SendEmailModal";
-import SendEmailHeader from "./SendEmailHeader";
 import { GridTable } from "@/components/layouts";
-import SendEmailTableRow from "./SendEmailTableRow";
-import SendEmailTableHeader from "./SendEmailTableHeader";
 import { AnchorButton, ScrollableContainer } from "@/components/ui";
 
 type SendEmailT = {};

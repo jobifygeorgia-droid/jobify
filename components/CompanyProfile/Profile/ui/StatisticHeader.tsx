@@ -1,7 +1,5 @@
-import Statistic from "./Statistic";
+import { ViewsStatistic, Statistic } from "./";
 import { Notification } from "@/components/ui/icons";
-
-import ViewsStatistic from "./ViewsStatistic";
 
 type StatisticHeaderT = {};
 

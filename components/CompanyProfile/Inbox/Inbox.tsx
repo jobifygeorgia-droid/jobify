@@ -6,9 +6,8 @@ import {
   ReceivedResumeCardCubic,
   ReceivedResumeCardHorizontal,
 } from "@/components/layouts";
-import Filter from "./ui/Filter";
+import { Filter, SwitchViewMode } from "./ui";
 import { Search } from "@/components/ui/icons";
-import SwitchViewMode from "./ui/SwitchViewMode";
 import { Pagination, SectionTitle } from "@/components/ui";
 
 type InboxT = {

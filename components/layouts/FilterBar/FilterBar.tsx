@@ -14,9 +14,10 @@ import ExpandedFilter from "./ExpandedFilter";
 import { IconButton } from "@/components/ui";
 import { Select } from "@/components/layouts/Form";
 import { FilterBarInputContainer, Search } from "./ui";
+import { SelectOptionT } from "@/interface/ui/forms-ui";
 
 const FilterBar: React.FC = () => {
-  const { onFilter } = useFilterContext();
+  const { onFilter, onChangeWorkType, currentWorkType } = useFilterContext();
 
   return (
     <>
@@ -26,8 +27,10 @@ const FilterBar: React.FC = () => {
 
           <FilterBarInputContainer className="hidden tablet:flex">
             <Select
-              values={[]}
-              onChange={() => {}}
+              values={[currentWorkType]}
+              onChange={(value) =>
+                onChangeWorkType((value as SelectOptionT).value)
+              }
               options={workTypeOptions}
               variant="outlined"
               id="filter-work-type"
