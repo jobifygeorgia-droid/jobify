@@ -19,6 +19,7 @@ export const api_endpoints = {
   company: {
     myVacancies: "/vacancies/my/",
     myVacancy: (id: string) => `/vacancies/${id}/`,
+    deleteVacancy: (id: string) => `/vacancies/${id}/`,
     createVacancy: "/vacancies/create/",
   },
 };

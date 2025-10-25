@@ -1,6 +1,7 @@
+import classNames from "classnames";
+
 import { IconButton } from "@/components/ui";
 import { Heart } from "@/components/ui/icons";
-import classNames from "classnames";
 
 type AddToFavoriteButtonT = {
   className?: string;

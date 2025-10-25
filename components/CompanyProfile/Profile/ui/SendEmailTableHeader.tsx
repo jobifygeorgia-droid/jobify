@@ -16,15 +16,19 @@ const SendEmailTableHeader: React.FC<SendEmailTableHeaderT> = () => {
       >
         მონიშნე
       </GridTableItem>
+
       <GridTableItem isHeader className={headerColumnStyles}>
         ვაკანსია
       </GridTableItem>
+
       <GridTableItem isHeader className={headerColumnStyles}>
         დამატების თარიღი
       </GridTableItem>
+
       <GridTableItem isHeader isSmallCol className={headerColumnStyles}>
         დარჩენილი დღეები
       </GridTableItem>
+
       <GridTableItem
         isHeader
         isSmallCol

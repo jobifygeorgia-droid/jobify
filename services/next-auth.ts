@@ -185,12 +185,6 @@ export async function refreshAccessToken(
 
     globalForAuth.lastRefreshed = updatedSession;
 
-    console.log("TOKEN IS REFRESHED", {
-      PID: process.pid,
-      accessToken: newAccessToken,
-      refreshToken: newRefreshToken,
-    });
-
     return updatedSession;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error: any) {

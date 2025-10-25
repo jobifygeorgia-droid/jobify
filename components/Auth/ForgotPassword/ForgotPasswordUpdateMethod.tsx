@@ -72,7 +72,6 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
                 <TextField
                   {...field}
                   label="ელ.ფოსტა"
-                  labelPosition="out"
                   message={error?.message}
                 />
               )}
@@ -85,7 +84,6 @@ const ForgotPasswordUpdateMethod: React.FC = () => {
                 render={({ field, fieldState: { error } }) => (
                   <TextField
                     {...field}
-                    labelPosition="out"
                     label="ტელეფონის ნომერი"
                     inputType="number"
                     message={error?.message}

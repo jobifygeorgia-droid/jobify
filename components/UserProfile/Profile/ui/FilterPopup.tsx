@@ -41,7 +41,7 @@ const FilterPopup: React.FC<FilterPopupT> = () => {
             containerClassName="rounded-lg!"
           />
 
-          <TextField label="მდებარეობა" labelPosition="out" />
+          <TextField label="მდებარეობა" />
 
           <div className="flex items-center justify-end gap-5 mt-2">
             <Button buttonType="tertiary" type="button" onClick={onCloseModal}>

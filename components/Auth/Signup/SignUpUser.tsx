@@ -60,24 +60,14 @@ const SignUpUser: React.FC = () => {
         name="full_name"
         control={control}
         render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            label="სრული სახელი"
-            labelPosition="out"
-            message={error?.message}
-          />
+          <TextField {...field} label="სრული სახელი" message={error?.message} />
         )}
       />
       <Controller
         control={control}
         name="email"
         render={({ field, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            label="ელ.ფოსტა"
-            labelPosition="out"
-            message={error?.message}
-          />
+          <TextField {...field} label="ელ.ფოსტა" message={error?.message} />
         )}
       />
       <Controller
@@ -87,7 +77,6 @@ const SignUpUser: React.FC = () => {
           <TextField
             {...field}
             label="ტელეფონი"
-            labelPosition="out"
             inputType="number"
             message={error?.message}
           />
@@ -101,7 +90,6 @@ const SignUpUser: React.FC = () => {
             inputProps={{
               ...field,
               label: "პაროლი",
-              labelPosition: "out",
               message: error?.message,
             }}
           />

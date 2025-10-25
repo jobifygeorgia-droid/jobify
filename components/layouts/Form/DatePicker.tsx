@@ -23,7 +23,7 @@ const DatePicker: React.FC<DatePickerT> = (props) => {
       className={classnames(className, "flex flex-col gap-2")}
       id="date-picker--wrapper"
     >
-      <Label id="12" label={props.label} labelPosition="out" />
+      <Label id="12" label={props.label} />
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]} sx={RootStyles}>

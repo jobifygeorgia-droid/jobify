@@ -1,5 +1,6 @@
+import { useFilterContext } from "@/providers/FilterProvider";
+
 import { Button } from "@/components/ui";
-import { useFilterContext } from "../FilterProvider";
 
 const Footer: React.FC = () => {
   const { onCloseFilter } = useFilterContext();

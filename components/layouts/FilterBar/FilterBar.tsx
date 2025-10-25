@@ -1,7 +1,7 @@
 "use client";
 
 import { workTypeOptions } from "@/lib/static-data";
-import { useFilterContext } from "./FilterProvider";
+import { useFilterContext } from "@/providers/FilterProvider";
 
 import {
   Bag,
@@ -29,7 +29,7 @@ const FilterBar: React.FC = () => {
             <Select
               values={[currentWorkType]}
               onChange={(value) =>
-                onChangeWorkType((value as SelectOptionT).value)
+                onChangeWorkType((value as SelectOptionT).value as string)
               }
               options={workTypeOptions}
               variant="outlined"

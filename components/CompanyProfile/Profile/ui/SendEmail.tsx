@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { useDevice } from "@/hooks/utils";
 import { companyProfileData } from "@/data/data";
 
@@ -11,27 +13,30 @@ import {
 } from "./";
 import { Mail } from "@/components/ui/icons";
 import { GridTable } from "@/components/layouts";
-import { AnchorButton, ScrollableContainer } from "@/components/ui";
+import { Button, ScrollableContainer } from "@/components/ui";
 
 type SendEmailT = {};
 
 const SendEmail: React.FC<SendEmailT> = () => {
   const device = useDevice();
+  const [isOpened, setIsOpened] = useState(false);
+
+  const onCLose = () => setIsOpened(false);
 
   return (
     <>
-      <AnchorButton
+      <Button
         textSize="sm"
         paddingSize="base"
         buttonType="primary"
-        href={"?send-mails=1"}
+        onClick={() => setIsOpened(true)}
         className="laptop:ml-auto text-sm! tablet:text-base-sm! max-tablet:px-2 max-tablet:py-2!"
       >
         <Mail className="translate-y-[2px] text-lg! tablet:text-2xl!" />
         ელ. ფოსტის გაგზავნა
-      </AnchorButton>
+      </Button>
 
-      <SendEmailModal>
+      <SendEmailModal isOpened={isOpened} onClose={onCLose}>
         <SendEmailHeader />
 
         <ScrollableContainer

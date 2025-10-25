@@ -2,7 +2,7 @@
 
 import { Controller } from "react-hook-form";
 
-import { useFilterContext } from "./FilterProvider";
+import { useFilterContext } from "@/providers/FilterProvider";
 
 import * as UI from "./ui";
 import { Modal } from "@/components/ui";
@@ -10,7 +10,7 @@ import { ChipsField } from "@/components/layouts/Form";
 
 const ExpandedFilter: React.FC = () => {
   const { control, ...filter } = useFilterContext();
-
+  console.log({ isOpen: filter.isOpen });
   if (!filter.isOpen) return null;
 
   return (

@@ -63,6 +63,67 @@ class PrivateApi {
       throw error;
     }
   }
+
+  async delete<T>(
+    url: string,
+    cookieHeaders?: Array<string>
+  ): Promise<{ response: T; headers: Partial<AxiosResponseHeaders> }> {
+    try {
+      const customHeaders = await this.mergeHeaders(cookieHeaders);
+
+      const { data: response, headers } = await axiosInstance.delete(
+        url,
+        customHeaders
+      );
+
+      return { response, headers };
+    } catch (error) {
+      logger(error);
+      throw error;
+    }
+  }
+
+  async put<T, K>(
+    url: string,
+    data?: T | null,
+    cookieHeaders?: Array<string>
+  ): Promise<{ response: K; headers: Partial<AxiosResponseHeaders> }> {
+    try {
+      const customHeaders = await this.mergeHeaders(cookieHeaders);
+
+      const { data: response, headers } = await axiosInstance.put(
+        url,
+        data,
+        customHeaders
+      );
+
+      return { response, headers };
+    } catch (error) {
+      logger(error);
+      throw error;
+    }
+  }
+
+  async patch<T, K>(
+    url: string,
+    data?: T | null,
+    cookieHeaders?: Array<string>
+  ): Promise<{ response: K; headers: Partial<AxiosResponseHeaders> }> {
+    try {
+      const customHeaders = await this.mergeHeaders(cookieHeaders);
+
+      const { data: response, headers } = await axiosInstance.patch(
+        url,
+        data,
+        customHeaders
+      );
+
+      return { response, headers };
+    } catch (error) {
+      logger(error);
+      throw error;
+    }
+  }
 }
 
 export const api = new PrivateApi();

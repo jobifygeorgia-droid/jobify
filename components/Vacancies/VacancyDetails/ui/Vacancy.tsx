@@ -4,7 +4,7 @@ import { getCompanyOwnVacancy } from "@/lib/actions/vacancy.actions";
 
 import { Header, VacancyDetailsBody, Aside } from "./";
 import { EmptyMessage, ErrorMessage } from "@/components/ui";
-import { VacancyAdditionalDetails } from "@/components/layouts";
+import { VacancyAdditionalDetails, Map } from "@/components/layouts";
 
 type VacancyT = {
   vacancyId: string;
@@ -18,7 +18,7 @@ const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
   return (
     <>
       {data && !error && (
-        <>
+        <div className="mt-4">
           <Header
             companyId={2}
             title={data.title}
@@ -45,10 +45,15 @@ const Vacancy: React.FC<VacancyT> = async ({ vacancyId }) => {
                 publishDate={data.published_date}
               />
 
-              <div className="bg-green w-full aspect-square rounded-md"></div>
+              <div className="h-[280px] w-full rounded-md overflow-hidden">
+                <Map
+                  showCenterButton
+                  center={{ lat: data.latitude, lng: data.longitude }}
+                />
+              </div>
             </Aside>
           </div>
-        </>
+        </div>
       )}
 
       {error && <ErrorMessage message={error.message} />}

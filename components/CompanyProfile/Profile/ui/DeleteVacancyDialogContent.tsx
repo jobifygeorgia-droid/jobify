@@ -12,7 +12,11 @@ const DeleteVacancyDialogContent: React.FC<DeleteVacancyDialogContentT> = (
   return (
     <p className="flex flex-col gap-1">
       <span>
-        დარწმუნებული ხართ, რომ გსურთ ვაკანსია - &nbsp;
+        დარწმუნებული ხართ, რომ გსურთ &nbsp;
+        <u>
+          <i>ვაკანსია</i>
+        </u>
+        &nbsp;-&nbsp;
         <strong>{toGenitive(vacancyTitle)}</strong>&nbsp; წაშლა ?
       </span>
       <span>ეს მოქმედება შეუქცევადია.</span>

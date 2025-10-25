@@ -115,14 +115,16 @@ export default function useSearchParamUtils() {
   );
 
   return {
-    mergeParams,
+    // Manual Handling
+    router,
+    pathname,
+    searchParams,
+    navigate,
+    // Auto Helpers
+    mergeParams, // "filter=1" // window=open = ?window=open&filter=1
     mergeAndNavigate,
     deleteParams,
     deleteAndNavigate,
-    navigate,
-    searchParams,
     deleteMergeAndNavigate,
-    router,
-    pathname,
   };
 }

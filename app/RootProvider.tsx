@@ -2,7 +2,13 @@ import { Suspense } from "react";
 import { SessionProvider } from "next-auth/react";
 
 import ThemeRegistry from "@/services/mui/ThemeRegistry";
-import { AuthProvider, PopupsProvider, RouteTracker } from "@/providers";
+import {
+  AuthProvider,
+  RouteTracker,
+  PopupsProvider,
+  FilterProvider,
+  GoogleMapProvider,
+} from "@/providers";
 
 type RootProviderT = {
   children: React.ReactNode;
@@ -15,7 +21,11 @@ const RootProvider: React.FC<RootProviderT> = ({ children }) => {
         <AuthProvider>
           <ThemeRegistry>
             <RouteTracker>
-              <PopupsProvider>{children}</PopupsProvider>
+              <PopupsProvider>
+                <FilterProvider>
+                  <GoogleMapProvider>{children}</GoogleMapProvider>
+                </FilterProvider>
+              </PopupsProvider>
             </RouteTracker>
           </ThemeRegistry>
         </AuthProvider>

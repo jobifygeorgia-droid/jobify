@@ -33,10 +33,28 @@ type StaticChipT = {
 
 export type ChipT = {
   type?: "primary" | "secondary" | "tertiary";
+  size?: "sm";
   className?: string;
   children: React.ReactNode;
 } & (ClickableChipT | StaticChipT);
 
 export type AnchorChipT = Omit<ChipT, "onClick"> & {
   href: string;
+};
+
+// Map
+type FormattedGeocoderAddressComponentT = {
+  city: string;
+  country: string;
+  district: string;
+  street_name: string;
+  street_number: string;
+  establishment: string;
+};
+
+type GetAddressFromCoordsT = {
+  lat: number;
+  lon: number;
+  location: string;
+  location_name: string;
 };

@@ -32,10 +32,9 @@ const ForeignLanguages: React.FC = () => {
                 name={`foreign_languages.${index}.language`}
                 render={({ field, fieldState: { error } }) => (
                   <TextField
-                    labelPosition="out"
+                    {...field}
                     label="მიუთითე ენა"
                     containerClassName="w-full"
-                    {...field}
                     message={error?.message}
                   />
                 )}
@@ -46,10 +45,9 @@ const ForeignLanguages: React.FC = () => {
                 name={`foreign_languages.${index}.level`}
                 render={({ field, fieldState: { error } }) => (
                   <TextField
-                    labelPosition="out"
+                    {...field}
                     label="აირჩიე დონე"
                     containerClassName="w-full"
-                    {...field}
                     message={error?.message}
                   />
                 )}

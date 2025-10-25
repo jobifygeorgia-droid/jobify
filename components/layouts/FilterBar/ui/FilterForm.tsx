@@ -1,11 +1,12 @@
 import { Controller } from "react-hook-form";
 
+import { useFilterContext } from "@/providers/FilterProvider";
+
 import {
   TextField,
   DatePicker,
   LocationField,
 } from "@/components/layouts/Form";
-import { useFilterContext } from "@/components/layouts/FilterBar/FilterProvider";
 
 const FilterForm: React.FC = () => {
   const { control, onChangeDate } = useFilterContext();
@@ -19,9 +20,8 @@ const FilterForm: React.FC = () => {
           <TextField
             {...field}
             inputType="number"
-            labelPosition="out"
-            containerClassName="col-span-2 tablet:col-span-1"
             label="მინ. ანაზღაურება"
+            containerClassName="col-span-2 tablet:col-span-1"
           />
         )}
       />

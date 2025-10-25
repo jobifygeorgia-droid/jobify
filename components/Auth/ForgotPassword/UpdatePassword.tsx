@@ -42,7 +42,6 @@ const UpdatePassword: React.FC = () => {
                 inputProps={{
                   ...field,
                   label: "პაროლი",
-                  labelPosition: "out",
                   message: error?.message,
                 }}
               />
@@ -57,7 +56,6 @@ const UpdatePassword: React.FC = () => {
                 inputProps={{
                   ...field,
                   label: "გაიმეორე პაროლი",
-                  labelPosition: "out",
                   message: error?.message,
                 }}
               />

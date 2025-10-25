@@ -1,23 +1,35 @@
 "use client";
 
-import { useSendResumeContext } from "@/providers/SendResumeProvider";
+import { ButtonT } from "@/components/ui/Button/button.types";
 
-import { AnchorButton } from "@/components/ui";
-import { AnchorButtonT } from "@/components/ui/Button/button.types";
+import { Button } from "@/components/ui";
+import UploadResumeModal from "./UploadResumeModal";
+import { useState } from "react";
 
 type SendResumeButtonT = {
   title?: "short" | "long";
-  buttonProps?: Omit<AnchorButtonT, "buttonType" | "rounded" | "href">;
+  buttonProps?: Omit<ButtonT, "buttonType" | "rounded" | "href">;
 };
 
 const SendResumeButton: React.FC<SendResumeButtonT> = (props) => {
   const { title, buttonProps } = props;
-  const { paramsToAttach } = useSendResumeContext();
+  const [isOpened, setIsOpened] = useState(false);
 
   return (
-    <AnchorButton {...buttonProps} href={paramsToAttach} buttonType="primary">
-      {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
-    </AnchorButton>
+    <>
+      <Button
+        {...buttonProps}
+        buttonType="primary"
+        onClick={() => setIsOpened(true)}
+      >
+        {title === "short" ? "გაგზავნა" : "რეზიუმეს გაგზავნა"}
+      </Button>
+
+      <UploadResumeModal
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
+      />
+    </>
   );
 };
 

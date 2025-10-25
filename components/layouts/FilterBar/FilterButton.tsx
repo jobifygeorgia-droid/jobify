@@ -1,7 +1,7 @@
 "use client";
 
 import classnames from "classnames";
-import { useFilterContext } from "@/components/layouts/FilterBar/FilterProvider";
+import { useFilterContext } from "@/providers/FilterProvider";
 
 type FilterButtonT = {
   children: React.ReactNode;
@@ -13,11 +13,12 @@ const FilterButton: React.FC<FilterButtonT> = (props) => {
 
   return (
     <button
+      type="button"
+      onClick={onOpenFilter}
       className={classnames(
         props.className || "",
         "cursor-pointer flex items-center justify-center leading-0"
       )}
-      onClick={onOpenFilter}
     >
       {props.children}
     </button>

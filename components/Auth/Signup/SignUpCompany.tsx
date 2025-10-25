@@ -63,7 +63,6 @@ const SignUpCompany: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="კომპანიის სახელი"
               message={error?.message}
             />
@@ -76,7 +75,6 @@ const SignUpCompany: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="საიდენტიფიკაციო კოდი"
               message={error?.message}
             />
@@ -89,7 +87,6 @@ const SignUpCompany: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="საკონტაქტო პირი"
               message={error?.message}
             />
@@ -100,12 +97,7 @@ const SignUpCompany: React.FC = () => {
           control={control}
           name="email"
           render={({ field, fieldState: { error } }) => (
-            <TextField
-              {...field}
-              label="ელ.ფოსტა"
-              labelPosition="out"
-              message={error?.message}
-            />
+            <TextField {...field} label="ელ.ფოსტა" message={error?.message} />
           )}
         />
 
@@ -115,7 +107,6 @@ const SignUpCompany: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="ტელეფონი"
               inputType="number"
               message={error?.message}
@@ -131,7 +122,6 @@ const SignUpCompany: React.FC = () => {
               inputProps={{
                 ...field,
                 label: "პაროლი",
-                labelPosition: "out",
                 message: error?.message,
               }}
             />

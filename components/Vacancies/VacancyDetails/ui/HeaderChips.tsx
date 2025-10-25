@@ -20,7 +20,7 @@ const HeaderChips: React.FC<HeaderChipsT> = (props) => {
     <div className="col-start-2 tablet:col-span-1 row-start-3 tablet:row-start-2 flex flex-col tablet:flex-row tablet:flex-wrap flex-wrap gap-y-2 gap-x-4 desktop-sm:-translate-y-[8px]">
       <Link
         href={DYNAMIC_ROUTES.company_profile_guest(companyId)}
-        className="bg-blue-light rounded-full px-4 py-[2px]"
+        className="bg-blue-light rounded-full px-4 py-[2px] w-full tablet:w-max flex justify-center"
       >
         <HeaderChip
           Icon={CompanyProfile}

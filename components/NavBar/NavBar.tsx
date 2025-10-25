@@ -23,7 +23,7 @@ const NavBar = () => {
               <User user={user} />
             </div>
 
-            <BurgerMenu user={user} />
+            {user && <BurgerMenu user={user} />}
           </nav>
         </Container>
       </div>

@@ -27,14 +27,7 @@ const Select = (props: SelectT) => {
 
   return (
     <div className="w-full flex flex-col gap-2" style={{ width: props.width }}>
-      {props.label && (
-        <Label
-          keepOrder
-          label={props.label}
-          labelPosition="out"
-          id={`select-${props.id}`}
-        />
-      )}
+      {props.label && <Label label={props.label} id={`select-${props.id}`} />}
 
       <div
         className={classnames(

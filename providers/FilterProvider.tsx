@@ -12,68 +12,70 @@ import {
   experienceOptions,
   workCategoryOptions,
 } from "@/lib/static-data";
+
 import {
   FilterSchema,
   FilterSchemaT,
   filterInitialState,
 } from "@/lib/schemas/FilterSchema";
+
 import { useDevice, useSearchParamUtils } from "@/hooks/utils";
+import { PATHS } from "@/lib/config";
 
 type FilterProviderT = {
   children: React.ReactNode;
-  redirectTo: string;
 };
 
 type FilterContextType = {
-  onCloseFilter: () => void;
-  toggleCategories: () => void;
+  isOpen: boolean;
+  currentSearch: string;
   categoriesLimit: number;
+  currentWorkType: string;
   expandCategories: boolean;
-  categoriesRef: React.RefObject<HTMLDivElement | null>;
   workTypeOptions: Array<OptionT>;
   workSectorOptions: Array<OptionT>;
   experienceOptions: Array<OptionT>;
   workCategoryOptions: Array<OptionT>;
   control: Control<FilterSchemaT> | undefined;
+  categoriesRef: React.RefObject<HTMLDivElement | null>;
   onFilter: () => void;
-  isOpen: boolean;
   onOpenFilter: () => void;
+  onCloseFilter: () => void;
+  toggleCategories: () => void;
   onSelectCategory: (
     newValue: string | number,
     existingValues: Array<string>,
     cb: (value: Array<string>) => void
   ) => void;
-  onChangeDate: (value: string, cb: (v: string) => void) => void;
-  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  currentSearch: string;
   onChangeWorkType: (value: string) => void;
-  currentWorkType: string;
+  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeDate: (value: string, cb: (v: string) => void) => void;
 };
 
 const FilterContext = createContext<FilterContextType>({
-  control: undefined,
-  onCloseFilter: () => {},
-  toggleCategories: () => {},
+  isOpen: false,
+  currentSearch: "",
   categoriesLimit: 0,
+  currentWorkType: "",
   expandCategories: false,
-  categoriesRef: { current: null },
   workTypeOptions: [],
   workSectorOptions: [],
   experienceOptions: [],
   workCategoryOptions: [],
+  control: undefined,
+  categoriesRef: { current: null },
   onFilter: () => {},
-  isOpen: false,
   onOpenFilter: () => {},
+  onCloseFilter: () => {},
+  toggleCategories: () => {},
   onSelectCategory: () => {},
-  onChangeDate: () => {},
-  onSearchChange: () => {},
-  currentSearch: "",
   onChangeWorkType: () => {},
-  currentWorkType: "",
+  onSearchChange: () => {},
+  onChangeDate: () => {},
 });
 
 const FilterProvider: React.FC<FilterProviderT> = (props) => {
-  const { children, redirectTo } = props;
+  const { children } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,7 +84,7 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
     defaultValues: filterInitialState,
   });
 
-  const { searchParams, router } = useSearchParamUtils();
+  const { searchParams, router, pathname } = useSearchParamUtils();
 
   const device = useDevice();
 
@@ -110,6 +112,7 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
 
   // Filter state //
   const onOpenFilter = () => setIsOpen(true);
+
   const onCloseFilter = () => setIsOpen(false);
 
   // Categories state //
@@ -170,9 +173,12 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
         queryParts.push(`${key}=${value}`);
     }
 
-    console.log(queryParts);
+    const redirectTo = pathname.startsWith(PATHS.vip_vacancies)
+      ? PATHS.vip_vacancies
+      : PATHS.vacancies;
 
     router.push(`${redirectTo}?${queryParts.join("&")}`);
+
     setIsOpen(false);
   });
 

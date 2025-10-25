@@ -44,9 +44,7 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
 
   return (
     <div className="flex flex-col gap-[6px]">
-      {props.label && (
-        <Label label={props.label} labelPosition="out" keepOrder={true} />
-      )}
+      {props.label && <Label label={props.label} />}
 
       <div
         className={classnames(props.className || "")}

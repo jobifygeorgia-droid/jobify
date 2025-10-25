@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signOut as nextAuthSignOut, useSession } from "next-auth/react";
+import { signOut as nextAuthSignOut } from "next-auth/react";
 
 import { PATHS } from "@/lib/config";
 import { logout } from "@/lib/actions/auth.actions";
@@ -41,7 +41,6 @@ import { getStatus, isPrivateRoute, logger, LS, StatusT } from "@/lib/utils";
  */
 export default function useLogoutQuery() {
   const router = useRouter();
-  const { update } = useSession();
 
   const [status, setStatus] = useState<StatusT>(() => getStatus.idle());
 
@@ -50,7 +49,6 @@ export default function useLogoutQuery() {
 
     const { currentRoute } = LS.getRouteTrack();
     const isOnPrivateRoute = isPrivateRoute(currentRoute);
-
     const { error } = await logout();
 
     if (error) {
@@ -64,12 +62,10 @@ export default function useLogoutQuery() {
       return;
     }
 
-    await nextAuthSignOut({ redirectTo: PATHS.home });
-    await update();
+    if (isOnPrivateRoute) await nextAuthSignOut({ redirectTo: PATHS.home });
+    else await nextAuthSignOut();
 
     setStatus(() => getStatus.success());
-    if (isOnPrivateRoute) router.push(PATHS.home);
-
     router.refresh();
   }
 

@@ -1,5 +1,7 @@
+import classnames from "classnames";
+
 import { vipVacancies } from "@/data/data";
-import { VACANCY_TYPES } from "@/interface/global.types";
+import { USER_TYPES, VACANCY_TYPES } from "@/interface/global.types";
 
 import {
   HeaderChips,
@@ -8,6 +10,7 @@ import {
   HeaderExpiryDate,
   HeaderTitleAndType,
 } from "./";
+import { auth } from "@/services/next-auth";
 
 type HeaderT = {
   email: string;
@@ -19,9 +22,18 @@ type HeaderT = {
   vacancyType: VACANCY_TYPES;
 };
 
-const Header: React.FC<HeaderT> = (props) => {
+const Header: React.FC<HeaderT> = async (props) => {
+  const session = await auth();
+
+  const isJobSeeker = session?.user?.user_type === USER_TYPES.JOB_SEEKER;
+
   return (
-    <header className="grid grid-cols-[repeat(2,max-content)] tablet:grid-cols-[repeat(1,max-content_1fr_max-content)] items-start tablet:items-center gap-x-2 laptop:gap-x-4 gap-y-2">
+    <header
+      className={classnames(
+        "grid grid-cols-[repeat(2,max-content)] tablet:grid-cols-[repeat(1,max-content_1fr_max-content)] items-start tablet:items-center gap-x-2 laptop:gap-x-4 gap-y-2 laptop:gap-y-4",
+        { "laptop:gap-y-2!": isJobSeeker }
+      )}
+    >
       <CompanyImage title={props.title} image={vipVacancies[1].image} />
 
       <HeaderTitleAndType title={props.title} vacancyType={props.vacancyType} />
@@ -33,9 +45,13 @@ const Header: React.FC<HeaderT> = (props) => {
         companyName={props.companyName}
       />
 
-      <HeaderActions />
+      {isJobSeeker && (
+        <>
+          <HeaderActions />
 
-      <HeaderExpiryDate expiryDate={props.expiryDate} />
+          <HeaderExpiryDate expiryDate={props.expiryDate} />
+        </>
+      )}
     </header>
   );
 };

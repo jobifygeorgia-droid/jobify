@@ -19,7 +19,7 @@ const Switch: React.FC<SwitchT> = (props) => {
           onChange={(e) => onChange(!!e.target.value)}
         />
       }
-      label={label ? <Label labelPosition="out" label={label} /> : null}
+      label={label ? <Label label={label} /> : null}
     />
   );
 };

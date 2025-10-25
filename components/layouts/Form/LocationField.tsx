@@ -8,11 +8,19 @@ import { useFetchLocations } from "@/hooks/api/utils";
 import { LocationFieldT } from "@/interface/ui/forms-ui";
 
 import TextField from "./TextField";
+import { Map } from "@/components/layouts";
 import LocationFieldDropdown from "./ui/LocationFieldDropdown";
 import LocationFieldAdornment from "./ui/LocationFieldAdornment";
+import { useGoogleMapContext } from "@/providers/GoogleMapProvider";
 
 const LocationField: React.FC<LocationFieldT> = (props) => {
-  const { textFieldProps = {}, containerClassName = "" } = props;
+  const {
+    showMap = false,
+    textFieldProps = {},
+    containerClassName = "",
+  } = props;
+
+  const { onSetPinByCoords } = useGoogleMapContext();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,9 +31,16 @@ const LocationField: React.FC<LocationFieldT> = (props) => {
   const onSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearch(e.target.value);
 
-  const onOptionSelect = (option: LocationT) => {
+  const onOptionSelect = (location: LocationT) => {
     setSearch("");
-    props.onChange(option);
+    props.onChange(location);
+
+    if (!showMap) return;
+    onSetPinByCoords({ lat: location.lat, lng: location.lon });
+  };
+
+  const onSelectFromMap = (location: LocationT) => {
+    props.onChange(location);
   };
 
   const onClear = () => {
@@ -38,32 +53,39 @@ const LocationField: React.FC<LocationFieldT> = (props) => {
   const { loading, options } = useFetchLocations(search);
 
   return (
-    <div className={classnames(containerClassName, "relative")}>
-      <TextField
-        label="მდებარეობა"
-        labelPosition="out"
-        {...textFieldProps}
-        onChange={onSearchChange}
-        value={search || props.value || ""}
-        htmlInputProps={{
-          onFocus: () => setOpen(true),
-          onBlur: () => setOpen(false),
-          ref: inputRef,
-        }}
-        adornment={
-          <LocationFieldAdornment
-            onClear={onClear}
-            hasValue={Boolean(props.value)}
-          />
-        }
-      />
-
-      {open && (
-        <LocationFieldDropdown
-          loading={loading}
-          options={options}
-          onOptionSelect={onOptionSelect}
+    <div className={classnames(containerClassName, "flex flex-col gap-4")}>
+      <div className="relative">
+        <TextField
+          label="მდებარეობა"
+          {...textFieldProps}
+          onChange={onSearchChange}
+          value={search || props.value || ""}
+          htmlInputProps={{
+            onFocus: () => setOpen(true),
+            onBlur: () => setOpen(false),
+            ref: inputRef,
+          }}
+          adornment={
+            <LocationFieldAdornment
+              onClear={onClear}
+              hasValue={Boolean(props.value)}
+            />
+          }
         />
+
+        {open && (
+          <LocationFieldDropdown
+            loading={loading}
+            options={options}
+            onOptionSelect={onOptionSelect}
+          />
+        )}
+      </div>
+
+      {showMap && (
+        <div className="w-full h-[320px]">
+          <Map isClickable={true} onClick={onSelectFromMap} showCenterButton />
+        </div>
       )}
     </div>
   );

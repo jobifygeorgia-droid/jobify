@@ -9,7 +9,7 @@ const DeleteVacancyDialogError: React.FC<DeleteVacancyDialogErrorT> = (
 
   return (
     <p className="text-red-600">
-      {message || "ვაკანსიის წაშლა ვერ მოხერხდა. გთხოვთ, სცადოთ თავიდან."}
+      {message || "ვაკანსიის წაშლა ვერ მოხერხდა. გთხოვთ სცადოთ თავიდან."}
     </p>
   );
 };

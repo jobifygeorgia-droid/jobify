@@ -18,3 +18,5 @@ export { default as actionWrapper } from "./actionWrapper";
 export { default as formatPhoneNumber } from "./formatPhoneNumber";
 export { default as toGenitive } from "./toGenitive";
 export { default as showSalaryRange } from "./showSalaryRange";
+export { default as generateLocationNames } from "./generateLocationNames";
+export { default as pathsRevalidation } from "./pathsRevalidation";

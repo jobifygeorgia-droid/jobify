@@ -4,13 +4,11 @@ import { ChipT } from "./ui";
 // TextField
 type TextFieldWithLabelPropsT = {
   label: string;
-  labelPosition?: "out" | "in";
   placeholder?: never;
 };
 
 type TextFieldWithPlaceholderPropsT = {
   label?: never;
-  labelPosition?: never;
   placeholder: string;
 };
 
@@ -36,7 +34,7 @@ export type TextFieldPropsT = TextFieldBaseProps &
   (TextFieldWithLabelPropsT | TextFieldWithPlaceholderPropsT);
 
 // Select
-export type SelectOptionT = { label: string; value: string };
+export type SelectOptionT = { label: string; value: string | number };
 
 export type SelectValueT =
   | SingleValue<SelectOptionT>
@@ -85,6 +83,7 @@ export type ChipsFieldT = {
   label?: string;
   isRequired?: boolean;
   labelClassname?: string;
+  boxType?: "flex" | "grid";
   message?: string;
   onChange: (value: string) => void;
   data: Array<{ label: string; value: string | number }>;
@@ -121,6 +120,7 @@ export type DropzoneFileInputT = {
 export type LocationFieldT = {
   containerClassName?: string;
   value: string;
+  showMap?: boolean;
   textFieldProps?: Omit<
     TextFieldPropsT,
     | "label"

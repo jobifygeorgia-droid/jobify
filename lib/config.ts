@@ -161,6 +161,12 @@ const ALL_ROUTES = [
     roles: [],
   },
   {
+    name: "vacancies_groups_root",
+    path: "/vacancies/groups",
+    isPrivate: false,
+    roles: [],
+  },
+  {
     name: "vacancies_groups",
     path: "/vacancies/groups?group=:group",
     isPrivate: false,

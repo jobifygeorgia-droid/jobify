@@ -52,7 +52,7 @@ export const VacancySchema = z
   .refine(
     (data) => Boolean(data.location !== "" || data.location_name !== ""),
     {
-      path: ["location"],
+      path: ["location_name"],
       message: "გთხოვთ, შეიყვანოთ ლოკაცია",
     }
   );

@@ -63,7 +63,6 @@ const Education: React.FC = () => {
                 render={({ field, fieldState: { error } }) => (
                   <TextField
                     {...field}
-                    labelPosition="out"
                     label="ფაკულტეტი"
                     message={error?.message}
                   />
@@ -76,7 +75,6 @@ const Education: React.FC = () => {
                 render={({ field, fieldState: { error } }) => (
                   <TextField
                     {...field}
-                    labelPosition="out"
                     label="უნივერსიტეტი"
                     message={error?.message}
                   />

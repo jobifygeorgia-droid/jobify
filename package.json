@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "custom:dev": " npx next dev -H 127.0.0.1 -p 3000",
+    "custom:dev": "next dev -H 127.0.0.1 -p 3000",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^5.2.1",
     "@mui/material": "^7.3.1",
     "@mui/x-date-pickers": "^8.10.2",
+    "@react-google-maps/api": "^2.20.7",
     "@tiptap/extension-color": "^3.2.0",
     "@tiptap/extension-highlight": "^3.2.0",
     "@tiptap/extension-image": "^3.2.0",

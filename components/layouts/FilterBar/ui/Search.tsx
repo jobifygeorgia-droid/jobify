@@ -1,6 +1,6 @@
 "use client";
 
-import { useFilterContext } from "@/components/layouts/FilterBar/FilterProvider";
+import { useFilterContext } from "@/providers/FilterProvider";
 
 import { FilterBarInputContainer } from "./";
 import { TextField } from "@/components/layouts/Form";

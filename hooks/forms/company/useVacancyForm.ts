@@ -54,6 +54,9 @@ export default function useVacancyForm(messages: APIErrorMessages | null) {
     form.setValue("longitude", location.lon);
     form.setValue("location", location.location);
     form.setValue("location_name", location.location_name);
+
+    // manually revalidate location field
+    form.trigger("location_name");
   };
 
   const editorRefs = {

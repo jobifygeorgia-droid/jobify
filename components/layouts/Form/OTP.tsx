@@ -10,7 +10,7 @@ const OTP: React.FC<OTPT> = (props) => {
 
   return (
     <div className="flex flex-col gap-[6px]">
-      {label && <Label label={label} labelPosition="out" />}
+      {label && <Label label={label} />}
 
       <OtpInput
         value={value}

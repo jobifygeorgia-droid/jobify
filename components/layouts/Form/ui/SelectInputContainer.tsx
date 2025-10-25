@@ -15,9 +15,7 @@ const SelectInputContainer = <T,>({
   return (
     <components.ValueContainer
       {...rest}
-      className={classnames(
-        "rounded-inherit border-red outline-none! border-none!"
-      )}
+      className={classnames("rounded-inherit pl-2! outline-none! border-none!")}
     >
       <div className="flex items-center w-full gap-2">
         {adornment && (

@@ -2,20 +2,24 @@
 
 import { useDevice } from "@/hooks/utils";
 import { TipTapProvider } from "@/providers";
-import { useSendResumeContext } from "@/providers/SendResumeProvider";
 
 import { Button, Modal, Divider } from "@/components/ui";
 import { TextEditor, DropzoneFileInput } from "@/components/layouts/Form";
 
-const UploadResumeModal: React.FC = () => {
-  const { modalIsOpen, onCloseModal } = useSendResumeContext();
+type UploadResumeModalT = {
+  isOpened: boolean;
+  onClose: () => void;
+};
+
+const UploadResumeModal: React.FC<UploadResumeModalT> = (props) => {
+  const { isOpened, onClose } = props;
 
   const device = useDevice();
 
-  if (!modalIsOpen) return null;
+  if (!isOpened) return null;
 
   return (
-    <Modal onClose={onCloseModal} backdrop zIndexOnMobile={99}>
+    <Modal onClose={onClose} backdrop zIndexOnMobile={99}>
       <div className="w-screen h-screen pt-20 pb-10 px-4 tablet:w-[640px] desktop-sm:w-[800px] tablet:h-[670px] flex flex-col tablet:p-6 tablet:pb-0">
         <div className="sticky top-0 flex justify-center font-semibold text-base desktop-sm:text-md bg-white h-max pr-6">
           <span>რეზიუმეს გაგზავნა</span>
@@ -53,9 +57,9 @@ const UploadResumeModal: React.FC = () => {
 
         <div className="mt-auto h-max flex items-center justify-end gap-3 tablet:py-4 tablet:border-t border-t-bc sticky">
           <Button
+            onClick={onClose}
             buttonType="tertiary"
             paddingSize="base-wider"
-            onClick={onCloseModal}
           >
             გაუქმება
           </Button>

@@ -41,7 +41,6 @@ const BaseAuthentication: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="მობილური ნომერი"
               message={error?.message}
             />
@@ -55,7 +54,6 @@ const BaseAuthentication: React.FC = () => {
             <PasswordField
               inputProps={{
                 ...field,
-                labelPosition: "out",
                 label: "პაროლი",
                 message: error?.message,
               }}

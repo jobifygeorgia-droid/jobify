@@ -80,9 +80,8 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
             name="discipline"
             render={({ field, fieldState: { error } }) => (
               <TextField
-                label="სამუშაო სფერო *"
-                labelPosition="out"
                 {...field}
+                label="სამუშაო სფერო *"
                 message={error?.message}
               />
             )}
@@ -90,19 +89,14 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
 
           <div className="grid grid-cols-2 gap-x-5 gap-y-1">
             <div className="col-span-2">
-              <Label label="ანაზღაურება *" labelPosition="out" />
+              <Label label="ანაზღაურება *" />
             </div>
 
             <Controller
               control={control}
               name="salary.from"
               render={({ field, fieldState: { error } }) => (
-                <TextField
-                  label="დან"
-                  labelPosition="out"
-                  {...field}
-                  message={error?.message}
-                />
+                <TextField {...field} label="დან" message={error?.message} />
               )}
             />
 
@@ -110,12 +104,7 @@ const CreateStatement: React.FC<CreateStatementT> = () => {
               control={control}
               name="salary.to"
               render={({ field, fieldState: { error } }) => (
-                <TextField
-                  label="მდე"
-                  labelPosition="out"
-                  {...field}
-                  message={error?.message}
-                />
+                <TextField {...field} label="მდე" message={error?.message} />
               )}
             />
           </div>

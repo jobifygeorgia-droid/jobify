@@ -1,4 +1,3 @@
-import { SendResumeProvider } from "@/providers";
 import { PageParamsT } from "@/interface/global.types";
 import { buildQueryStringFromNextSearchParams } from "@/lib/utils";
 
@@ -13,11 +12,9 @@ const Page: React.FC<PageParamsT> = async ({ searchParams, params }) => {
   const queryStr = buildQueryStringFromNextSearchParams(query);
 
   return (
-    <SendResumeProvider>
-      <Container>
-        <VacancyDetails vacancyId={vacancyId} query={queryStr} />
-      </Container>
-    </SendResumeProvider>
+    <Container>
+      <VacancyDetails vacancyId={vacancyId} query={queryStr} />
+    </Container>
   );
 };
 

@@ -17,3 +17,4 @@ export { default as ReceivedResumeCardCubic } from "./ReceivedResumeCard/Receive
 export { default as ReceivedResumeCardHorizontal } from "./ReceivedResumeCard/ReceivedResumeCardHorizontal";
 export { default as GridTable } from "./GridTable/GridTable";
 export { default as GridTableItem } from "./GridTable/GridTableItem";
+export { default as Map } from "./Map/Map";

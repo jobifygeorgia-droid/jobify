@@ -4,9 +4,11 @@ import {
   VacancyT,
   GetVacanciesResponseT,
 } from "@/interface/db/vacancies.types";
-import { actionWrapper } from "@/lib/utils";
-import { api_endpoints } from "@/lib/api-endpoints";
+import { auth } from "@/services/next-auth";
+import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
 import { api } from "@/services/axios/axios-server";
+import { api_endpoints } from "@/lib/api-endpoints";
+import { actionWrapper, pathsRevalidation } from "@/lib/utils";
 import { VacancySchemaT } from "@/lib//schemas/company/VacancySchema";
 import { PaginatedRequestParamsT } from "@/interface/db/common.types";
 
@@ -72,6 +74,28 @@ export async function getVIPVacancies(params: PaginatedRequestParamsT) {
     const { response } = await api.get<GetVacanciesResponseT>(
       `${api_endpoints.vacancies.vipVacancies}?limit=${params.limit}${query}`
     );
+
+    return response;
+  });
+}
+
+export async function deleteVacancy(id: string) {
+  return await actionWrapper(async () => {
+    const session = await auth();
+
+    if (!session?.user) throw new Error("თქვენ არ ხართ ავტორიზებული");
+
+    const { response } = await api.delete(
+      api_endpoints.company.deleteVacancy(id)
+    );
+
+    pathsRevalidation([
+      PATHS.home,
+      PATHS.vacancies,
+      PATHS.vip_vacancies,
+      PATHS.vacancies_groups_root,
+      DYNAMIC_ROUTES.company_profile(session.user.id),
+    ]);
 
     return response;
   });

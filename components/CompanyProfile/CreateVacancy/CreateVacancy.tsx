@@ -63,7 +63,6 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
                 {...field}
                 message={error?.message}
                 label="პოზიციის დასახელება"
-                labelPosition="out"
               />
             )}
           />
@@ -140,7 +139,7 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
           />
 
           <div className="flex flex-col gap-2">
-            <Label label="ანაზღაურება" labelPosition="out" />
+            <Label label="ანაზღაურება" />
 
             <div className="flex gap-5 w-full order-1">
               <Controller
@@ -153,9 +152,8 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
                       value: field.value ? field.value.toString() : "",
                       onChange: (e) => field.onChange(Number(e.target.value)),
                     }}
-                    message={error?.message}
                     label="დან"
-                    labelPosition="out"
+                    message={error?.message}
                     containerClassName="flex-1"
                   />
                 )}
@@ -173,7 +171,6 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
                     }}
                     message={error?.message}
                     label="მდე"
-                    labelPosition="out"
                     containerClassName="flex-1"
                   />
                 )}
@@ -187,6 +184,7 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             render={({ field, fieldState: { error } }) => (
               <ChipsField
                 {...field}
+                boxType="grid"
                 message={error?.message}
                 data={workTypeOptions}
                 label="ვაკანსიის ტიპი"
@@ -216,6 +214,7 @@ const CreateVacancy: React.FC<CreateVacancyT> = () => {
             name="location_name"
             render={({ field, fieldState: { error } }) => (
               <LocationField
+                showMap
                 value={field.value}
                 onChange={handlers.onChangeLocation}
                 textFieldProps={{
