@@ -1,0 +1,11 @@
+export { default as AuthPopup } from "./AuthPopup";
+export { default as SignUp } from "./Signup/SignUp";
+export { default as SignUpUser } from "./Signup/SignUpUser";
+export { default as SignUpCompany } from "./Signup/SignUpCompany";
+export { default as VerifyEmail } from "./VerifyEmail/VerifyEmail";
+export { default as VerifyEmailSuccess } from "./VerifyEmail/VerifyEmailSuccess";
+export { default as VerifyEmailFailure } from "./VerifyEmail/VerifyEmailFailure";
+export { default as UpdatePassword } from "./ForgotPassword/UpdatePassword";
+export { default as VerifyUserIdentity } from "./ForgotPassword/VerifyUserIdentity";
+export { default as ForgotPasswordUpdateMethod } from "./ForgotPassword/ForgotPasswordUpdateMethod";
+export { default as BaseAuthentication } from "./Signin/BaseAuthentication";

@@ -1,9 +1,22 @@
+import { formatDate } from "@/lib/utils";
 import DetailChip from "./DetailChip";
 import { Calendar, Wallet, Bag, Location } from "@/components/ui/icons";
 
-type VacancyAdditionalDetailsT = {};
+type VacancyAdditionalDetailsT = {
+  publishDate: string;
+  expiryDate: string;
+  location: string;
+  minSalary: string;
+  maxSalary: string;
+};
 
-const VacancyAdditionalDetails: React.FC<VacancyAdditionalDetailsT> = () => {
+const VacancyAdditionalDetails: React.FC<VacancyAdditionalDetailsT> = (
+  props
+) => {
+  const { publishDate, expiryDate, minSalary, maxSalary, location } = props;
+
+  const salaryRange = `${minSalary} - ${maxSalary}`;
+
   return (
     <div className="rounded-xl tablet:border border-blue-light-hover tablet:px-8 tablet:py-3 laptop:p-8 flex flex-col gap-6">
       <span className="hidden tablet:inline-block font-semibold">
@@ -14,22 +27,22 @@ const VacancyAdditionalDetails: React.FC<VacancyAdditionalDetailsT> = () => {
         <DetailChip
           Icon={Calendar}
           title="გამოქვეყნების თარიღი"
-          value="14 ივნისი, 2021"
+          value={formatDate(publishDate)}
         />
 
         <DetailChip
           Icon={Calendar}
           title="დასრულების თარიღი"
-          value="14 ივლისი, 2021"
+          value={formatDate(expiryDate)}
         />
 
-        <DetailChip Icon={Wallet} title="ხელფასი" value="3000 - 3500 GEL" />
+        <DetailChip Icon={Wallet} title="ხელფასი" value={`${salaryRange} ₾`} />
 
         <DetailChip Icon={Bag} title="გამოცდილება" value="0-2 წელი" />
 
         <DetailChip Icon={Bag} title="განათლება" value="მაგისტრი" />
 
-        <DetailChip Icon={Location} title="ლოკაცია" value="ა. ბელიაშვილის 52" />
+        <DetailChip Icon={Location} title="ლოკაცია" value={location} />
       </div>
     </div>
   );

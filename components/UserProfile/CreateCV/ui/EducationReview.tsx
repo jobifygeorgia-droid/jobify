@@ -4,13 +4,12 @@ import { formatDate } from "@/lib/utils";
 import { CVSchemaT } from "@/lib/schemas/user/CVSchema";
 
 import {
-  EducationHat,
-  University,
   Calendar,
+  University,
+  EducationHat,
   EducationPen,
 } from "@/components/ui/icons";
-import ReviewItem from "./ReviewItem";
-import ReviewContainer from "./ReviewContainer";
+import { ReviewItem, ReviewContainer } from "./";
 
 type EducationReviewT = {
   index: number;

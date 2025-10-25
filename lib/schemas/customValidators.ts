@@ -69,6 +69,11 @@ export const lte = {
     params.message || `მნიშვნელობა უნდა იყოს ნაკლები ან ტოლი ${params.max}_ზე`,
 };
 
+export const textEditorValueIsNotEmpty = {
+  validator: (value: string) => value.replace(/<[^>]+>/g, "").trim().length > 0,
+  message: (message?: string) => message || "გთხოვთ შეავსოთ ველი",
+};
+
 ///// > Optionals
 
 export const isValidOptionalDate = {

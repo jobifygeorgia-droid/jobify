@@ -1,35 +1,44 @@
-import { formatDate } from "@/lib/utils";
+import {
+  formatDate,
+  calcRemainingTime,
+  detectVacancyStatus,
+} from "@/lib/utils";
+import { VacancyT } from "@/interface/db/vacancies.types";
 
+import { Status, Options } from "./";
 import { GridTableItem } from "@/components/layouts";
-import Status from "./Status";
-import Options from "./Options";
 
 type VacanciesTableRowT = {
-  vacancy: string;
-  creationDate: string;
-  remainingDays: number;
-  views: number;
-  resume: number;
-  chosenCandidate: number;
-  hired: number;
-  status: string;
+  vacancy: VacancyT;
 };
 
 const VacanciesTableRow: React.FC<VacanciesTableRowT> = (props) => {
+  const {
+    vacancy: { expiry_date, is_published, is_approved, ...vacancy },
+  } = props;
+
+  const remainingDays = calcRemainingTime(expiry_date);
+
+  const status = detectVacancyStatus(is_published, is_approved, expiry_date);
+
   return (
     <>
-      <GridTableItem>{props.vacancy}</GridTableItem>
-      <GridTableItem>{formatDate(props.creationDate)}</GridTableItem>
-      <GridTableItem>{props.remainingDays}</GridTableItem>
-      <GridTableItem>{props.views}</GridTableItem>
-      <GridTableItem>{props.resume}</GridTableItem>
-      <GridTableItem>{props.chosenCandidate}</GridTableItem>
-      <GridTableItem>{props.hired}</GridTableItem>
+      <GridTableItem>{vacancy.title}</GridTableItem>
+      <GridTableItem>{formatDate(vacancy.published_date)}</GridTableItem>
+      <GridTableItem>{remainingDays}</GridTableItem>
+      <GridTableItem>{120}</GridTableItem>
+      <GridTableItem>{100}</GridTableItem>
+      {/* ASK: to STEIKHOLDERS about chosen candidates; employed candidates -> removed */}
+      <GridTableItem>{10}</GridTableItem>
+      <GridTableItem>{2}</GridTableItem>
       <GridTableItem>
-        <Status status={props.status} />
+        <Status status={status} />
       </GridTableItem>
       <GridTableItem alignCenter>
-        <Options />
+        <Options
+          vacancyTitle={vacancy.title}
+          vacancyId={vacancy.id.toString()}
+        />
       </GridTableItem>
     </>
   );

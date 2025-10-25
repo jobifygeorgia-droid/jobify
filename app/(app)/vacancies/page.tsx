@@ -1,19 +1,24 @@
-import FilterProvider from "@/components/layouts/FilterBar/FilterProvider";
+import { PageParamsT } from "@/interface/global.types";
+import { vacanciesFilterableKeys } from "@/lib/constants";
+import { buildQueryStringFromNextSearchParams } from "@/lib/utils";
 
 import { Container } from "@/components/ui";
 import { FilterBar } from "@/components/layouts";
 import Vacancies from "@/components/Vacancies/Vacancies/Vacancies";
 
-type PageT = {};
+const Page: React.FC<PageParamsT> = async ({ searchParams }) => {
+  const query = await searchParams;
 
-const Page: React.FC<PageT> = () => {
+  const queryStr = buildQueryStringFromNextSearchParams(
+    query,
+    vacanciesFilterableKeys.concat(["page"])
+  );
+
   return (
-    <FilterProvider>
-      <Container>
-        <FilterBar />
-        <Vacancies />
-      </Container>
-    </FilterProvider>
+    <Container>
+      <FilterBar />
+      <Vacancies key={queryStr} query={queryStr} />
+    </Container>
   );
 };
 

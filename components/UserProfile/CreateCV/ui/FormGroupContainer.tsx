@@ -1,8 +1,9 @@
 import classnames from "classnames";
 
 import { useCV } from "@/components/UserProfile/CreateCV/CVProvider";
-import { Plus, Minus, Check, Exclamation } from "@/components/ui/icons";
+
 import { CVSchemaT } from "@/lib/schemas/user/CVSchema";
+import { Plus, Minus, Check, Exclamation } from "@/components/ui/icons";
 
 type FormGroupContainerT = {
   title: string;

@@ -1,5 +1,4 @@
-import SectionContainer from "@/components/Home/ui/SectionContainer";
-import InterestingForYouBlock from "@/components/Home/ui/InterestingForYouBlock";
+import { SectionContainer, InterestingForYouBlock } from "@/components/Home/ui";
 
 type InterestingForYouT = {};
 

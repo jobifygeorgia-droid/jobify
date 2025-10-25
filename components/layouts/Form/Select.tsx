@@ -1,72 +1,55 @@
 "use client";
 
-import { useState } from "react";
 import SelectEl from "react-select";
 import classnames from "classnames";
 
-import { SelectedOptionT } from "./types/form-fields.types";
+import { SelectT, SelectValueT, SelectOptionT } from "@/interface/ui/forms-ui";
 
+import { ErrorMessage, Label } from ".";
+import { Spinner } from "@/components/ui";
 import SelectInputContainer from "./ui/SelectInputContainer";
 import SelectMultiValueContainer from "./ui/SelectMultiValueContainer";
-import { customSelectStyles, customSelectTheme } from "./ui/selectConfig";
-import { ErrorMessage, Label } from ".";
+import { customSelectStyles, customSelectTheme } from "./styles/selectConfig";
 
-type SelectT<T> = {
-  options?: Array<T>;
-  isMulti?: boolean;
-  placeholder?: string;
-  width?: string;
-  containerClassName?: string;
-  variant?: "filled" | "outlined";
-  adornment?: React.ReactNode;
-  label?: string;
-  message?: string;
-  onChange: (value: SelectedOptionT<T>) => void;
-  instanceId: string;
-  itemsToShowCount?: number;
-};
-
-const Select = <T extends object>(props: SelectT<T>) => {
+const Select = (props: SelectT) => {
   const {
-    options = [],
-    isMulti = false,
-    placeholder,
-    width = "100%",
     adornment,
-    instanceId,
-    containerClassName,
-    label,
-    message,
-    itemsToShowCount,
+    values = [],
+    isMulti = false,
+    itemsToShowCount = 1,
   } = props;
 
-  const [selectedOption, setSelectedOption] = useState<SelectedOptionT<T>>(
-    isMulti ? [] : null
+  const selectedOptions = props.options.filter((option) =>
+    values.includes(option.value)
   );
 
-  const onChange = (value: SelectedOptionT<T>) => {
-    setSelectedOption(value);
-    props.onChange(value);
-  };
+  const onChange = (value: SelectValueT) => props.onChange(value);
 
   return (
-    <div className="flex flex-col gap-2" style={{ width }}>
-      {label && <Label label={label} labelPosition="out" keepOrder />}
+    <div className="w-full flex flex-col gap-2" style={{ width: props.width }}>
+      {props.label && <Label label={props.label} id={`select-${props.id}`} />}
 
       <div
         className={classnames(
           "w-full relative flex items-center gap-1 border border-bc focus-within:border-light-grey-active rounded-xl bg-white",
-          containerClassName
+          props.containerClassName
         )}
       >
         <SelectEl
-          instanceId={instanceId}
+          id={props.id}
           isMulti={!!isMulti}
-          defaultValue={selectedOption}
-          options={options}
           onChange={onChange}
-          className="w-full outline-none"
+          options={props.options}
+          theme={customSelectTheme}
+          instanceId={props.instanceId}
+          value={selectedOptions}
+          placeholder={props.placeholder}
           classNamePrefix="custom-select"
+          className="w-full outline-none"
+          noOptionsMessage={() => props.dropdownPlaceholder || "No options"}
+          classNames={{
+            menuList: () => classnames(props.loading && "loading-active"),
+          }}
           components={{
             ValueContainer: (props) => (
               <SelectInputContainer adornment={adornment} {...props} />
@@ -77,11 +60,19 @@ const Select = <T extends object>(props: SelectT<T>) => {
                 itemsToShowCount={itemsToShowCount}
               />
             ),
+            NoOptionsMessage: () =>
+              props.loading || props.dropdownPlaceholder ? (
+                <div className="py-8 h-[40px] w-full text-center text-gray-500  ">
+                  {props.loading ? (
+                    <Spinner size="sm" type="inline" />
+                  ) : (
+                    props.dropdownPlaceholder || ""
+                  )}
+                </div>
+              ) : null,
           }}
-          placeholder={placeholder}
-          theme={customSelectTheme}
           styles={{
-            ...customSelectStyles<T, typeof isMulti>(),
+            ...customSelectStyles<SelectOptionT, typeof isMulti>(),
             control: (baseStyles) => ({
               ...baseStyles,
               zIndex: 9999,
@@ -96,7 +87,7 @@ const Select = <T extends object>(props: SelectT<T>) => {
         />
       </div>
 
-      {message && <ErrorMessage message={message} />}
+      {props.message && <ErrorMessage message={props.message} />}
     </div>
   );
 };

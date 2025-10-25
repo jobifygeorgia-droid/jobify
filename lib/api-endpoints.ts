@@ -2,7 +2,8 @@ export const api_endpoints = {
   auth: {
     register: "/register/",
     verifyEmail: "/verify-email/",
-    login: "/token/email/",
+    login: "/login/",
+    // login: "/token/email/",
     logout: "/logout/",
     refresh: "/token/refresh/",
     requestPasswordReset: "/request-password-reset-pin/",
@@ -10,5 +11,15 @@ export const api_endpoints = {
     updatePassword: "/reset-password-confirm-pin/",
     changePassword: "/auth/change-password/",
   },
-  profile: {},
+  vacancies: {
+    vacancies: "/vacancies/",
+    vipVacancies: "/vacancies/premium/",
+    vacancyDetail: (id: string) => `/vacancies/${id}/`,
+  },
+  company: {
+    myVacancies: "/vacancies/my/",
+    myVacancy: (id: string) => `/vacancies/${id}/`,
+    deleteVacancy: (id: string) => `/vacancies/${id}/`,
+    createVacancy: "/vacancies/create/",
+  },
 };

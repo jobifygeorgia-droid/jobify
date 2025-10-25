@@ -1,15 +1,7 @@
 "use client";
 
+import { CheckboxT } from "@/interface/ui/forms-ui";
 import MuiCheckbox from "@mui/material/Checkbox";
-
-type CheckboxT = {
-  id?: string;
-  name?: string;
-  children?: React.ReactNode;
-  size?: "small" | "medium" | "large";
-  checked?: boolean;
-  onCheck?: () => void;
-};
 
 const Checkbox: React.FC<CheckboxT> = (props) => {
   const { children, checked, onCheck, id, name, size = "medium" } = props;

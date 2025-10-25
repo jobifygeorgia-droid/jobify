@@ -44,7 +44,6 @@ const WorkingExperience: React.FC = () => {
               render={({ field, fieldState: { error } }) => (
                 <TextField
                   {...field}
-                  labelPosition="out"
                   label="პოზიცია"
                   message={error?.message}
                 />
@@ -57,7 +56,6 @@ const WorkingExperience: React.FC = () => {
               render={({ field, fieldState: { error } }) => (
                 <TextField
                   {...field}
-                  labelPosition="out"
                   label="კომპანია"
                   message={error?.message}
                 />

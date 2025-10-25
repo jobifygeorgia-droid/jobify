@@ -17,7 +17,7 @@ const SelectMultiValueContainer = <T,>(
         : index;
     }
   );
-  console.log(props);
+
   // If it's the last option, render it normally
   if (indexesToRender.includes(index))
     return (

@@ -1,9 +1,10 @@
 import { vacanciesForDifferentGroupsData } from "@/data/data";
 
+import {
+  SectionContainer,
+  VacanciesForDifferentGroupsCard,
+} from "@/components/Home/ui";
 import "@/components/Home/css/vacanciesForDifferentGroups.css";
-
-import SectionContainer from "@/components/Home/ui/SectionContainer";
-import VacanciesForDifferentGroupsCard from "@/components/Home/ui/VacanciesForDifferentGroupsCard";
 
 type VacanciesForDifferentGroupsT = {};
 
@@ -16,9 +17,9 @@ const VacanciesForDifferentGroups: React.FC<
         {vacanciesForDifferentGroupsData.map((segment) => (
           <VacanciesForDifferentGroupsCard
             key={segment.id}
-            subtitle={segment.subtitle}
             group={segment.group}
             title={segment.title}
+            subtitle={segment.subtitle}
           />
         ))}
       </div>

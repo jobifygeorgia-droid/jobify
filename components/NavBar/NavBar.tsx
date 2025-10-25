@@ -1,13 +1,14 @@
-import { auth } from "@/services/next-auth";
+"use client";
 
-import User from "./User";
-import NavList from "./ui/NavList";
-import BurgerMenu from "./ui/BurgerMenu";
-import BottomNavigation from "./ui/BottomNavigation";
+import { useSession } from "next-auth/react";
+
 import { Container, Logo } from "@/components/ui";
+import { NavList, BurgerMenu, BottomNavigation, User } from "./ui";
 
-const NavBar = async () => {
-  const session = await auth();
+const NavBar = () => {
+  // const session = await auth();
+  const { data: session } = useSession();
+  const user = session?.user;
 
   return (
     <>
@@ -17,17 +18,17 @@ const NavBar = async () => {
             <Logo />
 
             <div className="w-full items-center hidden laptop:flex">
-              <NavList role={session?.user?.user_type} />
+              <NavList role={session?.user?.user_type} userId={user?.id} />
 
-              <User role={session?.user?.user_type} />
+              <User user={user} />
             </div>
 
-            <BurgerMenu />
+            {user && <BurgerMenu user={user} />}
           </nav>
         </Container>
       </div>
 
-      <BottomNavigation />
+      <BottomNavigation user={user} />
     </>
   );
 };

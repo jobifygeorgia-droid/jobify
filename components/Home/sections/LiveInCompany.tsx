@@ -1,8 +1,7 @@
 import { liveInCompanyData } from "@/data/data";
 
-import SectionContainer from "../ui/SectionContainer";
-import LiveInCompanyCard from "../ui/LiveInCompanyCard";
 import { MultipleSlider, ViewAllButton } from "@/components/ui";
+import { SectionContainer, LiveInCompanyCard } from "@/components/Home/ui";
 
 type LiveInCompanyT = {};
 

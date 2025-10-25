@@ -1,41 +1,56 @@
+"use client";
+
+import { useState } from "react";
+
+import { useDevice } from "@/hooks/utils";
 import { companyProfileData } from "@/data/data";
 
-import { AnchorButton, ScrollableContainer } from "@/components/ui";
-import { Plus } from "@/components/ui/icons";
-import SendEmailTableRow from "./SendEmailTableRow";
-import SendEmailTableHeader from "./SendEmailTableHeader";
-import SendEmailModal from "./SendEmailModal";
-import SendEmailHeader from "./SendEmailHeader";
+import {
+  SendEmailModal,
+  SendEmailHeader,
+  SendEmailTableRow,
+  SendEmailTableHeader,
+} from "./";
+import { Mail } from "@/components/ui/icons";
 import { GridTable } from "@/components/layouts";
+import { Button, ScrollableContainer } from "@/components/ui";
 
 type SendEmailT = {};
 
 const SendEmail: React.FC<SendEmailT> = () => {
+  const device = useDevice();
+  const [isOpened, setIsOpened] = useState(false);
+
+  const onCLose = () => setIsOpened(false);
+
   return (
     <>
-      <AnchorButton
-        href={"?send-mails=1"}
+      <Button
         textSize="sm"
-        buttonType="primary"
         paddingSize="base"
-        className="ml-auto"
+        buttonType="primary"
+        onClick={() => setIsOpened(true)}
+        className="laptop:ml-auto text-sm! tablet:text-base-sm! max-tablet:px-2 max-tablet:py-2!"
       >
-        <Plus size={26} className="translate-y-[2px]" />
+        <Mail className="translate-y-[2px] text-lg! tablet:text-2xl!" />
         ელ. ფოსტის გაგზავნა
-      </AnchorButton>
+      </Button>
 
-      <SendEmailModal>
+      <SendEmailModal isOpened={isOpened} onClose={onCLose}>
         <SendEmailHeader />
 
         <ScrollableContainer
-          height={440}
-          transparentScroll
           border
+          transparentScroll
           spaceBetweenScrollbar={10}
+          height={
+            device === "mobile" ? "80vh" : device === "tablet" ? "82vh" : 440
+          }
+          wrapperClassName="w-max desktop-sm:w-[97%]"
+          containerClassName=""
         >
           <GridTable cols={5} className="rounded-[inherit] h-full">
             <SendEmailTableHeader />
-
             {companyProfileData.map((item) => (
               <SendEmailTableRow
                 key={item.id}

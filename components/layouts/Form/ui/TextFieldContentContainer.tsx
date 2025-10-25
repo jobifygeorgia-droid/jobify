@@ -1,9 +1,8 @@
 import classnames from "classnames";
 
-import { TextFieldPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { TextFieldPropsT } from "@/interface/ui/forms-ui";
 
 type TextFieldContentContainerT = {
-  isLabelOut: boolean;
   children: React.ReactNode;
   onClick: TextFieldPropsT["onClick"];
   variant: TextFieldPropsT["variant"];
@@ -19,7 +18,6 @@ const TextFieldContentContainer: React.FC<TextFieldContentContainerT> = (
 ) => {
   const {
     children,
-    isLabelOut,
     variant = "fill",
     fieldWrapperClassName,
     onClick = () => {},
@@ -29,12 +27,11 @@ const TextFieldContentContainer: React.FC<TextFieldContentContainerT> = (
     <div
       onClick={onClick}
       className={classnames(
-        "relative flex flex-col gap-[6px] items-start border-bc  bg-white",
+        "relative flex items-center justify-between gap-[6px] border-bc  bg-white",
         {
           [filledContainerStyles]: variant === "fill",
           "border-b": variant === "outlined",
         },
-        { "border-none ring-[none]": isLabelOut },
         fieldWrapperClassName
       )}
     >

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SectionContainer from "../ui/SectionContainer";
+import { SectionContainer } from "@/components/Home/ui";
 
 type TopCompaniesT = {};
 

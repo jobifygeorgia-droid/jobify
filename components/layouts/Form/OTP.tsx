@@ -3,22 +3,14 @@
 import OtpInput from "react-otp-input";
 
 import Label from "./Label";
-
-type OTPT = {
-  label?: string;
-  numInputs?: number;
-  name?: string;
-  value?: string;
-  onChange: () => void;
-  message?: string;
-};
+import { OTPT } from "@/interface/ui/forms-ui";
 
 const OTP: React.FC<OTPT> = (props) => {
   const { numInputs = 6, label, name, value, onChange, message } = props;
 
   return (
     <div className="flex flex-col gap-[6px]">
-      {label && <Label label={label} labelPosition="out" />}
+      {label && <Label label={label} />}
 
       <OtpInput
         value={value}

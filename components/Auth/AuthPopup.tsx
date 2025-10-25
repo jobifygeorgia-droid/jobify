@@ -3,42 +3,25 @@
 import { useEffect } from "react";
 
 import { LS } from "@/lib/utils";
-import { AuthModes, AuthModeT } from "@/interface/global.types";
+import { AuthModes } from "@/interface/global.types";
 
-import AuthModal from "./ui/AuthModal";
-import UpdatePassword from "./UpdatePassword";
-import { SuccessPopupWindow } from "@/components/ui";
-import BaseAuthentication from "./BaseAuthentication";
-import VerifyUserIdentity from "./VerifyUserIdentity";
-import SignInButtonOnSuccess from "./ui/SignInButtonOnSuccess";
-import ForgotPasswordUpdateMethod from "./ForgotPasswordUpdateMethod";
-
-const AuthPopupByMode: Record<AuthModeT, React.ComponentType> = {
-  base: BaseAuthentication,
-  ["password-update-method"]: ForgotPasswordUpdateMethod,
-  ["verify-user"]: VerifyUserIdentity,
-  ["update-password"]: UpdatePassword,
-  ["update-success"]: () => (
-    <SuccessPopupWindow message="პაროლი წარმატებით შეიცვალა">
-      <SignInButtonOnSuccess />
-    </SuccessPopupWindow>
-  ),
-};
+import { AuthModal } from "./ui";
+import { AuthConfig } from "./config";
 
 type AuthPopupT = {
-  authMode: string | undefined;
+  authMode: AuthModes | undefined;
 };
 
 const AuthPopup: React.FC<AuthPopupT> = ({ authMode }) => {
-  const mode = authMode as AuthModeT;
+  const mode = authMode as AuthModes;
 
   useEffect(() => {
-    if (authMode !== "verify-user") LS.removePasswordUpdateTimer();
+    if (authMode !== AuthModes.VERIFY_USER) LS.removePasswordUpdateTimer();
   }, [authMode]);
 
-  if (!authMode || !AuthModes.includes(mode)) return null;
+  if (!authMode || !Object.values(AuthModes).includes(mode)) return null;
 
-  const Component = AuthPopupByMode[mode];
+  const Component = AuthConfig[mode];
 
   return (
     <AuthModal>

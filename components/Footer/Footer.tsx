@@ -1,8 +1,10 @@
+import Link from "next/link";
+
+import { PATHS } from "@/lib/config";
+
+// import {FooterNavigation} from "./ui";
 import { Container, Logo } from "@/components/ui";
 import { Mail, Phone } from "@/components/ui/icons";
-import { PATHS } from "@/lib/config";
-import Link from "next/link";
-// import FooterNavigation from "./ui/FooterNavigation";
 
 const Footer: React.FC = () => {
   return (

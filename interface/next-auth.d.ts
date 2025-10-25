@@ -1,32 +1,21 @@
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
-import { USER_TYPES } from "@/lib/config";
+import { USER_TYPES } from "@/interface/global.types";
+import { SessionUserT } from "./global.types";
 
 declare module "next-auth" {
   interface Session {
     access?: string;
     refresh?: string;
     error?: string;
-    exp?: number;
-    user?: {
-      id: number;
-      email: string;
-      user_type: USER_TYPES;
-      full_name: string;
-      phone_number: string | null;
-    };
+    expires?: string;
+    user?: SessionUserT;
   }
 
   interface User {
     access?: string;
     refresh?: string;
     exp?: number;
-    user?: {
-      id: number;
-      email: string;
-      user_type: USER_TYPES;
-      full_name: string;
-      phone_number: string | null;
-    };
+    user?: SessionUserT;
   }
 
   interface JWT {
@@ -34,12 +23,6 @@ declare module "next-auth" {
     refresh?: string;
     error?: string;
     exp?: number;
-    user?: {
-      id: number;
-      email: string;
-      user_type: USER_TYPES;
-      full_name: string;
-      phone_number: string | null;
-    };
+    user?: SessionUserT;
   }
 }

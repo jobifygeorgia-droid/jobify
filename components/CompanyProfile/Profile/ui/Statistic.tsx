@@ -11,7 +11,7 @@ const Statistic: React.FC<StatisticT> = (props) => {
   const { Icon, title, value, children } = props;
 
   return (
-    <div className="bg-white flex items-center justify-center gap-4 text-sm shadow-[0px_14px_32px_rgba(0,0,0,0.06)] p-3 rounded-xl">
+    <div className="min-w-[340px] bg-white flex items-center justify-center gap-4 text-sm border border-bc desktop-sm:border-0 desktop-sm:shadow-[0px_14px_32px_rgba(0,0,0,0.06)] p-3 rounded-xl">
       <span className="bg-orange-light size-10 aspect-square rounded-full overflow-hidden flex items-center justify-center">
         <Icon className="text-orange" />
       </span>

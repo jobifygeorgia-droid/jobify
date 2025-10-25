@@ -1,7 +1,7 @@
 import { formatDate } from "@/lib/utils";
 
 import { Button, Chip } from "@/components/ui";
-import { Calendar, Download } from "@/components/ui/icons";
+import { Calendar, Download, Mail } from "@/components/ui/icons";
 import { AddToFavoriteButton } from "@/components/layouts";
 
 type ReceivedResumeCardHorizontalT = {
@@ -16,42 +16,54 @@ const ReceivedResumeCardHorizontal: React.FC<ReceivedResumeCardHorizontalT> = (
   props
 ) => {
   return (
-    <div className="flex items-center gap-3 py-4 px-6 border border-bc rounded-2xl shadow-[0px_3px_16px_rgba(0,0,0,0.04)]">
-      <figure className="relative size-12 aspect-square min-w-12 rounded-full overflow-hidden bg-light-grey"></figure>
+    <div className="flex tablet:flex-row items-start tablet:items-center tablet:gap-3 py-2 laptop:py-4 px-2 tablet:px-4 laptop:px-6 border border-bc rounded-2xl shadow-[0px_3px_16px_rgba(0,0,0,0.04)]">
+      <div className="flex items-center gap-2 tablet:gap-3 w-full">
+        {/* Avatar */}
+        <figure className="relative size-8 tablet:size-12 aspect-square min-w-8 tablet:min-w-12 rounded-full overflow-hidden bg-light-grey"></figure>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-6">
-          <span className="font-medium text-md">{props.fullname}</span>
+        <div className="flex flex-col w-full">
+          {/* Fullname & Experience */}
+          <div className="flex items-center justify-between tablet:justify-start tablet:gap-6 w-full">
+            <span className="font-medium text-sm tablet:text-base-sm laptop:text-md">
+              {props.fullname}
+            </span>
 
-          <Chip className="text-sm!">
-            {props.experience} წლიანი გამოცდილება
-          </Chip>
+            <Chip className="text-sm!" type="tertiary">
+              {props.experience} წლიანი გამოცდილება
+            </Chip>
+          </div>
+
+          {/* Position & Date */}
+          <div className="w-full flex items-center gap-3 laptop:gap-6 text-sm tablet:text-base-sm">
+            <span className="text-light-grey-dark">{props.position}</span>
+
+            <span className="text-light-grey-dark hidden tablet:flex items-center gap-1 laptop:gap-2">
+              <Calendar size={17} className="text-light-grey-dark" />
+              {formatDate(new Date())}
+            </span>
+
+            {/* Actions */}
+            <div className="ml-auto text-base-sm flex items-center gap-2 tablet:gap-4">
+              <button className="flex items-center justify-center gap-2 size-6 tablet:size-8 laptop:size-auto bg-transparent tablet:bg-blue-light laptop:bg-transparent rounded-full laptop:rounded-none cursor-pointer">
+                <Download className="text-orange laptop:text-blue text-md! laptop:text-2xl!" />
+                <span className="text-blue hidden laptop:inline-block">
+                  CV-ის გადმოწერა
+                </span>
+              </button>
+
+              <Button
+                buttonType="primary"
+                paddingSize="base-wider"
+                className="text-base-sm max-tablet:bg-transparent max-laptop:p-0! py-2! max-laptop:rounded-full! max-tablet:size-6! max-laptop:size-8"
+              >
+                <span className="hidden laptop:inline-block">მიწერა</span>
+                <Mail className="text-orange laptop:hidden! text-base! tablet:text-md!" />
+              </Button>
+
+              <AddToFavoriteButton className="max-tablet:bg-transparent! max-tablet:size-6! max-tablet:text-base!" />
+            </div>
+          </div>
         </div>
-
-        <div className="flex items-center gap-6 text-base-sm">
-          <span className="text-light-grey-dark">{props.position}</span>
-          <span className="text-light-grey-dark flex items-center gap-2">
-            <Calendar size={17} className="text-light-grey-dark" />
-            {formatDate(new Date())}
-          </span>
-        </div>
-      </div>
-
-      <div className="ml-auto text-base-sm flex items-center gap-4">
-        <span className="flex items-center gap-2">
-          <Download className="text-blue" />
-          <span className="text-blue">CV-ის გადმოწერა</span>
-        </span>
-
-        <Button
-          buttonType="secondary"
-          paddingSize="base-wider"
-          className="text-base-sm"
-        >
-          მიწერა
-        </Button>
-
-        <AddToFavoriteButton />
       </div>
     </div>
   );

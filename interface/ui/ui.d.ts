@@ -1,0 +1,60 @@
+import React from "react";
+
+// Alert
+type AlertT = {
+  id?: string;
+  text: string;
+  title?: string;
+  type?: "danger" | "warning" | "success";
+  delay?: number;
+};
+
+// Dialog
+type DialogT = {
+  title?: string;
+  content: React.ReactNode;
+  loading?: boolean;
+  type?: "danger" | "warning" | "normal";
+  onConfirmCallback?: () => void;
+  loadingOnConfirm?: boolean;
+  closeOnConfirm?: boolean;
+};
+
+// Chip
+type ClickableChipT = {
+  isActive: boolean;
+  onClick: () => void;
+};
+
+type StaticChipT = {
+  isActive?: undefined;
+  onClick?: undefined;
+};
+
+export type ChipT = {
+  type?: "primary" | "secondary" | "tertiary";
+  size?: "sm";
+  className?: string;
+  children: React.ReactNode;
+} & (ClickableChipT | StaticChipT);
+
+export type AnchorChipT = Omit<ChipT, "onClick"> & {
+  href: string;
+};
+
+// Map
+type FormattedGeocoderAddressComponentT = {
+  city: string;
+  country: string;
+  district: string;
+  street_name: string;
+  street_number: string;
+  establishment: string;
+};
+
+type GetAddressFromCoordsT = {
+  lat: number;
+  lon: number;
+  location: string;
+  location_name: string;
+};

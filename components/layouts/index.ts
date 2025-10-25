@@ -1,5 +1,8 @@
 export { default as VacancyCard } from "./VacancyCard/VacancyCard";
+export { default as VacancyCardSkeleton } from "./VacancyCard/VacancyCardSkeleton";
+export { default as VacancyCardsSkeleton } from "./VacancyCard/VacancyCardsSkeleton";
 export { default as VIPVacanciesSlider } from "./VIPVacanciesSlider/VIPVacanciesSlider";
+export { default as VacanciesSliderFallback } from "./VIPVacanciesSlider/VacanciesSliderFallback";
 export { default as VIPVacancyCard } from "./VIPVacancyCard/VIPVacancyCard";
 export { default as VipVacancyCardSkeleton } from "./VIPVacancyCard/VipVacancyCardSkeleton";
 export { default as FilterBar } from "./FilterBar/FilterBar";
@@ -14,3 +17,4 @@ export { default as ReceivedResumeCardCubic } from "./ReceivedResumeCard/Receive
 export { default as ReceivedResumeCardHorizontal } from "./ReceivedResumeCard/ReceivedResumeCardHorizontal";
 export { default as GridTable } from "./GridTable/GridTable";
 export { default as GridTableItem } from "./GridTable/GridTableItem";
+export { default as Map } from "./Map/Map";

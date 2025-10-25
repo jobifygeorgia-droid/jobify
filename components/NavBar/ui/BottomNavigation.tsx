@@ -1,61 +1,31 @@
-// import { AnchorButton } from "@/components/ui";
-import {
-  // Work,
-  Plus,
-  // Person,
-  Home,
-  FilterSecondary,
-  CalendarSecondary,
-  // Heart,
-  Notification,
-  Mail,
-} from "@/components/ui/icons";
-import BottomNavigationItem from "./BottomNavigationItem";
-import BottomNavigationContainer from "./BottomNavigationContainer";
-import { FilterButton } from "@/components/layouts";
+import { SessionUserT, USER_TYPES } from "@/interface/global.types";
 
-const BottomNavigation: React.FC = () => {
+import {
+  BottomNavigationUser,
+  BottomNavigationCommon,
+  BottomNavigationCompany,
+  BottomNavigationContainer,
+} from "./";
+
+type BottomNavigationT = {
+  user: SessionUserT;
+};
+
+const BottomNavigation: React.FC<BottomNavigationT> = (props) => {
+  const { user } = props;
+
+  const isAuthorized = !!user;
+  const isEmployer = user?.user_type === USER_TYPES.EMPLOYER;
+  const isJobSeeker = user?.user_type === USER_TYPES.JOB_SEEKER;
+
   return (
     <BottomNavigationContainer>
       <nav className="py-3 px-4 w-full max-w-[744px] flex items-center justify-evenly gap-6">
-        <BottomNavigationItem href="/" title="მთავარი">
-          <Home size={20} />
-        </BottomNavigationItem>
+        <BottomNavigationCommon isAuthorized={isAuthorized} />
 
-        <FilterButton>
-          <span className="flex flex-col gap-1 p-0!">
-            <FilterSecondary size={20} />
-            <span className="text-sm hidden tablet:block">ფილტრი</span>
-          </span>
-        </FilterButton>
+        {isJobSeeker && <BottomNavigationUser userId={user.id} />}
 
-        <BottomNavigationItem href="/" title="კალენდარი">
-          <CalendarSecondary size={20} />
-        </BottomNavigationItem>
-
-        {/* <BottomNavigationItem href="/" title="რჩეულები">
-          <Heart size={20} />
-        </BottomNavigationItem> */}
-
-        <BottomNavigationItem href="/" title="შეტყობინებები">
-          <Mail size={20} />
-        </BottomNavigationItem>
-
-        <BottomNavigationItem href="/" title="ცნობები">
-          <Notification size={20} />
-        </BottomNavigationItem>
-
-        {/* <BottomNavigationItem href="/" title="განცხადების დამატება">
-          <Work size={20} />
-        </BottomNavigationItem> */}
-
-        <BottomNavigationItem href="/" title="ვაკანსიის დამატება">
-          <Plus size={20} />
-        </BottomNavigationItem>
-
-        {/* <BottomNavigationItem href="/" title="შესვლა">
-          <Person size={20} />
-        </BottomNavigationItem> */}
+        {isEmployer && <BottomNavigationCompany />}
       </nav>
     </BottomNavigationContainer>
   );

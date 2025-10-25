@@ -43,9 +43,8 @@ const Certificates: React.FC = () => {
                 name={`certificates.${index}.name`}
                 render={({ field, fieldState: { error } }) => (
                   <TextField
-                    label="დასახელება"
-                    labelPosition="out"
                     {...field}
+                    label="დასახელება"
                     message={error?.message}
                   />
                 )}
@@ -56,9 +55,8 @@ const Certificates: React.FC = () => {
                 name={`certificates.${index}.organization`}
                 render={({ field, fieldState: { error } }) => (
                   <TextField
-                    label="ორგანიზაცია"
-                    labelPosition="out"
                     {...field}
+                    label="ორგანიზაცია"
                     message={error?.message}
                   />
                 )}

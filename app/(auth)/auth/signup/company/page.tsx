@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import SignUpCompany from "@/components/Auth/SignUpCompany";
-import SignupContainer from "@/components/Auth/ui/SignupContainer";
+import { SignUpCompany } from "@/components/Auth";
+import { SignupContainer } from "@/components/Auth/ui";
 
 export const metadata: Metadata = {
   title: "Company Sign Up",

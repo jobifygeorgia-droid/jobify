@@ -4,33 +4,36 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { DYNAMIC_ROUTES } from "@/lib/config";
-import { logout } from "@/lib/actions/auth.actions";
+import { useLogoutQuery } from "@/hooks/api/auth";
 
 import { Menu } from "@/components/ui";
 import { Person, Logout } from "@/components/ui/icons";
 
 type AvatarMenuT = {
   isUser?: boolean;
+  userId: number;
 };
 
 const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
+  const { isUser, userId } = props;
+
   const router = useRouter();
 
-  const { isUser = true } = props;
+  const { logoutQuery } = useLogoutQuery();
 
   const userSrc =
     "https://images.unsplash.com/photo-1681500920181-0aff411f8cab?q=80&w=856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   const companySrc =
-    "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+    "https://images.unsplash.com/photo-1706879349357-f17b91de99a5?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   const src = isUser ? userSrc : companySrc;
 
   const onNavigateToProfile = () => {
     router.push(
       isUser
-        ? DYNAMIC_ROUTES.user_profile("123")
-        : DYNAMIC_ROUTES.company_profile("123"),
+        ? DYNAMIC_ROUTES.user_profile(userId.toString())
+        : DYNAMIC_ROUTES.company_profile(userId.toString()),
       { scroll: true }
     );
   };
@@ -52,12 +55,7 @@ const AvatarMenu: React.FC<AvatarMenuT> = (props) => {
           <span className="text-base-sm">პროფილი</span>
         </Menu.MenuItem>
 
-        <Menu.MenuItem
-          onClick={async () => {
-            await logout();
-          }}
-          className="hover:text-red!"
-        >
+        <Menu.MenuItem onClick={logoutQuery} className="hover:text-red!">
           <Logout size={18} className="text-current" />
           <span className="text-base-sm">გასვლა</span>
         </Menu.MenuItem>

@@ -32,10 +32,9 @@ const Skills: React.FC = () => {
                 name={`skills.${index}`}
                 render={({ field, fieldState: { error } }) => (
                   <TextField
-                    labelPosition="out"
+                    {...field}
                     label="ჩაწერე შენი უნარები"
                     containerClassName="w-full"
-                    {...field}
                     message={error?.message}
                   />
                 )}

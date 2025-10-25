@@ -28,7 +28,6 @@ const PersonalDetails: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="სახელი და გვარი *"
               message={error?.message}
             />
@@ -39,12 +38,7 @@ const PersonalDetails: React.FC = () => {
           control={control}
           name="personal_details.profession"
           render={({ field, fieldState: { error } }) => (
-            <TextField
-              {...field}
-              labelPosition="out"
-              label="პროფესია *"
-              message={error?.message}
-            />
+            <TextField {...field} label="პროფესია *" message={error?.message} />
           )}
         />
 
@@ -52,12 +46,7 @@ const PersonalDetails: React.FC = () => {
           control={control}
           name="personal_details.email"
           render={({ field, fieldState: { error } }) => (
-            <TextField
-              {...field}
-              labelPosition="out"
-              label="ელ.ფოსტა *"
-              message={error?.message}
-            />
+            <TextField {...field} label="ელ.ფოსტა *" message={error?.message} />
           )}
         />
 
@@ -65,12 +54,7 @@ const PersonalDetails: React.FC = () => {
           control={control}
           name="personal_details.phone_number"
           render={({ field, fieldState: { error } }) => (
-            <TextField
-              {...field}
-              labelPosition="out"
-              label="ტელეფონი *"
-              message={error?.message}
-            />
+            <TextField {...field} label="ტელეფონი *" message={error?.message} />
           )}
         />
 
@@ -80,7 +64,6 @@ const PersonalDetails: React.FC = () => {
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
-              labelPosition="out"
               label="მისამართი *"
               message={error?.message}
               containerClassName="col-span-2"

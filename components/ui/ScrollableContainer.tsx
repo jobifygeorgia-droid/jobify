@@ -9,18 +9,20 @@ type ScrollableContainerT = {
   wrapperClassName?: string;
   transparentScroll?: boolean;
   spaceBetweenScrollbar?: number;
+  disableScroll?: boolean;
 };
 
 const ScrollableContainer: React.FC<ScrollableContainerT> = (props) => {
   const {
-    children,
     height,
+    children,
     rounded = 12,
     border = false,
+    wrapperClassName = "",
+    containerClassName = "",
     spaceBetweenScrollbar = 8,
     transparentScroll = false,
-    containerClassName = "",
-    wrapperClassName = "",
+    disableScroll = false,
   } = props;
 
   const containerHeight = typeof height === "number" ? `${height}px` : height;
@@ -28,13 +30,10 @@ const ScrollableContainer: React.FC<ScrollableContainerT> = (props) => {
   return (
     <div
       style={{ height: containerHeight }}
-      className={classnames(
-        containerClassName,
-        "overflow-y-auto overflow-x-hidden",
-        {
-          "scrollbar scrollbar-transparent": transparentScroll,
-        }
-      )}
+      className={classnames(containerClassName, "overflow-y-auto", {
+        "scrollbar scrollbar-transparent": transparentScroll,
+        "overflow-y-hidden!": disableScroll,
+      })}
     >
       <div
         style={{

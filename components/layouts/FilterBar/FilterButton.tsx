@@ -1,7 +1,7 @@
 "use client";
 
 import classnames from "classnames";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useFilterContext } from "@/providers/FilterProvider";
 
 type FilterButtonT = {
   children: React.ReactNode;
@@ -9,24 +9,16 @@ type FilterButtonT = {
 };
 
 const FilterButton: React.FC<FilterButtonT> = (props) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const onExpandFilter = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("filter", "1");
-
-    router.push(`${pathname}?${params.toString()}`);
-  };
+  const { onOpenFilter } = useFilterContext();
 
   return (
     <button
+      type="button"
+      onClick={onOpenFilter}
       className={classnames(
         props.className || "",
         "cursor-pointer flex items-center justify-center leading-0"
       )}
-      onClick={onExpandFilter}
     >
       {props.children}
     </button>

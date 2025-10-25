@@ -21,9 +21,8 @@ const OptionItem: React.FC<OptionItemT> = (props) => {
         "hover:text-blue!": !isDanger,
       })}
     >
-      <span className="size-5 flex items-center justify-center">
-        <Icon size={22} className="text-current" />
-      </span>
+      <Icon className="text-current text-lg! tablet:text-xl!" />
+
       <span className="text-base-sm">{text}</span>
     </Menu.MenuItem>
   );

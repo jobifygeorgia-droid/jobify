@@ -7,11 +7,21 @@ const VacanciesTableHeader: React.FC<VacanciesTableHeaderT> = () => {
     <>
       <GridTableItem isHeader>ვაკანსია</GridTableItem>
       <GridTableItem isHeader>დამატების თარიღი</GridTableItem>
-      <GridTableItem isHeader>დარჩენილი დღეები</GridTableItem>
-      <GridTableItem isHeader>ნახვა</GridTableItem>
-      <GridTableItem isHeader>რეზიუმე</GridTableItem>
-      <GridTableItem isHeader>არჩეული კანდიდატი</GridTableItem>
-      <GridTableItem isHeader>აყვანილი</GridTableItem>
+      <GridTableItem isHeader isSmallCol>
+        დარჩენილი დღეები
+      </GridTableItem>
+      <GridTableItem isHeader isSmallCol>
+        ნახვა
+      </GridTableItem>
+      <GridTableItem isHeader isSmallCol>
+        რეზიუმე
+      </GridTableItem>
+      <GridTableItem isHeader isSmallCol>
+        არჩეული კანდიდატი
+      </GridTableItem>
+      <GridTableItem isHeader isSmallCol>
+        აყვანილი
+      </GridTableItem>
       <GridTableItem isHeader>სტატუსი</GridTableItem>
       <GridTableItem isHeader> </GridTableItem>
     </>

@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import { components, ValueContainerProps } from "react-select";
-import "./selectInputContainer.css";
+
+import "@/components/layouts/Form/styles/selectInputContainer.css";
 
 type SelectInputContainerProps<T> = ValueContainerProps<T, boolean> & {
   adornment?: React.ReactNode;
@@ -14,9 +15,7 @@ const SelectInputContainer = <T,>({
   return (
     <components.ValueContainer
       {...rest}
-      className={classnames(
-        "rounded-inherit border-red outline-none! border-none!"
-      )}
+      className={classnames("rounded-inherit pl-2! outline-none! border-none!")}
     >
       <div className="flex items-center w-full gap-2">
         {adornment && (

@@ -1,6 +1,8 @@
+import { VACANCY_TYPES } from "@/interface/global.types";
+
 export type OptionT = {
   label: string;
-  value: string;
+  value: string | number;
 };
 
 export const experienceOptions = [
@@ -15,60 +17,61 @@ export const experienceOptions = [
 ];
 
 export const workTypeOptions = [
-  { value: "remote", label: "დისტანციური" },
-  { value: "hybrid", label: "ჰიბრიდული" },
-  { value: "office", label: "საოფისე" },
+  { value: VACANCY_TYPES.REMOTE, label: "დისტანციური" },
+  { value: VACANCY_TYPES.FULL_TIME, label: "სრული განაკვეთი" },
+  { value: VACANCY_TYPES.PART_TIME, label: "ნახევარი განაკვეთი" },
+  { value: VACANCY_TYPES.INTERNSHIP, label: "სტაჟირება" },
 ];
 
 export const workSectorOptions = [
-  { label: "საჯარო სექტორი", value: "საჯარო სექტორი" },
-  { label: "კერძო სექტორი", value: "კერძო სექტორი" },
+  { label: "საჯარო სექტორი", value: 1 },
+  { label: "კერძო სექტორი", value: 2 },
 ];
 
 export const vacancyTypeOptions = [
-  { label: "პრემიუმი", value: "პრემიუმი" },
-  { label: "სტანდარტული", value: "სტანდარტული" },
+  { label: "სტანდარტული", value: "standard" },
+  { label: "პრემიუმი", value: "premium" },
 ];
 
 export const workCategoryOptions = [
-  { label: "საბანკო სფერო", value: "საბანკო სფერო" },
-  { label: "ტექნოლოგიები", value: "ტექნოლოგიები" },
-  { label: "სამედიცინო", value: "სამედიცინო" },
-  { label: "სხვა", value: "სხვა" },
-  { label: "განათლება", value: "განათლება" },
-  { label: "მარკეტინგი", value: "მარკეტინგი" },
-  { label: "დიზაინი", value: "დიზაინი" },
-  { label: "იურიდიული", value: "იურიდიული" },
-  { label: "ადმინისტრაცია", value: "ადმინისტრაცია" },
-  { label: "HR და რეკრუტინგი", value: "HR და რეკრუტინგი" },
-  { label: "ფინანსები", value: "ფინანსები" },
-  { label: "გაყიდვები", value: "გაყიდვები" },
-  { label: "ლოგისტიკა", value: "ლოგისტიკა" },
-  { label: "მშენებლობა", value: "მშენებლობა" },
-  { label: "ინჟინერია", value: "ინჟინერია" },
-  { label: "ხელოვნება", value: "ხელოვნება" },
-  { label: "მედია და კომუნიკაცია", value: "მედია და კომუნიკაცია" },
-  { label: "ტურიზმი", value: "ტურიზმი" },
-  { label: "რესტორნები და კვება", value: "რესტორნები და კვება" },
-  { label: "სოფლის მეურნეობა", value: "სოფლის მეურნეობა" },
-  { label: "სოციალური მომსახურება", value: "სოციალური მომსახურება" },
-  { label: "სპორტი და ფიტნესი", value: "სპორტი და ფიტნესი" },
-  { label: "უსაფრთხოება", value: "უსაფრთხოება" },
-  { label: "სადაზღვევო", value: "სადაზღვევო" },
-  { label: "კონსულტაცია", value: "კონსულტაცია" },
-  { label: "სახელმწიფო სამსახური", value: "სახელმწიფო სამსახური" },
-  { label: "NGO და საქველმოქმედო", value: "NGO და საქველმოქმედო" },
-  { label: "მთარგმნელობა", value: "მთარგმნელობა" },
-  { label: "არქიტექტურა", value: "არქიტექტურა" },
-  { label: "მოდელირება და ანიმაცია", value: "მოდელირება და ანიმაცია" },
-  { label: "UI/UX დიზაინი", value: "UI/UX დიზაინი" },
-  { label: "ვებდეველოპმენტი", value: "ვებდეველოპმენტი" },
-  { label: "მობილური აპლიკაციები", value: "მობილური აპლიკაციები" },
-  { label: "კონტენტის შექმნა", value: "კონტენტის შექმნა" },
-  { label: "SEO და SEM", value: "SEO და SEM" },
-  { label: "ელექტრონიკა", value: "ელექტრონიკა" },
-  { label: "ქიმია და ბიოტექნოლოგია", value: "ქიმია და ბიოტექნოლოგია" },
-  { label: "მონაცემთა ანალიზი", value: "მონაცემთა ანალიზი" },
-  { label: "ხელოვნური ინტელექტი", value: "ხელოვნური ინტელექტი" },
-  { label: "კიბერუსაფრთხოება", value: "კიბერუსაფრთხოება" },
+  { label: "საბანკო სფერო", value: 1 },
+  { label: "ტექნოლოგიები", value: 2 },
+  { label: "სამედიცინო", value: 3 },
+  { label: "სხვა", value: 4 },
+  { label: "განათლება", value: 5 },
+  { label: "მარკეტინგი", value: 6 },
+  { label: "დიზაინი", value: 7 },
+  { label: "იურიდიული", value: 8 },
+  { label: "ადმინისტრაცია", value: 9 },
+  { label: "HR და რეკრუტინგი", value: 10 },
+  { label: "ფინანსები", value: 11 },
+  { label: "გაყიდვები", value: 12 },
+  { label: "ლოგისტიკა", value: 13 },
+  { label: "მშენებლობა", value: 14 },
+  { label: "ინჟინერია", value: 15 },
+  { label: "ხელოვნება", value: 16 },
+  { label: "მედია და კომუნიკაცია", value: 17 },
+  { label: "ტურიზმი", value: 18 },
+  { label: "რესტორნები და კვება", value: 19 },
+  { label: "სოფლის მეურნეობა", value: 20 },
+  { label: "სოციალური მომსახურება", value: 21 },
+  { label: "სპორტი და ფიტნესი", value: 22 },
+  { label: "უსაფრთხოება", value: 23 },
+  { label: "სადაზღვევო", value: 24 },
+  { label: "კონსულტაცია", value: 25 },
+  { label: "სახელმწიფო სამსახური", value: 26 },
+  { label: "NGO და საქველმოქმედო", value: 27 },
+  { label: "მთარგმნელობა", value: 28 },
+  { label: "არქიტექტურა", value: 29 },
+  { label: "მოდელირება და ანიმაცია", value: 30 },
+  { label: "UI/UX დიზაინი", value: 31 },
+  { label: "ვებდეველოპმენტი", value: 32 },
+  { label: "მობილური აპლიკაციები", value: 33 },
+  { label: "კონტენტის შექმნა", value: 34 },
+  { label: "SEO და SEM", value: 35 },
+  { label: "ელექტრონიკა", value: 36 },
+  { label: "ქიმია და ბიოტექნოლოგია", value: 37 },
+  { label: "მონაცემთა ანალიზი", value: 38 },
+  { label: "ხელოვნური ინტელექტი", value: 39 },
+  { label: "კიბერუსაფრთხოება", value: 40 },
 ];

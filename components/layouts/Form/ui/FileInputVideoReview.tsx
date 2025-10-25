@@ -1,6 +1,6 @@
 import { useGenerateUrlsFromFiles } from "@/hooks/utils";
 
-import { FileInputReviewComponentPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { FileInputReviewComponentPropsT } from "@/interface/ui/forms-ui";
 import FileInputReviewRemoveFileButton from "./FileInputReviewRemoveFileButton";
 
 const FileInputVideoReview: React.FC<FileInputReviewComponentPropsT> = (

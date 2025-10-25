@@ -1,4 +1,4 @@
-import { USER_TYPES } from "@/lib/config";
+import { USER_TYPES } from "@/interface/global.types";
 
 export type UserSessionT = {
   id: number;

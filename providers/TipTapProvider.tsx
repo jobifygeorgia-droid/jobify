@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useImperativeHandle,
+} from "react";
 
 import StarterKit from "@tiptap/starter-kit";
 import { useEditor, Editor, Content } from "@tiptap/react";
@@ -36,6 +42,7 @@ type TipTapProviderT = React.FC<{
   readonly?: boolean;
   content?: Content;
   menuButtonSize?: number;
+  ref?: React.Ref<Editor | null>;
 }> & {
   Menu: typeof TipTapMenu;
 };
@@ -61,7 +68,7 @@ const TipTapContext = createContext<TipTapContextT>({
 });
 
 const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
-  const { readonly = true, content = "", menuButtonSize = 16 } = props;
+  const { readonly = true, content = "", menuButtonSize = 16, ref } = props;
 
   const instance = useEditor({
     extensions: [
@@ -160,8 +167,8 @@ const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
     editorProps: { attributes: { spellcheck: "true" } },
   });
 
-  const [editor, setEditor] = useState<Editor | null>(null);
   const [updatedAt, setUpdatedAt] = useState<number>(0);
+  const [editor, setEditor] = useState<Editor | null>(null);
 
   const addYouTubeVideo = () => {
     if (!editor) return;
@@ -199,6 +206,8 @@ const TipTapProvider: TipTapProviderT = ({ children, ...props }) => {
 
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
   };
+
+  useImperativeHandle(ref, () => editor as Editor, [editor]);
 
   useEffect(() => {
     if (!instance) return;

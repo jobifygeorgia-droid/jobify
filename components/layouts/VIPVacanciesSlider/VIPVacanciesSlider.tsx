@@ -1,31 +1,36 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
 import { PATHS } from "@/lib/config";
-import { vipVacancies } from "@/data/data";
+import dynamic from "next/dynamic";
+import { VacancyT } from "@/interface/db/vacancies.types.js";
 import { VIPVacanciesSliderConfig } from "./slider-config.ts";
 
 import { ViewAllButton } from "@/components/ui";
-import { VIPVacancyCard } from "@/components/layouts";
-import VacanciesSliderFallback from "./VacanciesSliderFallback";
+import { VIPVacancyCard, VacanciesSliderFallback } from "@/components/layouts";
+import { useSession } from "next-auth/react";
 
 const MultipleSlider = dynamic(
   () => import("@/components/ui/Swiper/MultipleSlider"),
   { ssr: false, loading: () => <VacanciesSliderFallback /> }
 );
 
-type VIPVacanciesSliderT = {};
+type VIPVacanciesSliderT = {
+  vacancies: Array<VacancyT>;
+};
 
-const VIPVacanciesSlider: React.FC<VIPVacanciesSliderT> = () => {
+const VIPVacanciesSlider: React.FC<VIPVacanciesSliderT> = ({ vacancies }) => {
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
+
   return (
-    <div className="relative pb-11 tablet:pb-0">
+    <div className="relative pb-11">
       <MultipleSlider
         breakpoints={VIPVacanciesSliderConfig}
-        slides={vipVacancies.slice(0, 20).map((vacancy) => (
+        slides={vacancies.map((vacancy) => (
           <VIPVacancyCard
             key={vacancy.id}
             vacancy={vacancy}
+            isAuthenticated={isAuthenticated}
             className="min-w-[55vw] tablet:min-w-auto"
           />
         ))}

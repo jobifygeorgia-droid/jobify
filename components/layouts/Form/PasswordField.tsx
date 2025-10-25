@@ -4,12 +4,7 @@ import { useState } from "react";
 
 import TextField from "./TextField";
 import PasswordFieldAdornment from "./ui/PasswordFieldAdornment";
-import { TextFieldPropsT } from "./types/form-fields.types";
-
-type PasswordFieldT = {
-  message?: string;
-  inputProps: Exclude<TextFieldPropsT, "message" | "inputType" | "adornment">;
-};
+import { PasswordFieldT } from "@/interface/ui/forms-ui";
 
 const PasswordField: React.FC<PasswordFieldT> = (props) => {
   const { message, inputProps } = props;

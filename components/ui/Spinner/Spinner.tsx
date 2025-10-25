@@ -5,7 +5,7 @@ import classnames from "classnames";
 import "./loaders.css";
 
 type SpinnerT = {
-  type?: "relative" | "inline";
+  type?: "relative" | "inline" | "fixed";
   size?: "sm" | "base" | "lg";
 };
 
@@ -16,6 +16,7 @@ const RelativeSpinner: React.FC<SpinnerT> = (props) => {
     <div
       className={classnames("flex items-center justify-center", {
         "absolute z-[99] inset-0": type === "relative",
+        "fixed z-[999] inset-0 bg-white/10": type === "fixed",
         "w-full h-full flex items-center justify-center": type === "inline",
       })}
     >

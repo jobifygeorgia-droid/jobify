@@ -1,5 +1,5 @@
 import { Close } from "@/components/ui/icons";
-import { FileInputReviewComponentPropsT } from "@/components/layouts/Form/types/form-fields.types";
+import { FileInputReviewComponentPropsT } from "@/interface/ui/forms-ui";
 
 const FileInputPdfReview: React.FC<FileInputReviewComponentPropsT> = (
   props

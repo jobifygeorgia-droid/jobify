@@ -12,8 +12,11 @@ type AuthModalT = {
 const AuthModal: React.FC<AuthModalT> = ({ children }) => {
   const { authMode, onCloseAuthPopup, isAuthenticated } = useAuthContext();
 
-  if (!authMode || !AuthModes.includes(authMode) || isAuthenticated)
-    return null;
+  const authModes = Object.values(AuthModes);
+  const isAllowedAuthMode =
+    authMode && authModes.includes(authMode as AuthModes);
+
+  if (!isAllowedAuthMode || isAuthenticated) return null;
 
   return (
     <Modal rounded="lg" onClose={onCloseAuthPopup} backdrop zIndexOnMobile={99}>

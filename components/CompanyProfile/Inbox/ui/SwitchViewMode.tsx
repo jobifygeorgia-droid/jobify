@@ -2,7 +2,7 @@
 
 import classnames from "classnames";
 
-import { useSearchParamUtils } from "@/hooks/utils";
+import { useDevice, useSearchParamUtils } from "@/hooks/utils";
 
 import { Button } from "@/components/ui";
 import { GridView, ListView } from "@/components/ui/icons";
@@ -13,6 +13,8 @@ type SwitchViewModeT = {
 
 const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
   const { mergeAndNavigate } = useSearchParamUtils();
+  const device = useDevice();
+  const isMobile = device === "mobile";
 
   const onSwitch = (mode: string) => mergeAndNavigate(mode);
 
@@ -20,7 +22,7 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
     <div className="flex items-center gap-4">
       <Button onClick={() => onSwitch("view=list")} className="p-0!">
         <ListView
-          size={34}
+          size={isMobile ? 28 : 34}
           filled
           className={classnames("text-light-grey-active", {
             "text-blue!": viewMode === "list",
@@ -30,7 +32,7 @@ const SwitchViewMode: React.FC<SwitchViewModeT> = ({ viewMode }) => {
 
       <Button onClick={() => onSwitch("view=grid")} className="p-0!">
         <GridView
-          size={34}
+          size={isMobile ? 28 : 34}
           filled
           className={classnames("text-light-grey-active", {
             "text-blue!": viewMode === "grid",
