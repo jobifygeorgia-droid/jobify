@@ -11,8 +11,10 @@ const ReviewContainer: React.FC<ReviewContainerT> = (props) => {
   const { children, onEdit, onDelete } = props;
 
   return (
-    <div className="bg-blue-light py-3 px-5 rounded-3xl flex items-start">
-      <div className="grid grid-cols-2 gap-4 w-full">{children}</div>
+    <div className="bg-blue-light py-3 px-5 rounded-xl tablet:rounded-3xl flex items-start">
+      <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4 w-full">
+        {children}
+      </div>
 
       <div className="ml-auto flex flex-col gap-4">
         <Button className="text-orange p-0!" type="button" onClick={onEdit}>

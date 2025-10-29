@@ -29,6 +29,8 @@ const DatePicker: React.FC<DatePickerT> = (props) => {
         <DemoContainer components={["DatePicker"]} sx={RootStyles}>
           <MuiDatePicker
             label="Basic date picker"
+            disablePast={props.disablePast}
+            disableFuture={props.disableFuture}
             value={props.value ? dayjs(props.value) : null}
             onChange={(v) => props?.onChange?.(v?.toString() || "")}
             slotProps={{

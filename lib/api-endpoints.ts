@@ -22,4 +22,8 @@ export const api_endpoints = {
     deleteVacancy: (id: string) => `/vacancies/${id}/`,
     createVacancy: "/vacancies/create/",
   },
+  utils: {
+    audienceTags: "/audience-tags/",
+    sectors: "/sectors/",
+  },
 };

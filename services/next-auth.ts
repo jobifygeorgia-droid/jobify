@@ -42,7 +42,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
         try {
           const { data, headers } = await axios.post(
             `${API_ENDPOINT}${api_endpoints.auth.login}`,
-            credentials,
+            { email: credentials?.email, password: credentials?.password },
             {
               withCredentials: true,
               headers: { "Content-Type": "application/json" },
@@ -72,6 +72,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
             error?.response?.data?.detail ||
             error?.response?.data?.message ||
             error?.response?.data?.error ||
+            error.message ||
             null;
 
           // Fallback human-readable error

@@ -5,13 +5,6 @@ export type PageParamsT = {
   params: Promise<Record<string, string | undefined>>;
 };
 
-export enum VACANCY_GROUPS {
-  TUTORS = "tutors",
-  UKRAINIAN = "ukrainian",
-  STUDENTS = "students",
-  IMMIGRANTS = "immigrants",
-}
-
 export enum USER_TYPES {
   ADMIN = "admin",
   EMPLOYER = "employer",

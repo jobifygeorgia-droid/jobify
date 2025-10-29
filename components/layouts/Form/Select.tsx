@@ -48,7 +48,7 @@ const Select = (props: SelectT) => {
           className="w-full outline-none"
           noOptionsMessage={() => props.dropdownPlaceholder || "No options"}
           classNames={{
-            menuList: () => classnames(props.loading && "loading-active"),
+            menuList: () => classnames({ "loading-active": props.loading }),
           }}
           components={{
             ValueContainer: (props) => (

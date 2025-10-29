@@ -26,7 +26,6 @@ const Home: React.FC<HomeT> = ({ query }) => {
       </Suspense>
 
       <S.VacanciesForDifferentGroups />
-
       {/* <S.InterestingForYou /> */}
       {/* <S.LiveInCompany /> */}
 
@@ -35,6 +34,7 @@ const Home: React.FC<HomeT> = ({ query }) => {
       <S.Subscribe />
 
       {/* <S.Reviews /> */}
+
       {/* <S.TopCompanies /> */}
     </div>
   );

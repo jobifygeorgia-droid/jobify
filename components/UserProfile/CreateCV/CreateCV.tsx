@@ -9,7 +9,7 @@ type CreateCVT = {};
 const CreateCV: React.FC<CreateCVT> = () => {
   return (
     <CVProvider>
-      <div className="flex items-stretch gap-10 h-full py-7">
+      <div className="flex flex-col laptop:flex-row items-stretch gap-10 h-full py-7">
         <Form />
         <CVView />
       </div>

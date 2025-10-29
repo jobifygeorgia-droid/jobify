@@ -23,7 +23,7 @@ const Skills: React.FC = () => {
       onExpand={s.onToggleSkills}
     >
       <div className="flex flex-col gap-4">
-        <div className="flex items-end gap-6">
+        <div className="flex flex-col tablet:flex-row items-end gap-4 tablet:gap-6">
           {s.skills.map((_, index) =>
             index !== s.selectedSkillFieldIndex ? null : (
               <Controller
@@ -42,17 +42,29 @@ const Skills: React.FC = () => {
             )
           )}
 
-          <Button type="button" buttonType="primary" onClick={s.onAppendSkill}>
-            დამატება
-          </Button>
+          <div className="flex items-center gap-4 tablet:gap-6 w-full">
+            <Button
+              type="button"
+              buttonType="primary"
+              onClick={s.onAppendSkill}
+              className="max-tablet:w-full!"
+            >
+              დამატება
+            </Button>
 
-          <Button type="button" buttonType="tertiary" onClick={s.onCancelSkill}>
-            გაუქმება
-          </Button>
+            <Button
+              type="button"
+              buttonType="tertiary"
+              onClick={s.onCancelSkill}
+              className="max-tablet:w-full!"
+            >
+              გაუქმება
+            </Button>
+          </div>
         </div>
 
         {s.addedSkills.length > 0 && (
-          <ul className="flex items-center flex-wrap gap-4">
+          <ul className="flex items-center flex-wrap gap-2 text-sm tablet:text-base-sm tablet:gap-4">
             {s.addedSkills.map((skill, index) => (
               <ChipValue
                 key={`skill-${skill}-${index}`}

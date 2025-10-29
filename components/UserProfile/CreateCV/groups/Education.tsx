@@ -87,6 +87,7 @@ const Education: React.FC = () => {
                 render={({ field, fieldState: { error } }) => (
                   <DatePicker
                     {...field}
+                    disableFuture
                     label="დაწყების თარიღი"
                     message={error?.message}
                   />

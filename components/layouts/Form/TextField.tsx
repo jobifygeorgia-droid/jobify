@@ -34,7 +34,7 @@ const TextField: React.FC<TextFieldPropsT> = (props) => {
           placeholder={placeholder || " "}
           {...rest.htmlInputProps}
           className={classnames(
-            "peer w-full h-11 outline-none pl-2 rounded-[inherit]",
+            "peer w-full h-11 outline-none pl-2 rounded-[inherit] text-base-sm",
             { "w-[93%]!": Boolean(adornment) }
           )}
         />

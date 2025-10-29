@@ -1,5 +1,4 @@
 import { DYNAMIC_ROUTES } from "@/lib/config";
-import { VACANCY_GROUPS } from "@/interface/global.types";
 
 import { AnchorButton } from "@/components/ui";
 import { ArrowRight } from "@/components/ui/icons";
@@ -7,7 +6,7 @@ import { ArrowRight } from "@/components/ui/icons";
 type VacanciesForDifferentGroupsCardT = {
   title: string;
   subtitle?: string;
-  group: VACANCY_GROUPS;
+  group: string;
 };
 
 const VacanciesForDifferentGroupsCard: React.FC<

@@ -10,7 +10,6 @@ import {
   workTypeOptions,
   workSectorOptions,
   experienceOptions,
-  workCategoryOptions,
 } from "@/lib/static-data";
 
 import {
@@ -21,6 +20,7 @@ import {
 
 import { useDevice, useSearchParamUtils } from "@/hooks/utils";
 import { PATHS } from "@/lib/config";
+import { useFetchCategories } from "@/hooks/api/utils";
 
 type FilterProviderT = {
   children: React.ReactNode;
@@ -116,6 +116,8 @@ const FilterProvider: React.FC<FilterProviderT> = (props) => {
   const onCloseFilter = () => setIsOpen(false);
 
   // Categories state //
+  const { options: workCategoryOptions } = useFetchCategories();
+
   const categoriesRef = useRef<HTMLDivElement | null>(null);
   const [expandCategories, setExpandCategories] = useState(false);
 

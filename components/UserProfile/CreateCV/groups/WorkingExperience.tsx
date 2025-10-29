@@ -68,6 +68,7 @@ const WorkingExperience: React.FC = () => {
               render={({ field, fieldState: { error } }) => (
                 <DatePicker
                   {...field}
+                  disableFuture
                   label="დაწყების თარიღი"
                   message={error?.message}
                 />
@@ -80,13 +81,14 @@ const WorkingExperience: React.FC = () => {
               render={({ field, fieldState: { error } }) => (
                 <DatePicker
                   {...field}
+                  disableFuture
                   label="დასრულების თარიღი"
                   message={error?.message}
                 />
               )}
             />
 
-            <div className="col-span-2 flex justify-end">
+            <div className="col-span-1 tablet:col-span-2 flex justify-end">
               <Controller
                 control={control}
                 name={`working_experience.${index}.isOngoingWork`}

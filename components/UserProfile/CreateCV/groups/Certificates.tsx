@@ -68,6 +68,7 @@ const Certificates: React.FC = () => {
                 render={({ field, fieldState: { error } }) => (
                   <DatePicker
                     {...field}
+                    disableFuture
                     message={error?.message}
                     label="დასრულების თარიღი"
                   />

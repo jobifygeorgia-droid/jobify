@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AxiosResponse } from "axios";
 
-import { publicApiClient } from "@/services/axios/axios-client";
-import { CategoryT } from "@/interface/db/categories";
 import { logger } from "@/lib/utils";
+import { CategoryT } from "@/interface/db/categories";
+import { SelectOptionT } from "@/interface/ui/forms-ui";
+import { publicApiClient } from "@/services/axios/axios-client";
 
 /**
  * @see
@@ -30,18 +32,19 @@ import { logger } from "@/lib/utils";
  * @remarks The fetch is triggered once on mount via `useEffect` with an empty dependency array.
  */
 export default function useFetchCategories() {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<Array<SelectOptionT>>([]);
   const [loading, setLoading] = useState(false);
 
   async function getCategories() {
     try {
       setLoading(true);
 
-      const { data } = await publicApiClient.get(`/categories/`);
+      const { data }: AxiosResponse<Array<CategoryT>> =
+        await publicApiClient.get(`/categories/`);
 
-      if (data?.results)
+      if (data.length > 0)
         setOptions(() =>
-          data.results.map((category: CategoryT) => ({
+          data.map((category: CategoryT) => ({
             value: category.id,
             label: category.name,
           }))

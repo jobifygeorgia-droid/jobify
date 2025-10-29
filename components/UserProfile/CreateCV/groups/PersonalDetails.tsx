@@ -15,10 +15,10 @@ const PersonalDetails: React.FC = () => {
 
   return (
     <FormGroupContainer
-      title="პერსონალური დეტალები"
       name="personal_details"
-      isSucceed={pd.isSucceed}
       hasError={pd.hasError}
+      isSucceed={pd.isSucceed}
+      title="პერსონალური დეტალები"
       onExpand={pd.onTogglePersonalDetails}
     >
       <FormGroupGrid>
@@ -66,7 +66,7 @@ const PersonalDetails: React.FC = () => {
               {...field}
               label="მისამართი *"
               message={error?.message}
-              containerClassName="col-span-2"
+              containerClassName="col-span-1 tablet:col-span-2"
             />
           )}
         />

@@ -1,4 +1,4 @@
-import { USER_TYPES, VACANCY_GROUPS } from "@/interface/global.types";
+import { USER_TYPES } from "@/interface/global.types";
 
 type PathT = Record<PathNameT, string>;
 type PathNameT = (typeof ALL_ROUTES)[number]["name"];
@@ -211,7 +211,7 @@ export const DYNAMIC_ROUTES = {
       .replace(":vacancyId", vacancyId.toString()),
   user_profile: (userId: string | number) =>
     PATHS.user_profile.replace(":userId", userId.toString()),
-  vacancies_groups: (group: VACANCY_GROUPS) =>
+  vacancies_groups: (group: string) =>
     PATHS.vacancies_groups.replace(":group", group),
   vacancy_details: (vacancyId: string | number) =>
     PATHS.vacancies_details.replace(":vacancyId", vacancyId.toString()),

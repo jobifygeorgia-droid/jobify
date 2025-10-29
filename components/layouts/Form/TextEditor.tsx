@@ -43,13 +43,12 @@ const TextEditor: React.FC<TextEditorT> = (props) => {
   }, [editor, onChange]);
 
   return (
-    <div className="flex flex-col gap-[6px]">
+    <div
+      className={classnames("flex flex-col gap-[6px]", props.className || "")}
+    >
       {props.label && <Label label={props.label} />}
 
-      <div
-        className={classnames(props.className || "")}
-        style={{ width, minHeight: height, height: height }}
-      >
+      <div style={{ width, minHeight: height, height: height }}>
         <div className="border border-bc rounded-xl p-3 h-full w-full flex flex-col gap-3">
           <div className="flex items-center gap-4 pb-3 border-b border-b-bc">
             <Bold />

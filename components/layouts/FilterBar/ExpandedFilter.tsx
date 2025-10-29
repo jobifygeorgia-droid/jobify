@@ -10,7 +10,7 @@ import { ChipsField } from "@/components/layouts/Form";
 
 const ExpandedFilter: React.FC = () => {
   const { control, ...filter } = useFilterContext();
-  console.log({ isOpen: filter.isOpen });
+
   if (!filter.isOpen) return null;
 
   return (

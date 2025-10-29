@@ -4,6 +4,7 @@ import { buildQueryStringFromNextSearchParams } from "@/lib/utils";
 import Home from "@/components/Home/Home";
 import { Container } from "@/components/ui";
 import { FilterBar } from "@/components/layouts";
+import { Suspense } from "react";
 
 export const Page: React.FC<PageParamsT> = async ({ searchParams }) => {
   const query = await searchParams;
@@ -13,7 +14,9 @@ export const Page: React.FC<PageParamsT> = async ({ searchParams }) => {
   return (
     <Container>
       <FilterBar />
-      <Home query={queryStr} />
+      <Suspense fallback={"loading"}>
+        <Home query={queryStr} />
+      </Suspense>
     </Container>
   );
 };

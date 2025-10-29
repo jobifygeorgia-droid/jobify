@@ -3,8 +3,8 @@ import { Controller } from "react-hook-form";
 import { useFilterContext } from "@/providers/FilterProvider";
 
 import { Button } from "@/components/ui";
-import { Checkbox } from "@/components/layouts/Form";
 import { ExpandedFilterSectionTitle } from "./";
+import { Checkbox } from "@/components/layouts/Form";
 
 const FilterByCategory: React.FC = () => {
   const f = useFilterContext();

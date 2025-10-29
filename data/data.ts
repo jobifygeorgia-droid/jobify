@@ -1,5 +1,3 @@
-import { VACANCY_GROUPS } from "@/interface/global.types";
-
 export const vipVacancies = [
   {
     id: 1000,
@@ -365,33 +363,6 @@ export const section2Data = [
     text: "მნიშვნელოვანია ისეთი სამსახურის პოვნა, რომელიც მოგცემს მოქნილ გრაფიკს და საშუალებას დაგიტოვებს დროს პირადი ცხოვრებისათვის.",
     thumbnail:
       "https://images.unsplash.com/photo-1541834167531-0db139a8d22d?q=80&w=1089&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-
-export const vacanciesForDifferentGroupsData = [
-  {
-    id: 28,
-    title: "სტუდენტებისთვის",
-    subtitle: "სწავლა-სამსახურის შეთავაზება",
-    group: VACANCY_GROUPS.STUDENTS,
-  },
-  {
-    id: 27,
-    title: "უკრაინელი ხალხისთვის",
-    subtitle: "ჩვენ თქვენს გვერდით ვარ",
-    group: VACANCY_GROUPS.UKRAINIAN,
-  },
-  {
-    id: 26,
-    title: "ტუტორებისთვის",
-    subtitle: "აბიტურიენტებისთვის",
-    group: VACANCY_GROUPS.TUTORS,
-  },
-  {
-    id: 29,
-    title: "ემიგრანტებისთვის",
-    subtitle: "",
-    group: VACANCY_GROUPS.IMMIGRANTS,
   },
 ];
 

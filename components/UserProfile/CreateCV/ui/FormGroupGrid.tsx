@@ -11,8 +11,7 @@ const FormGroupGrid: React.FC<FormGroupGridT> = (props) => {
   return (
     <div
       className={classnames(
-        "grid grid-cols-2 gap-x-6 gap-y-4 relative group",
-
+        "grid grid-cols-1 tablet:grid-cols-2 gap-x-6 gap-y-3 tablet:gap-y-4 relative group",
         { "border-b border-bc pb-4": showDivider }
       )}
     >

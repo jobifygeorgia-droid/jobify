@@ -45,7 +45,7 @@ export default function logger(error: any) {
     message = error;
   }
 
-  console.error("💥 Error Logger 💥", { message, status, error });
+  console.error("💥 Error Logger 💥", { message, status });
 
   return { message, status };
 }

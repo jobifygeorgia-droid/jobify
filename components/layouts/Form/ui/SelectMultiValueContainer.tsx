@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { components, MultiValueProps } from "react-select";
 
 type SelectMultiValueContainerT<T> = MultiValueProps<T, boolean> & {
@@ -37,14 +38,14 @@ const SelectMultiValueContainer = <T,>(
             </span>
           ),
         }}
-        className="order-1"
+        // className="order-2"
       />
     );
 
   // If it's the second-to-last, render "+N"
   if (index === 0)
     return (
-      <components.MultiValue {...props} className="order-2">
+      <components.MultiValue {...props} className={classnames("order-2")}>
         +{selectedOptions.length - itemsToShowCount}
       </components.MultiValue>
     );

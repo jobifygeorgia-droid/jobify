@@ -7,7 +7,7 @@ import {
   RouteTracker,
   PopupsProvider,
   FilterProvider,
-  GoogleMapProvider,
+  // GoogleMapProvider,
 } from "@/providers";
 
 type RootProviderT = {
@@ -23,7 +23,9 @@ const RootProvider: React.FC<RootProviderT> = ({ children }) => {
             <RouteTracker>
               <PopupsProvider>
                 <FilterProvider>
-                  <GoogleMapProvider>{children}</GoogleMapProvider>
+                  {/* <GoogleMapProvider> */}
+                  {children}
+                  {/* </GoogleMapProvider> */}
                 </FilterProvider>
               </PopupsProvider>
             </RouteTracker>

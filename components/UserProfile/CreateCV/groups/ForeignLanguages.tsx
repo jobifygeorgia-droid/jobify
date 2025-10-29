@@ -23,7 +23,7 @@ const ForeignLanguages: React.FC = () => {
       hasError={fl.hasError}
       onExpand={fl.onToggleForeignLanguages}
     >
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4 tablet:gap-6">
         {fl.foreignLanguages.map((language, index) =>
           index !== fl.selectedForeignLanguageFieldIndex ? null : (
             <Fragment key={`form-${language.id}`}>
@@ -56,25 +56,29 @@ const ForeignLanguages: React.FC = () => {
           )
         )}
 
-        <Button
-          type="button"
-          buttonType="tertiary"
-          onClick={fl.onCancelForeignLanguage}
-        >
-          გაუქმება
-        </Button>
+        <div className="flex items-center gap-4 tablet:gap-6 w-full col-span-1 tablet:col-span-2">
+          <Button
+            fullWidth
+            type="button"
+            buttonType="tertiary"
+            onClick={fl.onCancelForeignLanguage}
+          >
+            გაუქმება
+          </Button>
 
-        <Button
-          type="button"
-          buttonType="primary"
-          onClick={fl.onAppendForeignLanguage}
-        >
-          დამატება
-        </Button>
+          <Button
+            fullWidth
+            type="button"
+            buttonType="primary"
+            onClick={fl.onAppendForeignLanguage}
+          >
+            დამატება
+          </Button>
+        </div>
       </div>
 
       {fl.addedForeignLanguages.length > 0 && (
-        <ul className="flex items-center flex-wrap gap-4">
+        <ul className="flex items-center flex-wrap gap-2 text-sm tablet:text-base-sm tablet:gap-4">
           {fl.addedForeignLanguages.map((language, index) => (
             <ChipValue
               key={`skill-${language}-${index}`}

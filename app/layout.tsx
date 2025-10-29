@@ -19,6 +19,7 @@ const RootLayout: React.FC<RootLayoutT> = ({ children, AuthPopup }) => {
   return (
     <html lang="en">
       <GoogleFontIconsHead />
+
       <body className={`${notoSansGeorgian.className}`}>
         <RootProvider>
           {children}

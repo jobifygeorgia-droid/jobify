@@ -32,13 +32,27 @@ export async function signupUser(data: SignupUserSchemaT) {
 
 export async function signupCompany(data: SignupCompanySchemaT) {
   return await actionWrapper(async () => {
-    const { response } = await api.post<
-      SignupCompanySchemaT & { user_type: USER_TYPES },
-      UserSessionT
-    >(api_endpoints.auth.register, {
-      ...data,
+    const modifiedData = {
       user_type: USER_TYPES.EMPLOYER,
-    });
+      ...data,
+      employer_profile: {
+        ...data.employer_profile,
+        phone_number: data.phone_number,
+      },
+    };
+    console.log(modifiedData);
+
+    const { response } = await api.post<any, UserSessionT>(
+      api_endpoints.auth.register,
+      modifiedData
+    );
+    // const { response } = await api.post<
+    //   SignupCompanySchemaT & { user_type: USER_TYPES },
+    //   UserSessionT
+    // >(api_endpoints.auth.register, {
+    //   ...data,
+    //   user_type: USER_TYPES.EMPLOYER,
+    // });
 
     return response;
   });

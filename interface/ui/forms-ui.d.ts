@@ -93,6 +93,8 @@ export type ChipsFieldT = {
 // DatePicker
 export type DatePickerT = {
   disablePortal?: boolean;
+  disableFuture?: boolean;
+  disablePast?: boolean;
   placement?: "top-start" | "bottom-end";
   label?: string;
   message?: string;

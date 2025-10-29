@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  nextjs:
+    image: node:20
+    container_name: jobify_frontend
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.docker
+    command: >
+      sh -c "npm install && npm run dev -- -H 0.0.0.0"
