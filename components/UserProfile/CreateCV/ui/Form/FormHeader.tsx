@@ -5,8 +5,10 @@ const FormHeader: React.FC<FormHeaderT> = () => {
     <div className="flex items-center gap-2 border border-bc rounded-2xl py-4 px-5">
       <figure className="size-16 aspect-square rounded-full overflow-hidden bg-light-grey"></figure>
       <div className="flex flex-col gap-1">
-        <span className="font-bold text-lg">ანანო თარხნიშვილი</span>
-        <span className="text-base-sm">ფოტოს შეცვლა</span>
+        <span className="font-bold text-md desktop-sm:text-lg">
+          ანანო თარხნიშვილი
+        </span>
+        <span className="text-sm desktop-sm:text-base-sm">ფოტოს შეცვლა</span>
       </div>
     </div>
   );

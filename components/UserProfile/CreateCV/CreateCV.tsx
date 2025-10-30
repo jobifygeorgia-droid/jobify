@@ -1,8 +1,7 @@
 "use client";
 
-import Form from "./Form";
-import CVView from "./CVView";
 import CVProvider from "./CVProvider";
+import { Form, CVView, CVViewWrapper } from "./ui";
 
 type CreateCVT = {};
 
@@ -11,7 +10,10 @@ const CreateCV: React.FC<CreateCVT> = () => {
     <CVProvider>
       <div className="flex flex-col laptop:flex-row items-stretch gap-10 h-full py-7">
         <Form />
-        <CVView />
+
+        <CVViewWrapper>
+          <CVView />
+        </CVViewWrapper>
       </div>
     </CVProvider>
   );

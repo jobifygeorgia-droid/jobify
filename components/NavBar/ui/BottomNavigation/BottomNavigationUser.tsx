@@ -1,7 +1,7 @@
-import { DYNAMIC_ROUTES, PATHS } from "@/lib/config";
+import { DYNAMIC_ROUTES } from "@/lib/config";
 
-import { BottomNavigationItem } from "./";
-import { Heart, Work } from "@/components/ui/icons";
+import { BottomNavigationItem } from "..";
+import { Heart } from "@/components/ui/icons";
 
 type BottomNavigationUserT = {
   userId: number;
@@ -15,13 +15,6 @@ const BottomNavigationUser: React.FC<BottomNavigationUserT> = ({ userId }) => {
         title="რჩეულები"
       >
         <Heart size={20} />
-      </BottomNavigationItem>
-
-      <BottomNavigationItem
-        href={PATHS.user_create_statement}
-        title="განცხადების დამატება"
-      >
-        <Work size={20} />
       </BottomNavigationItem>
     </>
   );

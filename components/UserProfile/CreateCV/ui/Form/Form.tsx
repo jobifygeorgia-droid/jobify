@@ -1,7 +1,7 @@
 type FormT = {};
 
-import { FormHeader } from "./ui";
-import * as Groups from "./groups";
+import { FormHeader } from "@/components/UserProfile/CreateCV/ui";
+import * as Groups from "@/components/UserProfile/CreateCV/groups";
 
 const Form: React.FC<FormT> = () => {
   return (

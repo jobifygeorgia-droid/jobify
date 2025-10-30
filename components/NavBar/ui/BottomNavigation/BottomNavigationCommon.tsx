@@ -8,7 +8,7 @@ import {
   FilterSecondary,
   CalendarSecondary,
 } from "@/components/ui/icons";
-import { BottomNavigationItem } from "./";
+import { BottomNavigationItem } from "..";
 import { FilterButton } from "@/components/layouts";
 
 type BottomNavigationCommonT = {

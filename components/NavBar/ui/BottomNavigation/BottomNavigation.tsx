@@ -5,7 +5,7 @@ import {
   BottomNavigationCommon,
   BottomNavigationCompany,
   BottomNavigationContainer,
-} from "./";
+} from "..";
 
 type BottomNavigationT = {
   user: SessionUserT;
@@ -20,7 +20,7 @@ const BottomNavigation: React.FC<BottomNavigationT> = (props) => {
 
   return (
     <BottomNavigationContainer>
-      <nav className="py-3 px-4 w-full max-w-[744px] flex items-center justify-evenly gap-6">
+      <nav className="h-full w-full tablet:max-w-[744px] flex items-center justify-between gap-4">
         <BottomNavigationCommon isAuthorized={isAuthorized} />
 
         {isJobSeeker && <BottomNavigationUser userId={user.id} />}
