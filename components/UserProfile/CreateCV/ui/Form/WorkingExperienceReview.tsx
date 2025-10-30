@@ -3,7 +3,10 @@ import { UseFormWatch } from "react-hook-form";
 import { formatDate } from "@/lib/utils";
 import { CVSchemaT } from "@/lib/schemas/user/CVSchema";
 
-import { ReviewItem, ReviewContainer } from "./";
+import {
+  ReviewItem,
+  ReviewContainer,
+} from "@/components/UserProfile/CreateCV/ui";
 import { University, Calendar, EducationPen } from "@/components/ui/icons";
 
 type WorkingExperienceReviewT = {

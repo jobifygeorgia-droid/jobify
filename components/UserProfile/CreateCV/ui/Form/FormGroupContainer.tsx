@@ -35,12 +35,17 @@ const FormGroupContainer: React.FC<FormGroupContainerT> = (props) => {
       <button
         type="button"
         onClick={onExpand}
-        className={classnames("grid grid-cols-3 cursor-pointer", {
-          "w-max absolute top-3 -right-5": isExpandedCurrentTab,
-          "w-full": !isExpandedCurrentTab,
+        className={classnames("cursor-pointer", {
+          "absolute top-3 right-3 grid-cols-1": isExpandedCurrentTab,
+          "grid grid-cols-3 w-full": !isExpandedCurrentTab,
         })}
       >
-        <div className="flex items-center gap-5 col-start-2">
+        <div
+          className={classnames("flex items-center gap-5", {
+            "col-start-1 col-span-3 tablet:col-start-2 tablet:col-span-1":
+              !isExpanded,
+          })}
+        >
           <span
             className={classnames(
               "size-8 tablet:size-10 aspect-square flex items-center justify-center bg-blue-light rounded-full",

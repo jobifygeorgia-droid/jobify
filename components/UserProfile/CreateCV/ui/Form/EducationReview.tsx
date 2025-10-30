@@ -9,7 +9,11 @@ import {
   EducationHat,
   EducationPen,
 } from "@/components/ui/icons";
-import { ReviewItem, ReviewContainer } from "./";
+
+import {
+  ReviewItem,
+  ReviewContainer,
+} from "@/components/UserProfile/CreateCV/ui";
 
 type EducationReviewT = {
   index: number;

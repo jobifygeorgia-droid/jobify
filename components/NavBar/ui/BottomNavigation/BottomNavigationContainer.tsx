@@ -16,7 +16,7 @@ const BottomNavigationContainer: React.FC<BottomNavigationContainerT> = ({
   if (menuIsOpen) return null;
 
   return (
-    <div className="laptop:hidden fixed z-[99] bottom-0 left-0 right-0 flex justify-center items-center bg-white border-t border-t-bc">
+    <div className="laptop:hidden fixed z-[99] bottom-0 left-0 right-0 flex justify-center items-center bg-white border-t border-t-bc py-3 px-4">
       {children}
     </div>
   );

@@ -1,7 +1,7 @@
 import { USER_TYPES } from "@/interface/global.types";
 import { SessionUserT } from "@/interface/global.types";
 
-import { AvatarMenu, LoginButton, CompanyActions, UserActions } from "./";
+import { AvatarMenu, LoginButton, CompanyActions, UserActions } from "..";
 
 type UserT = {
   user: SessionUserT;

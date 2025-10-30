@@ -10,7 +10,7 @@ const BottomNavigationItem: React.FC<BottomNavigationItemT> = (props) => {
   const { href, children, title } = props;
 
   return (
-    <AnchorButton href={href} className="flex flex-col gap-1 p-0!">
+    <AnchorButton href={href} className="flex flex-col gap-1 p-0! text-center">
       {children}
       <span className="text-sm hidden tablet:block">{title}</span>
     </AnchorButton>

@@ -7,7 +7,7 @@ import { useDevice } from "@/hooks/utils";
 import { DYNAMIC_ROUTES } from "@/lib/config";
 import { SessionUserT, USER_TYPES } from "@/interface/global.types";
 
-import { CV, Person, CalendarSecondary } from "@/components/ui/icons";
+import { CV, Person, CalendarSecondary, Work } from "@/components/ui/icons";
 
 import {
   BurgerButton,
@@ -15,7 +15,7 @@ import {
   BurgerMenuListItem,
   BurgerMenuContainer,
   BurgerMenuLogoutButton,
-} from "./";
+} from "..";
 
 type BurgerMenuT = {
   user: SessionUserT;
@@ -84,6 +84,11 @@ const BurgerMenu: React.FC<BurgerMenuT> = ({ user }) => {
                   <BurgerMenuListItem setIsOpen={setIsOpen}>
                     <CV />
                     <span>გაგზავნილი რეზიუმეები</span>
+                  </BurgerMenuListItem>
+
+                  <BurgerMenuListItem setIsOpen={setIsOpen}>
+                    <Work />
+                    <span>განცხადების დამატება</span>
                   </BurgerMenuListItem>
                 </>
               )}

@@ -44,10 +44,7 @@ export const MuiDatePicker = styled(DatePicker)(() => ({
     "& .MuiPickersSectionList-root": {
       LineHeight: 1,
       padding: 0,
-
-      ".MuiIconButton-root": {
-        backgroundColor: "green",
-      },
+      fontSize: "14px",
     },
 
     "& .MuiInputAdornment-root": {

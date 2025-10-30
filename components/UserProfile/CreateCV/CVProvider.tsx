@@ -30,6 +30,8 @@ type CVContextT = {
   onReset: () => void;
   isExpanded: keyof CVSchemaT | undefined;
   onExpandTab: (title: keyof CVSchemaT) => void;
+  isOpenReview: boolean;
+  setIsOpenReview: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const CVContext = createContext<CVContextT | undefined>(undefined);
@@ -50,6 +52,7 @@ const CVProvider: React.FC<CVProviderT> = ({ children }) => {
     mode: "onChange",
   });
 
+  // Control expanded tabs in the form
   const [isExpanded, setIsExpanded] = useState<keyof CVSchemaT | undefined>(
     "personal_details"
   );
@@ -58,12 +61,18 @@ const CVProvider: React.FC<CVProviderT> = ({ children }) => {
     setIsExpanded((prev) => (prev === title ? undefined : title));
   };
 
+  // Reset the form to initial state
   const onReset = () => reset(cvInitialState);
 
+  // Handle form submission
   const onSave = handleSubmit(async (values) => {
     console.log(values);
   });
 
+  // Control review modal on CV view on mobile
+  const [isOpenReview, setIsOpenReview] = useState(false);
+
+  // Reset form on unmount
   useEffect(() => {
     return () => {
       reset(cvInitialState);
@@ -82,6 +91,8 @@ const CVProvider: React.FC<CVProviderT> = ({ children }) => {
         onReset,
         isExpanded,
         onExpandTab,
+        isOpenReview,
+        setIsOpenReview,
       }}
     >
       <form onSubmit={onSave}>{children}</form>
